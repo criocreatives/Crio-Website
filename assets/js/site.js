@@ -14,8 +14,10 @@
     });
     nav.addEventListener('click', event => {
       if (event.target.closest('a')) {
-        nav.classList.remove('open'); header.classList.remove('menu-open');
-        button.setAttribute('aria-expanded', 'false'); button.textContent = 'Menu';
+        nav.classList.remove('open');
+        header.classList.remove('menu-open');
+        button.setAttribute('aria-expanded', 'false');
+        button.textContent = 'Menu';
       }
     });
   }
