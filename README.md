@@ -1,2 +1,3 @@
-# Crio-Website
-Official Crio Creatives website
+# Crio Creatives Website
+
+Static GitHub Pages version of the official Crio Creatives website.
