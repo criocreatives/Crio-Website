@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="refresh" content="5;url=../">
+<title>Message received — Crio Creatives</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/images/crio-logo.png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="thanks-page">
+  <section class="thanks-card" aria-labelledby="thanks-title">
+    <img class="thanks-mark" src="../assets/images/crio-logo.png" alt="">
+    <p class="eyebrow">Message received</p>
+    <h1 id="thanks-title">Thanks for reaching out.</h1>
+    <p class="thanks-copy">Your project enquiry has been sent successfully. We’ll review the details and get back to you shortly.</p>
+    <div class="thanks-redirect">
+      <p>Returning to Crio Creatives in <span class="thanks-countdown" id="countdown">5</span> seconds.</p>
+      <a class="button-link" href="../">Back now ↗</a>
+    </div>
+  </section>
+</main>
+<script>
+(() => {
+  let remaining = 5;
+  const el = document.getElementById('countdown');
+  const timer = setInterval(() => {
+    remaining -= 1;
+    if (el) el.textContent = String(Math.max(remaining,0));
+    if (remaining <= 0) clearInterval(timer);
+  }, 1000);
+})();
+</script>
+</body>
+</html>
