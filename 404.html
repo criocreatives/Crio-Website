@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Page Not Found — Crio Creatives</title>
+<link rel="icon" href="/assets/images/crio-logo.png">
+<style>
+:root{--red:#ed1c24;--bg:#090a0d;--panel:#111318;--ink:#fff;--muted:#a7acb6;--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:Helvetica,Arial,sans-serif}
+body{min-height:100vh;display:grid;place-items:center;overflow:hidden}
+.page{position:relative;width:100%;min-height:100vh;display:grid;place-items:center;padding:28px}
+.page:before{content:"";position:absolute;inset:0;background:
+radial-gradient(circle at 85% 12%,rgba(237,28,36,.19),transparent 28%),
+radial-gradient(circle at 12% 92%,rgba(237,28,36,.09),transparent 27%);
+pointer-events:none}
+.page:after{content:"404";position:absolute;right:-.04em;bottom:-.16em;font-size:min(42vw,540px);font-weight:900;letter-spacing:-.09em;color:rgba(255,255,255,.025);line-height:.8;pointer-events:none}
+.card{position:relative;z-index:1;width:min(760px,100%);border:1px solid var(--line);background:rgba(17,19,24,.9);border-radius:24px;padding:36px;box-shadow:0 30px 90px rgba(0,0,0,.38);backdrop-filter:blur(12px)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:#fff;font-weight:800;letter-spacing:-.02em}
+.brand img{width:42px;height:42px;object-fit:contain}
+.code{font-size:13px;font-weight:800;letter-spacing:.16em;color:var(--red)}
+.content{padding-top:46px}
+.eyebrow{margin:0 0 15px;color:#c5c8cf;font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:800}
+h1{margin:0;max-width:620px;font-size:clamp(46px,9vw,92px);line-height:.9;letter-spacing:-.065em}
+.copy{max-width:570px;margin:24px 0 0;color:var(--muted);font-size:16px;line-height:1.65}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:800;letter-spacing:.01em;border:1px solid var(--line)}
+.button.primary{background:var(--red);border-color:var(--red);color:#fff}
+.button.secondary{color:#fff;background:transparent}
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#6f747e;font-size:11px}
+@media(max-width:600px){.page{padding:16px}.card{padding:24px;border-radius:19px}.top{padding-bottom:22px}.brand span{display:none}.content{padding-top:34px}.copy{font-size:14px}.actions{display:grid}.button{width:100%}.footer{margin-top:36px}}
+</style>
+</head>
+<body>
+<main class="page">
+<section class="card" aria-labelledby="error-title">
+<div class="top">
+<a class="brand" href="/" aria-label="Crio Creatives home"><img src="/assets/images/crio-logo.png" alt=""><span>Crio Creatives</span></a>
+<div class="code">ERROR 404</div>
+</div>
+<div class="content">
+<p class="eyebrow">Wrong turn / Nothing here</p>
+<h1 id="error-title">This page doesn't exist.</h1>
+<p class="copy">The link may be outdated, the page may have moved, or the address may have been entered incorrectly. Head back to Crio and keep moving.</p>
+<div class="actions">
+<a class="button primary" href="/">Back to Crio ↗︎</a>
+<a class="button secondary" href="https://previews.criocreatives.com/portfolio/">View portfolio ↗︎</a>
+</div>
+</div>
+<div class="footer"><span>Crio Creatives</span><span>Creative Visualization Studio / Jamaica</span></div>
+</section>
+</main>
+</body>
+</html>
