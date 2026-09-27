@@ -21,8 +21,7 @@ img { display:block; max-width:100%; }
 .site-header.scrolled,.site-header.menu-open { background:rgba(16,16,16,.96); padding:16px 0; }
 .header-inner { display:flex; align-items:center; justify-content:space-between; gap:32px; }
 .brand { display:inline-flex; align-items:center; gap:13px; width:auto; height:auto; border-radius:0; overflow:visible; background:none; box-shadow:none; }
-.brand img { width:auto; height:54px; border-radius:12px; object-fit:contain; border:0; box-shadow:none; }
-.brand-name { font-size:19px; font-weight:700; letter-spacing:-.03em; }
+.brand .header-logo { display:block; width:189px; height:54px; border-radius:12px; object-fit:cover; border:0; box-shadow:none; }
 .nav { display:flex; align-items:center; gap:30px; margin:0; padding:0; font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
 .nav li { margin:0; list-style:none; }
 .nav a { opacity:.85; transition:.2s; }.nav a:hover { opacity:1; color:var(--red); }
@@ -116,8 +115,8 @@ img { display:block; max-width:100%; }
 @media (max-width:520px) {
   .wrap { width:calc(100% - 28px); }
   .site-header { padding:17px 0; }
-  .brand img { width:auto; height:46px; }
-  .brand-name { font-size:16px; }
+  .brand .header-logo { width:161px; height:46px; }
+
   .hero { min-height:88svh; }
   .section-head { align-items:flex-start; flex-direction:column; gap:12px; }
   .intro-copy { font-size:35px; }
