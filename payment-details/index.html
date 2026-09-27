@@ -5,40 +5,65 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="refresh" content="1;url=https://script.google.com/macros/s/AKfycbxk8jKLodhMaS_QtTBZNsPt_5qR1b_AOux-Z_jh8P1qhj4DwKYDgg9LHQEZmz9aT7Dd/exec">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
 <title>Payment Details — Crio Creatives</title>
 <link rel="icon" href="/assets/images/crio-logo.png">
 <style>
-:root{--red:#ed1c24;--bg:#0d0f14;--panel:#151820;--line:rgba(255,255,255,.09);--muted:#aeb3bd}
+:root{--crio:#ed1c24;--bg:#0d0f14;--panel:#151820;--line:rgba(255,255,255,.09);--muted:#aeb3bd;--field:#0f1117}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:var(--bg);font-family:Helvetica,Arial,sans-serif}
-body{min-height:100vh;color:#fff}
-.page{min-height:100vh;display:grid;place-items:center;padding:22px;position:relative;overflow:hidden}
+html,body{margin:0;min-height:100%;background:var(--bg);font-family:Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body{min-height:100vh;color:#fff}.page{min-height:100vh;display:grid;place-items:center;padding:22px;position:relative;overflow:hidden}
 .page:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 0%,rgba(237,28,36,.16),transparent 34%),radial-gradient(circle at 5% 95%,rgba(237,28,36,.08),transparent 30%);pointer-events:none}
-.card{position:relative;width:min(440px,100%);background:var(--panel);border:1px solid var(--line);border-radius:23px;padding:31px;box-shadow:0 28px 70px rgba(0,0,0,.36);overflow:hidden}
-.card:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--red)}
-.logo{width:54px;height:54px;object-fit:cover;border-radius:10px;margin-bottom:28px}
+.panel{position:relative;width:min(440px,100%);background:var(--panel);border:1px solid var(--line);border-radius:23px;padding:31px;box-shadow:0 28px 70px rgba(0,0,0,.36);overflow:hidden}
+.panel:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--crio)}
+.logo{display:block;width:54px;height:54px;object-fit:cover;border-radius:10px;margin-bottom:29px}
 .eyebrow{color:#d8dbe2;font-size:10px;text-transform:uppercase;letter-spacing:.18em;font-weight:800;margin-bottom:11px}
-h1{margin:0 0 11px;font-size:31px;line-height:1.03;letter-spacing:-.045em}
-p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
-a{display:inline-flex;margin-top:22px;color:#fff;text-decoration:none;font-size:12px;font-weight:800}
-@media(max-width:480px){.card{padding:27px 21px}}
+h1{font-size:32px;line-height:1.03;letter-spacing:-.045em;margin:0 0 11px}p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
+.form{margin-top:25px}label{display:block;margin:0 0 8px;color:#d7dae0;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:800}
+.row{display:grid;grid-template-columns:1fr auto;gap:9px}
+input{width:100%;height:54px;border:1px solid #343944;background:var(--field);color:#fff;border-radius:12px;padding:0 16px;font:800 22px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.32em;outline:none}
+input:focus{border-color:var(--crio);box-shadow:0 0 0 3px rgba(237,28,36,.13)}
+button{height:54px;border:0;border-radius:12px;padding:0 19px;background:var(--crio);color:#fff;font:800 12px/1 Helvetica,Arial,sans-serif;letter-spacing:.04em;cursor:pointer;min-width:112px}
+button:disabled,input:disabled{opacity:.52;cursor:not-allowed}
+.status{display:none;margin-top:14px;padding:11px 12px;border-radius:10px;background:#32171a;border:1px solid #68242a;color:#ffc9cd;font-size:11px;line-height:1.45}
+.status.info{background:#171b25;border-color:#2e3545;color:#c7ccd6}
+.help{margin-top:20px;padding-top:19px;border-top:1px solid var(--line);color:#7f858f;font-size:10.5px;line-height:1.5}
+.spinner{display:inline-block;width:11px;height:11px;margin-right:7px;border:2px solid rgba(255,255,255,.28);border-top-color:#fff;border-radius:50%;vertical-align:-2px;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:480px){.panel{padding:27px 21px}.logo{width:50px;height:50px}.panel h1{font-size:29px}.row{grid-template-columns:1fr}button{width:100%}}
 </style>
 </head>
 <body>
-<main class="page">
-<section class="card">
-<img class="logo" src="/assets/images/crio-logo.png" alt="">
-<div class="eyebrow">Secure client access</div>
-<h1>Payment Details</h1>
-<p>Opening the secure Crio payment portal…</p>
-<a href="https://script.google.com/macros/s/AKfycbxk8jKLodhMaS_QtTBZNsPt_5qR1b_AOux-Z_jh8P1qhj4DwKYDgg9LHQEZmz9aT7Dd/exec">Continue manually ↗︎</a>
-</section>
-</main>
+<main class="page"><section class="panel" aria-labelledby="title">
+<img class="logo" src="/assets/images/crio-logo.png" alt="Crio Creatives">
+<div class="eyebrow">Secure client access</div><h1 id="title">Payment Details</h1>
+<p>Enter the 4-digit access code provided by Crio Creatives to view payment information.</p>
+<form class="form" id="unlock-form"><label for="pin">Access code</label><div class="row">
+<input id="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" minlength="4" autocomplete="off" enterkeyhint="go" autocapitalize="off" spellcheck="false" required autofocus>
+<button id="unlock" type="submit">View Details</button></div><div class="status" id="status" role="alert"></div></form>
+<div class="help">For authorized client use only. Access attempts are limited on this device.</div>
+</section></main>
 <script>
-window.setTimeout(function(){
-  window.location.replace("https://script.google.com/macros/s/AKfycbxk8jKLodhMaS_QtTBZNsPt_5qR1b_AOux-Z_jh8P1qhj4DwKYDgg9LHQEZmz9aT7Dd/exec");
-},250);
-</script>
-</body>
-</html>
+(()=>{"use strict";
+const DATA={iterations:2000000,salt:"DKIDvDjAEigxR8EPpPBN4Q==",iv:"AErpT+N9HgsAzA02",aad:"Y3Jpby1wYXltZW50LWRldGFpbHMtZ3ppcC12MQ==",files:["/payment-details/data/00.txt","/payment-details/data/01.txt","/payment-details/data/02.txt","/payment-details/data/03.txt","/payment-details/data/04.txt","/payment-details/data/05.txt","/payment-details/data/06.txt","/payment-details/data/07.txt","/payment-details/data/08.txt"]};
+const MAX_ATTEMPTS=5,LOCK_MS=15*60*1000,RELOCK_MS=30*60*1000,STORE_KEY="crio_pd_access_v2";
+const form=document.getElementById("unlock-form"),input=document.getElementById("pin"),button=document.getElementById("unlock"),status=document.getElementById("status");
+let busy=false,countdownTimer=null,ciphertextCache=null,relockTimer=null;
+const fromB64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+const readState=()=>{try{return JSON.parse(localStorage.getItem(STORE_KEY))||{attempts:0,lockUntil:0}}catch(_){return{attempts:0,lockUntil:0}}};
+const writeState=s=>{try{localStorage.setItem(STORE_KEY,JSON.stringify(s))}catch(_){}};
+const clearState=()=>{try{localStorage.removeItem(STORE_KEY)}catch(_){}};
+const show=(m,k="error")=>{status.className="status"+(k==="info"?" info":"");status.textContent=m;status.style.display="block"};
+const hide=()=>{status.style.display="none";status.textContent=""};
+const setDisabled=d=>{input.disabled=d;button.disabled=d};
+function updateLockUI(){const s=readState(),r=s.lockUntil-Date.now();if(r<=0){if(s.lockUntil)writeState({attempts:0,lockUntil:0});setDisabled(false);if(countdownTimer){clearInterval(countdownTimer);countdownTimer=null}return false}setDisabled(true);const sec=Math.ceil(r/1000),m=Math.floor(sec/60),rem=sec%60;show("Too many incorrect attempts. Try again in "+m+":"+String(rem).padStart(2,"0")+".");if(!countdownTimer)countdownTimer=setInterval(updateLockUI,1000);return true}
+async function loadCiphertext(){if(ciphertextCache)return ciphertextCache;const parts=await Promise.all(DATA.files.map(async u=>{const r=await fetch(u,{cache:"no-store",credentials:"same-origin"});if(!r.ok)throw new Error("data");return(await r.text()).trim()}));ciphertextCache=parts.join("");return ciphertextCache}
+async function deriveKey(pin){const mat=await crypto.subtle.importKey("raw",new TextEncoder().encode(pin),"PBKDF2",false,["deriveKey"]);return crypto.subtle.deriveKey({name:"PBKDF2",salt:fromB64(DATA.salt),iterations:DATA.iterations,hash:"SHA-256"},mat,{name:"AES-GCM",length:256},false,["decrypt"])}
+async function decrypt(pin){const ciphertext=await loadCiphertext();const key=await deriveKey(pin);const compressed=await crypto.subtle.decrypt({name:"AES-GCM",iv:fromB64(DATA.iv),additionalData:fromB64(DATA.aad),tagLength:128},key,fromB64(ciphertext));if(typeof DecompressionStream!=="function")throw new Error("browser");const ds=new DecompressionStream("gzip");const plain=await new Response(new Blob([compressed]).stream().pipeThrough(ds)).arrayBuffer();return new TextDecoder().decode(plain)}
+input.addEventListener("input",function(){this.value=this.value.replace(/\D/g,"").slice(0,4);if(!busy&&!readState().lockUntil)hide()});
+form.addEventListener("submit",async e=>{e.preventDefault();if(busy||updateLockUI())return;const pin=input.value;if(!/^\d{4}$/.test(pin)){show("Enter the 4-digit access code.");return}busy=true;setDisabled(true);button.innerHTML='<span class="spinner"></span>Unlocking';show("Verifying access code…","info");try{const decrypted=await decrypt(pin);clearState();show("Access granted. Opening payment details…","info");relockTimer=setTimeout(()=>location.reload(),RELOCK_MS);setTimeout(()=>{document.open();document.write(decrypted);document.close()},120)}catch(err){if(err&&err.message==="data"){show("Unable to load the encrypted payment data. Please try again shortly.");busy=false;setDisabled(false);button.textContent="View Details";return}if(err&&err.message==="browser"){show("This browser does not support the secure payment viewer. Please use a current version of Chrome, Edge, Safari, or Firefox.");busy=false;setDisabled(false);button.textContent="View Details";return}const s=readState(),a=(s.attempts||0)+1;if(a>=MAX_ATTEMPTS){writeState({attempts:0,lockUntil:Date.now()+LOCK_MS});input.value="";busy=false;button.textContent="View Details";updateLockUI();return}writeState({attempts:a,lockUntil:0});const delay=Math.min(8000,750*Math.pow(2,a-1));show("Incorrect access code. "+(MAX_ATTEMPTS-a)+" attempt"+(MAX_ATTEMPTS-a===1?"":"s")+" remaining.");input.value="";setTimeout(()=>{busy=false;setDisabled(false);button.textContent="View Details";input.focus()},delay)}});
+updateLockUI();
+})();
+</script></body></html>
