@@ -131,7 +131,7 @@ html { scroll-padding-top:110px; }
 .wrap { width:min(1360px,calc(100% - 80px)); }
 .site-header,.site-header.scrolled,.site-header.menu-open { padding:14px 0; background:rgba(9,9,9,.88); border-bottom:1px solid var(--line); backdrop-filter:blur(16px); }
 .nav { gap:24px; letter-spacing:.07em; }
-.nav-contact,.button-link { display:inline-flex; align-items:center; justify-content:center; gap:22px; background:var(--red); color:#fff; padding:16px 23px; border-radius:999px; font-size:13px; line-height:1.3; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
+.nav-contact,.button-link { display:inline-flex; align-items:center; justify-content:center; gap:22px; background:var(--red); color:#fff; padding:16px 23px; border-radius:9px; font-size:13px; line-height:1.3; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
 .nav .nav-contact { opacity:1; border-radius:9px; }
 .nav .nav-contact:hover,.button-link:hover { background:#c90f1b; color:#fff; }
 a:focus-visible,button:focus-visible { outline:3px solid #fff; outline-offset:5px; }
