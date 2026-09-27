@@ -71,7 +71,7 @@ img { display:block; max-width:100%; }
 .client-strip { overflow:hidden; padding:18px 0; background:var(--red); color:#fff; }
 .client-strip>p { margin:0 0 13px; text-align:center; font-size:9px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; }
 .ticker { overflow:hidden; }
-.ticker-track { display:flex; width:max-content; animation:ticker 42s linear infinite; }
+.ticker-track { display:flex; width:max-content; animation:ticker 84s linear infinite; }
 .ticker-track span { display:flex; align-items:center; gap:28px; padding-right:28px; font-family:Helvetica,Arial,sans-serif; font-size:clamp(17px,2vw,28px); font-weight:300; letter-spacing:-.025em; white-space:nowrap; }
 .ticker-track span::after { content:"✦"; color:var(--ink); font-size:.5em; }
 @keyframes ticker { to { transform:translateX(-50%); } }
