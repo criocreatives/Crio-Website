@@ -21,4 +21,37 @@
       }
     });
   }
+  const form = document.querySelector('.contact-form');
+  if (form) {
+    const startedAt = Date.now();
+    const startedField = form.querySelector('#form-started');
+    const status = form.querySelector('#contact-status');
+    const submit = form.querySelector('button[type="submit"]');
+    if (startedField) startedField.value = String(startedAt);
+
+    form.addEventListener('submit', event => {
+      const trap = form.querySelector('input[name="website"]');
+      const elapsed = Date.now() - startedAt;
+      const message = (form.querySelector('[name="message"]')?.value || '').toLowerCase();
+      const spamPhrases = [
+        'wayback machine','web archives','restore your site','restore any site',
+        'website restore','expired domains','lost pages','200 pages restore',
+        'wordpress restore option','archive restore','recover website from archive'
+      ];
+
+      if ((trap && trap.value.trim()) || elapsed < 3000 || spamPhrases.some(term => message.includes(term))) {
+        event.preventDefault();
+        if (status) {
+          status.dataset.state = 'error';
+          status.textContent = 'We could not submit this enquiry. Please review your message and try again.';
+        }
+        return;
+      }
+
+      if (submit) {
+        submit.disabled = true;
+        submit.textContent = 'Sending…';
+      }
+    });
+  }
 })();
