@@ -32,14 +32,20 @@
     form.addEventListener('submit', event => {
       const trap = form.querySelector('input[name="website"]');
       const elapsed = Date.now() - startedAt;
+      const name = (form.querySelector('[name="name"]')?.value || '').toLowerCase();
+      const email = (form.querySelector('[name="email"]')?.value || '').toLowerCase();
       const message = (form.querySelector('[name="message"]')?.value || '').toLowerCase();
+      const submissionText = [name, email, message].join(' ');
       const spamPhrases = [
         'wayback machine','web archives','restore your site','restore any site',
         'website restore','expired domains','lost pages','200 pages restore',
-        'wordpress restore option','archive restore','recover website from archive'
+        'wordpress restore option','archive restore','recover website from archive',
+        'reviewed your website','website score','digital presence','online presence',
+        'potential business growth','technology solutions','quick conversation',
+        'web development services','kratvya.com','kratvya'
       ];
 
-      if ((trap && trap.value.trim()) || elapsed < 3000 || spamPhrases.some(term => message.includes(term))) {
+      if ((trap && trap.value.trim()) || elapsed < 3000 || spamPhrases.some(term => submissionText.includes(term))) {
         event.preventDefault();
         if (status) {
           status.dataset.state = 'error';
