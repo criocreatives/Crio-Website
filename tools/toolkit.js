@@ -214,54 +214,6 @@
     $('#'+id)?.addEventListener('input',e=>{const el=$('#'+id+'-value');if(el)el.textContent=e.target.value+'%';});
   }
 
-  // Image comparison: both source images are local object URLs.
-  if(tool==='comparison'){
-    let images={before:null,after:null};
-    const inputs={before:$('#before-file'),after:$('#after-file')};
-    const frame=$('#comparison-frame'),output=$('#comparison-controls');
-    function refresh(){
-      for(const key of ['before','after']){
-        const el=$('#'+key+'-image');
-        if(images[key]){el.src=images[key].url;}else{el.removeAttribute('src');}
-      }
-      const ready=!!(images.before&&images.after);
-      frame.classList.toggle('ready',ready);output.hidden=!ready;
-      if(ready){$('#compare-range').value=50;updateSplit(50);showStatus('Comparison ready. Drag the slider to inspect differences.');}
-    }
-    function updateSplit(v){$('#before-layer').style.width=v+'%';$('#compare-handle').style.left=v+'%';$('#compare-value').textContent=v+'%';$('#before-image').style.width=frame.clientWidth+'px';}
-    $('#compare-range')?.addEventListener('input',e=>updateSplit(e.target.value));
-    window.addEventListener('resize',()=>updateSplit($('#compare-range').value));
-    for(const key of ['before','after'])inputs[key]?.addEventListener('change',e=>{
-      const file=e.target.files[0];if(!file)return;
-      if(!allowed(file)){showStatus('Use PNG, JPEG or WebP images.',true);return;}
-      if(images[key])URL.revokeObjectURL(images[key].url);
-      images[key]={file,url:URL.createObjectURL(file)};refresh();
-    });
-    $('#swap-images')?.addEventListener('click',()=>{
-      [images.before,images.after]=[images.after,images.before];
-      for(const key of ['before','after'])inputs[key].value='';refresh();
-    });
-    $('#comparison-download')?.addEventListener('click',async()=>{
-      if(!images.before||!images.after)return;
-      const btn=$('#comparison-download');btn.disabled=true;
-      try{
-        const sources=await Promise.all(['before','after'].map(key=>withImage(images[key].file,async img=>({w:img.naturalWidth,h:img.naturalHeight,file:images[key].file}))));
-        const w=2400,h=Math.max(600,Math.min(1600,Math.round(1200*Math.max(sources[0].h/sources[0].w,sources[1].h/sources[1].w))));
-        const c=canvas(w,h),ctx=c.getContext('2d');ctx.fillStyle='#101010';ctx.fillRect(0,0,w,h);
-        const files=[images.before.file,images.after.file];
-        for(let i=0;i<2;i++)await withImage(files[i],async img=>{
-          const s=Math.min((w/2)/img.naturalWidth,h/img.naturalHeight);
-          const dw=img.naturalWidth*s,dh=img.naturalHeight*s;
-          ctx.drawImage(img,i*w/2+(w/2-dw)/2,(h-dh)/2,dw,dh);
-        });
-        ctx.fillStyle='#ed1c24';ctx.fillRect(w/2-2,0,4,h);
-        ctx.fillStyle='#fff';ctx.font='bold 27px Arial';ctx.fillText('BEFORE',28,45);ctx.fillText('AFTER',w/2+28,45);
-        download(await blobFromCanvas(c,'jpeg',0.9),'crio-before-after.jpg');
-        showStatus('Side-by-side comparison downloaded.');
-      }catch(e){showStatus(e.message,true);}finally{btn.disabled=false;}
-    });
-  }
-
   if(!browserSupported)showStatus('This browser does not support image canvas exports. Update your browser.',true);
   renderFiles();
 })();
