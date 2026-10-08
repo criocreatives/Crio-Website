@@ -214,49 +214,6 @@
     $('#'+id)?.addEventListener('input',e=>{const el=$('#'+id+'-value');if(el)el.textContent=e.target.value+'%';});
   }
 
-  // Palette extraction: downsample, quantize, filter near-duplicate clusters.
-  if(tool==='palette'){
-    const grid=$('#swatches');
-    const copyColor=async value=>{
-      try{await navigator.clipboard.writeText(value);showStatus('Copied '+value);}
-      catch(e){showStatus('Colour: '+value);}
-    };
-    runBtn?.addEventListener('click',async()=>{
-      if(!fileList.length)return;
-      runBtn.disabled=true;grid.replaceChildren();
-      try{
-        await withImage(fileList[0],async img=>{
-          const c=canvas(96,96),ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(img,0,0,96,96);
-          const data=ctx.getImageData(0,0,96,96).data,map=new Map();
-          for(let p=0;p<data.length;p+=4){
-            if(data[p+3]<160)continue;
-            const key=[data[p]>>4,data[p+1]>>4,data[p+2]>>4].join(',');
-            const old=map.get(key)||{n:0,r:0,g:0,b:0};
-            old.n++;old.r+=data[p];old.g+=data[p+1];old.b+=data[p+2];map.set(key,old);
-          }
-          const candidates=[...map.values()].sort((a,b)=>b.n-a.n);
-          const picked=[];
-          for(const o of candidates){
-            const rgb=[o.r/o.n,o.g/o.n,o.b/o.n].map(Math.round);
-            if(picked.some(prev=>Math.hypot(...rgb.map((x,j)=>x-prev[j]))<50))continue;
-            picked.push(rgb);if(picked.length===8)break;
-          }
-          if(!picked.length)throw new Error('No visible colours were detected.');
-          for(const rgb of picked){
-            const hex='#'+rgb.map(v=>v.toString(16).padStart(2,'0')).join('').toUpperCase();
-            const b=document.createElement('button');b.type='button';b.className='swatch';b.style.setProperty('--swatch',hex);
-            const dot=document.createElement('span');dot.className='swatch-chip';
-            const label=document.createElement('strong');label.textContent=hex;
-            const note=document.createElement('small');note.textContent='Copy HEX';
-            b.append(dot,label,note);b.addEventListener('click',()=>copyColor(hex));grid.append(b);
-          }
-        });
-        showStatus('Palette generated from '+fileList[0].name+'. Tap a colour to copy its HEX code.');
-      }catch(e){showStatus(e.message,true);}
-      finally{runBtn.disabled=!fileList.length;}
-    });
-  }
-
   // Image comparison: both source images are local object URLs.
   if(tool==='comparison'){
     let images={before:null,after:null};
