@@ -85,7 +85,7 @@
     const c=document.createElement('canvas');c.width=w;c.height=h;return c;
   }
   function blobFromCanvas(c,fmt,quality){
-    return new Promise((resolve,reject)=>c.toBlob(b=>b?resolve(b):reject(new Error('This browser could not export this image.')),fmtNames[fmt],quality));
+    return new Promise((resolve,reject)=>c.toBlob(b=>!b?reject(new Error('This browser could not export this image.')):(b.type!==fmtNames[fmt]?reject(new Error('This browser cannot export '+fmt.toUpperCase()+' format.')):resolve(b)),fmtNames[fmt],quality));
   }
   function jpegBackground(ctx,w,h,color){
     ctx.fillStyle=color||'#ffffff';ctx.fillRect(0,0,w,h);
@@ -208,7 +208,7 @@
     }catch(e){showStatus(e.message||'Conversion failed. Try a smaller image.',true);}
     finally{runBtn.disabled=!fileList.length;runBtn.textContent='Process & download';}
   }
-  runBtn?.addEventListener('click',run);
+  if(['converter','compressor','resizer','watermarker'].includes(tool))runBtn?.addEventListener('click',run);
   $('#quality')?.addEventListener('input',e=>{$('#quality-value').textContent=e.target.value+'%';});
   for(const id of ['mark-scale','mark-opacity']){
     $('#'+id)?.addEventListener('input',e=>{const el=$('#'+id+'-value');if(el)el.textContent=e.target.value+'%';});
@@ -271,8 +271,9 @@
       frame.classList.toggle('ready',ready);output.hidden=!ready;
       if(ready){$('#compare-range').value=50;updateSplit(50);showStatus('Comparison ready. Drag the slider to inspect differences.');}
     }
-    function updateSplit(v){$('#before-layer').style.width=v+'%';$('#compare-handle').style.left=v+'%';$('#compare-value').textContent=v+'%';}
+    function updateSplit(v){$('#before-layer').style.width=v+'%';$('#compare-handle').style.left=v+'%';$('#compare-value').textContent=v+'%';$('#before-image').style.width=frame.clientWidth+'px';}
     $('#compare-range')?.addEventListener('input',e=>updateSplit(e.target.value));
+    window.addEventListener('resize',()=>updateSplit($('#compare-range').value));
     for(const key of ['before','after'])inputs[key]?.addEventListener('change',e=>{
       const file=e.target.files[0];if(!file)return;
       if(!allowed(file)){showStatus('Use PNG, JPEG or WebP images.',true);return;}
