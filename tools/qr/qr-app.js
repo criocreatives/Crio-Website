@@ -1,0 +1,14 @@
+/* Crio Tools QR Code Generator. Self-contained browser processing. */
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const status=(text,bad=false)=>{const el=$('status');el.textContent=text;el.dataset.error=String(bad);};
+let last=null;
+const levels={L:CrioQRError.L,M:CrioQRError.M,Q:CrioQRError.Q,H:CrioQRError.H};
+function make(){const value=$('qr-input').value.trim();if(!value)throw Error('Enter a URL or text first.');const qr=new CrioQR(-1,levels[$('qr-level').value]);qr.addData(unescape(encodeURIComponent(value)));qr.make();return qr;}
+function render(){try{const qr=make(),count=qr.getModuleCount(),quiet=4,dim=count+quiet*2,canvas=$('qr-canvas'),ctx=canvas.getContext('2d');canvas.width=dim*8;canvas.height=dim*8;ctx.imageSmoothingEnabled=false;ctx.fillStyle=$('qr-paper').value;ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle=$('qr-ink').value;for(let y=0;y<count;y++)for(let x=0;x<count;x++)if(qr.isDark(y,x))ctx.fillRect((x+quiet)*8,(y+quiet)*8,8,8);$('qr-info').textContent=count+' × '+count+' modules · 4-module quiet zone · '+$('qr-level').value+' error correction';last=qr;status('QR code ready.');return qr;}catch(e){last=null;status(e.message||String(e),true);return null;}}
+function download(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);}
+function png(){const qr=render();if(!qr)return;const size=Number($('qr-size').value),count=qr.getModuleCount(),quiet=4,dim=count+quiet*2,canvas=document.createElement('canvas');canvas.width=size;canvas.height=size;const ctx=canvas.getContext('2d');ctx.imageSmoothingEnabled=false;ctx.fillStyle=$('qr-paper').value;ctx.fillRect(0,0,size,size);ctx.fillStyle=$('qr-ink').value;const scale=size/dim;for(let y=0;y<count;y++)for(let x=0;x<count;x++)if(qr.isDark(y,x))ctx.fillRect(Math.round((x+quiet)*scale),Math.round((y+quiet)*scale),Math.round((x+quiet+1)*scale)-Math.round((x+quiet)*scale),Math.round((y+quiet+1)*scale)-Math.round((y+quiet)*scale));canvas.toBlob(b=>b?download(b,'crio-qr-code.png'):status('PNG export is not supported in this browser.',true),'image/png');}
+function svg(){const qr=render();if(!qr)return;const count=qr.getModuleCount(),dim=count+8,ink=$('qr-ink').value,bg=$('qr-paper').value;let d='';for(let y=0;y<count;y++)for(let x=0;x<count;x++)if(qr.isDark(y,x))d+='M'+(x+4)+' '+(y+4)+'h1v1h-1z';const body='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+dim+' '+dim+'" shape-rendering="crispEdges"><rect width="'+dim+'" height="'+dim+'" fill="'+bg+'"/><path fill="'+ink+'" d="'+d+'"/></svg>';download(new Blob([body],{type:'image/svg+xml'}),'crio-qr-code.svg');}
+for(const id of ['qr-input','qr-ink','qr-paper','qr-level'])$(id).addEventListener('input',render);
+$('qr-download').addEventListener('click',png);$('qr-svg').addEventListener('click',svg);render();
+})();
