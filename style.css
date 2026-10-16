@@ -846,3 +846,53 @@ body{
     width:calc(100% - 32px);
   }
 }
+
+/* Floating shell overhang correction */
+/* Align the header CONTENT to the page grid; let the rounded shell extend past it. */
+.site-header:not(.scrolled){
+  --shell-overhang:32px;
+  left:max(12px,calc((100vw - min(1360px,calc(100vw - 80px)))/2 - var(--shell-overhang)));
+  right:max(12px,calc((100vw - min(1360px,calc(100vw - 80px)))/2 - var(--shell-overhang)));
+}
+.site-header:not(.scrolled) .header-inner{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding-inline:var(--shell-overhang);
+}
+
+/* Scrolled state still spans the viewport, but its contents remain on the same grid. */
+.site-header.scrolled .header-inner{
+  width:min(1360px,calc(100% - 80px));
+  margin-inline:auto;
+  padding:0;
+}
+
+@media(max-width:900px){
+  .site-header:not(.scrolled),
+  .site-header.menu-open:not(.scrolled){
+    --shell-overhang:12px;
+    left:8px;
+    right:8px;
+  }
+  .site-header:not(.scrolled) .header-inner{
+    padding-inline:12px;
+  }
+  .site-header.scrolled .header-inner{
+    width:calc(100% - 40px);
+  }
+}
+@media(max-width:520px){
+  .site-header:not(.scrolled),
+  .site-header.menu-open:not(.scrolled){
+    --shell-overhang:10px;
+    left:6px;
+    right:6px;
+  }
+  .site-header:not(.scrolled) .header-inner{
+    padding-inline:10px;
+  }
+  .site-header.scrolled .header-inner{
+    width:calc(100% - 32px);
+  }
+}
