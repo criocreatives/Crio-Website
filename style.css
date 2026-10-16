@@ -996,3 +996,22 @@ body{
     transition:none !important;
   }
 }
+
+/* Workstation hero artwork */
+.hero{
+  background-color:var(--near-black) !important;
+  background-image:linear-gradient(90deg,rgba(9,9,9,.24) 0%,rgba(9,9,9,.1) 46%,transparent 70%),url('/assets/images/moody_red_neon_workspace-converted.webp') !important;
+  background-position:center center !important;
+  background-size:cover !important;
+  background-repeat:no-repeat !important;
+}
+.hero::before{display:none}
+@media(max-width:900px){
+  .hero{background-position:64% center !important}
+}
+@media(max-width:520px){
+  .hero{
+    background-image:linear-gradient(90deg,rgba(9,9,9,.5),rgba(9,9,9,.26)),url('/assets/images/moody_red_neon_workspace-converted.webp') !important;
+    background-position:65% center !important;
+  }
+}
