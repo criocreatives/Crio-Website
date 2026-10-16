@@ -2,9 +2,51 @@
   const header = document.getElementById('site-header');
   const button = document.querySelector('.menu-toggle');
   const nav = document.getElementById('site-nav');
-  const updateHeader = () => header && header.classList.toggle('scrolled', window.scrollY > 24);
+  let headerFrame = 0;
+  const updateHeader = () => {
+    if (!header) return;
+
+    const viewport = window.innerWidth;
+    const mobile = viewport <= 900;
+    const compact = viewport <= 520;
+    const range = mobile ? 110 : 180;
+    const raw = Math.max(0, Math.min(1, window.scrollY / range));
+    const eased = raw * raw * (3 - 2 * raw);
+
+    const pageInset = compact ? 16 : mobile ? 20 : 40;
+    const pageWidth = Math.min(1360, Math.max(0, viewport - pageInset * 2));
+    const pageMargin = Math.max(0, (viewport - pageWidth) / 2);
+
+    const floatEdge = compact ? 6 : mobile ? 8 : Math.max(12, pageMargin - 32);
+    const floatTop = mobile ? 24 : 50;
+    const floatRadius = mobile ? 16 : 18;
+    const floatPad = mobile ? 8 : 9;
+    const startLogoW = compact ? 145 : mobile ? 145 : 154;
+    const startLogoH = compact ? 41 : mobile ? 41 : 44;
+    const endLogoW = compact ? 132 : mobile ? 132 : 140;
+    const endLogoH = compact ? 38 : mobile ? 38 : 40;
+
+    const mix = (from, to) => from + (to - from) * eased;
+
+    header.style.setProperty('--morph-top', mix(floatTop, 0).toFixed(2) + 'px');
+    header.style.setProperty('--morph-left', mix(floatEdge, 0).toFixed(2) + 'px');
+    header.style.setProperty('--morph-right', mix(floatEdge, 0).toFixed(2) + 'px');
+    header.style.setProperty('--morph-radius', mix(floatRadius, 0).toFixed(2) + 'px');
+    header.style.setProperty('--morph-pad-y', mix(floatPad, 4).toFixed(2) + 'px');
+    header.style.setProperty('--morph-logo-w', mix(startLogoW, endLogoW).toFixed(2) + 'px');
+    header.style.setProperty('--morph-logo-h', mix(startLogoH, endLogoH).toFixed(2) + 'px');
+    header.classList.toggle('scrolled', raw >= .995);
+  };
+  const queueHeaderUpdate = () => {
+    if (headerFrame) return;
+    headerFrame = requestAnimationFrame(() => {
+      headerFrame = 0;
+      updateHeader();
+    });
+  };
   updateHeader();
-  window.addEventListener('scroll', updateHeader, { passive: true });
+  window.addEventListener('scroll', queueHeaderUpdate, { passive: true });
+  window.addEventListener('resize', queueHeaderUpdate, { passive: true });
   if (button && nav) {
     button.addEventListener('click', () => {
       const open = nav.classList.toggle('open');
