@@ -579,3 +579,49 @@ a:focus-visible,button:focus-visible { outline:3px solid #fff; outline-offset:5p
     padding:13px 0;
   }
 }
+
+/* Hero rebuild — solid field, red emphasis, project CTA */
+.hero{
+  background:#1f1f1f !important;
+}
+.hero::before{
+  display:none;
+}
+.hero-visible{
+  color:#ed1c24;
+}
+.hero-side{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:24px;
+}
+.hero-side p{
+  margin:0;
+}
+.hero-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:32px;
+  min-width:190px;
+  padding:15px 18px;
+  border-radius:9px;
+  background:#ed1c24;
+  color:#fff;
+  font-size:12px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  text-decoration:none;
+  transition:background .2s ease,transform .2s ease;
+}
+.hero-cta:hover{
+  background:#fff;
+  color:#1f1f1f;
+  transform:translateY(-1px);
+}
+@media(max-width:900px){
+  .hero-side{gap:20px}
+}
