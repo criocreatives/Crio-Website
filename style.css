@@ -693,3 +693,102 @@ textarea{
 .intro-copy strong{
   font-weight:700;
 }
+
+/* Canonical Crio dark palette */
+:root{
+  --crio-red:#ed1c24;
+  --near-black:#090909;
+  --charcoal:#111214;
+  --off-white:#f4f4f4;
+
+  --red:var(--crio-red);
+  --paper:var(--near-black);
+  --surface:var(--charcoal);
+  --ink:var(--off-white);
+}
+
+html,
+body{
+  background:var(--near-black);
+  color:var(--off-white);
+}
+
+/* Main page field */
+.hero,
+.intro,
+.work,
+.services,
+.studio,
+.footprint,
+.contact{
+  background:var(--near-black) !important;
+  color:var(--off-white);
+}
+
+/* Header is the raised charcoal layer */
+.site-header,
+.site-header.menu-open,
+.site-header.scrolled{
+  background:var(--charcoal) !important;
+  color:var(--off-white);
+}
+
+/* Any text intended to read as white uses the Crio off-white token. */
+.site-header .nav a,
+.site-header .menu-toggle,
+.hero,
+.hero .eyebrow,
+.hero-side,
+.services,
+.services .service-links a,
+.contact,
+.contact .eyebrow,
+.contact-field,
+.contact-field input,
+.contact-field select,
+.contact-field textarea,
+.footer-row,
+.socials a{
+  color:var(--off-white);
+}
+
+.site-header .nav a:hover,
+.site-header .nav-contact,
+.site-header .nav .nav-contact,
+.hero-visible{
+  color:var(--crio-red) !important;
+}
+
+/* Retain charcoal as the secondary surface throughout the system. */
+.project,
+.portfolio-cta,
+.contact-field input,
+.contact-field select,
+.contact-field textarea{
+  background-color:var(--charcoal);
+}
+
+/* Use the brand off-white for light borders and controls instead of pure white. */
+.site-header{
+  border-color:rgba(244,244,244,.075);
+}
+.site-header .nav a:not(:last-child)::after{
+  background:linear-gradient(
+    180deg,
+    rgba(244,244,244,0),
+    rgba(244,244,244,.18) 28%,
+    rgba(244,244,244,.18) 72%,
+    rgba(244,244,244,0)
+  );
+}
+@media(max-width:900px){
+  .site-header .nav a:not(:last-child)::after{
+    background:linear-gradient(
+      90deg,
+      rgba(244,244,244,0),
+      rgba(244,244,244,.16) 18%,
+      rgba(244,244,244,.16) 82%,
+      rgba(244,244,244,0)
+    );
+  }
+}
