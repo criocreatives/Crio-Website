@@ -275,3 +275,8 @@ a:focus-visible,button:focus-visible { outline:3px solid #fff; outline-offset:5p
 @media (max-width:520px) {
   .footprint-strip .ticker-track span { font-size:22px; }
 }
+
+/* Revenue funnel / homepage hero */
+.hero .hero-quote-cta{margin-top:22px;padding:14px 17px;display:inline-flex;align-items:center;width:max-content;max-width:100%;text-align:center;font-size:11px;line-height:1.4;letter-spacing:.025em;background:#ed1c24;color:#fff;white-space:normal}
+.hero .hero-quote-cta:hover{background:#c90f1b;color:#fff}
+@media(max-width:520px){.hero .hero-quote-cta{width:100%;justify-content:center}}
