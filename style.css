@@ -792,3 +792,57 @@ body{
     );
   }
 }
+
+/* Header / hero alignment lock */
+/* Floating shell sits just outside the main content grid so its contents line up exactly. */
+.site-header:not(.scrolled){
+  left:max(24px,calc((100vw - 1360px)/2 - 16px));
+  right:max(24px,calc((100vw - 1360px)/2 - 16px));
+}
+.site-header:not(.scrolled) .header-inner{
+  width:100%;
+  margin:0;
+  padding-inline:16px;
+}
+
+/* Full-width state keeps the same content anchors as the page grid. */
+.site-header.scrolled .header-inner{
+  width:min(1360px,calc(100% - 80px));
+  margin-inline:auto;
+  padding:0;
+}
+
+/* The hero CTA occupies its full right-hand column, matching Contact's right edge. */
+.hero-cta{
+  width:100%;
+  min-width:0;
+}
+
+@media(max-width:900px){
+  .site-header:not(.scrolled),
+  .site-header.menu-open:not(.scrolled){
+    left:8px;
+    right:8px;
+  }
+  .site-header:not(.scrolled) .header-inner{
+    padding-inline:12px;
+  }
+  .site-header.scrolled .header-inner{
+    width:calc(100% - 40px);
+    margin-inline:auto;
+    padding:0;
+  }
+}
+@media(max-width:520px){
+  .site-header:not(.scrolled),
+  .site-header.menu-open:not(.scrolled){
+    left:6px;
+    right:6px;
+  }
+  .site-header:not(.scrolled) .header-inner{
+    padding-inline:10px;
+  }
+  .site-header.scrolled .header-inner{
+    width:calc(100% - 32px);
+  }
+}
