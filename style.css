@@ -931,3 +931,68 @@ body{
 .portfolio-cta h3{
   font-weight:500;
 }
+
+/* Smooth scroll-linked header morph */
+/* Keep the header contents fixed to the page grid while only the outer shell morphs. */
+.site-header,
+.site-header.scrolled,
+.site-header.menu-open{
+  top:var(--morph-top,50px) !important;
+  left:var(--morph-left,12px) !important;
+  right:var(--morph-right,12px) !important;
+  padding:var(--morph-pad-y,9px) 0 !important;
+  border:1px solid rgba(244,244,244,.075) !important;
+  border-radius:var(--morph-radius,18px) !important;
+  background:var(--charcoal) !important;
+  transition:
+    background-color .5s ease,
+    border-color .5s ease,
+    box-shadow .5s ease !important;
+  will-change:top,left,right,border-radius,padding;
+}
+
+.site-header .header-inner,
+.site-header.scrolled .header-inner,
+.site-header.menu-open .header-inner{
+  width:min(1360px,calc(100vw - 80px)) !important;
+  max-width:none !important;
+  margin-inline:auto !important;
+  padding:0 !important;
+  transition:none !important;
+}
+
+.site-header .brand .header-logo,
+.site-header.scrolled .brand .header-logo{
+  width:var(--morph-logo-w,154px) !important;
+  height:var(--morph-logo-h,44px) !important;
+  transition:none !important;
+}
+
+/* Avoid any end-of-morph jump from the old binary scrolled styles. */
+.site-header.scrolled{
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.25),
+    inset 0 -1px 0 rgba(244,244,244,.045) !important;
+}
+
+@media(max-width:900px){
+  .site-header .header-inner,
+  .site-header.scrolled .header-inner,
+  .site-header.menu-open .header-inner{
+    width:calc(100vw - 40px) !important;
+  }
+}
+@media(max-width:520px){
+  .site-header .header-inner,
+  .site-header.scrolled .header-inner,
+  .site-header.menu-open .header-inner{
+    width:calc(100vw - 32px) !important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .site-header,
+  .site-header.scrolled,
+  .site-header.menu-open{
+    transition:none !important;
+  }
+}
