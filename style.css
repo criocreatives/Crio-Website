@@ -1,14 +1,4 @@
-/*
-Theme Name: Crio Creatives V3
-Theme URI: https://criocreatives.com/
-Author: Crio Creatives
-Description: Premium portfolio-first WordPress theme for Crio Creatives, with editable homepage imagery and content.
-Version: 3.3.1
-Requires at least: 6.0
-Tested up to: 6.8
-Requires PHP: 7.4
-Text Domain: crio-creatives
-*/
+/* Crio Creatives static website stylesheet — hosted on GitHub Pages. */
 
 :root { --red:#ed1c24; --ink:#101010; --paper:#f4f2ed; --muted:#777; --line:rgba(16,16,16,.16); }
 * { box-sizing:border-box; }
