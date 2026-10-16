@@ -896,3 +896,38 @@ body{
     width:calc(100% - 32px);
   }
 }
+
+/* Helvetica display typography */
+/* Keep Century Gothic for interface/body copy; use Helvetica for display typography. */
+.hero h1,
+.intro-copy,
+.section-head h2,
+.services h2,
+.service-item h3,
+.service-title-link,
+.project-title,
+.portfolio-cta h3,
+.studio h2,
+.contact h2,
+.entry-title{
+  font-family:Helvetica,Arial,sans-serif;
+}
+
+/* Large display copy keeps the stronger Helvetica weight hierarchy. */
+.hero h1,
+.section-head h2,
+.services h2,
+.studio h2,
+.contact h2,
+.entry-title{
+  font-weight:700;
+}
+.intro-copy{
+  font-weight:400;
+}
+.service-item h3,
+.service-title-link,
+.project-title,
+.portfolio-cta h3{
+  font-weight:500;
+}
