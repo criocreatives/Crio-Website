@@ -963,8 +963,8 @@ body{
 
 .site-header .brand .header-logo,
 .site-header.scrolled .brand .header-logo{
-  width:var(--morph-logo-w,154px) !important;
-  height:var(--morph-logo-h,44px) !important;
+  width:var(--morph-logo-w,177.1px) !important;
+  height:var(--morph-logo-h,50.6px) !important;
   transition:none !important;
 }
 
