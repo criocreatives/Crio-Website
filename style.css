@@ -625,3 +625,71 @@ a:focus-visible,button:focus-visible { outline:3px solid #fff; outline-offset:5p
 @media(max-width:900px){
   .hero-side{gap:20px}
 }
+
+/* Century Gothic typography system */
+body{
+  font-family:"Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif;
+  font-weight:400;
+}
+button,
+input,
+select,
+textarea{
+  font-family:inherit;
+}
+
+/* Display / major headings */
+.hero h1,
+.section-head h2,
+.services h2,
+.studio h2,
+.contact h2,
+.entry-title{
+  font-family:inherit;
+  font-weight:700;
+}
+
+/* Section copy / body */
+.hero-side,
+.intro-copy,
+.project-excerpt,
+.service-item p,
+.services-intro-copy,
+.studio p,
+.entry-content,
+.contact-field input,
+.contact-field select,
+.contact-field textarea{
+  font-weight:400;
+}
+
+/* Titles / navigation / interactive copy */
+.nav,
+.project-title,
+.service-item h3,
+.service-title-link,
+.portfolio-cta h3,
+.hero-cta,
+.button-link{
+  font-weight:700;
+}
+
+/* Utility labels / metadata */
+.eyebrow,
+.section-index,
+.section-head span,
+.project-detail,
+.service-item span,
+.service-index,
+.service-links,
+.footprint-strip-label,
+.footer-row,
+.contact-field,
+.menu-toggle{
+  font-weight:700;
+}
+
+/* Preserve hierarchy inside larger editorial copy */
+.intro-copy strong{
+  font-weight:700;
+}
