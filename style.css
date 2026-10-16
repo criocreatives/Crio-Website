@@ -1049,3 +1049,12 @@ body{
     height:clamp(350px,62svh,520px);
   }
 }
+
+/* Century Gothic — intro statement */
+.intro-copy{
+  font-family:"Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif;
+  font-weight:400;
+}
+.intro-copy strong{
+  font-weight:700;
+}
