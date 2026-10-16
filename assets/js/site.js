@@ -33,8 +33,10 @@
     header.style.setProperty('--morph-right', mix(floatEdge, 0).toFixed(2) + 'px');
     header.style.setProperty('--morph-radius', mix(floatRadius, 0).toFixed(2) + 'px');
     header.style.setProperty('--morph-pad-y', mix(floatPad, 4).toFixed(2) + 'px');
-    header.style.setProperty('--morph-logo-w', mix(startLogoW, endLogoW).toFixed(2) + 'px');
-    header.style.setProperty('--morph-logo-h', mix(startLogoH, endLogoH).toFixed(2) + 'px');
+    // Keep the scroll-linked morph, but scale the logo uniformly by 15%.
+    const logoScale = 1.15;
+    header.style.setProperty('--morph-logo-w', (mix(startLogoW, endLogoW) * logoScale).toFixed(2) + 'px');
+    header.style.setProperty('--morph-logo-h', (mix(startLogoH, endLogoH) * logoScale).toFixed(2) + 'px');
     header.classList.toggle('scrolled', raw >= .995);
   };
   const queueHeaderUpdate = () => {
