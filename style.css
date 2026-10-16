@@ -444,3 +444,138 @@ a:focus-visible,button:focus-visible { outline:3px solid #fff; outline-offset:5p
   .site-header .header-inner,
   .site-header .brand .header-logo { transition:none; }
 }
+
+/* Floating header refinement — aligned content, red hover, gradient dividers */
+.site-header{
+  --header-inset:clamp(24px,4vw,64px);
+  --header-pad:22px;
+}
+.site-header,
+.site-header.menu-open,
+.site-header.scrolled{
+  background:#1f1f1f;
+}
+.site-header .header-inner{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:0 var(--header-pad);
+}
+.site-header.scrolled .header-inner{
+  width:calc(100% - ((var(--header-inset) + var(--header-pad)) * 2));
+  max-width:none;
+  margin-inline:auto;
+  padding:0;
+}
+
+/* Keep the nav typographic: no CTA button treatment. */
+.site-header .nav-contact,
+.site-header .nav .nav-contact,
+.site-header.scrolled .nav-contact,
+.site-header.scrolled .nav .nav-contact{
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:#ed1c24;
+  font-weight:900;
+  box-shadow:none;
+}
+.site-header .nav .nav-contact:hover,
+.site-header.scrolled .nav .nav-contact:hover{
+  background:transparent;
+  color:#ed1c24;
+  border:0;
+}
+
+/* Menu hover language + fine gradient separators. */
+.site-header .nav a{
+  position:relative;
+  color:#f5f5f5;
+  opacity:.9;
+  transition:color .18s ease,opacity .18s ease;
+}
+.site-header .nav a:hover{
+  color:#ed1c24;
+  opacity:1;
+}
+.site-header .nav a:not(:last-child){
+  margin-right:1px;
+  padding-right:23px;
+}
+.site-header .nav a:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  right:0;
+  width:1px;
+  height:22px;
+  transform:translateY(-50%);
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,0),
+    rgba(255,255,255,.18) 28%,
+    rgba(255,255,255,.18) 72%,
+    rgba(255,255,255,0)
+  );
+  pointer-events:none;
+}
+.site-header .nav-contact{
+  color:#ed1c24 !important;
+}
+
+/* Preserve the same content anchors as the floating shell expands full-width. */
+.site-header.scrolled{
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.24),
+    inset 0 1px 0 rgba(255,255,255,.035),
+    inset 0 -1px 0 rgba(0,0,0,.5);
+}
+
+@media(max-width:1050px){
+  .site-header .nav a:not(:last-child){
+    padding-right:15px;
+  }
+}
+@media(max-width:900px){
+  .site-header{
+    --header-inset:14px;
+    --header-pad:16px;
+  }
+  .site-header.scrolled .header-inner{
+    width:100%;
+    margin:0;
+    padding:0 16px;
+  }
+  .site-header .nav{
+    gap:0;
+  }
+  .site-header .nav a{
+    width:100%;
+    padding:13px 0;
+  }
+  .site-header .nav a:not(:last-child){
+    margin-right:0;
+    padding-right:0;
+  }
+  .site-header .nav a:not(:last-child)::after{
+    top:auto;
+    right:auto;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:1px;
+    transform:none;
+    background:linear-gradient(
+      90deg,
+      rgba(255,255,255,0),
+      rgba(255,255,255,.16) 18%,
+      rgba(255,255,255,.16) 82%,
+      rgba(255,255,255,0)
+    );
+  }
+  .site-header .nav-contact,
+  .site-header .nav .nav-contact{
+    padding:13px 0;
+  }
+}
