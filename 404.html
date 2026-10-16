@@ -27,12 +27,9 @@ h1{margin:0;max-width:700px;font-size:clamp(48px,7vw,92px);line-height:.92;lette
 .legal-footer{border-top:1px solid var(--line);padding:20px;text-align:center;color:#7f8085;font-size:11px;letter-spacing:.06em;text-transform:uppercase}.legal-footer a{color:#a7a8ad;text-decoration:none;margin:0 10px}.legal-footer a:hover{color:#fff}@media(max-width:800px){.header-inner{width:calc(100% - 36px)}.page{padding:52px 18px 72px}.content{grid-template-columns:1fr;gap:38px}.code{font-size:clamp(110px,34vw,210px)}}
 @media(max-width:520px){.site-header{height:62px}.brand img{width:161px;max-height:40px}.header-link{display:none}.actions{display:grid}.button{width:100%}}
 </style>
-</head>
-<body>
-<header class="site-header"><div class="header-inner">
-<a class="brand" href="/" aria-label="Crio Creatives home"><img src="/assets/logos/Crio%20Creatives%20Logo%20wide%20white.svg" alt="Crio Creatives"></a>
-<a class="header-link" href="https://previews.criocreatives.com/portfolio/">Portfolio ↗︎</a>
-</div></header>
+<link rel="stylesheet" href="/assets/css/crio-subpage.css?v=1"></head>
+<body class="crio-subpage crio-error-page">
+<header class="crio-shell-header" id="site-header"><div class="crio-shell-inner"><a class="crio-shell-brand" href="/" aria-label="Crio Creatives home"><img class="crio-shell-logo" src="/assets/logos/Crio%20Creatives%20Logo%20wide%20white.svg" alt="Crio Creatives"></a><button class="crio-shell-menu menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu</button><nav class="crio-shell-nav" id="site-nav" aria-label="Primary navigation"><a href="/">Home</a><a href="https://previews.criocreatives.com/portfolio/">Portfolio</a><a class="crio-shell-contact" href="/#contact">Contact</a></nav></div></header>
 <main class="page">
 <div class="content">
 <div class="code">404</div>
@@ -50,5 +47,5 @@ h1{margin:0;max-width:700px;font-size:clamp(48px,7vw,92px);line-height:.92;lette
 
 <!-- LibreCounter: privacy-friendly page analytics -->
 <img src="https://librecounter.org/hidden.svg" referrerpolicy="strict-origin-when-cross-origin" alt="" width="1" height="1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">
-</body>
+<script src="/assets/js/site.js?v=2"></script></body>
 </html>

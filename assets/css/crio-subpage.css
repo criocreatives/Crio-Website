@@ -1,0 +1,55 @@
+/* Shared Crio subpage header and typography; leave page-specific layouts and Atlas design examples intact. */
+:root{--crio-red:#ED1C24;--near-black:#090909;--charcoal:#111214;--off-white:#F4F4F4}
+body.crio-subpage{font-family:"Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body.crio-subpage:not(.crio-atlas-page) h1,
+body.crio-subpage:not(.crio-atlas-page) h2,
+body.crio-subpage:not(.crio-atlas-page) h3,
+body.crio-subpage:not(.crio-atlas-page) h4,
+body.crio-atlas-page .hero h1{font-family:Helvetica,Arial,sans-serif}
+body.crio-atlas-page .hero h1 em{font-family:Georgia,serif}
+body.crio-subpage{scroll-padding-top:110px}
+.crio-shell-header,.crio-shell-header *{box-sizing:border-box}
+.crio-shell-header{
+  position:fixed;top:var(--morph-top,50px);left:var(--morph-left,12px);right:var(--morph-right,12px);z-index:500;
+  padding:var(--morph-pad-y,9px) 0;border:1px solid rgba(244,244,244,.075);
+  border-radius:var(--morph-radius,18px);background:#111214;
+  box-shadow:12px 12px 32px rgba(0,0,0,.32),-7px -7px 22px rgba(255,255,255,.018),inset 0 1px 0 rgba(255,255,255,.035);
+  transition:box-shadow .5s ease,border-color .5s ease;
+  color:#f4f4f4;font-family:"Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif;
+}
+.crio-shell-header.scrolled{box-shadow:0 10px 28px rgba(0,0,0,.25),inset 0 -1px 0 rgba(244,244,244,.045)}
+.crio-shell-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;width:min(1360px,calc(100vw - 80px));margin-inline:auto;padding:0}
+.crio-shell-brand{display:inline-flex;align-items:center;flex-shrink:0;color:#f4f4f4;text-decoration:none}
+.crio-shell-logo{display:block;width:var(--morph-logo-w,177.1px);height:var(--morph-logo-h,50.6px);object-fit:contain}
+.crio-shell-current{font:700 11px/1 "Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#f4f4f4;border-left:1px solid rgba(244,244,244,.25);margin-left:18px;padding-left:18px;white-space:nowrap}
+.crio-shell-nav{display:flex;align-items:center;justify-content:flex-end;gap:0;margin:0;padding:0}
+.crio-shell-nav a{position:relative;display:inline-flex;align-items:center;white-space:nowrap;padding:10px 17px;color:#f4f4f4;text-decoration:none;opacity:.92;font:700 11px/1.3 "Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;transition:color .2s ease,opacity .2s ease}
+.crio-shell-nav a:last-child{padding-right:0}
+.crio-shell-nav a:hover,.crio-shell-nav a[aria-current="page"]{color:#ed1c24;opacity:1}
+.crio-shell-nav a:not(:last-child)::after{content:"";position:absolute;right:0;top:10%;height:80%;width:1px;background:linear-gradient(180deg,transparent,rgba(244,244,244,.18) 28%,rgba(244,244,244,.18) 72%,transparent);pointer-events:none}
+.crio-shell-nav a.crio-shell-contact{color:#ed1c24;font-weight:900}
+.crio-shell-menu{display:none;border:0;background:transparent;color:#f4f4f4;padding:12px 0;font:700 12px/1 "Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.crio-shell-header :is(a,button):focus-visible{outline:2px solid #ed1c24;outline-offset:5px}
+body.crio-legal-page > main{padding-top:112px}
+body.crio-error-page > main.page{padding-top:150px;min-height:100svh}
+body.crio-thanks-page > main.thanks-page,body.crio-payment-page > main.page{padding-top:125px;min-height:100svh}
+body.crio-atlas-page > .wrap{padding-top:116px}
+@media(max-width:900px){
+  .crio-shell-inner{width:calc(100vw - 40px)}
+  .crio-shell-current{font-size:10px;margin-left:12px;padding-left:12px}
+  .crio-shell-menu{display:block;margin-left:auto}
+  .crio-shell-nav{display:none;position:absolute;left:0;right:0;top:calc(100% + 8px);flex-direction:column;align-items:stretch;padding:12px 20px 20px;border:1px solid rgba(244,244,244,.08);border-radius:14px;background:#111214;box-shadow:0 14px 32px rgba(0,0,0,.35)}
+  .crio-shell-nav.open{display:flex}
+  .crio-shell-nav a{width:100%;padding:14px 0;font-size:12px}
+  .crio-shell-nav a:not(:last-child)::after{left:0;right:0;top:auto;bottom:0;height:1px;width:100%;background:linear-gradient(90deg,transparent,rgba(244,244,244,.16) 18%,rgba(244,244,244,.16) 82%,transparent)}
+  body.crio-legal-page > main{padding-top:88px}
+  body.crio-error-page > main.page{padding-top:108px}
+  body.crio-thanks-page > main.thanks-page,body.crio-payment-page > main.page{padding-top:95px}
+  body.crio-atlas-page > .wrap{padding-top:90px}
+}
+@media(max-width:520px){
+  .crio-shell-inner{width:calc(100vw - 32px);gap:10px}
+  .crio-shell-current{font-size:9px;letter-spacing:.06em;margin-left:9px;padding-left:9px}
+  body.crio-atlas-page > .wrap{padding-top:85px}
+}
+@media(prefers-reduced-motion:reduce){.crio-shell-header,.crio-shell-nav a{transition:none}}
