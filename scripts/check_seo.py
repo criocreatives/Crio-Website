@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://criocreatives.com"
-EXCLUDED = {"404.html", "thanks/index.html", "payment-details/index.html"}
+EXCLUDED = {"404.html", "thanks/index.html", "payment-details/index.html", "services/animation-virtual-experiences/index.html"}
 STRUCTURED = {"index.html", "tools/index.html", "visual-atlas/index.html",
               "tools/converter/index.html", "tools/compressor/index.html",
               "tools/resizer/index.html", "tools/watermarker/index.html",
