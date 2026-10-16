@@ -249,3 +249,39 @@ a:focus-visible,button:focus-visible { outline:3px solid #fff; outline-offset:5p
 .thanks-redirect p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
 .thanks-countdown{color:#fff;font-weight:800}
 @media(max-width:600px){.thanks-redirect{align-items:flex-start;flex-direction:column}.thanks-card{padding:30px 24px}}
+
+
+/* Where we've worked ticker */
+.footprint.footprint-strip {
+  overflow:hidden;
+  padding:28px 0;
+  background:var(--surface);
+  border-block:1px solid var(--line);
+}
+.footprint-strip-label {
+  margin:0 0 14px;
+  text-align:center;
+  color:var(--red);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.footprint-strip .ticker-track {
+  animation-duration:42s;
+}
+.footprint-strip .ticker-track span {
+  font-size:clamp(24px,2.7vw,38px);
+}
+.footprint-strip .ticker-track span::after {
+  color:var(--red);
+}
+.footprint-strip:hover .ticker-track {
+  animation-play-state:paused;
+}
+@media (max-width:900px) {
+  .footprint.footprint-strip { padding:24px 0; }
+}
+@media (max-width:520px) {
+  .footprint-strip .ticker-track span { font-size:22px; }
+}
