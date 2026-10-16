@@ -21,6 +21,14 @@
       }
     });
   }
+  // Service enquiry links preselect the corresponding contact form capability.
+  const serviceSelect = document.getElementById('contact-service');
+  document.querySelectorAll('[data-service]').forEach(link => {
+    link.addEventListener('click', () => {
+      const service = link.getAttribute('data-service');
+      if (serviceSelect && [...serviceSelect.options].some(option => option.value === service || option.text === service)) serviceSelect.value = service;
+    });
+  });
   const form = document.querySelector('.contact-form');
   if (form) {
     const startedAt = Date.now();
