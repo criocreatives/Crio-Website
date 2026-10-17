@@ -23,8 +23,10 @@ a,button,input,summary{touch-action:manipulation}
 :is(a,button,summary):focus-visible{outline:2px solid var(--crio);outline-offset:4px}
 ::selection{background:var(--crio);color:var(--paper)}
 /* The shared site header, with only the brand and page label. */
-.payment-header .crio-shell-inner{width:min(1000px,calc(100vw - 64px));gap:20px}
-.payment-header-label{color:var(--paper);font-size:14px;font-weight:500;line-height:1.3;white-space:nowrap}
+.payment-header .crio-shell-inner{width:min(1000px,calc(100vw - 64px));justify-content:center;gap:24px}
+.payment-header-label{position:relative;padding-left:24px;color:var(--paper);font-size:14px;font-weight:500;line-height:1.3;white-space:nowrap}
+.payment-header-label:before{content:"";position:absolute;left:0;top:50%;width:1px;height:34px;transform:translateY(-50%);background:linear-gradient(180deg,transparent,rgba(244,244,244,.18) 28%,rgba(244,244,244,.18) 72%,transparent);pointer-events:none}
+@media(max-width:520px){.payment-header-label{padding-left:16px}.payment-header-label:before{height:28px}}
 /* Compact access screen. */
 body.crio-payment-page>main.page{display:block;min-height:0;padding:145px 24px 24px}
 .access-layout{width:min(520px,100%);margin:auto}
