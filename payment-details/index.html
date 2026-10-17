@@ -41,6 +41,7 @@ a,button,input,summary{touch-action:manipulation}
 .form .row{display:grid;grid-template-columns:1fr;gap:14px}
 .form input{width:100%;min-width:0;height:62px;padding:0 20px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);font:400 23px/1 var(--display-font);letter-spacing:.45em;box-shadow:inset 3px 3px 8px rgba(9,9,9,.035),inset -3px -3px 8px rgba(255,255,255,.6);transition:border-color .18s ease,box-shadow .18s ease}
 .form input:focus{outline:0;border-color:var(--crio);box-shadow:0 0 0 3px rgba(237,28,36,.09)}
+.form input:-webkit-autofill{-webkit-text-fill-color:var(--ink);-webkit-box-shadow:0 0 0 1000px var(--bg) inset;caret-color:var(--ink)}
 .form button{height:55px;padding:0 18px;border:1px solid var(--crio);border-radius:9px;background:var(--crio);color:var(--bg);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:background .18s ease,transform .18s ease,box-shadow .18s ease}
 .form button:hover:not(:disabled){background:#D5141C;box-shadow:0 5px 14px rgba(237,28,36,.12);transform:translateY(-1px)}
 .form button:active:not(:disabled){transform:translateY(0)}
@@ -57,7 +58,8 @@ a,button,input,summary{touch-action:manipulation}
 .brand img{display:block;width:164px;height:auto;filter:brightness(0)}
 .brand .divider{width:1px;height:25px;background:var(--line)}
 .brand .tag{color:var(--muted);font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
-.hero h1{max-width:900px;margin:0 0 26px;font-size:clamp(60px,7.5vw,96px);line-height:.98;letter-spacing:-.065em;font-weight:400}
+.hero h1{max-width:900px;margin:0 0 26px;font-size:clamp(60px,7.5vw,96px);line-height:.98;letter-spacing:-.065em;font-weight:400;text-transform:lowercase}
+.hero h1::first-letter{text-transform:uppercase}
 .hero p{max-width:755px;margin:0;color:var(--muted);font-size:13px;line-height:1.9}
 .hero p strong{color:var(--ink);font-weight:700}
 .quicknav{display:flex;flex-wrap:wrap;gap:14px 34px;padding:21px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
