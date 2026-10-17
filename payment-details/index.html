@@ -11,125 +11,118 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
 <title>Payment Details — Crio Creatives</title>
 <link rel="icon" href="/assets/images/crio-logo.png">
+<link data-payment-shell rel="stylesheet" href="/assets/css/crio-subpage.css?v=1">
 <style id="payment-theme">
-:root{--crio:#ED1C24;--bg:#F4F4F4;--ink:#090909;--charcoal:#111214;--muted:#626268;--line:rgba(9,9,9,.12);--body-font:"Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif;--display-font:Helvetica,Arial,sans-serif;--depth:10px 10px 30px rgba(9,9,9,.055),-10px -10px 30px rgba(255,255,255,.82)}
+:root{--crio:#ED1C24;--bg:#ECEDEE;--paper:#F4F4F4;--ink:#090909;--charcoal:#111214;--muted:#595B62;--line:rgba(9,9,9,.13);--body-font:"Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif;--display-font:Helvetica,Arial,sans-serif;--depth:6px 6px 18px rgba(9,9,9,.055),-5px -5px 16px rgba(255,255,255,.55)}
 *{box-sizing:border-box}
-html{min-height:100%;scroll-behavior:smooth;scroll-padding-top:28px}
+html{min-height:100%;scroll-behavior:smooth;scroll-padding-top:88px}
 body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:var(--body-font);-webkit-font-smoothing:antialiased}
 a{color:inherit}button,input{font:inherit}button{cursor:pointer}button:disabled,input:disabled{opacity:.52;cursor:not-allowed}
 h1,h2,h3{font-family:var(--display-font);font-weight:500}
 a,button,input,summary{touch-action:manipulation}
-:is(a,button,summary):focus-visible{outline:2px solid var(--crio);outline-offset:5px}
-::selection{background:var(--crio);color:var(--bg)}
-/* Access screen. The brand belongs to the composition, without a site header. */
-.page{display:grid;align-items:center;min-height:calc(100svh - 92px);padding:72px max(32px,calc((100vw - 1160px)/2))}
-.access-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center;gap:clamp(56px,8vw,112px);width:100%}
-.access-brand{display:inline-flex;align-items:center;margin-bottom:70px}
-.access-brand img{display:block;width:164px;height:auto;filter:brightness(0)}
-.eyebrow,.panel-heading,.kicker{font-size:10px;font-weight:700;line-height:1.5;letter-spacing:.15em;text-transform:uppercase}
-.eyebrow{display:flex;align-items:center;gap:12px;margin:0 0 24px;color:var(--muted)}
-.eyebrow:before,.kicker:before{content:"";display:block;flex:none;width:24px;height:2px;background:var(--crio)}
-.access-intro h1{margin:0;font-size:clamp(76px,7.8vw,112px);line-height:.92;letter-spacing:-.075em;font-weight:400}
-.accent{color:var(--crio)}
-.access-intro>p{max-width:360px;margin:28px 0 0;color:var(--muted);font-size:14px;line-height:1.85}
-.panel{width:100%;max-width:426px;justify-self:end;padding:38px;border:1px solid rgba(255,255,255,.85);border-radius:18px;background:var(--bg);box-shadow:var(--depth)}
-.panel-heading{display:flex;align-items:center;gap:10px;margin-bottom:29px;color:var(--muted)}
-.panel-heading svg{width:16px;height:18px;flex:none;color:var(--crio)}
-.panel h2{margin:0 0 15px;font-size:30px;line-height:1.1;letter-spacing:-.045em;font-weight:500}
-.panel>p{margin:0;color:var(--muted);font-size:12px;line-height:1.8}
-.form{margin-top:29px}.form label{display:block;margin:0 0 11px;font-size:10px;line-height:1.5;letter-spacing:.13em;text-transform:uppercase;font-weight:700}
-.form .row{display:grid;grid-template-columns:1fr;gap:14px}
-.form input{width:100%;min-width:0;height:62px;padding:0 20px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);font:400 23px/1 var(--display-font);letter-spacing:.45em;box-shadow:inset 3px 3px 8px rgba(9,9,9,.035),inset -3px -3px 8px rgba(255,255,255,.6);transition:border-color .18s ease,box-shadow .18s ease}
+:is(a,button,summary):focus-visible{outline:2px solid var(--crio);outline-offset:4px}
+::selection{background:var(--crio);color:var(--paper)}
+/* The shared site header, with only the brand and page label. */
+.payment-header .crio-shell-inner{width:min(1000px,calc(100vw - 64px));gap:20px}
+.payment-header-label{color:var(--paper);font-size:14px;font-weight:500;line-height:1.3;white-space:nowrap}
+/* Compact access screen. */
+body.crio-payment-page>main.page{display:block;min-height:0;padding:145px 24px 24px}
+.access-layout{width:min(520px,100%);margin:auto}
+.panel{width:100%;padding:26px;border:1px solid rgba(9,9,9,.09);border-radius:14px;background:var(--paper);box-shadow:var(--depth)}
+.panel-heading{display:flex;align-items:center;gap:9px;margin-bottom:15px;color:var(--muted);font-size:13px;font-weight:600;line-height:1.4}
+.panel-heading svg{width:15px;height:17px;flex:none;color:var(--crio)}
+.panel h1{margin:0 0 12px;font-size:34px;line-height:1.04;letter-spacing:-.045em;font-weight:500}
+.panel>p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
+.form{margin-top:20px}.form label{display:block;margin:0 0 9px;font-size:15px;line-height:1.5;font-weight:500}
+.form .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px}
+.form input{width:100%;min-width:0;height:50px;padding:0 15px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font:400 23px/1 var(--display-font);letter-spacing:.35em;box-shadow:inset 2px 2px 6px rgba(9,9,9,.035),inset -2px -2px 6px rgba(255,255,255,.6);transition:border-color .18s ease,box-shadow .18s ease}
 .form input:focus{outline:0;border-color:var(--crio);box-shadow:0 0 0 3px rgba(237,28,36,.09)}
-.form input:-webkit-autofill{-webkit-text-fill-color:var(--ink);-webkit-box-shadow:0 0 0 1000px var(--bg) inset;caret-color:var(--ink)}
-.form button{height:55px;padding:0 18px;border:1px solid var(--crio);border-radius:9px;background:var(--crio);color:var(--bg);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:background .18s ease,transform .18s ease,box-shadow .18s ease}
-.form button:hover:not(:disabled){background:#D5141C;box-shadow:0 5px 14px rgba(237,28,36,.12);transform:translateY(-1px)}
-.form button:active:not(:disabled){transform:translateY(0)}
-.status{display:none;margin-top:16px;padding:12px 14px;border:1px solid rgba(237,28,36,.2);border-radius:8px;background:rgba(237,28,36,.035);color:#9E171D;font-size:11px;line-height:1.65}
+.form input:-webkit-autofill{-webkit-text-fill-color:var(--ink);-webkit-box-shadow:0 0 0 1000px var(--paper) inset;caret-color:var(--ink)}
+.form button{min-width:134px;height:50px;padding:0 17px;border:1px solid var(--crio);border-radius:8px;background:var(--crio);color:var(--paper);font-size:13px;font-weight:700;transition:background .18s ease,box-shadow .18s ease}
+.form button:hover:not(:disabled){background:#D5141C;box-shadow:0 4px 12px rgba(237,28,36,.13)}
+.status{display:none;margin-top:13px;padding:10px 12px;border:1px solid rgba(237,28,36,.2);border-radius:7px;background:rgba(237,28,36,.035);color:#9E171D;font-size:13px;line-height:1.55}
 .status.info{border-color:var(--line);background:transparent;color:var(--muted)}
-.help{margin-top:25px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:10px;line-height:1.7}
-.spinner{display:inline-block;width:11px;height:11px;margin-right:8px;border:2px solid rgba(244,244,244,.35);border-top-color:var(--bg);border-radius:50%;vertical-align:-2px;animation:spin .8s linear infinite}
-.access-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;width:min(1160px,calc(100% - 64px));margin:auto;padding:25px 0 30px;border-top:1px solid var(--line);color:var(--muted);font-size:9px;line-height:1.6;letter-spacing:.1em;text-transform:uppercase}
-.access-footer p{margin:0}.access-footer nav{display:flex;flex-wrap:wrap;gap:22px}.access-footer a{text-decoration:none}.access-footer a:hover{color:var(--crio)}
-/* The decrypted document uses this same theme; its data and controls stay intact. */
-.shell{width:min(1160px,calc(100% - 80px));margin:auto;min-height:100vh;background:var(--bg)}
-.hero{padding:76px 0 45px}
-.brand{display:flex;align-items:center;gap:22px;margin-bottom:64px}
-.brand img{display:block;width:164px;height:auto;filter:brightness(0)}
-.brand .divider{width:1px;height:25px;background:var(--line)}
-.brand .tag{color:var(--muted);font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
-.hero h1{max-width:900px;margin:0 0 26px;font-size:clamp(60px,7.5vw,96px);line-height:.98;letter-spacing:-.065em;font-weight:400;text-transform:lowercase}
+.help{margin-top:17px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;line-height:1.6}
+.spinner{display:inline-block;width:11px;height:11px;margin-right:7px;border:2px solid rgba(244,244,244,.35);border-top-color:var(--paper);border-radius:50%;vertical-align:-2px;animation:spin .8s linear infinite}
+.access-footer{display:flex;align-items:center;justify-content:space-between;gap:14px;width:min(1000px,calc(100% - 48px));margin:auto;padding:18px 0 22px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;line-height:1.5}
+.access-footer p{margin:0}.access-footer nav{display:flex;flex-wrap:wrap;gap:18px}.access-footer a{text-decoration:none}.access-footer a:hover{color:var(--crio)}
+/* Protected payment view. */
+.shell{width:min(1000px,calc(100% - 64px));margin:auto;min-height:100vh}
+.hero{padding:145px 0 20px}.hero .brand{display:none}
+.hero h1{margin:0 0 12px;font-size:40px;line-height:1.05;letter-spacing:-.045em;font-weight:500;text-transform:lowercase}
 .hero h1::first-letter{text-transform:uppercase}
-.hero p{max-width:755px;margin:0;color:var(--muted);font-size:13px;line-height:1.9}
-.hero p strong{color:var(--ink);font-weight:700}
-.quicknav{display:flex;flex-wrap:wrap;gap:14px 34px;padding:21px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.quicknav a{color:var(--muted);font-size:10px;font-weight:700;line-height:1.6;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:color .18s ease}
-.quicknav a:hover{color:var(--crio)}
-.shell main{padding:44px 0 65px}.section{margin-top:60px;scroll-margin-top:26px}.section:first-child{margin-top:0}
-.kicker{display:flex;align-items:center;gap:12px;margin-bottom:24px;color:var(--muted)}
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
-.card{min-width:0;border:1px solid rgba(9,9,9,.075);border-radius:14px;background:var(--bg);box-shadow:8px 8px 24px rgba(9,9,9,.035),-8px -8px 24px rgba(255,255,255,.72);overflow:hidden}
+.hero p{max-width:950px;margin:0;color:var(--muted);font-size:15px;line-height:1.65}
+.hero p strong{color:var(--ink);font-weight:600}
+.quicknav{display:flex;flex-wrap:wrap;gap:10px 24px;padding:13px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.quicknav a{color:var(--muted);font-size:13px;font-weight:600;line-height:1.5;text-decoration:none;transition:color .18s ease}.quicknav a:hover{color:var(--crio)}
+.shell main{padding:24px 0 30px}.section{margin-top:28px;scroll-margin-top:82px}.section:first-child{margin-top:0}
+.kicker{display:flex;align-items:center;gap:10px;margin-bottom:14px;color:var(--ink);font-size:15px;font-weight:600;line-height:1.4}
+.kicker:before{content:"";display:block;flex:none;width:19px;height:2px;background:var(--crio)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+.card{--bank-rgb:90,96,106;min-width:0;border:1px solid rgba(9,9,9,.1);border-radius:12px;background:var(--paper);box-shadow:0 4px 13px rgba(9,9,9,.035);overflow:hidden}
 .card.wide{grid-column:1/-1}
-.card-head{display:flex;align-items:center;gap:15px;padding:25px 24px;border-bottom:1px solid var(--line)}
-.logo-box{display:grid;place-items:center;flex:none;width:48px;height:48px;border:1px solid var(--line);border-radius:9px;background:var(--bg);overflow:hidden}
-.logo-box img{display:block;max-width:100%;max-height:100%;object-fit:contain}
-.logo-box.square img{width:100%;height:100%}.logo-box.wide{width:84px;height:34px}
+.zelle{--bank-rgb:109,30,212}.cashapp{--bank-rgb:0,168,64}.scotia{--bank-rgb:237,28,36}.ncb{--bank-rgb:17,127,192}.jmmb{--bank-rgb:215,25,32}.mercury{--bank-rgb:88,102,200}
+.card-head{position:relative;isolation:isolate;display:flex;align-items:center;gap:13px;padding:16px 18px;border-bottom:1px solid rgba(var(--bank-rgb),.13);background:rgba(var(--bank-rgb),.035);overflow:hidden}
+.card-head:before{content:"";position:absolute;inset:-35px;z-index:-1;background:radial-gradient(ellipse at 8% 50%,rgba(var(--bank-rgb),.23),transparent 62%),radial-gradient(ellipse at 95% 0%,rgba(var(--bank-rgb),.11),transparent 65%);filter:blur(20px);pointer-events:none}
+.logo-box{display:grid;place-items:center;flex:none;width:46px;height:46px;border:1px solid rgba(var(--bank-rgb),.12);border-radius:8px;background:var(--paper);overflow:hidden}
+.logo-box img{display:block;max-width:100%;max-height:100%;object-fit:contain}.logo-box.square img{width:100%;height:100%}.logo-box.wide{width:82px;height:34px}
 .logo-box.scotia-logo{background:#ED1C24;border:0}.logo-box.ncb-logo{background:#18A8DE;border:0}.logo-box.jmmb-logo{background:#090909;border:0;padding:6px 8px}
-.logo-box.mercury-logo{width:122px;height:38px;border:0;background:transparent}
-.card-title{min-width:0}.card-title h2{margin:0 0 5px;font-size:24px;line-height:1.1;letter-spacing:-.035em}.card-title p{margin:0;color:var(--muted);font-size:10.5px;line-height:1.65}
-.currency{flex:none;margin-left:auto;padding:6px 8px;border:1px solid var(--line);border-radius:5px;color:var(--muted);font-size:9px;font-weight:700;line-height:1.2;letter-spacing:.06em;white-space:nowrap}
-.rows{padding:3px 24px 9px}.card .row{display:grid;grid-template-columns:124px minmax(0,1fr) auto;gap:12px;align-items:center;padding:15px 0;border-bottom:1px solid var(--line)}
-.card .row:last-child{border-bottom:0}.label{color:var(--muted);font-size:9px;line-height:1.65;text-transform:uppercase;letter-spacing:.075em;font-weight:700}
-.value{min-width:0;color:var(--ink);font-size:12px;font-weight:600;line-height:1.65;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
-.copy{min-width:57px;min-height:38px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--muted);font-size:9px;font-weight:700;letter-spacing:.07em;transition:color .18s ease,border-color .18s ease,background .18s ease}
-.copy:hover{border-color:var(--crio);color:var(--crio)}.copy.done{border-color:var(--charcoal);background:var(--charcoal);color:var(--bg)}
-.quick-card .row{grid-template-columns:105px minmax(0,1fr) auto}
-details{margin:18px 24px;border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden}
-summary{display:grid;grid-template-columns:38px minmax(0,1fr) 28px;align-items:center;gap:14px;min-height:82px;padding:17px 19px;cursor:pointer;list-style:none}
-summary::-webkit-details-marker{display:none}
-.wire-option-icon{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--line);border-radius:7px;color:var(--crio);font-size:9px;font-weight:700;letter-spacing:.04em}
-.wire-option-title{min-width:0}.wire-option-title strong{display:block;font-family:var(--display-font);font-size:18px;font-weight:500;line-height:1.2;letter-spacing:-.025em}
-.wire-option-title small{display:block;margin-top:5px;color:var(--muted);font-size:10.5px;line-height:1.5}
-summary:after{content:"+";display:grid;place-items:center;width:28px;height:28px;border:1px solid var(--line);border-radius:50%;color:var(--ink);font:400 20px/1 var(--display-font)}
-details[open] summary{border-bottom:1px solid var(--line)}details[open] summary:after{content:"−"}
-.subnote{padding:19px 20px 5px;color:var(--muted);font-size:11px;line-height:1.8}.wire-grid{padding:0 20px 10px}.wire-grid .row{grid-template-columns:180px minmax(0,1fr) auto}
-.note{display:flex;align-items:flex-start;gap:16px;margin-top:38px;padding:25px;border:1px solid var(--line);border-radius:10px}
-.note .icon{display:grid;place-items:center;flex:none;width:30px;height:30px;border:1px solid var(--line);border-radius:7px;color:var(--crio);font-size:14px}
-.note h3{margin:0 0 8px;font-size:20px;line-height:1.15;letter-spacing:-.025em}.note p{max-width:780px;margin:0;color:var(--muted);font-size:11px;line-height:1.8}
-.security{margin-top:25px;padding:3px 0 3px 20px;border-left:2px solid var(--crio);color:var(--muted);font-size:11px;line-height:1.8}.security strong{color:var(--ink);font-size:10px;line-height:2;letter-spacing:.08em;text-transform:uppercase}
-.footer{display:flex;justify-content:space-between;gap:24px;padding:26px 0 36px;border-top:1px solid var(--line);color:var(--muted);font-size:10px;line-height:1.8}.footer strong{color:var(--ink);font-weight:700}
+.logo-box.mercury-logo{width:115px;height:37px;border:0;background:transparent}
+.card-title{min-width:0}.card-title h2{margin:0 0 4px;font-size:23px;line-height:1.08;letter-spacing:-.03em}.card-title p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+.currency{flex:none;margin-left:auto;padding:5px 7px;border:1px solid rgba(var(--bank-rgb),.2);border-radius:5px;background:rgba(244,244,244,.5);color:var(--ink);font-size:11px;font-weight:600;line-height:1.2;white-space:nowrap}
+.rows{padding:2px 18px 5px}.card .row{display:grid;grid-template-columns:140px minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.card .row:last-child{border-bottom:0}.label,.value{min-width:0;font-size:15px;line-height:1.5;letter-spacing:0;text-transform:none;overflow-wrap:anywhere}.label{color:var(--muted);font-weight:400}.value{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.copy{min-width:56px;min-height:33px;padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--muted);font-size:11px;font-weight:600;text-transform:lowercase;transition:color .18s ease,border-color .18s ease,background .18s ease}.copy::first-letter{text-transform:uppercase}
+.copy:hover{border-color:var(--crio);color:var(--crio)}.copy.done{border-color:var(--charcoal);background:var(--charcoal);color:var(--paper)}
+.quick-card .row{grid-template-columns:115px minmax(0,1fr) auto}
+details{margin:11px 14px;border:1px solid rgba(88,102,200,.16);border-radius:8px;background:rgba(88,102,200,.025);overflow:hidden}
+summary{display:grid;grid-template-columns:34px minmax(0,1fr) 26px;align-items:center;gap:12px;min-height:65px;padding:12px 15px;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}
+.wire-option-icon{display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(88,102,200,.16);border-radius:6px;background:rgba(88,102,200,.07);color:#505B9A;font-size:10px;font-weight:600;line-height:1}
+.wire-option-title{min-width:0}.wire-option-title strong{display:block;font-family:var(--display-font);font-size:19px;font-weight:500;line-height:1.2;letter-spacing:-.02em}.wire-option-title small{display:block;margin-top:3px;color:var(--muted);font-size:13px;line-height:1.4}
+summary:after{content:"+";display:grid;place-items:center;width:26px;height:26px;border:1px solid var(--line);border-radius:50%;color:var(--ink);font:400 19px/1 var(--display-font)}details[open] summary{border-bottom:1px solid var(--line)}details[open] summary:after{content:"−"}
+.subnote{padding:12px 15px 4px;color:var(--muted);font-size:14px;line-height:1.55}.wire-grid{padding:0 15px 6px}.wire-grid .row{grid-template-columns:195px minmax(0,1fr) auto}
+.note{display:flex;align-items:flex-start;gap:12px;margin-top:22px;padding:18px;border:1px solid var(--line);border-radius:9px;background:var(--paper)}
+.note .icon{display:grid;place-items:center;flex:none;width:28px;height:28px;border:1px solid var(--line);border-radius:6px;color:var(--crio);font-size:14px}.note h3{margin:0 0 6px;font-size:21px;line-height:1.15;letter-spacing:-.025em}.note p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.security{margin-top:18px;padding:2px 0 2px 16px;border-left:2px solid var(--crio);color:var(--muted);font-size:13px;line-height:1.65}.security strong{color:var(--ink);font-size:14px;font-weight:600;line-height:1.8}
+.footer{display:flex;justify-content:space-between;gap:18px;padding:18px 0 24px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;line-height:1.6}.footer strong{color:var(--ink);font-weight:600}
 @keyframes spin{to{transform:rotate(360deg)}}
-@media(max-width:1000px){.access-layout{gap:48px}.page{padding-inline:40px}.panel{padding:30px}.access-intro h1{font-size:88px}.cards{gap:20px}.card-head{gap:12px;padding:22px 20px}.rows{padding-inline:20px}.card .row{grid-template-columns:1fr auto;gap:4px 12px}.card .label{grid-column:1}.card .value{grid-column:1}.card .copy{grid-column:2;grid-row:1/3}.wire-grid .row{grid-template-columns:180px minmax(0,1fr) auto;gap:12px}.wire-grid .label,.wire-grid .value,.wire-grid .copy{grid-column:auto;grid-row:auto}}
-@media(max-width:720px){.page{min-height:0;padding:45px 24px 50px}.access-layout{grid-template-columns:1fr;gap:40px;max-width:470px;margin:auto}.access-brand{margin-bottom:42px}.access-brand img{width:145px}.eyebrow{margin-bottom:20px;font-size:9px}.access-intro h1{font-size:clamp(68px,14vw,92px)}.access-intro>p{margin-top:24px;font-size:13px;max-width:330px}.panel{justify-self:stretch;max-width:none;padding:30px}.panel h2{font-size:29px}.panel-heading{margin-bottom:24px}.access-footer{width:calc(100% - 48px);align-items:flex-start;flex-direction:column;gap:13px;padding:23px 0 28px;font-size:8px}.access-footer nav{gap:18px}.shell{width:calc(100% - 40px)}.hero{padding:42px 0 32px}.brand{margin-bottom:44px;gap:16px}.brand img{width:144px}.brand .tag{font-size:8px;letter-spacing:.08em}.hero h1{font-size:clamp(52px,11.5vw,76px);letter-spacing:-.06em;margin-bottom:22px}.hero p{font-size:12px;line-height:1.85}.quicknav{gap:12px 23px;padding:18px 0}.quicknav a{font-size:9px}.shell main{padding:34px 0 42px}.section{margin-top:43px}.kicker{margin-bottom:19px;font-size:9px}.cards{grid-template-columns:1fr;gap:20px}.card.wide{grid-column:auto}.card-head{gap:12px;padding:20px 18px}.card-title h2{font-size:23px}.card-title p{font-size:10px}.currency{padding:5px 6px;font-size:8px}.rows{padding:2px 18px 7px}.card .row,.wire-grid .row{grid-template-columns:minmax(0,1fr) auto;gap:5px 12px;padding:14px 0}.card .label,.wire-grid .label{grid-column:1}.card .value,.wire-grid .value{grid-column:1}.card .copy,.wire-grid .copy{grid-column:2;grid-row:1/3;min-height:44px}.value{font-size:12px}.label{font-size:9px}details{margin:15px 12px}summary{grid-template-columns:32px minmax(0,1fr) 25px;gap:11px;padding:16px 12px;min-height:78px}.wire-option-icon{width:32px;height:34px;font-size:8px}.wire-option-title strong{font-size:16px}.wire-option-title small{font-size:9.5px}.wire-option-title{overflow-wrap:anywhere}summary:after{width:25px;height:25px;font-size:18px}.subnote{padding:17px 14px 3px;font-size:10.5px}.wire-grid{padding:0 14px 7px}.mercury .card-head{flex-wrap:wrap}.logo-box.mercury-logo{width:105px}.mercury .card-title{flex:1;min-width:120px}.mercury .currency{margin-left:0}.note{margin-top:28px;padding:20px 17px;gap:12px}.note h3{font-size:19px}.note p,.security{font-size:10.5px}.footer{flex-direction:column;gap:13px;padding:23px 0 30px}}
-@media(max-width:360px){.page{padding-inline:20px}.panel{padding:25px}.access-footer{width:calc(100% - 40px)}.card-head{gap:10px}.logo-box{width:42px;height:42px}.logo-box.wide{width:68px}.card-title h2{font-size:21px}}
+@media(max-width:900px){.payment-header .crio-shell-inner{width:calc(100vw - 40px)}body.crio-payment-page>main.page{padding-top:112px}.hero{padding-top:112px}.shell{width:calc(100% - 40px)}.card .row{grid-template-columns:120px minmax(0,1fr) auto}.quick-card .row{grid-template-columns:1fr auto;gap:3px 10px}.quick-card .label,.quick-card .value{grid-column:1}.quick-card .copy{grid-column:2;grid-row:1/3}.wire-grid .row{grid-template-columns:185px minmax(0,1fr) auto}}
+@media(max-width:760px){.cards{grid-template-columns:1fr;gap:14px}.card.wide{grid-column:auto}.card .row,.quick-card .row{grid-template-columns:140px minmax(0,1fr) auto;gap:10px}.quick-card .label,.quick-card .value,.quick-card .copy{grid-column:auto;grid-row:auto}.hero h1{font-size:34px}.hero p{font-size:14px}.quicknav{gap:10px 20px;padding:12px 0}.quicknav a{font-size:12px}.shell main{padding-top:21px}.section{margin-top:24px}.kicker{margin-bottom:12px}.card-head{padding:14px 16px}.rows{padding-inline:16px}.wire-grid .row{grid-template-columns:170px minmax(0,1fr) auto}.access-footer{flex-direction:column;align-items:center;gap:10px;font-size:11px}.footer{gap:14px}}
+@media(max-width:520px){.payment-header .crio-shell-inner{width:calc(100vw - 32px);gap:12px}.payment-header .crio-shell-logo{width:140px;height:auto}.payment-header-label{font-size:12px}body.crio-payment-page>main.page{padding:106px 20px 20px}.panel{padding:23px}.panel h1{font-size:31px}.panel>p{font-size:14px}.form{margin-top:17px}.form label{font-size:14px}.form input{padding-inline:13px}.form button{min-width:124px;padding:0 12px;font-size:12px}.help{font-size:12px}.access-footer{width:calc(100% - 40px);padding:16px 0 20px}.access-footer nav{gap:16px}.shell{width:calc(100% - 32px)}.hero{padding:106px 0 16px}.hero h1{font-size:31px;margin-bottom:10px}.hero p{font-size:14px;line-height:1.6}.quicknav{gap:9px 16px}.quicknav a{font-size:12px}.card-head{gap:11px;padding:14px}.card-title h2{font-size:22px}.card-title p{font-size:13px}.currency{font-size:10px;padding:5px 6px}.logo-box{width:42px;height:42px}.logo-box.wide{width:70px}.logo-box.mercury-logo{width:100px}.mercury .card-head{flex-wrap:wrap}.mercury .card-title{flex:1;min-width:130px}.mercury .currency{margin-left:0}.rows{padding-inline:14px}.card .row,.wire-grid .row,.quick-card .row{grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:9px 0}.card .label,.wire-grid .label{grid-column:1}.card .value,.wire-grid .value{grid-column:1}.card .copy,.wire-grid .copy{grid-column:2;grid-row:1/3;min-height:44px}.label,.value{font-size:14px;line-height:1.5}.label{color:#55575F}.value{font-weight:600}.copy{font-size:11px}details{margin:10px}summary{grid-template-columns:31px minmax(0,1fr) 25px;gap:10px;padding:12px 11px}.wire-option-icon{width:31px;height:32px;font-size:9px}.wire-option-title strong{font-size:18px}.wire-option-title small{font-size:12px}.wire-option-title{overflow-wrap:anywhere}summary:after{width:25px;height:25px}.subnote{padding:11px 12px 3px;font-size:13px}.wire-grid{padding:0 12px 5px}.note{margin-top:19px;padding:16px 14px;gap:10px}.note h3{font-size:20px}.note p{font-size:13px}.security{font-size:12px}.footer{flex-direction:column;gap:10px;font-size:12px}}
+@media(max-width:360px){.payment-header .crio-shell-logo{width:128px}.payment-header-label{font-size:11px}.panel{padding:20px}.form button{min-width:113px}.form input{padding-inline:11px}.card-head{gap:9px}.logo-box.wide{width:64px}.card-title h2{font-size:21px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}a,button,input{transition:none!important}.spinner{animation:none}}
-@media print{@page{margin:12mm}body,.shell{background:#fff}.shell{width:100%;min-height:0}.hero{padding:0 0 24px}.brand{margin-bottom:28px}.hero h1{font-size:48px}.copy,.quicknav{display:none!important}.shell main{padding:25px 0}.section{margin-top:30px}.card{box-shadow:none;break-inside:avoid}.cards{display:block}.card+.card{margin-top:18px}details{display:block;overflow:visible;break-inside:avoid}details>summary{display:none}details:not([open])>*:not(summary){display:block}details::details-content{content-visibility:visible!important;height:auto!important}.footer{padding-bottom:0}}
+@media print{@page{margin:12mm}body,.shell{background:#fff}.shell{width:100%;min-height:0}.payment-header,.copy,.quicknav{display:none!important}.hero{padding:0 0 18px}.hero h1{font-size:32px}.shell main{padding:18px 0}.section{margin-top:22px}.card{box-shadow:none;break-inside:avoid}.cards{display:block}.card+.card{margin-top:14px}.card-head:before{filter:none}details{display:block;overflow:visible;break-inside:avoid}details>summary{display:none}details:not([open])>*:not(summary){display:block}details::details-content{content-visibility:visible!important;height:auto!important}.footer{padding-bottom:0}}
 </style>
 </head>
 <body class="crio-payment-page">
+<header class="crio-shell-header payment-header" id="site-header"><div class="crio-shell-inner"><a class="crio-shell-brand" href="/" aria-label="Crio Creatives home"><img class="crio-shell-logo" src="/assets/logos/Crio%20Creatives%20Logo%20wide%20white.svg" alt="Crio Creatives" width="177" height="51"></a><span class="payment-header-label">Payment information</span></div></header>
 <main class="page"><div class="access-layout">
-<div class="access-intro">
-<a class="access-brand" href="/" aria-label="Crio Creatives home"><img src="/assets/logos/Crio%20Creatives%20Logo%20wide%20red.svg" alt="Crio Creatives" width="164" height="47"></a>
-<div class="eyebrow">Private client access</div>
-<h1>Payment<br>details<span class="accent">.</span></h1>
-<p>Bank transfers and digital payments,<br>all in one place.</p>
-</div>
 <section class="panel" aria-labelledby="access-title">
 <div class="panel-heading"><svg viewBox="0 0 20 22" fill="none" aria-hidden="true"><rect x="3" y="9" width="14" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 9V6a4 4 0 0 1 8 0v3M10 13v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Client access</div>
-<h2 id="access-title">View payment<br>information.</h2>
+<h1 id="access-title">Payment details</h1>
 <p id="access-instructions">Enter the 4-digit access code provided by Crio Creatives to view payment information.</p>
 <form class="form" id="unlock-form"><label for="pin">Access code</label><div class="row">
 <input id="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" minlength="4" autocomplete="off" enterkeyhint="go" autocapitalize="off" spellcheck="false" aria-describedby="access-instructions" required autofocus>
-<button id="unlock" type="submit">View Details</button></div><div class="status" id="status" role="alert"></div></form>
+<button id="unlock" type="submit">View details</button></div><div class="status" id="status" role="alert"></div></form>
 <div class="help">For authorized client use only. Access attempts are limited on this device.</div>
 </section></div></main>
 <script>
 (()=>{"use strict";
 const DATA={iterations:2000000,salt:"DKIDvDjAEigxR8EPpPBN4Q==",iv:"AErpT+N9HgsAzA02",aad:"Y3Jpby1wYXltZW50LWRldGFpbHMtZ3ppcC12MQ==",files:["/payment-details/data/00.txt","/payment-details/data/01.txt","/payment-details/data/02.txt","/payment-details/data/03.txt","/payment-details/data/04.txt","/payment-details/data/05.txt","/payment-details/data/06.txt","/payment-details/data/07.txt","/payment-details/data/08.txt"]};
 const MAX_ATTEMPTS=5,LOCK_MS=15*60*1000,RELOCK_MS=30*60*1000,STORE_KEY="crio_pd_access_v2";
-// Reuse the access screen's presentation after decrypting, leaving the encrypted data and payment controls unchanged.
+// Share the compact presentation and site header without changing payment values or controls.
 const PAYMENT_THEME=document.getElementById("payment-theme").outerHTML;
-const themeDetails=html=>html.replace(/<style\b[^>]*>[\s\S]*?<\/style>/i,()=>PAYMENT_THEME);
+const PAYMENT_HEADER=document.getElementById("site-header").outerHTML;
+const PAYMENT_SHELL_CSS=document.querySelector("link[data-payment-shell]").outerHTML;
+const PAYMENT_SHELL_SCRIPT='<script src="/assets/js/site.js?v=2"><'+'/script>';
+const sentenceLabel=text=>text.startsWith("$")?text:text.replace(/\b[A-Z][a-z]+\b/g,(word,index)=>index===0?word:word.toLowerCase());
+const themeDetails=html=>html
+  .replace(/style-src 'unsafe-inline'/g,"style-src 'self' 'unsafe-inline'")
+  .replace(/script-src 'unsafe-inline'/g,"script-src 'self' 'unsafe-inline'")
+  .replace(/<style\b[^>]*>[\s\S]*?<\/style>/i,()=>PAYMENT_SHELL_CSS+PAYMENT_THEME)
+  .replace(/<body\b[^>]*>/i,tag=>tag+PAYMENT_HEADER)
+  .replace(/(<div class="label">)([^<]*)(<\/div>)/g,(_,start,text,end)=>start+sentenceLabel(text)+end)
+  .replace(/<\/body>/i,()=>PAYMENT_SHELL_SCRIPT+"</body>");
 const form=document.getElementById("unlock-form"),input=document.getElementById("pin"),button=document.getElementById("unlock"),status=document.getElementById("status");
 let busy=false,countdownTimer=null,ciphertextCache=null,relockTimer=null;
 const fromB64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
@@ -144,11 +137,12 @@ async function loadCiphertext(){if(ciphertextCache)return ciphertextCache;const 
 async function deriveKey(pin){const mat=await crypto.subtle.importKey("raw",new TextEncoder().encode(pin),"PBKDF2",false,["deriveKey"]);return crypto.subtle.deriveKey({name:"PBKDF2",salt:fromB64(DATA.salt),iterations:DATA.iterations,hash:"SHA-256"},mat,{name:"AES-GCM",length:256},false,["decrypt"])}
 async function decrypt(pin){const ciphertext=await loadCiphertext();const key=await deriveKey(pin);const compressed=await crypto.subtle.decrypt({name:"AES-GCM",iv:fromB64(DATA.iv),additionalData:fromB64(DATA.aad),tagLength:128},key,fromB64(ciphertext));if(typeof DecompressionStream!=="function")throw new Error("browser");const ds=new DecompressionStream("gzip");const plain=await new Response(new Blob([compressed]).stream().pipeThrough(ds)).arrayBuffer();return new TextDecoder().decode(plain)}
 input.addEventListener("input",function(){this.value=this.value.replace(/\D/g,"").slice(0,4);if(!busy&&!readState().lockUntil)hide()});
-form.addEventListener("submit",async e=>{e.preventDefault();if(busy||updateLockUI())return;const pin=input.value;if(!/^\d{4}$/.test(pin)){show("Enter the 4-digit access code.");return}busy=true;setDisabled(true);button.innerHTML='<span class="spinner"></span>Unlocking';show("Verifying access code…","info");try{const decrypted=await decrypt(pin);clearState();show("Access granted. Opening payment details…","info");relockTimer=setTimeout(()=>location.reload(),RELOCK_MS);setTimeout(()=>{document.open();document.write(themeDetails(decrypted));document.close()},120)}catch(err){if(err&&err.message==="data"){show("Unable to load the encrypted payment data. Please try again shortly.");busy=false;setDisabled(false);button.textContent="View Details";return}if(err&&err.message==="browser"){show("This browser does not support the secure payment viewer. Please use a current version of Chrome, Edge, Safari, or Firefox.");busy=false;setDisabled(false);button.textContent="View Details";return}const s=readState(),a=(s.attempts||0)+1;if(a>=MAX_ATTEMPTS){writeState({attempts:0,lockUntil:Date.now()+LOCK_MS});input.value="";busy=false;button.textContent="View Details";updateLockUI();return}writeState({attempts:a,lockUntil:0});const delay=Math.min(8000,750*Math.pow(2,a-1));show("Incorrect access code. "+(MAX_ATTEMPTS-a)+" attempt"+(MAX_ATTEMPTS-a===1?"":"s")+" remaining.");input.value="";setTimeout(()=>{busy=false;setDisabled(false);button.textContent="View Details";input.focus()},delay)}});
+form.addEventListener("submit",async e=>{e.preventDefault();if(busy||updateLockUI())return;const pin=input.value;if(!/^\d{4}$/.test(pin)){show("Enter the 4-digit access code.");return}busy=true;setDisabled(true);button.innerHTML='<span class="spinner"></span>Unlocking';show("Verifying access code…","info");try{const decrypted=await decrypt(pin);clearState();show("Access granted. Opening payment details…","info");relockTimer=setTimeout(()=>location.reload(),RELOCK_MS);setTimeout(()=>{document.open();document.write(themeDetails(decrypted));document.close()},120)}catch(err){if(err&&err.message==="data"){show("Unable to load the encrypted payment data. Please try again shortly.");busy=false;setDisabled(false);button.textContent="View details";return}if(err&&err.message==="browser"){show("This browser does not support the secure payment viewer. Please use a current version of Chrome, Edge, Safari, or Firefox.");busy=false;setDisabled(false);button.textContent="View details";return}const s=readState(),a=(s.attempts||0)+1;if(a>=MAX_ATTEMPTS){writeState({attempts:0,lockUntil:Date.now()+LOCK_MS});input.value="";busy=false;button.textContent="View details";updateLockUI();return}writeState({attempts:a,lockUntil:0});const delay=Math.min(8000,750*Math.pow(2,a-1));show("Incorrect access code. "+(MAX_ATTEMPTS-a)+" attempt"+(MAX_ATTEMPTS-a===1?"":"s")+" remaining.");input.value="";setTimeout(()=>{busy=false;setDisabled(false);button.textContent="View details";input.focus()},delay)}});
 updateLockUI();
 })();
 </script>
 <footer class="access-footer"><p>Crio Creatives / Client payments</p><nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/privacy/#cookies">Cookies &amp; Tracking</a></nav></footer>
 <!-- LibreCounter: privacy-friendly page analytics -->
 <img src="https://librecounter.org/hidden.svg" referrerpolicy="no-referrer" alt="" width="1" height="1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">
+<script src="/assets/js/site.js?v=2"></script>
 </body></html>
