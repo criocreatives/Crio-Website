@@ -1,4 +1,22 @@
 (() => {
+  // GA4: track the public main site, not protected payment information or other Crio subdomains.
+  if (/^(?:www\.)?criocreatives\.com$/.test(window.location.hostname)
+      && !/^\/payment-details(?:\/|$)/.test(window.location.pathname)) {
+    const ga4Id = 'G-8SQ1DJNJWM';
+    if (!document.querySelector('script[data-crio-ga4="' + ga4Id + '"]')
+        && !document.querySelector('script[src*="googletagmanager.com/gtag/js?id=' + ga4Id + '"]')) {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', ga4Id);
+      const tag = document.createElement('script');
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + ga4Id;
+      tag.dataset.crioGa4 = ga4Id;
+      document.head.appendChild(tag);
+    }
+  }
+
   const header = document.getElementById('site-header');
   const button = document.querySelector('.menu-toggle');
   const nav = document.getElementById('site-nav');
