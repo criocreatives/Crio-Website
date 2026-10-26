@@ -1,0 +1,39 @@
+name: Migrate Crio Previews into main domain
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/migrate-previews.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  prepare-migration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Crio Website
+        uses: actions/checkout@v4
+        with:
+          path: main-site
+          ref: main
+      - name: Checkout source previews (read-only)
+        uses: actions/checkout@v4
+        with:
+          repository: criocreatives/crio-previews
+          path: source-previews
+          ref: main
+          persist-credentials: false
+      - name: Copy every preview and check content
+        run: python3 main-site/scripts/migrate_previews.py
+      - name: Commit migration on review branch
+        run: |
+          cd main-site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c migration/previews-under-main
+          git add -A
+          git diff --cached --check
+          git commit -m "Migrate 14 project previews and assets into /previews/"
+          git push origin HEAD:refs/heads/migration/previews-under-main
