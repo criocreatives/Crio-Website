@@ -82,6 +82,30 @@ def main():
         source = file.read_text(encoding="utf-8")
         page = Inspector()
         page.feed(source)
+        if rel.startswith("plugins/"):
+            # Preserve legacy redirects (noindex) and original sales instrumentation.
+            legacy_redirects = {
+                "plugins/fence-maker/index.html",
+                "plugins/floor-tile-tool/index.html",
+                "plugins/stage-builder/index.html",
+            }
+            if rel in legacy_redirects:
+                if not any("noindex" in v for v in page.meta.get("robots", [])):
+                    report_failure(failures, rel, "legacy redirect missing noindex")
+                continue
+            expected = page_url(rel)
+            expected_urls.add(expected)
+            if not page.title.strip():
+                report_failure(failures, rel, "missing title")
+            if not any(40 <= len(v) <= 175 for v in page.meta.get("description", [])):
+                report_failure(failures, rel, "missing or unsuitable description")
+            if page.links.get("canonical") != [expected]:
+                report_failure(failures, rel, "incorrect canonical")
+            if len(page.headings) != 1:
+                report_failure(failures, rel, "expected exactly one H1")
+            if page.images_missing_alt:
+                report_failure(failures, rel, "image missing alt")
+            continue
         if 'referrerpolicy="unsafe-url"' in source:
             report_failure(failures, rel, "unsafe referrer policy")
         if page.images_missing_alt:
