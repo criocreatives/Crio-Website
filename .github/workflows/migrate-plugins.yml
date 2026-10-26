@@ -1,0 +1,39 @@
+name: Migrate Crio Plugins into main domain
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/migrate-plugins.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  prepare-migration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Crio Website
+        uses: actions/checkout@v4
+        with:
+          path: main-site
+          ref: main
+      - name: Checkout original Crio Plugins (read-only)
+        uses: actions/checkout@v4
+        with:
+          repository: criocreatives/crio-plugins
+          path: source-plugins
+          ref: main
+          persist-credentials: false
+      - name: Copy plugins and validate sales links and media
+        run: python3 main-site/scripts/migrate_plugins.py
+      - name: Commit migration to review branch
+        run: |
+          cd main-site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c migration/plugins-under-main
+          git add -A
+          git -c core.whitespace=-blank-at-eol diff --cached --check
+          git commit -m "Migrate all Crio Plugins pages and images into /plugins/"
+          git push origin HEAD:refs/heads/migration/plugins-under-main
