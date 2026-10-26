@@ -1,0 +1,402 @@
+/* Crio Creatives / Architecture Presentation System / 2026
+   Based on the art direction of 9 Salisbury Avenue. Per-project content remains native.
+   Tokens: light editorial canvas, charcoal, Crio red, Helvetica display, Century Gothic UI.
+*/
+body.crio-architecture{
+  --arch-paper:#F4F4F4;--arch-card:#EAEAEA;--arch-ink:#090909;
+  --arch-muted:#595B62;--arch-rule:#D0D0D3;--arch-red:#ED1C24;
+  --arch-dark:#111214;--arch-white:#F4F4F4;
+  --arch-body:"Century Gothic","Avenir Next",Avenir,Arial,sans-serif;
+  --arch-display:Helvetica,Arial,sans-serif;
+}
+body.crio-architecture.crio-ed{
+  --ed-paper:var(--arch-paper);--ed-ink:var(--arch-ink);
+  --ed-red:var(--arch-red);--ed-rule:var(--arch-rule);
+  --bg:var(--arch-paper);--paper:var(--arch-paper);--surface:var(--arch-card);
+  --ink:var(--arch-ink);--text:var(--arch-ink);--fg:var(--arch-ink);
+  --muted:var(--arch-muted);--quiet:var(--arch-muted);
+  --line:var(--arch-rule);--panel:#E9E9E9;
+  background:var(--arch-paper)!important;color:var(--arch-ink)!important;
+  font-family:var(--arch-body)!important;line-height:1.7;
+}
+body.crio-architecture.crio-ed main{background:var(--arch-paper);color:var(--arch-ink)}
+body.crio-architecture.crio-ed :is(p,li,dt,dd,blockquote,figcaption,.section-note,.section-copy,.lead,.lede,.story-copy,.feature span,.caption,.view-group-heading,.facts,.fact){
+ font-family:var(--arch-body);
+}
+body.crio-architecture.crio-ed :is(h1,h2,h3,h4,.display,.huge,.cover-title,.headline,.hero-title){
+ font-family:var(--arch-display)!important;font-style:normal!important;
+ font-weight:700;letter-spacing:-.06em;color:var(--arch-ink);
+}
+body.crio-architecture.crio-ed :is(.eyebrow,.kicker,.section-id,.section-num,.overline,.view-group-heading,.gallery-caption,.project-meta dt,.fact span,.fact dt){
+ font-family:var(--arch-body)!important;font-weight:700!important;
+ text-transform:uppercase;letter-spacing:.14em;color:var(--arch-red);
+}
+body.crio-architecture.crio-ed :is(.eyebrow,.kicker,.section-id) {font-size:10px!important}
+body.crio-architecture.crio-ed :is(h1,h2,.huge) em{font-family:inherit!important;font-style:normal!important;font-weight:400!important;color:var(--arch-red)!important}
+body.crio-architecture.crio-ed :is(h1,h2) span:not(.view-number){color:var(--arch-red)}
+body.crio-architecture.crio-ed :is(.section-note,.section-copy,.story-copy p,.lead,.lede,.closing-note){
+ color:var(--arch-muted)!important;line-height:1.78;
+}
+body.crio-architecture.crio-ed .wrap{width:min(1350px,calc(100% - 100px))}
+body.crio-architecture.crio-ed .crio-ed-rule{background:var(--arch-paper)!important;border-color:var(--arch-rule)!important;color:var(--arch-muted)!important}
+body.crio-architecture.crio-ed .crio-ed-rule span:last-child{color:var(--arch-muted)}
+body.crio-architecture.crio-ed .crio-ed-bar{background:#111214!important}
+body.crio-architecture.crio-ed .crio-ed-footer{background:#111214!important}
+body.crio-architecture.crio-ed :is(a,button):focus-visible{outline:3px solid var(--arch-red)!important;outline-offset:3px}
+body.crio-architecture.crio-ed :is(.button,.btn,.action){border-radius:9px!important}
+body.crio-architecture.crio-ed .button{background:var(--arch-red);border:1px solid var(--arch-red);color:#fff!important}
+body.crio-architecture.crio-ed .button:hover{background:#C9151D}
+
+/* Salisbury-style photographic masthead: image is full bleed, editorial type is anchored at bottom. */
+body.crio-architecture.arch-photographic.crio-ed section.hero:not(.hero-frame){
+ position:relative!important;isolation:isolate;overflow:hidden;
+ display:flex!important;align-items:flex-end;justify-content:flex-start;
+ min-height:clamp(600px,77svh,890px)!important;
+ height:auto!important;max-height:none!important;
+ width:100%!important;max-width:none!important;
+ padding:0!important;margin:0!important;background:#151617!important;
+ border:0!important;color:#F4F4F4!important;
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero::after{
+ content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+ background:linear-gradient(180deg,rgba(9,9,9,.10) 0%,rgba(9,9,9,.13) 36%,rgba(9,9,9,.60) 69%,rgba(9,9,9,.89) 100%);
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero :is(.hero-image,.hero-visual,.hero-media){
+ position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+ max-width:none!important;margin:0!important;padding:0!important;
+ overflow:hidden!important;z-index:0!important;border:0!important;border-radius:0!important;
+ background:#19191B!important;box-shadow:none!important;
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero :is(.hero-image,.hero-visual,.hero-media) :is(a,.image-link){
+ display:block!important;width:100%!important;height:100%!important;max-width:none!important;
+ aspect-ratio:auto!important;background:transparent!important;
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero :is(.hero-image,.hero-visual,.hero-media) img{
+ width:100%!important;height:100%!important;max-height:none!important;
+ object-fit:cover!important;object-position:center 47%;
+ filter:brightness(.87)!important;transform:none!important;border-radius:0!important;
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero :is(.hero-grid,.hero-copy){
+ position:relative!important;z-index:3;align-self:flex-end;
+ width:min(1350px,calc(100% - 100px))!important;
+ margin-inline:auto!important;max-width:1350px!important;
+ padding:145px 0 clamp(68px,8vh,112px)!important;
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero .hero-grid{
+ display:flex!important;grid-template-columns:none!important;align-items:end!important;justify-content:flex-start;
+ /* Keep the image anchored to the full-width section, not the centered text grid. */
+ position:static!important;z-index:auto!important;
+ min-height:clamp(600px,77svh,890px);gap:0!important;
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero :is(.hero-grid>div:first-child,.hero-copy){
+ width:min(820px,100%)!important;max-width:820px!important;min-width:0!important;
+ position:relative!important;z-index:3;padding-bottom:0!important;
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero :is(.eyebrow,.lead,.lede,.project-meta,.fact,.facts){
+ color:#E0E0E3!important;
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero .eyebrow{
+ display:flex;align-items:center;gap:12px;letter-spacing:.19em!important;color:#F4F4F4!important;
+ margin-bottom:24px!important;
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero .eyebrow::before{
+ content:"";display:inline-block;flex:0 0 29px;height:2px;background:var(--arch-red);
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero h1{
+ font-size:clamp(64px,8.2vw,138px)!important;line-height:.90!important;
+ font-weight:750!important;letter-spacing:-.077em!important;margin:0 0 30px!important;
+ max-width:1010px!important;color:#F4F4F4!important;text-wrap:balance;
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero h1 span{color:#F4F4F4!important;font-weight:400!important}
+body.crio-architecture.arch-photographic.crio-ed section.hero :is(.lead,.lede){
+ color:#E2E2E3!important;max-width:660px!important;font-size:clamp(15px,1.35vw,19px)!important;line-height:1.72!important;
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero .project-meta{
+ border-top:1px solid rgba(255,255,255,.35);padding-top:18px;display:flex;gap:25px;flex-wrap:wrap;
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero .project-meta :is(dt,dd){color:#F4F4F4!important}
+body.crio-architecture.arch-photographic.crio-ed section.hero .facts .fact{
+ background:rgba(17,18,20,.60)!important;border:1px solid rgba(255,255,255,.27)!important;
+ color:#F4F4F4!important
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero .hero-visual figcaption{
+ position:absolute;right:clamp(18px,3vw,42px);bottom:22px;z-index:2;
+ display:flex;gap:20px;color:#F4F4F4!important;background:rgba(9,9,9,.65);
+ border:1px solid rgba(255,255,255,.17);font-size:10px!important
+}
+body.crio-architecture.arch-photographic.crio-ed section.hero .hero-visual figcaption *{color:#F4F4F4!important}
+body.crio-architecture.arch-photographic.crio-ed section.hero .button{
+ display:inline-flex!important;align-items:center;gap:12px;margin-top:18px;
+ background:var(--arch-red)!important;border-color:var(--arch-red)!important;color:#fff!important;
+ font:700 11px var(--arch-body)!important;text-transform:uppercase;letter-spacing:.1em
+}
+
+/* Editorial rhythms, sparse rules, large display hierarchy. */
+body.crio-architecture.crio-ed :is(.story,.gallery-section,.overview,.specifications,.walkthrough,.views,.development){
+ background:var(--arch-paper)!important;border-color:var(--arch-rule)!important;
+}
+body.crio-architecture.crio-ed :is(.story,.gallery-section,.overview,.specifications,.walkthrough,.views,.development){
+ padding-top:clamp(70px,8vw,125px)!important;padding-bottom:clamp(70px,8vw,125px)!important;
+}
+body.crio-architecture.crio-ed :is(.section-head,.story-grid){
+ display:grid;grid-template-columns:minmax(190px,.9fr) minmax(0,1.3fr);
+ gap:clamp(30px,6vw,105px);align-items:start;
+}
+body.crio-architecture.crio-ed :is(.section-head,.story-grid) h2{
+ font:650 clamp(38px,5.5vw,83px)/1.02 var(--arch-display)!important;
+ letter-spacing:-.065em!important;color:var(--arch-ink)!important;margin:12px 0 22px!important;
+}
+body.crio-architecture.crio-ed .section-head{border-top:1px solid var(--arch-rule);padding-top:22px;margin-bottom:45px}
+body.crio-architecture.crio-ed .section-head .section-note{font-size:clamp(14px,1.25vw,17px)!important;line-height:1.8!important}
+body.crio-architecture.crio-ed :is(.story-copy,.section-copy){max-width:780px}
+body.crio-architecture.crio-ed .story-copy{font-size:15px;line-height:1.85}
+body.crio-architecture.crio-ed .design-grid{gap:14px}
+body.crio-architecture.crio-ed .design-point{
+ border:1px solid var(--arch-rule)!important;background:#EAEAEA!important;
+ border-radius:9px!important;padding:22px!important;box-shadow:none!important;
+}
+body.crio-architecture.crio-ed .design-point :is(b,h3){color:#171719!important}
+body.crio-architecture.crio-ed .design-point span{color:#51535B!important}
+body.crio-architecture.crio-ed :is(.overview-card,.spec-card,.feature,.parking-note,.card){
+ border-color:var(--arch-rule)!important;
+ background:#EAEAEA!important;color:var(--arch-ink)!important;border-radius:9px!important;
+}
+body.crio-architecture.crio-ed :is(.overview-card,.spec-card,.feature) :is(h3,strong,b){color:var(--arch-ink)!important}
+body.crio-architecture.crio-ed :is(.overview-card,.spec-card,.feature,.parking-note) p{color:var(--arch-muted)!important}
+body.crio-architecture.crio-ed :is(.overview-card,.spec-card) >span{color:var(--arch-red)!important}
+body.crio-architecture.crio-ed .video-frame{background:#111214!important;border:1px solid var(--arch-rule);border-radius:9px;overflow:hidden}
+body.crio-architecture.crio-ed .video-frame video{max-width:100%;height:auto}
+
+/* Image collections: Salisbury's clean, edge-to-edge tiles; no cropping of plan/dimension imagery. */
+body.crio-architecture.crio-ed :is(.gallery,.gallery-grid,.overview,.twa-unified-gallery){gap:clamp(12px,1.7vw,24px)}
+body.crio-architecture.crio-ed :is(.shot,.gallery-card,.media,.twa-gallery-item,.card){
+ min-width:0!important;overflow:hidden;background:#EAEAEA!important;
+ border:0!important;box-shadow:none!important;border-radius:0!important;
+}
+body.crio-architecture.crio-ed :is(.gallery-card,.shot,.media,.twa-gallery-item) :is(a,button){
+ cursor:zoom-in;
+}
+body.crio-architecture.crio-ed :is(.gallery-card,.shot,.media,.twa-gallery-item) :is(img){
+ max-width:100%;object-fit:contain;transition:filter .25s ease,transform .3s ease;
+}
+body.crio-architecture.crio-ed :is(.gallery-card,.shot,.media,.twa-gallery-item) :is(a,button):hover img{filter:brightness(.94)}
+body.crio-architecture.crio-ed :is(.gallery-card,.shot,.media,.twa-gallery-item) :is(figcaption,.caption,.card-copy){
+ background:var(--arch-paper)!important;color:var(--arch-muted)!important;
+ border-color:var(--arch-rule)!important;border-radius:0!important;
+}
+body.crio-architecture.crio-ed :is(.gallery-card,.shot,.media,.twa-gallery-item) :is(figcaption,.caption) strong{color:var(--arch-ink)!important}
+body.crio-architecture.crio-ed :is(.gallery-card,.shot,.media,.twa-gallery-item) .zoom{
+ background:rgba(17,18,20,.75)!important;color:#F4F4F4!important
+}
+body.crio-architecture.crio-ed .gallery-card .image-link{aspect-ratio:auto!important;background:#EAEAEA!important}
+body.crio-architecture.crio-ed .gallery-card .image-link img{
+ display:block;width:100%;height:auto!important;max-height:none;object-fit:contain!important
+}
+body.crio-architecture.crio-ed .gallery-card.full-ratio .image-link{aspect-ratio:auto!important}
+body.crio-architecture.crio-ed .gallery-card.full-ratio .image-link img{width:100%;height:auto!important;object-fit:contain!important}
+body.crio-architecture.crio-ed .media button{background:transparent!important;width:100%;border:0;border-radius:0!important;padding:0!important}
+body.crio-architecture.crio-ed .media button img{display:block;width:100%;height:auto!important;object-fit:contain!important}
+body.crio-architecture.crio-ed .card img{width:100%;height:auto!important;object-fit:contain!important}
+body.crio-architecture.crio-ed .gallery .shot a{background:#EAEAEA!important}
+body.crio-architecture.crio-ed .gallery .shot img{max-width:100%;object-fit:contain!important}
+body.crio-architecture.crio-ed .view-group-heading{border-color:var(--arch-rule)!important}
+body.crio-architecture.crio-ed .view-group-heading span:last-child{color:var(--arch-muted)!important}
+
+/* Boscobel: portrait and 3:2 landscape views retain their documented original proportions. */
+body.crio-architecture.crio-ed--boscobel-heights-residence .gallery--portrait{grid-template-columns:repeat(3,minmax(0,1fr))}
+body.crio-architecture.crio-ed--boscobel-heights-residence .gallery--landscape{grid-template-columns:repeat(2,minmax(0,1fr))}
+body.crio-architecture.crio-ed--boscobel-heights-residence .gallery--portrait .shot>a{aspect-ratio:9/16!important}
+body.crio-architecture.crio-ed--boscobel-heights-residence .gallery--landscape .shot>a{aspect-ratio:3/2!important}
+body.crio-architecture.crio-ed--boscobel-heights-residence .gallery .shot img{width:100%;height:100%;object-fit:contain!important}
+body.crio-architecture.crio-ed--boscobel-heights-residence .gallery figcaption{background:var(--arch-paper)!important}
+body.crio-architecture.crio-ed--boscobel-heights-residence .gallery .shot{background:#EAEAEA!important}
+
+/* Mannings: keep natural ratio and existing alternating wide-image composition. */
+body.crio-architecture.crio-ed--mannings-hill-road-apartment-complex .gallery{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px
+}
+body.crio-architecture.crio-ed--mannings-hill-road-apartment-complex .gallery .shot{grid-column:auto}
+body.crio-architecture.crio-ed--mannings-hill-road-apartment-complex .gallery .shot.wide{grid-column:span 2}
+body.crio-architecture.crio-ed--mannings-hill-road-apartment-complex .gallery .shot a{
+ display:block!important;aspect-ratio:auto!important;overflow:hidden
+}
+body.crio-architecture.crio-ed--mannings-hill-road-apartment-complex .gallery .shot img{
+ width:100%;height:auto!important;max-height:none!important;object-fit:contain!important
+}
+
+/* Lot 18: progressive design story and documentary images remain intact. */
+/* The Lot 18 overview is an inner media grid, not a standalone section. */
+body.crio-architecture.crio-ed--lot-18-mount-boon .overview{
+ padding:0!important;margin:0!important;background:transparent!important;border:0!important;
+}
+body.crio-architecture.crio-ed--mannings-hill-road-apartment-complex section.hero h1{
+ font-size:clamp(52px,6.1vw,96px)!important;
+}
+
+body.crio-architecture.crio-ed--lot-18-mount-boon main>section:not(.hero){
+ padding-block:clamp(65px,7.5vw,110px);border-bottom:1px solid var(--arch-rule)!important;
+}
+body.crio-architecture.crio-ed--lot-18-mount-boon .gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+body.crio-architecture.crio-ed--lot-18-mount-boon .feature-strip{gap:12px}
+/* The legacy editorial stylesheet makes overview descriptions pale grey for a dark panel.
+   Restore readable charcoal against the architectural system's off-white feature cards. */
+body.crio-architecture.crio-ed.crio-ed--lot-18-mount-boon .feature-strip .feature span{
+  color:var(--arch-muted)!important;
+}
+body.crio-architecture.crio-ed--lot-18-mount-boon :is(.fact,.feature){color:var(--arch-muted)!important}
+body.crio-architecture.crio-ed--lot-18-mount-boon :is(.caption,.card-copy){background:#EAEAEA!important}
+body.crio-architecture.crio-ed--lot-18-mount-boon .card-copy p{color:var(--arch-muted)!important}
+
+/* TWA: Salisbury editorial hierarchy, full-width project imagery, Crio chrome colours.
+   Site and render images keep native aspect ratios; retain the project-specific storytelling.
+*/
+body.crio-architecture.arch-showroom.crio-ed{
+ --paper:#F4F4F4;--white:#F4F4F4;--ink:#090909;--quiet:#595B62;
+ --rule:#D0D0D3;--dark:#111214;--lime:#ED1C24;--red:#ED1C24;
+}
+body.crio-architecture.arch-showroom.crio-ed .cover{padding:clamp(55px,6vw,105px) 0 30px;background:var(--arch-paper)}
+body.crio-architecture.arch-showroom.crio-ed .cover-topline{
+ border-top:1px solid var(--arch-ink);padding-top:17px;color:var(--arch-muted)
+}
+body.crio-architecture.arch-showroom.crio-ed .cover-grid{
+ display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,.54fr);
+ align-items:end;gap:clamp(35px,5vw,90px);padding:30px 0 55px
+}
+body.crio-architecture.arch-showroom.crio-ed .cover-title{
+ font-size:clamp(72px,9.5vw,155px)!important;line-height:.85!important;
+ text-transform:none;letter-spacing:-.079em!important;color:var(--arch-ink)!important
+}
+body.crio-architecture.arch-showroom.crio-ed .cover-side p{color:var(--arch-muted);font-family:var(--arch-body);line-height:1.66}
+body.crio-architecture.arch-showroom.crio-ed .cover-side .small-meta{border-color:var(--arch-rule);font-family:var(--arch-body)}
+body.crio-architecture.arch-showroom.crio-ed .cover-side .small-meta strong{color:var(--arch-ink)}
+body.crio-architecture.arch-showroom.crio-ed .hero-frame{
+ background:#E9E9E9;margin:0!important;border:0!important;border-radius:0!important;
+}
+body.crio-architecture.arch-showroom.crio-ed .hero-frame img{
+ width:100%;height:auto!important;max-height:none!important;object-fit:contain!important
+}
+body.crio-architecture.arch-showroom.crio-ed .hero-frame figcaption{
+ border-radius:0!important;font-family:var(--arch-body);letter-spacing:.12em
+}
+body.crio-architecture.arch-showroom.crio-ed :is(.chapter,.project-views,.closing){
+ padding-block:clamp(65px,8vw,120px);background:var(--arch-paper)!important;
+}
+body.crio-architecture.arch-showroom.crio-ed :is(.section-id,.gallery-caption){
+ border-color:var(--arch-rule)!important
+}
+body.crio-architecture.arch-showroom.crio-ed .statement-grid h2,
+body.crio-architecture.arch-showroom.crio-ed :is(.views-head,.closing-inner) h2,
+body.crio-architecture.arch-showroom.crio-ed .darkband h2{
+ font-family:var(--arch-display)!important;font-size:clamp(52px,6vw,96px)!important;
+ line-height:.99!important;letter-spacing:-.067em!important
+}
+body.crio-architecture.arch-showroom.crio-ed .twa-site-intro h3{
+ font:700 clamp(34px,4vw,66px)/1.02 var(--arch-display)!important;color:var(--arch-ink)!important
+}
+body.crio-architecture.arch-showroom.crio-ed .views-head{margin-bottom:15px}
+body.crio-architecture.arch-showroom.crio-ed .twa-unified-gallery{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px
+}
+body.crio-architecture.arch-showroom.crio-ed .twa-unified-gallery .image-open img,
+body.crio-architecture.arch-showroom.crio-ed .twa-site-images .image-open img{
+ display:block;width:100%;height:auto!important;max-height:none!important;
+ aspect-ratio:auto!important;object-fit:contain!important;background:#EAEAEA
+}
+body.crio-architecture.arch-showroom.crio-ed .gallery-caption{
+ background:var(--arch-paper);padding:12px 0!important;color:var(--arch-muted)!important
+}
+body.crio-architecture.arch-showroom.crio-ed .gallery-caption i{color:var(--arch-red)}
+body.crio-architecture.arch-showroom.crio-ed .darkband{
+ background:#111214!important;color:#F4F4F4!important;padding-block:clamp(65px,8vw,120px)
+}
+body.crio-architecture.arch-showroom.crio-ed .darkband :is(h2,h3,p){color:#F4F4F4!important}
+body.crio-architecture.arch-showroom.crio-ed .darkband :is(.kicker,.section-id,small){color:#F4F4F4!important}
+body.crio-architecture.arch-showroom.crio-ed .darkband em{color:#ED1C24!important}
+body.crio-architecture.arch-showroom.crio-ed .lightbox{background:#090909!important}
+
+/* Not-yet-published architectural concepts: same type treatment without inventing renderings. */
+body.crio-architecture.arch-placeholder.crio-ed .hero{
+ min-height:0!important;height:auto!important;padding:clamp(80px,11vw,175px) 0 clamp(75px,9vw,135px)!important;
+ background:var(--arch-paper)!important;
+}
+body.crio-architecture.arch-placeholder.crio-ed .hero h1{
+ font-size:clamp(62px,8.7vw,140px)!important;line-height:.89!important;
+ letter-spacing:-.078em!important;color:var(--arch-ink)!important;margin:20px 0 35px!important
+}
+body.crio-architecture.arch-placeholder.crio-ed .hero h1 span{color:var(--arch-red)!important}
+body.crio-architecture.arch-placeholder.crio-ed .hero .lead{font-size:clamp(17px,1.45vw,22px)!important;max-width:680px}
+body.crio-architecture.arch-placeholder.crio-ed #views{
+ padding:clamp(70px,8vw,118px) 0;background:#EAEAEA!important;border-top:1px solid var(--arch-rule);
+}
+body.crio-architecture.arch-placeholder.crio-ed .upload-placeholder{
+ display:grid;place-items:center;min-height:260px;
+ background:var(--arch-paper)!important;color:var(--arch-ink)!important;
+ border:1px solid var(--arch-rule)!important;border-radius:9px!important;
+}
+body.crio-architecture.arch-placeholder.crio-ed .upload-placeholder strong{
+ font:700 clamp(27px,3vw,44px)/1.1 var(--arch-display);letter-spacing:-.04em;color:var(--arch-ink)
+}
+body.crio-architecture.arch-placeholder.crio-ed .upload-placeholder p{color:var(--arch-muted)!important}
+
+/* No blanket crop: all technical plans, proportions and mixed-ratio images are preserved. */
+body.crio-architecture.crio-ed :is(.gallery-card.full-ratio,.technical-image,.dimension-image,.plan-image) img{
+ width:100%;height:auto!important;aspect-ratio:auto!important;object-fit:contain!important;
+}
+body.crio-architecture.crio-ed .lightbox img,
+body.crio-architecture.crio-ed dialog img{
+ max-width:100%;max-height:90dvh;object-fit:contain!important;
+}
+@media(max-width:980px){
+ body.crio-architecture.crio-ed .wrap{width:calc(100% - 60px)}
+ body.crio-architecture.crio-ed :is(.section-head,.story-grid){grid-template-columns:1fr!important;gap:20px}
+ body.crio-architecture.arch-photographic.crio-ed section.hero :is(.hero-grid,.hero-copy){width:calc(100% - 60px)!important}
+ body.crio-architecture.arch-showroom.crio-ed .cover-grid{grid-template-columns:1fr;gap:25px}
+}
+@media(max-width:690px){
+ body.crio-architecture.crio-ed .wrap{width:calc(100% - 36px)!important}
+ body.crio-architecture.arch-photographic.crio-ed section.hero:not(.hero-frame){min-height:clamp(620px,83svh,800px)!important}
+ body.crio-architecture.arch-photographic.crio-ed section.hero .hero-grid{
+  min-height:clamp(620px,83svh,800px)!important;
+  padding:175px 0 70px!important;
+ }
+ body.crio-architecture.arch-photographic.crio-ed section.hero :is(.hero-grid,.hero-copy){
+  width:calc(100% - 36px)!important;padding:175px 0 70px!important;
+ }
+ body.crio-architecture.arch-photographic.crio-ed section.hero h1{
+  font-size:clamp(47px,11vw,76px)!important;line-height:.94!important;
+  margin-bottom:21px!important
+ }
+ body.crio-architecture.arch-photographic.crio-ed section.hero :is(.lead,.lede){
+  font-size:13px!important;line-height:1.7!important;
+ }
+ body.crio-architecture.arch-photographic.crio-ed section.hero .hero-visual figcaption{display:none}
+ body.crio-architecture.crio-ed :is(.story,.gallery-section,.overview,.specifications,.walkthrough,.views,.development){
+  padding-block:65px!important
+ }
+ body.crio-architecture.crio-ed :is(.section-head,.story-grid) h2{font-size:clamp(35px,9vw,57px)!important}
+ body.crio-architecture.crio-ed .section-head{margin-bottom:28px}
+ body.crio-architecture.crio-ed--boscobel-heights-residence .gallery--portrait{grid-template-columns:1fr}
+ body.crio-architecture.crio-ed--boscobel-heights-residence .gallery--landscape{grid-template-columns:1fr}
+ body.crio-architecture.crio-ed--boscobel-heights-residence .gallery--portrait .shot{
+  width:min(100%,430px)!important;justify-self:center!important
+ }
+ body.crio-architecture.crio-ed--mannings-hill-road-apartment-complex .gallery,
+ body.crio-architecture.crio-ed--lot-18-mount-boon .gallery,
+ body.crio-architecture.arch-showroom.crio-ed .twa-unified-gallery{
+  grid-template-columns:1fr!important
+ }
+ body.crio-architecture.crio-ed--mannings-hill-road-apartment-complex .gallery .shot.wide{grid-column:auto}
+ body.crio-architecture.arch-showroom.crio-ed .cover-title{font-size:clamp(60px,13vw,95px)!important}
+ body.crio-architecture.arch-placeholder.crio-ed .hero h1{font-size:clamp(52px,12vw,78px)!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body.crio-architecture.crio-ed :is(.shot,.media,.gallery-card) img{transition:none!important}
+}
+
+/* TWA: original showroom stylesheet used a green text-selection highlight.
+   Keep this interaction within the Crio palette without changing client imagery. */
+body.crio-architecture.arch-showroom::selection,
+body.crio-architecture.arch-showroom ::selection{
+  background:#ED1C24;
+  color:#F4F4F4;
+}

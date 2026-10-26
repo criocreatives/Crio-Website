@@ -1,0 +1,190 @@
+/* Crio / unified editorial presentation language · 2026 */
+:root{--ed-red:#ed1c24;--ed-paper:#f5f3ed;--ed-ink:#181818;--ed-muted:#77736d;--ed-rule:#d0cdc6;--ed-dark:#101112}
+body.crio-ed{background:var(--ed-paper);color:var(--ed-ink);font:400 16px/1.56 "Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body.crio-ed *,body.crio-ed *:before,body.crio-ed *:after{box-sizing:border-box}
+body.crio-ed > header:not(.crio-ed-bar),body.crio-ed > .topbar,body.crio-ed > .previewbar,body.crio-ed > footer:not(.crio-ed-footer){display:none!important}
+body.crio-ed .wrap{width:min(1380px,calc(100% - 88px));margin-left:auto;margin-right:auto}
+.crio-ed-bar{position:sticky;top:0;z-index:900;background:#111214;color:#fff;border-bottom:1px solid #474747;font-family:Helvetica,Arial,sans-serif}
+.crio-ed-bar-inner{width:min(1380px,calc(100% - 88px));margin:auto;min-height:74px;display:flex;justify-content:space-between;align-items:center;gap:26px}
+.crio-ed-wordmark{display:flex;align-items:center;gap:18px;color:#fff!important;text-decoration:none!important;flex-shrink:0}
+.crio-ed-wordmark img{display:block;width:155px!important;max-width:155px;height:35px!important;object-fit:contain!important;border:0!important;border-radius:0!important;background:none!important}
+.crio-ed-label{font-size:10px;font-weight:800;line-height:1.5;letter-spacing:.18em;text-transform:uppercase;color:#aaa;padding-left:18px;border-left:1px solid #656565}
+.crio-ed-bar nav{display:flex;align-items:center;justify-content:flex-end;gap:21px;min-width:0}
+.crio-ed-bar nav a{color:#dadada!important;text-decoration:none!important;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;line-height:1.3}
+.crio-ed-bar nav a:hover{color:#ff5d66!important}.crio-ed-bar nav .crio-ed-return{color:#fff!important;border-bottom:1px solid var(--ed-red);padding-bottom:6px}
+.crio-ed-rule{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px max(44px,calc((100vw - 1380px)/2));background:var(--ed-paper);border-bottom:1px solid var(--ed-rule);font:800 10px/1.5 Helvetica,Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:#77736d}
+.crio-ed-rule strong{color:var(--ed-red)}.crio-ed-rule span:last-child{text-align:right}
+body.crio-ed :is(h1,h2,h3,h4,.display,.quote,.headline,.hero-title,.big-title){font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-style:normal!important}
+body.crio-ed h1{font-size:clamp(46px,7.7vw,116px);line-height:.92!important;letter-spacing:-.075em!important;font-weight:800!important}
+body.crio-ed h1 em,body.crio-ed h2 em{font-weight:300!important;font-family:inherit!important;font-style:normal!important}
+body.crio-ed h2{font-size:clamp(35px,4.5vw,68px);line-height:1.02!important;letter-spacing:-.06em!important;font-weight:700!important}
+body.crio-ed h3{letter-spacing:-.04em;font-weight:700}
+body.crio-ed :is(.eyebrow,.kicker,.num,.section-id,.overline){font-family:Helvetica,Arial,sans-serif!important;font-size:11px;letter-spacing:.17em;text-transform:uppercase;font-weight:800}
+body.crio-ed :is(.lead,.lede,.hero-copy,.section-note){font-family:Helvetica,Arial,sans-serif;line-height:1.65}
+body.crio-ed .hero:not(.hero-frame){min-height:0!important;background-color:var(--ed-paper)}
+body.crio-ed .hero :is(h1,h2){color:var(--ed-ink)}
+body.crio-ed :is(.project,.card,.overview-card,.gallery-card,.shot,.feature,.art-wrap,.hero-media,.hero-image,.hero-visual,.heroimg){border-radius:0!important}
+body.crio-ed :is(.project,.overview-card,.gallery-card,.shot){box-shadow:none;border-color:var(--ed-rule)}
+body.crio-ed :is(.project,.overview-card,.gallery-card,.shot,.decisions .card){background-color:#fff}
+body.crio-ed .dark :is(.card,.project){background:#19191b!important;color:#fff}
+body.crio-ed :is(.hero-image img,.hero-media img,.hero-frame img,.art,.gallery img){max-width:100%}
+body.crio-ed :is(.button,.btn,.action,.pill,.tag){border-radius:0!important}
+body.crio-ed a:focus-visible,body.crio-ed button:focus-visible{outline:3px solid var(--ed-red);outline-offset:4px}
+.crio-ed-footer{display:block!important;padding:34px 0!important;margin:0!important;background:#111214!important;color:#aaa!important;border-top:1px solid #444!important;font-family:Helvetica,Arial,sans-serif!important}
+.crio-ed-footer-inner{width:min(1380px,calc(100% - 88px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:11px;line-height:1.6;text-transform:uppercase;letter-spacing:.1em}
+.crio-ed-footer a{color:#fff!important;text-decoration:none!important}.crio-ed-footer a:hover{color:#ff747a!important}
+.crio-ed-footer b{color:#fff}
+body.crio-ed--runkus-epk{--ed-red:#9d1d1f}body.crio-ed--runkus-epk .hero{background:#f4f1ec!important}
+body.crio-ed--bylynch-migration{--ed-red:#ed1744}body.crio-ed--bylynch-migration .crio-ed-rule{display:none}
+body.crio-ed--tyre-warehouse-automotive .cover{padding-top:60px}
+body.crio-ed--tyre-warehouse-automotive .cover-title{font-size:clamp(63px,9vw,145px)!important}
+body.crio-ed--good-morning .hero{background:#f5f3ed!important}body.crio-ed--good-morning .hero h1 span{font-size:.18em!important;letter-spacing:.16em!important}
+body.crio-ed--summit .hero{background:#f5f3ed!important}
+body.crio-ed--graphic-design .project{background:#fff;color:#171717}
+body.crio-ed--graphic-design .copy .choices li{color:#535353}
+body.crio-ed--face-billboard .quote{font-size:clamp(36px,5vw,65px);line-height:1.06;letter-spacing:-.055em}
+@media(max-width:1060px){.crio-ed-label{display:none}.crio-ed-bar nav{gap:13px}.crio-ed-bar nav a{font-size:9px}}
+@media(max-width:760px){body.crio-ed .wrap,.crio-ed-bar-inner,.crio-ed-footer-inner{width:calc(100% - 38px)}.crio-ed-bar-inner{min-height:64px;gap:10px;padding:12px 0}.crio-ed-wordmark img{width:135px!important;max-width:135px;height:27px!important}.crio-ed-bar nav{gap:12px;overflow:auto hidden;scrollbar-width:none}.crio-ed-bar nav::-webkit-scrollbar{display:none}.crio-ed-bar nav .crio-ed-detail{display:none}.crio-ed-bar nav a{font-size:9px}.crio-ed-rule{padding:13px 19px;font-size:9px}body.crio-ed h1{font-size:clamp(44px,11.5vw,77px)}body.crio-ed h2{font-size:clamp(32px,8vw,54px)}.crio-ed-footer-inner{flex-direction:column;align-items:flex-start}}
+@media(max-width:420px){.crio-ed-wordmark img{width:116px!important;max-width:116px}.crio-ed-bar nav .crio-ed-hide-mobile{display:none}.crio-ed-rule span:last-child{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Large standalone brand presentation: preserve its identity system inside a full-width editorial shell. */
+body.crio-ed--koolya .page{max-width:none;margin:0;box-shadow:none;overflow:visible}
+body.crio-ed--koolya .page>.top{display:none!important}
+body.crio-ed--koolya .page>footer{display:none!important}
+body.crio-ed--koolya .hero{color:var(--ed-ink)}
+body.crio-ed--koolya .crio-ed-rule{background:var(--ed-paper)}
+
+/* Editorial readability and gallery captions on warm paper backgrounds. */
+body.crio-ed .hero :is(.lead,.lede,.hero-copy){color:#585855!important}
+body.crio-ed .hero :is(.eyebrow,.kicker){color:var(--ed-red)!important}
+body.crio-ed .overview-card :is(h3,p),body.crio-ed .gallery-card figcaption,body.crio-ed .gallery-card figcaption span{color:#333!important}
+body.crio-ed .overview-card p,body.crio-ed .gallery-card figcaption{color:#62605c!important}
+body.crio-ed--index main{background:var(--ed-paper);color:var(--ed-ink)}
+body.crio-ed--index .content .copy{color:#52514f}
+body.crio-ed--index .index{color:rgba(17,17,17,.08)}
+body.crio-ed--index h1{color:#191919}
+body.crio-ed--chateau-de-chanel .upload-placeholder,
+body.crio-ed--tiny-living .upload-placeholder,
+body.crio-ed--experimental-circular-home .upload-placeholder{background:#e9e6df;border-color:#c7c3ba;color:#242424}
+
+/* V2 / Screenshot QA: contain large titles within the left column and restore contrast */
+body.crio-ed--boscobel-heights-residence .hero-grid,
+body.crio-ed--mannings-hill-road-apartment-complex .hero-grid{grid-template-columns:minmax(0,.96fr) minmax(0,1.04fr);gap:clamp(22px,3.5vw,56px);align-items:center}
+body.crio-ed--boscobel-heights-residence .hero-grid>div:first-child,
+body.crio-ed--mannings-hill-road-apartment-complex .hero-grid>div:first-child{min-width:0}
+body.crio-ed--boscobel-heights-residence .hero h1,
+body.crio-ed--mannings-hill-road-apartment-complex .hero h1{font-size:clamp(43px,4.45vw,72px)!important;line-height:.98!important;letter-spacing:-.069em!important;max-width:100%;overflow-wrap:normal}
+body.crio-ed--boscobel-heights-residence .hero h1 span,
+body.crio-ed--mannings-hill-road-apartment-complex .hero h1 span{color:var(--ed-red)!important}
+body.crio-ed--boscobel-heights-residence .hero .lead,
+body.crio-ed--mannings-hill-road-apartment-complex .hero .lead{color:#53514f!important;line-height:1.67;max-width:580px}
+body.crio-ed--boscobel-heights-residence .story-copy,
+body.crio-ed--boscobel-heights-residence .story-copy p{color:#464542!important;font-size:16px;line-height:1.76}
+body.crio-ed--boscobel-heights-residence .design-point{background:#fff!important;color:#191919!important;border:1px solid #d2cec7!important;border-radius:0!important}
+body.crio-ed--boscobel-heights-residence .design-point b{color:#1d1d1d!important}
+body.crio-ed--boscobel-heights-residence .design-point span{color:#5b5954!important}
+body.crio-ed--boscobel-heights-residence .section-note,
+body.crio-ed--mannings-hill-road-apartment-complex .section-note{color:#5a5752!important}
+body.crio-ed--mannings-hill-road-apartment-complex .hero-image figcaption{color:#595752!important;background:#fff}
+body.crio-ed--mannings-hill-road-apartment-complex .gallery-section .wrap>div[style]{border-left-color:var(--ed-red)!important}
+body.crio-ed--lot-18-mount-boon .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.13fr);gap:clamp(25px,4vw,65px)}
+body.crio-ed--lot-18-mount-boon .hero h1{font-size:clamp(42px,5.2vw,80px)!important;line-height:.98!important}
+body.crio-ed--lot-18-mount-boon .section-copy,
+body.crio-ed--lot-18-mount-boon .closing-note{color:#514e49!important}
+body.crio-ed--lot-18-mount-boon .feature-strip .feature span{color:#d6d6d6}
+body.crio-ed--graphic-design .section-note,
+body.crio-ed--graphic-design .hero-copy{color:#565451!important}
+body.crio-ed--graphic-design .project .tag{color:#4c4945;border-color:#c9c5bd}
+body.crio-ed--graphic-design .project .copy .choices li{color:#595652!important}
+body.crio-ed--face-billboard .intro .copy,
+body.crio-ed--face-billboard .step p{color:#514e4b!important}
+body.crio-ed--face-billboard .decisions .card p{color:#555!important}
+body.crio-ed--summit .hero p{color:#555!important}
+body.crio-ed--summit .section-head p{color:#5a5752!important}
+body.crio-ed--74-chisholms-avenue .lead,
+body.crio-ed--74-chisholms-avenue .section-note{color:#55514e!important}
+body.crio-ed--74-chisholms-avenue .overview-card p{color:#55514e!important}
+@media(max-width:960px){
+ body.crio-ed--boscobel-heights-residence .hero-grid,
+ body.crio-ed--mannings-hill-road-apartment-complex .hero-grid,
+ body.crio-ed--lot-18-mount-boon .hero-grid{grid-template-columns:minmax(0,1fr);gap:30px}
+ body.crio-ed--boscobel-heights-residence .hero h1,
+ body.crio-ed--mannings-hill-road-apartment-complex .hero h1,
+ body.crio-ed--lot-18-mount-boon .hero h1{font-size:clamp(44px,8vw,78px)!important}
+}
+@media(max-width:620px){
+ body.crio-ed--boscobel-heights-residence .hero h1,
+ body.crio-ed--mannings-hill-road-apartment-complex .hero h1,
+ body.crio-ed--lot-18-mount-boon .hero h1{font-size:clamp(38px,10.3vw,62px)!important}
+ body.crio-ed--boscobel-heights-residence .story-copy p{font-size:15px}
+ body.crio-ed--boscobel-heights-residence .design-point{padding:18px}
+}
+
+
+/* Crio 2026 — floating, scroll-linked header system for ALL shared presentations. */
+body.crio-ed{padding-top:122px!important}
+body.crio-ed > header.crio-ed-bar{display:block!important}
+body.crio-ed .crio-ed-bar{
+  position:fixed!important;z-index:900;top:var(--morph-top,50px)!important;
+  left:var(--morph-left,12px)!important;right:var(--morph-right,12px)!important;
+  padding:var(--morph-pad-y,9px) 0!important;border:1px solid rgba(244,244,244,.075)!important;
+  border-radius:var(--morph-radius,18px)!important;background:#111214!important;
+  box-shadow:12px 12px 32px rgba(0,0,0,.32),-7px -7px 22px rgba(255,255,255,.018),inset 0 1px 0 rgba(255,255,255,.035);
+  transition:box-shadow .5s ease!important;
+  font-family:"Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif!important;
+}
+body.crio-ed .crio-ed-bar.scrolled{box-shadow:0 10px 28px rgba(0,0,0,.25),inset 0 -1px 0 rgba(244,244,244,.045)}
+body.crio-ed .crio-ed-bar-inner{
+  width:min(1360px,calc(100vw - 80px))!important;min-height:0!important;
+  padding:0!important;margin-inline:auto!important;display:flex;align-items:center;justify-content:space-between;gap:22px
+}
+body.crio-ed .crio-ed-wordmark{gap:0!important;flex-shrink:0}
+body.crio-ed .crio-ed-wordmark img{
+  width:var(--morph-logo-w,177.1px)!important;max-width:none!important;
+  height:var(--morph-logo-h,50.6px)!important;object-fit:contain!important
+}
+body.crio-ed .crio-ed-label{font:700 10px/1.2 "Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif!important;color:#f4f4f4!important;margin-left:16px;padding-left:16px;letter-spacing:.12em;white-space:nowrap}
+body.crio-ed .crio-ed-bar nav{display:flex!important;align-items:center;gap:0!important;overflow:visible!important;margin-left:auto}
+body.crio-ed .crio-ed-bar nav a{
+ position:relative;display:inline-flex!important;align-items:center;white-space:nowrap;
+ font:700 11px/1.3 "Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif!important;
+ color:#f4f4f4!important;letter-spacing:.08em!important;padding:10px 17px!important;text-decoration:none!important;
+}
+body.crio-ed .crio-ed-bar nav a:last-child{padding-right:0!important}
+body.crio-ed .crio-ed-bar nav a:hover,body.crio-ed .crio-ed-bar nav a.crio-ed-contact{color:#ed1c24!important}
+body.crio-ed .crio-ed-bar nav a:not(:last-child)::after{
+ content:"";position:absolute;top:10%;right:0;height:80%;width:1px;pointer-events:none;
+ background:linear-gradient(180deg,transparent,rgba(244,244,244,.18) 28%,rgba(244,244,244,.18) 72%,transparent)
+}
+body.crio-ed .crio-ed-rule{margin-top:0;background:var(--ed-paper)}
+body.crio-ed .crio-ed-rule,body.crio-ed .crio-ed-footer{font-family:"Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif!important}
+.crio-ed-menu-toggle{display:none!important;background:transparent!important;border:0!important;color:#f4f4f4!important;font:700 12px/1 "Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif!important;text-transform:uppercase;letter-spacing:.12em;cursor:pointer}
+body.crio-ed .crio-ed-bar :is(a,button):focus-visible{outline:2px solid #ed1c24;outline-offset:5px}
+@media(max-width:1100px){
+  body.crio-ed .crio-ed-bar nav a{padding:10px 11px!important;font-size:10px!important}
+  body.crio-ed .crio-ed-label{display:none}
+}
+@media(max-width:900px){
+  body.crio-ed{padding-top:102px!important}
+  body.crio-ed .crio-ed-bar-inner{width:calc(100vw - 40px)!important}
+  .crio-ed-menu-toggle{display:block!important;margin-left:auto}
+  body.crio-ed .crio-ed-bar nav{
+    position:absolute;left:0;right:0;top:calc(100% + 8px);
+    display:none!important;flex-direction:column;align-items:stretch!important;
+    padding:12px 20px 20px!important;border-radius:14px;border:1px solid rgba(244,244,244,.08);
+    background:#111214;box-shadow:0 14px 32px rgba(0,0,0,.35)
+  }
+  body.crio-ed .crio-ed-bar nav.open{display:flex!important}
+  body.crio-ed .crio-ed-bar nav a{font-size:12px!important;padding:14px 0!important;width:100%}
+  body.crio-ed .crio-ed-bar nav a:not(:last-child)::after{
+    left:0;right:0;top:auto;bottom:0;width:100%;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(244,244,244,.16) 18%,rgba(244,244,244,.16) 82%,transparent)
+  }
+  body.crio-ed .crio-ed-bar nav a.crio-ed-detail{display:inline-flex!important}
+}
+@media(max-width:520px){
+  body.crio-ed .crio-ed-bar-inner{width:calc(100vw - 32px)!important}
+  body.crio-ed .crio-ed-bar nav a{font-size:12px!important}
+}
+@media(prefers-reduced-motion:reduce){body.crio-ed .crio-ed-bar{transition:none!important}}

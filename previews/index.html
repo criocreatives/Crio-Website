@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Crio Previews</title>
+<meta name="description" content="Interactive project presentations, concepts and client previews by Crio Creatives.">
+<meta name="theme-color" content="#090909">
+<link rel="icon" type="image/png" href="https://criocreatives.com/assets/logos/Crio%20Creatives%20Logo%20favicon.png">
+<style>
+:root{--red:#ed1c24;--bg:#090909;--surface:#111214;--ink:#f4f4f4;--muted:#b4b4b9;--line:rgba(255,255,255,.13)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.site-header{height:68px;border-bottom:1px solid rgba(255,255,255,.18);background:rgba(237,28,36,.96);backdrop-filter:blur(16px);display:flex;align-items:center}
+.header-inner{width:min(1360px,calc(100% - 80px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand img{display:block;width:168px;height:48px;object-fit:cover;border-radius:9px}
+.header-link{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:9px;background:#fff;color:var(--red);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.header-link:hover{background:#f2f2f2}
+main{min-height:calc(100vh - 68px);display:grid;place-items:center;padding:72px 40px;position:relative;overflow:hidden}
+main:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 18%,rgba(237,28,36,.14),transparent 28%);pointer-events:none}
+.content{position:relative;z-index:1;width:min(1120px,100%);display:grid;grid-template-columns:.78fr 1.22fr;gap:72px;align-items:end}
+.kicker{color:var(--red);font-size:11px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;margin-bottom:18px}
+.index{font-size:clamp(92px,16vw,220px);font-weight:900;line-height:.72;letter-spacing:-.08em;color:rgba(255,255,255,.045);user-select:none}
+h1{margin:0;max-width:760px;font-size:clamp(54px,8vw,108px);line-height:.88;letter-spacing:-.065em}
+h1 span{color:var(--red)}
+.copy{max-width:620px;margin:26px 0 0;color:var(--muted);font-size:17px;line-height:1.7}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:49px;padding:0 20px;border-radius:9px;border:1px solid var(--line);font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.button.primary{background:var(--red);border-color:var(--red);color:#fff}.button.secondary{background:var(--surface);color:#fff}
+.button:hover{transform:translateY(-1px)}
+@media(max-width:800px){.header-inner{width:calc(100% - 36px)}main{padding:52px 18px 72px}.content{grid-template-columns:1fr;gap:38px}.index{font-size:clamp(96px,32vw,190px)}}
+@media(max-width:520px){.site-header{height:62px}.brand img{width:147px;height:42px}.header-link{padding:0 13px;min-height:42px;font-size:10px}main{min-height:calc(100vh - 62px)}.actions{display:grid}.button{width:100%}}
+</style>
+<link rel="stylesheet" href="/previews/assets/css/presentation-editorial.css?v=2">
+<script defer src="/previews/assets/js/presentation-init.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/previews/" aria-label="Crio Previews home"><img src="https://criocreatives.com/assets/logos/Crio%20Creatives%20Logo%20wide%20white.svg" alt="Crio Creatives"></a>
+    <a class="header-link" href="https://criocreatives.com/">Main Website ↗︎</a>
+  </div>
+</header>
+<main>
+  <div class="content">
+    <div class="index">P.</div>
+    <div>
+      <div class="kicker">Crio Creatives / Preview Environment</div>
+      <h1>Project<br><span>Previews.</span></h1>
+      <p class="copy">Interactive project presentations, concepts and client previews by Crio Creatives.</p>
+      <div class="actions">
+        <a class="button primary" href="/previews/list/">Browse all previews</a>
+        <a class="button secondary" href="https://portfolio.criocreatives.com/">View portfolio</a>
+        <a class="button secondary" href="https://criocreatives.com/">Visit Crio Creatives ↗︎</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- LibreCounter: privacy-friendly page analytics -->
+<img src="https://librecounter.org/hidden.svg" referrerpolicy="unsafe-url" alt="" width="1" height="1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">
+</body>
+</html>
