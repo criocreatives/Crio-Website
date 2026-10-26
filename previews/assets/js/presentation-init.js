@@ -144,10 +144,11 @@
     const three=document.createElement('span');
     const website=document.createElement('a');
     website.href='https://criocreatives.com/';
-    website.textContent='Crio website ↗';
+    const externalIcon = '<svg class="crio-icon crio-icon--arrow-up-right" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:inline-block;vertical-align:-.125em;flex-shrink:0;pointer-events:none"><path d="M7 17 17 7M7 7h10v10"/></svg>';
+    website.innerHTML='Crio website ' + externalIcon;
     const contact=document.createElement('a');
     contact.href='https://criocreatives.com/#contact';
-    contact.textContent='Enquiries ↗';
+    contact.innerHTML='Enquiries ' + externalIcon;
     three.append(website,document.createTextNode('   ·   '),contact);
     fin.append(one,two,three);
     foot.append(fin);

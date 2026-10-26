@@ -42,7 +42,7 @@ h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.055em}
 .site-nav>a:not(.nav-main):hover,.site-nav>a[aria-current="page"]{color:#fff}
 .nav-main{display:inline-flex;align-items:center;gap:14px;border:1px solid var(--red);border-radius:9px;padding:13px 17px;background:var(--red);color:white;transition:transform .2s,background .2s}
 .nav-main:hover{background:#c9141c;transform:translateY(-1px)}
-.nav-main::after{content:"↗";font-size:14px;font-weight:700}
+.nav-main>.crio-icon{font-size:14px}
 .menu-toggle{display:none;border:1px solid rgba(255,255,255,.2);border-radius:9px;background:#222327;color:#fff;padding:10px 15px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
 /* Editorial landing hero */
 .hero{position:relative;padding:clamp(195px,19vw,278px) 0 43px;min-height:min(870px,94svh);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
@@ -53,7 +53,7 @@ h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.055em}
 .hero-side{border-top:2px solid var(--red);padding-top:25px;margin-bottom:8px}
 .hero-side p{font-size:clamp(18px,1.85vw,25px);line-height:1.45;letter-spacing:-.02em;color:#41434A;margin:0 0 28px}
 .text-link,.back,.view,.inline-action{display:inline-flex;align-items:center;gap:12px;font:700 10px/1.3 var(--body);text-transform:uppercase;letter-spacing:.12em;padding-bottom:9px;border-bottom:1px solid var(--ink);transition:color .2s,border-color .2s}
-.text-link::after,.inline-action::after{content:"↘";font-size:14px}
+.text-link>.crio-icon,.inline-action>.crio-icon{font-size:14px}
 .text-link:hover,.back:hover,.inline-action:hover{color:var(--red);border-color:var(--red)}
 .hero-rule{position:relative;display:flex;justify-content:space-between;gap:20px;padding-top:18px;border-top:1px solid var(--line);font:700 10px/1.5 var(--body);letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
 /* Products */
@@ -77,8 +77,8 @@ h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.055em}
 .tool-info h3{font-size:clamp(28px,3.1vw,43px);line-height:1.03;margin:30px 0 12px}
 .tool-info p{margin:0;font-size:14px;line-height:1.72;color:var(--muted);max-width:390px}
 .view{margin-top:auto;padding-top:28px;align-self:flex-start;border-bottom:0;color:var(--ink)}
-.view::after{content:"↗";color:var(--red);font-size:19px;transition:transform .2s}
-.tool-card:hover .view::after{transform:translate(2px,-2px)}
+.view>.crio-icon{color:var(--red);font-size:19px;transition:transform .2s}
+.tool-card:hover .view>.crio-icon{transform:translate(2px,-2px)}
 /* Abstract CAD-like illustrations built from CSS to keep pages lightweight */
 .tile-field{width:64%;aspect-ratio:1.2;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(4,1fr);gap:4px;transform:perspective(540px) rotateX(56deg) rotateZ(-13deg);transition:transform .45s}
 .tile-field i{display:block;background:#e9e9e6;border:1px solid #999ca3;box-shadow:0 3px 0 #acb0b5}
@@ -107,7 +107,7 @@ h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.055em}
 /* Shared product layouts */
 .product-page{padding:clamp(180px,18vw,245px) 0 135px;min-height:80svh}
 .product-topline{display:flex;align-items:center;justify-content:space-between;gap:18px}
-.back{color:var(--ink)}.back::before{content:"←";font-size:16px;letter-spacing:0}
+.back{color:var(--ink)}.back>.crio-icon{font-size:16px;letter-spacing:0}
 .product-hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,.52fr);gap:clamp(50px,7vw,120px);align-items:end;margin-top:clamp(70px,8vw,110px)}
 .product-hero h1{font-size:clamp(64px,9.7vw,154px);line-height:.85;letter-spacing:-.075em;text-transform:uppercase;margin:0 0 34px}
 .product-hero .lede{font-size:clamp(19px,2vw,28px);line-height:1.45;letter-spacing:-.025em;max-width:770px;margin:0;color:#4C4D54}
