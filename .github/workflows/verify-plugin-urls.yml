@@ -1,0 +1,34 @@
+name: Verify migrated Crio Plugins routes
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/verify-plugin-urls.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirm plugin pages and original imagery respond
+        run: |
+          set -euo pipefail
+          base="https://criocreatives.com/plugins"
+          for path in             "" "rail-fence-tool/" "3d-pattern-builder/" "stage-truss-builder/"             "fence-maker/" "floor-tile-tool/" "stage-builder/"             "style.css" "site.js"             "assets/rail-fence/cable-railing.webp"             "assets/rail-fence/diamond-mesh-fence.webp"             "assets/rail-fence/glass-railing.webp"             "assets/rail-fence/horizontal-bar-railing.webp"             "assets/rail-fence/horizontal-slat-fence.webp"             "assets/rail-fence/vertical-picket-railing.webp"             "assets/rail-fence/welded-wire-railing.webp"
+          do
+            url="${base}/${path}"
+            code=$(curl -L --retry 5 --retry-delay 2 --retry-all-errors --silent --show-error --output /dev/null --write-out '%{http_code}' "${url}")
+            echo "${url} -> ${code}"
+            test "${code}" = "200"
+          done
+      - name: Verify live storefront checkout and licensing links
+        run: |
+          set -euo pipefail
+          html=$(curl -fLSs --retry 5 --retry-delay 2 https://criocreatives.com/plugins/rail-fence-tool/)
+          echo "${html}" | grep -Fq 'https://buy.stripe.com/3cI5kEahl6Mp1k14q2aVa0h'
+          echo "${html}" | grep -Fq 'https://crio-rail-license.criocreatives.workers.dev/downloads'
+          echo "${html}" | grep -Fq 'href="/plugins/style.css?v=8"'
+          echo "Live checkout and fulfillment link checks passed."
