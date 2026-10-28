@@ -11,6 +11,16 @@
   const status = $('#status');
   const showStatus = (msg,error=false) => { if(status){status.textContent=msg;status.dataset.error=String(error);} };
   const filename = (name,suffix,fmt) => niceName(name)+'-'+suffix+'.'+extNames[fmt];
+  // File extensions determine whether the user's chosen export format differs.
+  // Treat both .jpg and .jpeg as JPEG, and use MIME when no extension is present.
+  const sourceFormat = f => {
+    const ext = f.name.match(/\.(jpe?g|png|webp)$/i)?.[1]?.toLowerCase();
+    return ext === 'jpg' || ext === 'jpeg' ? 'jpeg' : ext || Object.keys(fmtNames).find(fmt => fmtNames[fmt] === f.type) || null;
+  };
+  const converterFilename = (f,fmt) =>
+    $('#keep-original-names')?.checked && sourceFormat(f) !== fmt
+      ? niceName(f.name)+'.'+extNames[fmt]
+      : filename(f.name,'converted',fmt);
   const fileList = [];
   const allowed = f => f && (/^image\/(png|jpeg|webp)$/.test(f.type) || /\.(png|jpe?g|webp)$/i.test(f.name));
   const base = $('.tool-app');
@@ -106,7 +116,7 @@
         if(fmt==='jpeg')jpegBackground(ctx,c.width,c.height,bg());
         ctx.drawImage(img,0,0);
         const b=await blobFromCanvas(c,fmt,quality());
-        return {name:filename(f.name,tool==='converter'?'converted':'optimized',fmt),blob:b};
+        return {name:tool==='converter' ? converterFilename(f,fmt) : filename(f.name,'optimized',fmt),blob:b};
       });
     }
     if(tool==='resizer'){
