@@ -109,6 +109,44 @@
   const quality = () => clamp(Number($('#quality')?.value||85),10,100)/100;
   const outputFormat = () => $('#format')?.value || 'jpeg';
   const bg = () => $('#background')?.value||'#ffffff';
+
+  // Lightroom-style longest-side resizing: portrait, landscape, and square
+  // images share a single maximum dimension without cropping or distortion.
+  function resizeDimensions(originalW,originalH,{mode,maxW,maxH,longest,ratio,allowUp}){
+    let w=originalW,h=originalH;
+    if(mode==='longest'){
+      if(!Number.isInteger(longest)||longest<1||longest>32767){
+        throw new Error('Longest side must be between 1 and 32767 pixels.');
+      }
+      const scale=longest/Math.max(w,h);
+      const factor=allowUp?scale:Math.min(scale,1);
+      return {
+        width:Math.max(1,Math.round(w*factor)),
+        height:Math.max(1,Math.round(h*factor))
+      };
+    }
+    if(ratio){
+      const sc=Math.min(maxW>0?maxW/w:Infinity,maxH>0?maxH/h:Infinity,allowUp?Infinity:1);
+      const scale=Number.isFinite(sc)?sc:1;
+      w=Math.max(1,Math.round(w*scale));
+      h=Math.max(1,Math.round(h*scale));
+    }else{
+      w=maxW||w;h=maxH||h;
+      if(!allowUp){w=Math.min(w,originalW);h=Math.min(h,originalH);}
+    }
+    return {width:w,height:h};
+  }
+  function syncResizeMode(){
+    if(tool!=='resizer')return;
+    const longest=$('#resize-mode')?.value==='longest';
+    if($('#resize-bounds'))$('#resize-bounds').hidden=longest;
+    if($('#resize-longest'))$('#resize-longest').hidden=!longest;
+    if($('#resize-ratio'))$('#resize-ratio').hidden=longest;
+  }
+  if(tool==='resizer'){
+    $('#resize-mode')?.addEventListener('change',syncResizeMode);
+    syncResizeMode();
+  }
   async function processFile(f){
     if(tool==='converter'||tool==='compressor'){
       return withImage(f,async img=>{
@@ -122,17 +160,15 @@
     }
     if(tool==='resizer'){
       return withImage(f,async img=>{
-        const maxW=Math.round(Number($('#width')?.value||0)),maxH=Math.round(Number($('#height')?.value||0));
-        const ratio=!!$('#keep-ratio')?.checked;
-        const allowUp=!!$('#upscale')?.checked;
-        let w=img.naturalWidth,h=img.naturalHeight;
-        if(ratio){
-          const sc=Math.min(maxW>0?maxW/w:Infinity,maxH>0?maxH/h:Infinity,allowUp?Infinity:1);
-          const s=Number.isFinite(sc)?sc:1;w=Math.max(1,Math.round(w*s));h=Math.max(1,Math.round(h*s));
-        } else {
-          w=maxW||w;h=maxH||h;
-          if(!allowUp){w=Math.min(w,img.naturalWidth);h=Math.min(h,img.naturalHeight);}
-        }
+        const dimensions=resizeDimensions(img.naturalWidth,img.naturalHeight,{
+          mode:$('#resize-mode')?.value||'bounds',
+          maxW:Math.round(Number($('#width')?.value||0)),
+          maxH:Math.round(Number($('#height')?.value||0)),
+          longest:Number($('#longest-side')?.value),
+          ratio:!!$('#keep-ratio')?.checked,
+          allowUp:!!$('#upscale')?.checked
+        });
+        const {width:w,height:h}=dimensions;
         const fmt=outputFormat()==='original' ? (sourceFormat(f)||'jpeg') : outputFormat();
         const c=canvas(w,h),ctx=c.getContext('2d');ctx.imageSmoothingQuality='high';
         if(fmt==='jpeg')jpegBackground(ctx,w,h,bg());
