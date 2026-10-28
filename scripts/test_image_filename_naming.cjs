@@ -10,7 +10,7 @@ const src = fs.readFileSync(path.join(root, 'tools/toolkit.js'), 'utf8');
 assert.match(src, /\n\}\)\(\);\s*$/, 'Expected shared image-tool closure');
 const testedSrc = src.replace(
   /\n\}\)\(\);\s*$/,
-  '\n  globalThis.__nameTesting = { sourceFormat, outputFilename, safeUniqueNames };\n})();'
+  '\n  globalThis.__nameTesting = { sourceFormat, outputFilename, safeUniqueNames, resizeDimensions };\n})();'
 );
 
 function naming(checked) {
@@ -54,6 +54,32 @@ for (const tool of ['converter', 'compressor', 'resizer', 'watermarker']) {
   const html = fs.readFileSync(path.join(root, 'tools', tool, 'index.html'), 'utf8');
   assert.equal((html.match(/id="keep-original-names"/g) || []).length, 1, tool + ': expected one filename option');
   assert.ok(html.includes('type="checkbox" id="keep-original-names"'), tool + ': checkbox is not present');
-  assert.ok(html.includes('src="/tools/toolkit.js?v=3"'), tool + ': old script version');
+  const expectedVersion = tool === 'resizer' ? '4' : '3';
+  assert.ok(html.includes('src="/tools/toolkit.js?v=' + expectedVersion + '"'), tool + ': old script version');
 }
-console.log('PASS: 4 image tools offer basename preservation; format, original suffix, and batch collision cases verified.');
+
+const { resizeDimensions } = naming(false);
+const resized = (width, height, opts) => {
+  const result = resizeDimensions(width, height, opts);
+  return [result.width, result.height];
+};
+const longest = (size, allowUp = false) =>
+  ({ mode: 'longest', longest: size, maxW: 1920, maxH: 1080, ratio: true, allowUp });
+const bounds = (ratio, allowUp = false) =>
+  ({ mode: 'bounds', maxW: 1920, maxH: 1080, ratio, allowUp });
+assert.deepEqual(resized(4000, 3000, longest(1920)), [1920, 1440], 'landscape long edge');
+assert.deepEqual(resized(3000, 4000, longest(1920)), [1440, 1920], 'portrait long edge');
+assert.deepEqual(resized(3000, 3000, longest(1920)), [1920, 1920], 'square long edge');
+assert.deepEqual(resized(800, 600, longest(1920)), [800, 600], 'no unwanted upscale');
+assert.deepEqual(resized(800, 600, longest(1920, true)), [1920, 1440], 'explicit upscale');
+assert.deepEqual(resized(4000, 3000, bounds(true)), [1440, 1080], 'old fit mode preserved');
+assert.deepEqual(resized(4000, 3000, bounds(false)), [1920, 1080], 'old exact dimensions preserved');
+assert.throws(() => resizeDimensions(4000, 3000, longest(0)), /Longest side/);
+assert.throws(() => resizeDimensions(4000, 3000, longest(40000)), /Longest side/);
+const resizerHTML=fs.readFileSync(path.join(root, 'tools/resizer/index.html'), 'utf8');
+for(const id of ['resize-mode', 'resize-bounds', 'resize-longest', 'resize-ratio', 'longest-side']) {
+  assert.ok(resizerHTML.includes('id="' + id + '"'), 'Missing resizer control: ' + id);
+}
+assert.ok(resizerHTML.includes('<option value="longest">Longest side</option>'));
+
+console.log('PASS: 4 image tools preserve export names; resizer long-edge, upscaling and existing modes tested.');
