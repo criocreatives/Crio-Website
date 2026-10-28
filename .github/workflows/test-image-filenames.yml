@@ -1,0 +1,29 @@
+name: Image export filename QA
+on:
+  push:
+    branches: [main]
+    paths:
+      - tools/toolkit.js
+      - tools/converter/index.html
+      - tools/compressor/index.html
+      - tools/resizer/index.html
+      - tools/watermarker/index.html
+      - scripts/test_image_filename_naming.cjs
+      - .github/workflows/test-image-filenames.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  filename-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check toolkit JavaScript syntax
+        run: node --check tools/toolkit.js
+      - name: Test export filename naming and all four controls
+        run: node scripts/test_image_filename_naming.cjs
