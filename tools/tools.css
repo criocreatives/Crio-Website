@@ -62,6 +62,8 @@
 .field input[type="range"]{width:100%;accent-color:#ed1c24}
 .field input[type="color"]{height:47px;cursor:pointer;padding:5px}
 .field-inline{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+/* Explicitly hide inactive resize controls over the .field / .field-inline display rules. */
+.tools-body[data-tool="resizer"] :is(#resize-bounds,#resize-longest,#resize-ratio)[hidden]{display:none!important}
 .field-check{display:flex;align-items:center;gap:10px;font-size:13px;line-height:1.5;color:#ddd}
 .field-check input{accent-color:#ed1c24;width:18px;height:18px}
 .controls-note{margin:0;padding:14px 16px;background:#1a1a1d;border-radius:9px;color:#aeb0b7;font-size:12px;line-height:1.6}
