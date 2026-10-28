@@ -17,10 +17,11 @@
     const ext = f.name.match(/\.(jpe?g|png|webp)$/i)?.[1]?.toLowerCase();
     return ext === 'jpg' || ext === 'jpeg' ? 'jpeg' : ext || Object.keys(fmtNames).find(fmt => fmtNames[fmt] === f.type) || null;
   };
-  const converterFilename = (f,fmt) =>
+  // All image tools can retain the source basename for cross-format exports.
+  const outputFilename = (f,suffix,fmt) =>
     $('#keep-original-names')?.checked && sourceFormat(f) !== fmt
       ? niceName(f.name)+'.'+extNames[fmt]
-      : filename(f.name,'converted',fmt);
+      : filename(f.name,suffix,fmt);
   const fileList = [];
   const allowed = f => f && (/^image\/(png|jpeg|webp)$/.test(f.type) || /\.(png|jpe?g|webp)$/i.test(f.name));
   const base = $('.tool-app');
@@ -116,7 +117,7 @@
         if(fmt==='jpeg')jpegBackground(ctx,c.width,c.height,bg());
         ctx.drawImage(img,0,0);
         const b=await blobFromCanvas(c,fmt,quality());
-        return {name:tool==='converter' ? converterFilename(f,fmt) : filename(f.name,'optimized',fmt),blob:b};
+        return {name:outputFilename(f,tool==='converter'?'converted':'optimized',fmt),blob:b};
       });
     }
     if(tool==='resizer'){
@@ -132,11 +133,11 @@
           w=maxW||w;h=maxH||h;
           if(!allowUp){w=Math.min(w,img.naturalWidth);h=Math.min(h,img.naturalHeight);}
         }
-        const fmt=outputFormat()==='original' ? (f.type==='image/png'?'png':f.type==='image/webp'?'webp':'jpeg') : outputFormat();
+        const fmt=outputFormat()==='original' ? (sourceFormat(f)||'jpeg') : outputFormat();
         const c=canvas(w,h),ctx=c.getContext('2d');ctx.imageSmoothingQuality='high';
         if(fmt==='jpeg')jpegBackground(ctx,w,h,bg());
         ctx.drawImage(img,0,0,w,h);
-        return {name:filename(f.name,w+'x'+h,fmt),blob:await blobFromCanvas(c,fmt,quality())};
+        return {name:outputFilename(f,w+'x'+h,fmt),blob:await blobFromCanvas(c,fmt,quality())};
       });
     }
     if(tool==='watermarker'){
@@ -156,7 +157,7 @@
         if(pos.includes('bottom'))y=h-mh-space;
         if(pos==='center'){x=(w-mw)/2;y=(h-mh)/2;}
         ctx.globalAlpha=opacity;ctx.drawImage(mark,x,y,mw,mh);ctx.globalAlpha=1;
-        return {name:filename(f.name,'watermarked',fmt),blob:await blobFromCanvas(c,fmt,quality())};
+        return {name:outputFilename(f,'watermarked',fmt),blob:await blobFromCanvas(c,fmt,quality())};
       }));
     }
     throw new Error('Unknown image operation.');
