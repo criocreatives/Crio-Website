@@ -1,0 +1,47 @@
+/* RawBar homepage additions */
+.rb-block{padding:105px 0;background:#140819;color:#f8f2fa;overflow:hidden}
+.rb-block:nth-of-type(even){background:#210c2b}
+.rb-block .eyebrow{color:#ff5bc4}
+.rb-grid{display:grid;grid-template-columns:1fr 1fr;gap:7vw;align-items:center}
+.rb-block h2{font:800 clamp(46px,5.9vw,88px)/1.08 "Manrope",Arial,sans-serif;letter-spacing:-.068em;margin:20px 0 28px}
+.rb-block h2 em{font-style:normal;color:#ff43ba}
+.rb-block p:not(.eyebrow){font:400 14px/1.75 "Century Gothic","CenturyGothic","Avenir Next",Avenir,Arial,sans-serif}
+.rb-photo{min-height:440px;background:#35153d;position:relative;overflow:hidden}
+.rb-photo img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;filter:saturate(.9) brightness(.83)}
+.rb-event-state{border-left:2px solid #b85af5;padding:15px 20px;margin:30px 0 27px;color:#ebd3e8;font:400 15px "Century Gothic",Arial,sans-serif}
+.rb-venue{background:linear-gradient(90deg,rgba(12,2,18,.96),rgba(25,5,30,.88)),url("https://static.wixstatic.com/media/2a68c5_eb7276c8425b41a8899984eeff70188ef000.jpg") center/cover}
+.rb-venue .rb-grid{grid-template-columns:.8fr 1.2fr;align-items:start}
+.rb-venue-form{border:1px solid #7b4478;background:rgba(15,4,24,.92);padding:28px}
+.rb-venue-form h3{font:800 25px "Manrope",Arial,sans-serif;letter-spacing:-.04em;margin:0 0 23px}
+.rb-venue-form .rb-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.rb-venue-form label{display:flex;flex-direction:column;gap:8px;font:700 10px "Century Gothic",Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#eed3eb}
+.rb-venue-form .rb-wide{grid-column:1/-1}
+.rb-venue-form input,.rb-venue-form select,.rb-venue-form textarea{background:#24112f;color:#fff;border:1px solid #704974;padding:12px;width:100%;min-width:0;border-radius:0;font:400 13px "Century Gothic",Arial,sans-serif;color-scheme:dark}
+.rb-venue-form input,.rb-venue-form select{height:47px}
+.rb-venue-form textarea{resize:vertical;min-height:80px}
+.rb-venue-form input::placeholder,.rb-venue-form textarea::placeholder{color:#b49ab9}
+.rb-venue-form button{width:100%;margin-top:20px}
+.rb-venue-form .rb-note{font-size:11px!important;color:#bca7be;margin:12px 0 0}
+.rb-member-card{aspect-ratio:1.63;background:linear-gradient(120deg,#20092e,#742485 55%,#19071e);border:1px solid #b25bd2;border-radius:17px;padding:30px;box-shadow:0 35px 70px rgba(0,0,0,.35);transform:rotate(-4deg);display:flex;flex-direction:column;justify-content:space-between;max-width:520px}
+.rb-card-top,.rb-card-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;font:700 10px "Century Gothic",Arial,sans-serif;letter-spacing:.12em}
+.rb-card-top img{width:145px;height:auto;object-fit:contain}
+.rb-member-card strong{font:800 clamp(21px,2.9vw,36px) "Manrope",Arial,sans-serif;letter-spacing:-.045em}
+.rb-card-foot i{width:85px;height:32px;background:repeating-linear-gradient(90deg,#f4e7fa 0 2px,transparent 2px 5px,#f4e7fa 5px 6px,transparent 6px 9px);opacity:.65}
+.rb-member-note{color:#bfa8c5;font-size:11px!important;margin-top:16px}
+.rb-policies-list>div{border-top:1px solid rgba(255,255,255,.25);padding:21px 0;display:grid;grid-template-columns:135px 1fr;gap:20px}
+.rb-policies-list span{color:#e7a4dc;font:700 11px "Century Gothic",Arial,sans-serif}
+.rb-policies-list strong{color:#f1e2ee;font:400 15px/1.65 "Century Gothic",Arial,sans-serif}
+.rb-policies-list .text-link{margin-top:21px}
+.rb-social-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:35px}
+.rb-social-head h2{margin:13px 0 0}
+.rb-social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.rb-social-grid a{aspect-ratio:1;overflow:hidden;background:#2b1830}
+.rb-social-grid img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.rb-social-grid a:hover img{transform:scale(1.06)}
+@media(max-width:950px){.rb-grid,.rb-venue .rb-grid{grid-template-columns:1fr;gap:34px}.rb-member-card{margin:auto}.rb-photo{min-height:340px}}
+@media(max-width:600px){.rb-block{padding:72px 0}.rb-block h2{font-size:clamp(43px,10vw,63px)}.rb-photo{min-height:260px}
+.rb-venue-form{padding:19px}.rb-venue-form .rb-fields{grid-template-columns:1fr}
+.rb-member-card{padding:20px;border-radius:13px}.rb-card-top img{width:110px}.rb-card-top span,.rb-card-foot{font-size:8px}.rb-card-foot i{height:25px;width:65px}
+.rb-policies-list>div{grid-template-columns:1fr;gap:7px}.rb-social-head{align-items:start;flex-direction:column;gap:20px}
+.rb-social-grid{gap:6px}.rb-social-grid a{aspect-ratio:.8}}
+@media(prefers-reduced-motion:reduce){.rb-social-grid img{transition:none}}
