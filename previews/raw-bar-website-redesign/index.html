@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#151511">
+  <meta name="theme-color" content="#0b0611">
   <meta name="robots" content="noindex,follow">
   <title>RawBar | Restaurant & Lounge — Kingston, Jamaica</title>
   <meta name="description" content="A new look at RawBar Restaurant & Lounge in Kingston, Jamaica. Explore the dining experience, menus, reservations and private events.">
   <link rel="canonical" href="https://criocreatives.com/previews/raw-bar-website-redesign/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="RawBar — An evening worth staying for">
+  <meta property="og:title" content="RawBar — Restaurant & Lounge, Kingston">
   <meta property="og:description" content="Restaurant & Lounge, Kingston, Jamaica. Website redesign concept by Crio Creatives.">
   <meta property="og:url" content="https://criocreatives.com/previews/raw-bar-website-redesign/">
   <meta property="og:image" content="https://static.wixstatic.com/media/2a68c5_330590c624f54a7998ec8e373cdde88a~mv2.jpeg">
@@ -198,13 +198,111 @@
       .footer-top{padding:63px 0}.footer-top h2{font-size:clamp(47px,10vw,64px)}.footer-contact a{font-size:14px}.footer-wordmark{font-size:21.3vw}.footer-bottom{align-items:flex-start;flex-direction:column;padding:25px 0 30px}.footer-links{gap:15px}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
-  </style>
+  
+/* RawBar brand application — original brush logo and neon-nightlife palette */
+:root{
+ --ink:#0b0611;--ink2:#180b20;--ivory:#f8f2fa;--paper:#1b0b25;
+ --muted:#c1aecb;--accent:#ff22ab;--accent-deep:#f84ac5;
+ --line:rgba(255,255,255,.18);
+}
+body{background:var(--ink);color:var(--ivory)}
+.announcement{background:#08040c;color:#f7eef8;border-color:rgba(255,62,184,.25)}
+.announcement span:last-child{color:#d9a6cf}
+.site-header{border-bottom-color:rgba(255,255,255,.25)}
+.site-header.is-scrolled{background:rgba(12,5,18,.97);border-bottom-color:rgba(255,44,175,.32)}
+.header-inner{gap:30px}
+.brand-logo{display:block;width:176px;height:auto;aspect-ratio:1400/474;object-fit:contain;filter:drop-shadow(0 0 11px rgba(255,60,174,.13))}
+.header-nav a:hover,.footer-contact a:hover{color:#ff4ec4}
+.button{background:#f518aa;border-color:#f518aa;color:#fff;box-shadow:0 0 25px rgba(239,19,146,.15)}
+.button:hover{background:#ff55c8;border-color:#ff55c8;color:#110517}
+.button.ghost{border-color:rgba(255,171,231,.62);color:#fff;box-shadow:none;background:rgba(17,4,25,.26)}
+.button.ghost:hover{background:#f6e8f4;border-color:#f6e8f4;color:#16051a}
+.text-link{color:#f5c3e9}
+.text-link:hover{color:#ff4ec4}
+.hero{background:#13081c}
+.hero-photo img{filter:saturate(1.08) contrast(1.12) brightness(.88)}
+.hero::before{
+ background:linear-gradient(90deg,rgba(8,3,16,.96) 0%,rgba(13,2,21,.77) 38%,rgba(20,3,26,.28) 76%,rgba(13,3,21,.32) 100%),
+ linear-gradient(0deg,rgba(14,0,21,.86),transparent 45%)
+}
+.hero::after{opacity:1;background:radial-gradient(ellipse 56% 54% at 93% 72%,rgba(222,6,119,.25),transparent 70%),
+ radial-gradient(ellipse 40% 45% at 65% 20%,rgba(101,23,139,.22),transparent 70%);mix-blend-mode:screen}
+.hero h1 em{color:#ff43c3;text-shadow:0 0 35px rgba(244,5,149,.19)}
+.hero-kicker::before{background:#ff42b9}
+.hero-bottom .scroll-line{background:#f43bb7}
+.intro{background:radial-gradient(ellipse 60% 80% at 100% 100%,rgba(95,13,98,.22),transparent 80%),#1c0b23;color:#f8f2fa}
+.intro .eyebrow{color:#ff6fcb}
+.intro h2 em{color:#ff43bf}
+.intro-bottom p{color:#d2c0d3}
+.intro-bottom .text-link{color:#ff79d0}
+.immersive{background:#100715}
+.immersive-copy .eyebrow{color:#ff66cf}
+.immersive-copy h2 em{color:#ff32b4}
+.immersive-copy p:not(.eyebrow){color:#d5c0d8}
+.menu-section{background:linear-gradient(180deg,#0c0612,#16081d 100%)}
+.menu-section .section-heading .eyebrow,.section-heading .eyebrow{color:#ff6bcd}
+.section-heading h2 em{color:#ff44c0}
+.menu-card{border:1px solid rgba(244,68,181,.16);background:#230c27}
+.menu-card::after{background:linear-gradient(0deg,rgba(11,2,19,.97),rgba(37,6,38,.48) 47%,rgba(13,3,19,.12) 95%)}
+.menu-card:hover,.menu-card:focus-within{border-color:rgba(255,48,173,.8)}
+.card-index{color:#ff62ca}
+.card-copy p{color:#ead5e9}
+.card-copy .text-link{color:#ffc7ed}
+.scene{background:radial-gradient(circle at 100% 0%,rgba(123,14,122,.2),transparent 40%),#200d2b;color:#fcf2fc}
+.scene .section-heading .eyebrow{color:#ff82d6}
+.scene-details h3{color:#fdf5fd}
+.scene-details p{color:#dbc9de}
+.scene-options span{border-color:rgba(250,131,208,.43);color:#efd5ec}
+.scene .text-link{color:#ff83d6}
+.event{background:#18071c}
+.event>img{filter:saturate(1.13) contrast(1.15)}
+.event::before{background:linear-gradient(90deg,rgba(13,2,19,.96) 0%,rgba(24,2,30,.79) 61%,rgba(26,2,29,.53))}
+.event .eyebrow{color:#ff78cf}
+.event h2 em{color:#ff37b8}
+.event p:not(.eyebrow){color:#e4cfe4}
+.visit{background:linear-gradient(140deg,#130719,#210d2a);color:#f9effa}
+.visit .eyebrow{color:#ff75d1}
+.visit h2 em{color:#ff4dc2}
+.visit-left>p:not(.eyebrow){color:#dbc8dc}
+.visit-left .button{background:#fa23b0;color:#fff;border-color:#fa23b0}
+.visit-left .button:hover{background:#ff6bd1;border-color:#ff6bd1;color:#110517}
+.visit-table{border-color:rgba(255,129,219,.48)}
+.visit-row{border-color:rgba(255,173,230,.2)}
+.visit-label{color:#ff84d6}
+.visit-value{color:#f8eff8}
+.visit-value a{text-decoration-color:#fb4dba}
+.visit-value small{color:#c4afc6}
+.dress-note{color:#c3afc6}
+.dress-note a{color:#ffa8e2}
+footer{background:#09040e;border-color:#5a2058}
+.footer-top .eyebrow{color:#ff74d1}
+.footer-top h2 em{color:#ff47bf}
+.footer-contact a{color:#f0ddec}
+.footer-logo{display:block;width:min(1050px,90%);height:auto;margin:0 auto 38px;filter:drop-shadow(0 0 35px rgba(245,20,160,.11))}
+.footer-bottom{border-color:rgba(255,91,193,.28);color:#b99dbc}
+.footer-bottom a:hover{color:#ff69ce}
+@media(max-width:1180px){.brand-logo{width:150px}}
+@media(max-width:840px){
+ .brand-logo{width:139px}
+ .mobile-nav{background:#130718}
+ .mobile-nav a{border-bottom-color:rgba(255,61,178,.27)}
+ .mobile-nav a:last-child{color:#ff79d0}
+ .menu-toggle{border-color:rgba(255,139,213,.6)}
+}
+@media(max-width:600px){
+ .brand-logo{width:112px}
+ .hero::before{background:linear-gradient(90deg,rgba(10,2,17,.94),rgba(12,2,20,.59) 96%),linear-gradient(0deg,rgba(12,1,19,.61),transparent 65%)}
+ .footer-logo{width:calc(100% - 30px);margin-bottom:27px}
+ .menu-card{min-height:465px}
+}
+
+</style>
 </head>
 <body id="top">
   <div class="announcement"><span>RawBar &nbsp; / &nbsp; Kingston, Jamaica</span><span>Restaurant &amp; Lounge — 90A Barbican Road</span></div>
   <header class="site-header" id="site-header">
     <div class="header-inner">
-      <a href="#top" class="wordmark" aria-label="RawBar home">raw<em>bar.</em></a>
+      <a href="#top" class="brand-link" aria-label="RawBar home"><img class="brand-logo" src="rawbar-logo.svg" alt="RawBar"></a>
       <nav class="header-nav" aria-label="Main navigation">
         <a href="#about">Our Story</a><a href="#menu">Food &amp; Drinks</a><a href="#experience">The Space</a><a href="#events">Private Events</a><a href="#visit">Visit</a>
       </nav>
@@ -331,7 +429,7 @@
       <div><p class="eyebrow">Good evenings begin here</p><h2 class="serif">A table is waiting.<br>Make it a <em>date.</em></h2><a href="https://www.rawbarja.com/reservations" target="_blank" rel="noopener noreferrer" class="text-link">Book your evening <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       <div class="footer-contact"><a href="mailto:info@rawbarja.com">info@rawbarja.com</a><a href="tel:+18766723623">(876) 672-3623</a><span class="muted">90A Barbican Road, Kingston</span></div>
     </div>
-    <div class="footer-wordmark" aria-hidden="true">raw<em>bar.</em></div>
+    <img class="footer-logo" src="rawbar-logo.svg" alt="" aria-hidden="true" loading="lazy">
     <div class="container footer-bottom"><span>RawBar Restaurant &amp; Lounge · Kingston, Jamaica</span><div class="footer-links"><a href="https://www.rawbarja.com/terms-conditions" target="_blank" rel="noopener noreferrer">Policies</a><a href="https://www.rawbarja.com/careers" target="_blank" rel="noopener noreferrer">Careers</a><a href="https://www.rawbarja.com/" target="_blank" rel="noopener noreferrer">Current website</a><a href="https://criocreatives.com/" target="_blank" rel="noopener noreferrer">Concept by Crio Creatives</a></div></div>
   </footer>
   <script>
