@@ -76,7 +76,9 @@ def main():
         # and analytics conventions. Include public pages in sitemap accounting
         # without applying the main marketing pages\u0027 strict metadata template.
         if rel.startswith("previews/"):
-            if rel not in {"previews/404.html", "previews/portfolio/index.html"}:
+            # Client concept previews marked noindex must not enter the sitemap.
+            if rel not in {"previews/404.html", "previews/portfolio/index.html",
+                           "previews/raw-bar-website-redesign/index.html"}:
                 expected_urls.add(page_url(rel))
             continue
         source = file.read_text(encoding="utf-8")
