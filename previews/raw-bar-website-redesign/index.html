@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#151511">
+  <meta name="robots" content="noindex,follow">
+  <title>RawBar | Restaurant & Lounge — Kingston, Jamaica</title>
+  <meta name="description" content="A new look at RawBar Restaurant & Lounge in Kingston, Jamaica. Explore the dining experience, menus, reservations and private events.">
+  <link rel="canonical" href="https://criocreatives.com/previews/raw-bar-website-redesign/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="RawBar — An evening worth staying for">
+  <meta property="og:description" content="Restaurant & Lounge, Kingston, Jamaica. Website redesign concept by Crio Creatives.">
+  <meta property="og:url" content="https://criocreatives.com/previews/raw-bar-website-redesign/">
+  <meta property="og:image" content="https://static.wixstatic.com/media/2a68c5_330590c624f54a7998ec8e373cdde88a~mv2.jpeg">
+  <meta property="og:image:alt" content="RawBar Restaurant & Lounge interior in Kingston, Jamaica">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://static.wixstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#151511;--ink2:#20211b;--ivory:#f0ece4;--paper:#e9e4da;--muted:#a7a79d;--accent:#d9d2ab;--accent-deep:#b7ad7b;--line:rgba(255,255,255,.18);--serif:"Playfair Display",Georgia,serif;--sans:"DM Sans",Arial,sans-serif;--ui:"Manrope",Arial,sans-serif}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:80px}
+    body{margin:0;background:var(--ink);color:var(--ivory);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    img{display:block;width:100%;height:100%;object-fit:cover}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    ::selection{background:#d9d2ab;color:#151511}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .container{width:min(1440px,calc(100% - 112px));margin-inline:auto}
+    .eyebrow{margin:0;font-family:var(--ui);font-size:10px;font-weight:800;letter-spacing:.26em;text-transform:uppercase}
+    .serif{font-family:var(--serif);font-weight:400;letter-spacing:-.045em}
+    .muted{color:var(--muted)}
+    .arrow-icon{width:15px;height:15px;display:inline-block;vertical-align:middle;flex:0 0 15px}
+    .text-link{display:inline-flex;gap:22px;align-items:center;padding:0 0 10px;border-bottom:1px solid currentColor;font:700 11px/1.4 var(--ui);letter-spacing:.15em;text-transform:uppercase;transition:gap .25s,color .25s}
+    .text-link:hover{gap:29px;color:var(--accent-deep)}
+    .button{display:inline-flex;align-items:center;justify-content:space-between;gap:22px;min-height:58px;padding:0 24px;background:var(--ivory);color:var(--ink);border:1px solid var(--ivory);font:800 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;transition:background .25s,color .25s,border-color .25s}
+    .button:hover{background:var(--accent);border-color:var(--accent)}
+    .button.ghost{background:transparent;color:var(--ivory);border-color:rgba(255,255,255,.6)}
+    .button.ghost:hover{background:var(--ivory);color:var(--ink)}
+    .announcement{height:35px;display:flex;justify-content:space-between;align-items:center;padding:0 56px;background:#11120f;border-bottom:1px solid rgba(255,255,255,.12);font:700 9px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:#d7d6c9}
+    .announcement span:last-child{color:#a9aaa0}
+    .site-header{position:absolute;top:35px;left:0;right:0;z-index:40;height:94px;display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,.28);transition:height .28s,background .28s,border-color .28s}
+    .site-header.is-scrolled{position:fixed;top:0;height:74px;background:rgba(20,21,17,.97);border-color:rgba(255,255,255,.17);backdrop-filter:blur(18px)}
+    .header-inner{width:calc(100% - 112px);max-width:1440px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:36px}
+    .wordmark{display:inline-flex;align-items:baseline;gap:0;white-space:nowrap;font:800 32px/1 var(--ui);letter-spacing:-.085em}
+    .wordmark em{font-style:normal;color:var(--accent)}
+    .header-nav{display:flex;gap:42px;align-items:center;margin-left:auto}
+    .header-nav a{font:700 10px var(--ui);letter-spacing:.14em;text-transform:uppercase;transition:color .2s}
+    .header-nav a:hover{color:var(--accent)}
+    .header-reserve{min-height:42px;padding:0 16px;font-size:10px;gap:25px}
+    .menu-toggle{display:none;width:43px;height:43px;border:1px solid rgba(255,255,255,.45);background:transparent;color:#fff;align-items:center;justify-content:center;cursor:pointer}
+    .menu-toggle .bars{width:20px;height:12px;position:relative;border-top:1px solid currentColor;border-bottom:1px solid currentColor}
+    .menu-toggle .bars::after{content:"";position:absolute;top:5px;left:0;width:100%;border-top:1px solid currentColor}
+    .mobile-nav{display:none}
+    .hero{min-height:750px;height:min(970px,calc(100svh - 35px));position:relative;isolation:isolate;display:flex;align-items:center;overflow:hidden;background:#23251f}
+    .hero-photo{position:absolute;inset:0;z-index:-3;background:#333329}
+    .hero-photo img{object-position:50% 56%;filter:saturate(.85) contrast(1.05)}
+    .hero::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(10,11,9,.91) 0%,rgba(10,11,9,.77) 34%,rgba(10,11,9,.3) 70%,rgba(10,11,9,.1) 100%),linear-gradient(0deg,rgba(9,10,8,.55),transparent 44%);pointer-events:none}
+    .hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.13;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E")}
+    .hero-content{padding-top:126px;padding-bottom:85px;position:relative;z-index:1}
+    .hero-kicker{display:flex;align-items:center;gap:19px;color:#dfdfd2}
+    .hero-kicker::before{content:"";width:36px;height:1px;background:var(--accent)}
+    .hero h1{max-width:1080px;margin:32px 0 25px;font:400 clamp(76px,9.2vw,152px)/.98 var(--serif);letter-spacing:-.077em}
+    .hero h1 em{font-weight:400;color:var(--accent);font-style:italic}
+    .hero-description{max-width:355px;font:400 16px/1.8 var(--sans);color:#e1e1d9}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:35px}
+    .hero-bottom{position:absolute;left:0;right:0;bottom:39px;display:flex;align-items:center;justify-content:space-between;gap:20px;font:700 10px var(--ui);letter-spacing:.16em;text-transform:uppercase}
+    .hero-bottom .scroll-label{display:flex;gap:12px;align-items:center;color:#e3e2d9}
+    .hero-bottom .scroll-line{height:1px;width:64px;background:#b7b8a7}
+    .hero-bottom .location{color:#dbdacd}
+    .intro{background:var(--ivory);color:var(--ink);padding:140px 0 145px}
+    .intro-grid{display:grid;grid-template-columns:1fr 2.2fr;gap:8vw;align-items:start}
+    .intro .eyebrow{padding-top:14px;color:#67695d}
+    .intro h2{margin:0;max-width:1000px;font:400 clamp(50px,6vw,94px)/1.18 var(--serif);letter-spacing:-.062em}
+    .intro h2 em{color:#848b6c}
+    .intro-bottom{display:flex;align-items:flex-start;justify-content:space-between;gap:50px;margin-top:48px}
+    .intro-bottom p{margin:0;max-width:480px;font:400 16px/1.85 var(--sans);color:#55564e}
+    .intro-bottom .text-link{margin-top:10px;white-space:nowrap}
+    .immersive{display:grid;grid-template-columns:1.2fr .8fr;min-height:760px;background:#171812}
+    .immersive-photo{position:relative;min-height:740px;overflow:hidden;background:#383a2c}
+    .immersive-photo img{transition:transform .9s cubic-bezier(.2,.65,.2,1)}
+    .immersive-photo:hover img{transform:scale(1.035)}
+    .photo-note{position:absolute;bottom:34px;left:38px;font:700 10px var(--ui);letter-spacing:.18em;text-transform:uppercase;text-shadow:0 1px 15px #111}
+    .immersive-copy{padding:clamp(58px,9vw,145px) clamp(38px,6vw,115px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+    .immersive-copy .eyebrow{color:var(--accent-deep)}
+    .immersive-copy h2{font:400 clamp(54px,5.4vw,91px)/1.14 var(--serif);letter-spacing:-.06em;margin:30px 0 30px}
+    .immersive-copy h2 em{color:var(--accent)}
+    .immersive-copy p:not(.eyebrow){font-size:15px;line-height:1.9;color:#c8c9c0;max-width:380px;margin:0 0 37px}
+    .section-heading{display:flex;align-items:end;justify-content:space-between;gap:36px}
+    .section-heading h2{margin:14px 0 0;font:400 clamp(58px,7vw,107px)/1.08 var(--serif);letter-spacing:-.067em}
+    .section-heading .eyebrow{color:var(--accent-deep)}
+    .menu-section{padding:125px 0 140px;background:var(--ink)}
+    .menu-section .section-heading{margin-bottom:54px}
+    .menu-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .menu-card{position:relative;min-height:560px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;background:#35352d}
+    .menu-card img{position:absolute;inset:0;z-index:-2;transition:transform .8s cubic-bezier(.2,.65,.2,1);filter:saturate(.88)}
+    .menu-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(8,9,7,.93) 0%,rgba(8,9,7,.18) 70%)}
+    .menu-card:hover img,.menu-card:focus-within img{transform:scale(1.055)}
+    .card-copy{padding:38px}
+    .card-index{font:700 10px var(--ui);letter-spacing:.2em;color:var(--accent);text-transform:uppercase}
+    .card-copy h3{font:400 clamp(37px,3.6vw,60px)/1.08 var(--serif);letter-spacing:-.05em;margin:13px 0}
+    .card-copy p{font-size:14px;line-height:1.65;color:#deded5;max-width:320px;margin:0 0 26px}
+    .card-copy .text-link{font-size:10px}
+    .scene{background:var(--paper);color:var(--ink);padding:130px 0}
+    .scene .section-heading .eyebrow{color:#727668}
+    .scene-headline{max-width:960px}
+    .scene-body{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center;margin-top:55px}
+    .scene-image{aspect-ratio:1.26;overflow:hidden;background:#6e6c5c}
+    .scene-image img{object-position:center center}
+    .scene-details{max-width:530px}
+    .scene-details h3{font:400 clamp(42px,4.8vw,74px)/1.15 var(--serif);letter-spacing:-.055em;margin:0 0 25px}
+    .scene-details p{font:400 16px/1.9 var(--sans);color:#595b50;margin:0 0 33px}
+    .scene-options{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 33px}
+    .scene-options span{border:1px solid #bbb9ab;padding:11px 15px;font:700 10px var(--ui);letter-spacing:.12em;text-transform:uppercase}
+    .scene .text-link{color:#161712}
+    .event{position:relative;min-height:620px;display:flex;align-items:center;overflow:hidden;isolation:isolate;background:#23231c}
+    .event>img{position:absolute;inset:0;z-index:-3;object-position:center 55%;filter:saturate(.65)}
+    .event::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(14,15,12,.94),rgba(14,15,12,.71) 65%,rgba(14,15,12,.5))}
+    .event-content{padding:115px 0;position:relative;z-index:2}
+    .event .eyebrow{color:var(--accent)}
+    .event h2{margin:28px 0 25px;max-width:920px;font:400 clamp(61px,7vw,108px)/1.13 var(--serif);letter-spacing:-.07em}
+    .event h2 em{color:var(--accent)}
+    .event p:not(.eyebrow){max-width:540px;font:400 16px/1.8 var(--sans);color:#ddddd2;margin:0 0 33px}
+    .visit{padding:126px 0 142px;background:var(--ivory);color:var(--ink)}
+    .visit-layout{display:grid;grid-template-columns:1fr 1fr;gap:11vw;align-items:start}
+    .visit .eyebrow{color:#6f7465}
+    .visit h2{font:400 clamp(65px,7.2vw,114px)/1.05 var(--serif);letter-spacing:-.07em;margin:24px 0 30px}
+    .visit-left>p:not(.eyebrow){max-width:460px;font-size:16px;line-height:1.9;color:#5a5b52}
+    .visit-left .button{background:#161712;color:#f0ece4;border-color:#161712;margin-top:25px}
+    .visit-left .button:hover{background:#4b4d3d;border-color:#4b4d3d}
+    .visit-table{border-top:1px solid #8e9084;margin-top:9px}
+    .visit-row{border-bottom:1px solid #babcad;padding:25px 0;display:grid;grid-template-columns:150px 1fr;gap:24px}
+    .visit-label{font:800 10px var(--ui);letter-spacing:.17em;text-transform:uppercase;color:#686b5d;padding-top:5px}
+    .visit-value{font-size:17px;line-height:1.6}
+    .visit-value a{text-decoration:underline;text-decoration-color:#8f907b;text-underline-offset:4px}
+    .visit-value small{display:block;font-size:12px;line-height:1.7;color:#686b60;margin-top:6px}
+    .dress-note{margin-top:22px;font-size:12px;line-height:1.75;color:#67695f}
+    .dress-note summary{cursor:pointer;font:800 11px var(--ui);letter-spacing:.1em;text-transform:uppercase;list-style-position:inside}
+    .dress-note p{padding-left:15px}
+    footer{background:#131410;color:#f1ede4;border-top:1px solid #47483d}
+    .footer-top{display:flex;justify-content:space-between;gap:60px;padding:90px 0 90px}
+    .footer-top .eyebrow{color:var(--accent-deep)}
+    .footer-top h2{font:400 clamp(50px,5.5vw,82px)/1.18 var(--serif);letter-spacing:-.06em;margin:16px 0 30px;max-width:720px}
+    .footer-contact{display:flex;flex-direction:column;align-items:flex-start;justify-content:end;gap:13px}
+    .footer-contact a{font-size:15px;color:#dedfd4}
+    .footer-contact a:hover{color:var(--accent)}
+    .footer-wordmark{font:800 clamp(100px,20.5vw,380px)/.95 var(--ui);letter-spacing:-.103em;white-space:nowrap;margin-left:-.065em;overflow:hidden;color:#d5d0be}
+    .footer-wordmark em{color:#777b5d;font-style:normal}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.18);padding:28px 0 38px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;font:700 10px/1.6 var(--ui);letter-spacing:.11em;text-transform:uppercase;color:#a5a79b}
+    .footer-bottom a:hover{color:var(--ivory)}
+    .footer-links{display:flex;gap:23px;flex-wrap:wrap}
+    @media(min-width:1550px){.hero h1{font-size:160px}}
+    @media(max-width:1180px){
+      .container{width:min(100% - 72px,1440px)}
+      .header-inner{width:calc(100% - 72px)}.header-nav{gap:24px}.hero h1{font-size:clamp(72px,9vw,130px)}
+      .immersive{grid-template-columns:1fr 1fr}.immersive-copy{padding:60px}.immersive-photo{min-height:630px}
+      .menu-card{min-height:495px}.card-copy{padding:27px}
+      .visit-layout{gap:6vw}
+    }
+    @media(max-width:840px){
+      .container{width:calc(100% - 48px)}.header-inner{width:calc(100% - 48px)}.announcement{padding:0 24px}
+      .site-header{height:76px}.header-nav{display:none}.header-reserve{margin-left:auto}.menu-toggle{display:inline-flex}
+      .mobile-nav{display:flex;position:fixed;inset:0 0 auto 0;z-index:39;background:#151511;padding:130px 24px 42px;flex-direction:column;gap:0;transform:translateY(-120%);opacity:0;visibility:hidden;transition:transform .32s ease,opacity .32s,visibility .32s}
+      .mobile-nav.open{transform:translateY(0);opacity:1;visibility:visible;box-shadow:0 20px 45px rgba(0,0,0,.4)}
+      .mobile-nav a{font:400 39px/1.4 var(--serif);border-bottom:1px solid rgba(255,255,255,.2);padding:10px 4px}
+      .mobile-nav a:last-child{font:700 12px var(--ui);text-transform:uppercase;letter-spacing:.13em;color:var(--accent);padding-top:25px;border:0}
+      .hero{height:800px;min-height:650px;max-height:970px}.hero-content{padding-top:128px}
+      .hero h1{font-size:clamp(71px,10vw,111px)}.hero::before{background:linear-gradient(90deg,rgba(10,11,9,.91),rgba(10,11,9,.55) 80%)}
+      .intro{padding:100px 0}.intro-grid{grid-template-columns:1fr;gap:25px}.intro h2{font-size:clamp(49px,7.3vw,72px)}
+      .immersive{grid-template-columns:1fr}.immersive-photo{min-height:560px;height:70vw}.immersive-copy{padding:75px 7vw 87px}
+      .menu-section{padding:92px 0}.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.menu-card:last-child{grid-column:1/-1;min-height:390px}.menu-card{min-height:520px}
+      .scene{padding:100px 0}.scene-body{gap:50px}.scene-details h3{font-size:48px}
+      .visit{padding:100px 0}.visit-layout{gap:70px;grid-template-columns:1fr}.visit h2{font-size:84px}
+      .footer-top{padding:65px 0;flex-direction:column;gap:35px}.footer-contact{justify-content:start}
+    }
+    @media(max-width:600px){
+      .container{width:calc(100% - 36px)}.announcement{height:30px;padding:0 18px;font-size:8px}.announcement span:last-child{display:none}
+      .site-header{top:30px;height:70px}.site-header.is-scrolled{height:66px}.header-inner{width:calc(100% - 36px);gap:12px}
+      .wordmark{font-size:26px}.header-reserve{min-height:40px;padding:0 12px;gap:8px;font-size:9px}.header-reserve .arrow-icon{display:none}
+      .menu-toggle{width:39px;height:40px}.mobile-nav{padding:105px 18px 30px}
+      .hero{height:calc(100svh - 30px);min-height:610px;max-height:860px}
+      .hero-photo img{object-position:58% 50%}
+      .hero::before{background:linear-gradient(90deg,rgba(10,11,9,.89) 0%,rgba(10,11,9,.58) 90%),linear-gradient(0deg,rgba(10,11,9,.47),transparent 65%)}
+      .hero-content{padding-top:110px;padding-bottom:40px}.hero h1{font-size:clamp(61px,12vw,84px);line-height:1.04;letter-spacing:-.068em;margin:27px 0}
+      .hero-description{font-size:14px;line-height:1.7;max-width:300px}.hero-actions{gap:9px;margin-top:28px}.button{min-height:51px;padding:0 16px;font-size:10px;gap:13px}
+      .hero-bottom{bottom:20px;font-size:8px}.hero-bottom .location{display:none}.hero-bottom .scroll-line{width:38px}
+      .intro{padding:75px 0 85px}.intro-grid{gap:20px}.intro h2{font-size:clamp(43px,10.7vw,65px)}.intro-bottom{flex-direction:column;gap:20px;margin-top:25px}.intro-bottom p{font-size:14px}
+      .immersive-photo{height:120vw;min-height:410px}.photo-note{left:19px;bottom:22px;font-size:9px}.immersive-copy{padding:76px 18px}.immersive-copy h2{font-size:clamp(49px,12vw,72px)}.immersive-copy p:not(.eyebrow){font-size:14px}
+      .menu-section{padding:75px 0 82px}.section-heading{align-items:start;flex-direction:column;gap:20px}.section-heading h2{font-size:clamp(48px,11vw,78px)}.menu-section .section-heading{margin-bottom:31px}
+      .menu-grid{display:block}.menu-card,.menu-card:last-child{min-height:485px;margin-bottom:12px}.menu-card:last-child{margin-bottom:0}.card-copy{padding:27px}.card-copy h3{font-size:50px}
+      .scene{padding:77px 0}.scene-body{display:flex;flex-direction:column;gap:34px;margin-top:31px}.scene-image{width:100%;aspect-ratio:.98}.scene-details h3{font-size:clamp(42px,10vw,58px)}.scene-details p{font-size:14px}
+      .event{min-height:580px}.event-content{padding:100px 0}.event h2{font-size:clamp(55px,11.8vw,80px)}.event p:not(.eyebrow){font-size:14px}
+      .visit{padding:80px 0 90px}.visit-layout{gap:45px}.visit h2{font-size:76px}.visit-left>p:not(.eyebrow){font-size:14px}.visit-row{grid-template-columns:110px 1fr;gap:10px;padding:22px 0}.visit-value{font-size:14px}.visit-value small{font-size:11px}
+      .footer-top{padding:63px 0}.footer-top h2{font-size:clamp(47px,10vw,64px)}.footer-contact a{font-size:14px}.footer-wordmark{font-size:21.3vw}.footer-bottom{align-items:flex-start;flex-direction:column;padding:25px 0 30px}.footer-links{gap:15px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body id="top">
+  <div class="announcement"><span>RawBar &nbsp; / &nbsp; Kingston, Jamaica</span><span>Restaurant &amp; Lounge — 90A Barbican Road</span></div>
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="#top" class="wordmark" aria-label="RawBar home">raw<em>bar.</em></a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="#about">Our Story</a><a href="#menu">Food &amp; Drinks</a><a href="#experience">The Space</a><a href="#events">Private Events</a><a href="#visit">Visit</a>
+      </nav>
+      <a class="button header-reserve" href="https://www.rawbarja.com/reservations" target="_blank" rel="noopener noreferrer">Book a table <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><span class="bars" aria-hidden="true"></span></button>
+    </div>
+  </header>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" inert>
+    <a href="#about">Our Story</a><a href="#menu">Food &amp; Drinks</a><a href="#experience">The Space</a><a href="#events">Private Events</a><a href="#visit">Visit</a>
+    <a href="https://www.rawbarja.com/reservations" target="_blank" rel="noopener noreferrer">Reserve a table</a>
+  </nav>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-photo"><img src="https://static.wixstatic.com/media/2a68c5_330590c624f54a7998ec8e373cdde88a~mv2.jpeg" alt="Warmly lit RawBar lounge with black seating, art and intimate tables" fetchpriority="high"></div>
+      <div class="container hero-content">
+        <p class="eyebrow hero-kicker">Restaurant &amp; Lounge &nbsp; · &nbsp; Kingston, JA</p>
+        <h1 id="hero-title" class="serif">An evening<br>worth <em>staying</em><br>for.</h1>
+        <p class="hero-description">Thoughtful dining. Beautiful drinks. A little more time together. Welcome to RawBar.</p>
+        <div class="hero-actions">
+          <a class="button" href="https://www.rawbarja.com/reservations" target="_blank" rel="noopener noreferrer">Reserve a table <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="button ghost" href="#menu">Explore RawBar <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg></a>
+        </div>
+      </div>
+      <div class="container hero-bottom"><span class="scroll-label"><span class="scroll-line"></span>Scroll to explore</span><span class="location">90A Barbican Road, Kingston</span></div>
+    </section>
+
+    <section class="intro" id="about" aria-labelledby="intro-title">
+      <div class="container intro-grid">
+        <p class="eyebrow">The RawBar experience / 01</p>
+        <div>
+          <h2 id="intro-title" class="serif">Come hungry.<br>Leave with <em>stories.</em></h2>
+          <div class="intro-bottom">
+            <p>Some nights deserve more than the ordinary. At RawBar, a good meal becomes a long conversation, a second drink, and another reason to stay.</p>
+            <a class="text-link" href="#experience">Discover the space <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="immersive" aria-labelledby="immersive-title">
+      <div class="immersive-photo">
+        <img src="https://static.wixstatic.com/media/2a68c5_b55c253ecdae4b62a75af89cdbe9b703~mv2.jpg" alt="RawBar prawn dish presented with herbs, greens and lime" loading="lazy">
+        <span class="photo-note">Good food, beautifully done</span>
+      </div>
+      <div class="immersive-copy">
+        <p class="eyebrow">At the table</p>
+        <h2 id="immersive-title" class="serif">A little<br><em>unexpected.</em><br>A lot to love.</h2>
+        <p>Discover plates made for savouring, drinks made for lingering, and the kind of atmosphere that changes the pace of your evening.</p>
+        <a href="https://www.rawbarja.com/menu?location=RawBar" target="_blank" rel="noopener noreferrer" class="text-link">Explore the menu <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">At your leisure / 02</p><h2 id="menu-title" class="serif">A taste of <em>RawBar.</em></h2></div>
+          <a class="text-link" href="https://www.rawbarja.com/menu?location=RawBar" target="_blank" rel="noopener noreferrer">View full menu <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="menu-grid">
+          <article class="menu-card">
+            <img src="https://static.wixstatic.com/media/2a68c5_cfcd87618e334afd86c20eadacf2a574~mv2.jpg" alt="RawBar plated food from the restaurant photography collection" loading="lazy">
+            <div class="card-copy"><span class="card-index">01 / Kitchen</span><h3 class="serif">Dinner,<br>done right.</h3><p>For the first bite, the main event, and everything in between.</p><a class="text-link" href="https://www.rawbarja.com/menu?location=RawBar" target="_blank" rel="noopener noreferrer">Dinner menu <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          </article>
+          <article class="menu-card">
+            <img src="https://static.wixstatic.com/media/2a68c5_ee2b5c3f6ed14598b684f3b885ae7edc~mv2.jpg" alt="A prepared dish photographed for the RawBar restaurant" loading="lazy">
+            <div class="card-copy"><span class="card-index">02 / The Bar</span><h3 class="serif">Make it<br>another round.</h3><p>Raise a glass, find your favourite, and settle in.</p><a class="text-link" href="https://www.rawbarja.com/menu?menu=bar-menu" target="_blank" rel="noopener noreferrer">Bar menu <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          </article>
+          <article class="menu-card">
+            <img src="https://static.wixstatic.com/media/2a68c5_dcebcda9215844d58f3558a39de5211f~mv2.jpg" alt="RawBar dining photography showing a prepared menu item" loading="lazy">
+            <div class="card-copy"><span class="card-index">03 / On Your Terms</span><h3 class="serif">Your favourites,<br>to go.</h3><p>Planning a night in? Explore RawBar's online ordering.</p><a class="text-link" href="https://www.rawbarja.com/online-ordering" target="_blank" rel="noopener noreferrer">Order online <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" id="experience" aria-labelledby="scene-title">
+      <div class="container">
+        <div class="section-heading">
+          <div class="scene-headline"><p class="eyebrow">Settle in / 03</p><h2 id="scene-title" class="serif">Make yourself<br>at home.</h2></div>
+        </div>
+        <div class="scene-body">
+          <div class="scene-image"><img src="https://static.wixstatic.com/media/2a68c5_330590c624f54a7998ec8e373cdde88a~mv2.jpeg" alt="RawBar lounge seating, warm table lights and art-lined walls" loading="lazy"></div>
+          <div class="scene-details">
+            <h3 class="serif">Your seat.<br>Your kind of night.</h3>
+            <p>Whether you're meeting at the bar, taking in the balcony, or settling into the dining room, RawBar has a place for the occasion.</p>
+            <div class="scene-options" aria-label="RawBar seating areas"><span>Balcony</span><span>Bar</span><span>Dining room</span></div>
+            <a class="text-link" href="https://www.rawbarja.com/reservations" target="_blank" rel="noopener noreferrer">Find your table <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="event" id="events" aria-labelledby="event-title">
+      <img src="https://static.wixstatic.com/media/2a68c5_eb7276c8425b41a8899984eeff70188ef000.jpg" alt="Atmosphere at RawBar Restaurant and Lounge" loading="lazy">
+      <div class="container event-content">
+        <p class="eyebrow">Private events / 04</p>
+        <h2 id="event-title" class="serif">Let's make it<br><em>a night.</em></h2>
+        <p>Bring your people together. From celebrations to private gatherings, enquire about hosting your occasion at RawBar.</p>
+        <a class="button" href="mailto:info@rawbarja.com?subject=Private%20Event%20Enquiry%20%E2%80%94%20RawBar">Enquire about events <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </section>
+
+    <section class="visit" id="visit" aria-labelledby="visit-title">
+      <div class="container visit-layout">
+        <div class="visit-left">
+          <p class="eyebrow">Find us / 05</p>
+          <h2 id="visit-title" class="serif">See you<br><em>tonight.</em></h2>
+          <p>All that's missing is you. Find us on Barbican Road in Kingston and make room for a good evening.</p>
+          <a class="button" href="https://www.rawbarja.com/reservations" target="_blank" rel="noopener noreferrer">Make a reservation <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div>
+          <div class="visit-table">
+            <div class="visit-row"><div class="visit-label">Address</div><div class="visit-value">90A Barbican Road<br>Kingston, Jamaica<small><a href="https://www.google.com/maps/search/?api=1&query=RawBar%2090A%20Barbican%20Road%20Kingston%20Jamaica" target="_blank" rel="noopener noreferrer">Get directions</a></small></div></div>
+            <div class="visit-row"><div class="visit-label">Opening hours</div><div class="visit-value">Tuesday – Saturday <br>4:00 PM – 12:00 AM<small>Bar service listed until 1:00 AM. Sunday hours are not listed; confirm before visiting. Monday closed.</small></div></div>
+            <div class="visit-row"><div class="visit-label">Contact</div><div class="visit-value"><a href="tel:+18766723623">(876) 672-3623</a><br><a href="mailto:info@rawbarja.com">info@rawbarja.com</a></div></div>
+          </div>
+          <details class="dress-note"><summary>Dress code &amp; reservation notes</summary><p>RawBar requests glamorous dress. Casual slides, flip-flops, beach footwear, Crocs, sportswear and shorts are not permitted. Collared or dress shirts are requested for gentlemen. The current site asks guests to book at least one hour in advance. <a href="https://www.rawbarja.com/terms-conditions" target="_blank" rel="noopener noreferrer"><u>Read the full policies</u></a>.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container footer-top">
+      <div><p class="eyebrow">Good evenings begin here</p><h2 class="serif">A table is waiting.<br>Make it a <em>date.</em></h2><a href="https://www.rawbarja.com/reservations" target="_blank" rel="noopener noreferrer" class="text-link">Book your evening <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      <div class="footer-contact"><a href="mailto:info@rawbarja.com">info@rawbarja.com</a><a href="tel:+18766723623">(876) 672-3623</a><span class="muted">90A Barbican Road, Kingston</span></div>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">raw<em>bar.</em></div>
+    <div class="container footer-bottom"><span>RawBar Restaurant &amp; Lounge · Kingston, Jamaica</span><div class="footer-links"><a href="https://www.rawbarja.com/terms-conditions" target="_blank" rel="noopener noreferrer">Policies</a><a href="https://www.rawbarja.com/careers" target="_blank" rel="noopener noreferrer">Careers</a><a href="https://www.rawbarja.com/" target="_blank" rel="noopener noreferrer">Current website</a><a href="https://criocreatives.com/" target="_blank" rel="noopener noreferrer">Concept by Crio Creatives</a></div></div>
+  </footer>
+  <script>
+  (function(){
+    var header=document.getElementById('site-header');
+    var toggle=document.getElementById('menu-toggle');
+    var nav=document.getElementById('mobile-nav');
+    function onScroll(){header.classList.toggle('is-scrolled',window.scrollY>34);}
+    onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+    function setOpen(open){
+      nav.classList.toggle('open',open);
+      nav.inert=!open;
+      toggle.setAttribute('aria-expanded',String(open));
+      toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');
+      document.body.style.overflow=open?'hidden':'';
+    }
+    toggle.addEventListener('click',function(){setOpen(toggle.getAttribute('aria-expanded')!=='true');});
+    nav.addEventListener('click',function(e){if(e.target.closest('a'))setOpen(false);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){setOpen(false);toggle.focus();}});
+    window.addEventListener('resize',function(){if(window.innerWidth>840&&nav.classList.contains('open'))setOpen(false);});
+  })();
+  </script>
+</body>
+</html>
