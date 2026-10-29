@@ -44,5 +44,11 @@ jobs:
           git diff --cached --check
           if ! git diff --cached --quiet; then
             git commit -m "Add optimized Rhynie Drive living and kitchen renders"
-            git push origin HEAD:main
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then exit 0; fi
+            done
+            echo "Failed to publish render assets after retries" >&2
+            exit 1
           fi
