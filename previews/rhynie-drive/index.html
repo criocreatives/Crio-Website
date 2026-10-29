@@ -63,6 +63,72 @@ img{display:block;max-width:100%}button{font:inherit}
 @media(max-width:900px){.rd-wrap{width:calc(100% - 52px)}.rd-section{padding:66px 0 83px}}
 @media(max-width:650px){.rd-wrap{width:calc(100% - 32px)}.rd-section{padding:48px 0 64px}.rd-head{display:block;padding:18px 0 26px}.rd-head p:last-child{margin-top:18px}.rd-gallery{grid-template-columns:1fr;row-gap:29px}.rd-figure.wide{grid-column:auto}.rd-metric{display:block}.rd-metric span{display:block;margin-top:12px}.rd-divider-heading{margin-top:40px}.rd-end .rd-wrap{display:block}.rd-end span{display:block;margin-bottom:6px}.rd-lightbox-inner{padding:25px 10px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rd-image img{transition:none}}
+
+/* Rhynie Drive mobile masthead QA: keep every title, label and project credit inside the viewport. */
+body.crio-architecture.arch-photographic.crio-ed.crio-ed--rhynie-drive section.hero > .hero-copy {
+  box-sizing:border-box!important;
+  max-width: min(100%, 1100px)!important;
+  width: min(1100px, calc(100% - 48px))!important;
+  min-width:0!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+body.crio-architecture.arch-photographic.crio-ed.crio-ed--rhynie-drive section.hero .hero-copy :is(.eyebrow,h1,.lead,.project-meta){
+  max-width:100%!important;
+  min-width:0!important;
+}
+body.crio-architecture.arch-photographic.crio-ed.crio-ed--rhynie-drive section.hero .hero-copy .project-meta{
+  margin-left:0!important;
+  margin-right:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+body.crio-architecture.arch-photographic.crio-ed.crio-ed--rhynie-drive section.hero .hero-copy .project-meta dd{
+  margin-left:0!important;
+  overflow-wrap:break-word;
+}
+@media(max-width:690px){
+  body.crio-architecture.arch-photographic.crio-ed.crio-ed--rhynie-drive section.hero > .hero-copy{
+    width:calc(100% - 44px)!important;
+    max-width:calc(100% - 44px)!important;
+    margin-left:22px!important;
+    margin-right:22px!important;
+    padding-top:165px!important;
+    padding-bottom:48px!important;
+  }
+  body.crio-architecture.arch-photographic.crio-ed.crio-ed--rhynie-drive section.hero h1{
+    font-size:clamp(45px,11vw,66px)!important;
+    letter-spacing:-.075em!important;
+  }
+  body.crio-architecture.arch-photographic.crio-ed.crio-ed--rhynie-drive section.hero .hero-copy .eyebrow{
+    font-size:9px!important;
+    letter-spacing:.09em!important;
+    line-height:1.55!important;
+    max-width:100%!important;
+    white-space:normal!important;
+  }
+  body.crio-architecture.arch-photographic.crio-ed.crio-ed--rhynie-drive section.hero .hero-copy .project-meta{
+    gap:12px 24px!important;
+    display:flex!important;
+    flex-wrap:wrap!important;
+  }
+  body.crio-architecture.arch-photographic.crio-ed.crio-ed--rhynie-drive section.hero .hero-copy .project-meta div{
+    min-width:0!important;
+  }
+  body.crio-architecture.arch-photographic.crio-ed.crio-ed--rhynie-drive section.hero .hero-copy .project-meta :is(dt,dd){
+    overflow-wrap:break-word!important;
+    font-size:13px!important;
+  }
+}
+@media(max-width:375px){
+  body.crio-architecture.arch-photographic.crio-ed.crio-ed--rhynie-drive section.hero > .hero-copy{
+    width:calc(100% - 36px)!important;
+    max-width:calc(100% - 36px)!important;
+    margin-left:18px!important;
+    margin-right:18px!important;
+  }
+}
+
 </style>
 </head>
 <body class="crio-architecture arch-photographic">
@@ -72,7 +138,7 @@ img{display:block;max-width:100%}button{font:inherit}
 <section class="hero" aria-labelledby="project-title">
 <figure class="hero-visual"><img src="/previews/rhynie-drive/images/living-front.webp" alt="Proposed Rhynie Drive living-room interior" fetchpriority="high"></figure>
 <div class="hero-copy">
-<p class="eyebrow">Residential Renovation / Montego Bay, Jamaica</p>
+<p class="eyebrow">Renovation / Montego Bay, Jamaica</p>
 <h1 id="project-title">Rhynie<br><span>Drive.</span></h1>
 <p class="lead">Living room and kitchen renovation.</p>
 <dl class="project-meta"><div><dt>Prepared for</dt><dd>Chantier Construction</dd></div><div><dt>Design &amp; visualization</dt><dd>Crio Creatives</dd></div></dl>
@@ -80,7 +146,8 @@ img{display:block;max-width:100%}button{font:inherit}
 </section>
 <section class="rd-section" id="living"><div class="rd-wrap">
 <div class="rd-head"><div><p class="rd-kicker">01 / Interior renovation</p><h2>Living Room.</h2></div></div>
-<div class="rd-gallery"><figure class="rd-figure wide"><button class="rd-image" type="button" data-src="/previews/rhynie-drive/images/living-angle.webp" data-alt="Living Room / Perspective 02" aria-label="Enlarge Living Room / Perspective 02"><img src="/previews/rhynie-drive/images/living-angle.webp" alt="Living Room / Perspective 02" loading="lazy" decoding="async"></button><figcaption><strong>Living Room / Perspective 02</strong></figcaption></figure></div>
+<div class="rd-gallery"><figure class="rd-figure wide"><button class="rd-image" type="button" data-src="/previews/rhynie-drive/images/living-front.webp" data-alt="Living Room / Front View" aria-label="Enlarge Living Room / Front View"><img src="/previews/rhynie-drive/images/living-front.webp" width="1536" height="1024" alt="Living Room / Front View" loading="lazy" decoding="async"></button><figcaption><strong>Living Room / Front View</strong></figcaption></figure>
+<figure class="rd-figure wide"><button class="rd-image" type="button" data-src="/previews/rhynie-drive/images/living-angle.webp" data-alt="Living Room / Angled View" aria-label="Enlarge Living Room / Angled View"><img src="/previews/rhynie-drive/images/living-angle.webp" width="1536" height="1024" alt="Living Room / Angled View" loading="lazy" decoding="async"></button><figcaption><strong>Living Room / Angled View</strong></figcaption></figure></div>
 </div></section>
 <section class="rd-section" id="kitchen"><div class="rd-wrap">
 <div class="rd-head"><div><p class="rd-kicker">02 / Interior renovation</p><h2>Kitchen.</h2></div><p>Updated cabinetry, improved storage and a smaller, more functional island.</p></div>
