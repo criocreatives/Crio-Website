@@ -340,10 +340,27 @@ footer{background:#09040e;border-color:#5a2058}
 .menu-brand-word{display:inline-block;width:clamp(160px,25vw,345px);height:clamp(54px,8.45vw,116px);margin-left:.10em;vertical-align:-.25em;background:#a846f4;-webkit-mask:url("rawbar-logo.svg") center/contain no-repeat;mask:url("rawbar-logo.svg") center/contain no-repeat;filter:drop-shadow(0 0 18px rgba(168,70,244,.15))}
 @media(max-width:600px){.menu-brand-word{width:clamp(150px,43vw,240px);height:clamp(53px,14.5vw,85px);vertical-align:-.28em;margin-left:.07em}}
 
+
+/* Century Gothic for body copy and small UI, Manrope for headings. */
+:root{--sans:"Century Gothic","CenturyGothic","Avenir Next",Avenir,Arial,sans-serif;--ui:"Century Gothic","CenturyGothic","Avenir Next",Avenir,Arial,sans-serif}
+.site-header{top:0}.hero{height:min(970px,100svh)}
+.intro{padding-block:105px 110px}.intro-bottom{margin-top:30px}
+.immersive-copy h2{margin-bottom:27px}.immersive-copy .text-link{margin-top:5px}
+.menu-section .section-heading{margin-bottom:44px}
+.menu-card .card-copy h3{margin-bottom:23px}
+.scene-body{margin-top:0}
+.scene-details .eyebrow{color:#ff82d6;margin:0 0 14px}
+.scene-details h2{font:800 clamp(42px,5vw,76px)/1.07 "Manrope",Arial,sans-serif;letter-spacing:-.068em;margin:0 0 31px}
+.scene-options{margin-bottom:32px}
+.visit-left .button{margin-top:24px}
+.footer-top h2 a{color:inherit}.footer-top h2 a:hover{color:#ff52c5}
+@media(max-width:840px){.intro{padding-block:82px}.scene-body{margin-top:0}}
+@media(max-width:600px){.intro{padding-block:62px}.scene-details h2{font-size:clamp(41px,10vw,59px)}}
+
 </style>
 </head>
 <body id="top">
-  <div class="announcement"><span>RawBar &nbsp; / &nbsp; Kingston, Jamaica</span><span>Restaurant &amp; Lounge — 90A Barbican Road</span></div>
+  
   <header class="site-header" id="site-header">
     <div class="header-inner">
       <a href="#top" class="brand-link" aria-label="RawBar home"><img class="brand-logo" src="rawbar-logo.svg" alt="RawBar"></a>
@@ -364,22 +381,22 @@ footer{background:#09040e;border-color:#5a2058}
       <div class="container hero-content">
         <p class="eyebrow hero-kicker">Restaurant &amp; Lounge &nbsp; · &nbsp; Kingston, JA</p>
         <h1 id="hero-title" class="serif">An evening<br>worth <em>staying</em><br>for.</h1>
-        <p class="hero-description">Thoughtful dining. Beautiful drinks. A little more time together. Welcome to RawBar.</p>
+        
         <div class="hero-actions">
           <a class="button" href="reservations/">Reserve a table <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="button ghost" href="#menu">Explore RawBar <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg></a>
+          <a class="button ghost" href="#menu">See the menu <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg></a>
         </div>
       </div>
-      <div class="container hero-bottom"><span class="scroll-label"><span class="scroll-line"></span>Scroll to explore</span><span class="location">90A Barbican Road, Kingston</span></div>
+      
     </section>
 
     <section class="intro" id="about" aria-labelledby="intro-title">
       <div class="container intro-grid">
-        <p class="eyebrow">The RawBar experience / 01</p>
+        <p class="eyebrow">The experience</p>
         <div>
           <h2 id="intro-title" class="serif">Come hungry.<br>Leave with <em>stories.</em></h2>
           <div class="intro-bottom">
-            <p>Some nights deserve more than the ordinary. At RawBar, a good meal becomes a long conversation, a second drink, and another reason to stay.</p>
+            
             <a class="text-link" href="#experience">Discover the space <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
@@ -389,12 +406,12 @@ footer{background:#09040e;border-color:#5a2058}
     <section class="immersive" aria-labelledby="immersive-title">
       <div class="immersive-photo">
         <img src="https://static.wixstatic.com/media/2a68c5_b55c253ecdae4b62a75af89cdbe9b703~mv2.jpg" alt="RawBar prawn dish presented with herbs, greens and lime" loading="lazy">
-        <span class="photo-note">Good food, beautifully done</span>
+        
       </div>
       <div class="immersive-copy">
         <p class="eyebrow">At the table</p>
         <h2 id="immersive-title" class="serif">A little<br><em>unexpected.</em><br>A lot to love.</h2>
-        <p>Discover plates made for savouring, drinks made for lingering, and the kind of atmosphere that changes the pace of your evening.</p>
+        
         <a href="menu/" class="text-link">Explore the menu <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </section>
@@ -402,21 +419,21 @@ footer{background:#09040e;border-color:#5a2058}
     <section class="menu-section" id="menu" aria-labelledby="menu-title">
       <div class="container">
         <div class="section-heading">
-          <div><p class="eyebrow">At your leisure / 02</p><h2 id="menu-title" class="serif">A taste of <span class="menu-brand-word" role="img" aria-label="RawBar"></span></h2></div>
+          <div><p class="eyebrow">Food & drinks</p><h2 id="menu-title" class="serif">A taste of <span class="menu-brand-word" role="img" aria-label="RawBar"></span></h2></div>
           <a class="text-link" href="menu/">View full menu <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <div class="menu-grid">
           <article class="menu-card">
             <img src="https://static.wixstatic.com/media/2a68c5_cfcd87618e334afd86c20eadacf2a574~mv2.jpg" alt="RawBar plated food from the restaurant photography collection" loading="lazy">
-            <div class="card-copy"><span class="card-index">01 / Kitchen</span><h3 class="serif">Dinner,<br>done right.</h3><p>For the first bite, the main event, and everything in between.</p><a class="text-link" href="menu/">Dinner menu <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+            <div class="card-copy"><span class="card-index">Kitchen</span><h3 class="serif">Dinner,<br>done right.</h3><a class="text-link" href="menu/">Dinner menu <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           </article>
           <article class="menu-card">
             <img src="https://static.wixstatic.com/media/2a68c5_ee2b5c3f6ed14598b684f3b885ae7edc~mv2.jpg" alt="A prepared dish photographed for the RawBar restaurant" loading="lazy">
-            <div class="card-copy"><span class="card-index">02 / The Bar</span><h3 class="serif">Make it<br>another round.</h3><p>Raise a glass, find your favourite, and settle in.</p><a class="text-link" href="menu/#drinks">Bar menu <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+            <div class="card-copy"><span class="card-index">Bar</span><h3 class="serif">Make it<br>another round.</h3><a class="text-link" href="menu/#drinks">Bar menu <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           </article>
           <article class="menu-card">
             <img src="https://static.wixstatic.com/media/2a68c5_dcebcda9215844d58f3558a39de5211f~mv2.jpg" alt="RawBar dining photography showing a prepared menu item" loading="lazy">
-            <div class="card-copy"><span class="card-index">03 / On Your Terms</span><h3 class="serif">Your favourites,<br>to go.</h3><p>Planning a night in? Explore RawBar's online ordering.</p><a class="text-link" href="ordering/">Order online <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+            <div class="card-copy"><span class="card-index">To go</span><h3 class="serif">Your favourites,<br>to go.</h3><a class="text-link" href="ordering/">Order online <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           </article>
         </div>
       </div>
@@ -424,14 +441,11 @@ footer{background:#09040e;border-color:#5a2058}
 
     <section class="scene" id="experience" aria-labelledby="scene-title">
       <div class="container">
-        <div class="section-heading">
-          <div class="scene-headline"><p class="eyebrow">Settle in / 03</p><h2 id="scene-title" class="serif">Make yourself<br>at home.</h2></div>
-        </div>
         <div class="scene-body">
           <div class="scene-image"><img src="https://static.wixstatic.com/media/2a68c5_330590c624f54a7998ec8e373cdde88a~mv2.jpeg" alt="RawBar lounge seating, warm table lights and art-lined walls" loading="lazy"></div>
           <div class="scene-details">
-            <h3 class="serif">Your seat.<br>Your kind of night.</h3>
-            <p>Whether you're meeting at the bar, taking in the balcony, or settling into the dining room, RawBar has a place for the occasion.</p>
+            <p class="eyebrow">The space</p><h2 id="scene-title" class="serif">Find your spot.</h2>
+            
             <div class="scene-options" aria-label="RawBar seating areas"><span>Balcony</span><span>Bar</span><span>Dining room</span></div>
             <a class="text-link" href="reservations/">Find your table <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
@@ -442,9 +456,9 @@ footer{background:#09040e;border-color:#5a2058}
     <section class="event" id="events" aria-labelledby="event-title">
       <img src="https://static.wixstatic.com/media/2a68c5_eb7276c8425b41a8899984eeff70188ef000.jpg" alt="Atmosphere at RawBar Restaurant and Lounge" loading="lazy">
       <div class="container event-content">
-        <p class="eyebrow">Private events / 04</p>
+        <p class="eyebrow">Private events</p>
         <h2 id="event-title" class="serif">Let's make it<br><em>a night.</em></h2>
-        <p>Bring your people together. From celebrations to private gatherings, enquire about hosting your occasion at RawBar.</p>
+        
         <a class="button" href="mailto:info@rawbarja.com?subject=Private%20Event%20Enquiry%20%E2%80%94%20RawBar">Enquire about events <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </section>
@@ -452,10 +466,10 @@ footer{background:#09040e;border-color:#5a2058}
     <section class="visit" id="visit" aria-labelledby="visit-title">
       <div class="container visit-layout">
         <div class="visit-left">
-          <p class="eyebrow">Find us / 05</p>
+          <p class="eyebrow">Find us</p>
           <h2 id="visit-title" class="serif">See you<br><em>tonight.</em></h2>
-          <p>All that's missing is you. Find us on Barbican Road in Kingston and make room for a good evening.</p>
-          <a class="button" href="reservations/">Make a reservation <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          
+          <a class="button" href="reservations/">Book a table <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <div>
           <div class="visit-table">
@@ -470,7 +484,7 @@ footer{background:#09040e;border-color:#5a2058}
   </main>
   <footer>
     <div class="container footer-top">
-      <div><p class="eyebrow">Good evenings begin here</p><h2 class="serif">A table is waiting.<br>Make it a <em>date.</em></h2><a href="reservations/" class="text-link">Book your evening <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      <div><h2 class="serif"><a href="reservations/">Reserve a table.</a></h2></div>
       <div class="footer-contact"><a href="mailto:info@rawbarja.com">info@rawbarja.com</a><a href="tel:+18766723623">(876) 672-3623</a><span class="muted">90A Barbican Road, Kingston</span></div>
     </div>
     <img class="footer-logo" src="rawbar-logo.svg" alt="" aria-hidden="true" loading="lazy">

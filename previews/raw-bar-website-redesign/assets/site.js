@@ -53,8 +53,8 @@ if(document.body.dataset.page==='ordering'){
  }
  function change(id,delta){const qty=Math.max(0,Math.min(99,(bag.get(id)||0)+delta));if(qty===0)bag.delete(id);else bag.set(id,qty);status.hidden=true;render()}
  products.forEach(p=>p.querySelector('button[data-add]')?.addEventListener('click',()=>{change(p.dataset.itemId,1);p.querySelector('button[data-add]').textContent='Added ✓';setTimeout(()=>{const b=p.querySelector('button[data-add]');if(b)b.textContent='Add +'},900)}));
- document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.mode===mode)));document.getElementById('service-note').textContent=mode==='pickup'?'Pickup from 90A Barbican Road · Sample timing only':'Delivery details would be collected at live checkout · Demo only';status.hidden=true;}));
- document.getElementById('demo-checkout')?.addEventListener('click',()=>{status.hidden=false;status.textContent=bag.size?'Design preview only. No '+mode+' order was placed, and no payment was processed.':'Add an item to the demo cart before reviewing checkout.';});
+ document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.mode===mode)));document.getElementById('service-note').textContent=mode==='pickup'?'Pickup · 90A Barbican Road':'Delivery · Demo only';status.hidden=true;}));
+ document.getElementById('demo-checkout')?.addEventListener('click',()=>{status.hidden=false;status.textContent=bag.size?'No order or payment was placed.':'Add an item to the demo cart before reviewing checkout.';});
  floating?.addEventListener('click',()=>document.getElementById('cart-panel')?.scrollIntoView({behavior:'smooth'}));
  const requested=new URLSearchParams(location.search).get('item');
  if(requested&&inventory.has(requested)&&!bag.has(requested))change(requested,1);
