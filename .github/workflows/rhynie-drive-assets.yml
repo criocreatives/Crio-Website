@@ -1,0 +1,48 @@
+name: Import Rhynie Drive preview images
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/rhynie-drive-assets.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import-images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install WebP encoder
+        run: python3 -m pip install --quiet --user Pillow
+      - name: Fetch approved renders and optimize for the web
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p previews/rhynie-drive/images /tmp/rhynie-drive
+          curl -fLsS --retry 3 'https://at.adobe.com/OS9L2PiMmpJPx0mE' -o /tmp/rhynie-drive/living-angle.png
+          curl -fLsS --retry 3 'https://at.adobe.com/bjWx8OLd7d3EW2He' -o /tmp/rhynie-drive/living-front.png
+          curl -fLsS --retry 3 'https://at.adobe.com/bth4yz9J7netK1Oq' -o /tmp/rhynie-drive/kitchen-wide.png
+          curl -fLsS --retry 3 'https://at.adobe.com/IqKmg9RkHOXArLtZ' -o /tmp/rhynie-drive/kitchen-detail.png
+          python3 - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          out=Path("previews/rhynie-drive/images")
+          for name in ("living-angle","living-front","kitchen-wide","kitchen-detail"):
+              file=Path("/tmp/rhynie-drive")/(name+".png")
+              with Image.open(file) as im:
+                  im=im.convert("RGB")
+                  im.save(out/(name+".webp"),"WEBP",quality=86,method=6)
+                  print(name,im.size,(out/(name+".webp")).stat().st_size)
+          PY
+      - name: Commit only the preview image assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add previews/rhynie-drive/images
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m "Add optimized Rhynie Drive living and kitchen renders"
+            git push origin HEAD:main
+          fi
