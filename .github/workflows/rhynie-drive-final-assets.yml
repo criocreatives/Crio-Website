@@ -1,0 +1,51 @@
+name: Import Rhynie Drive approved images
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/rhynie-drive-final-assets.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Transfer and verify all six approved user-supplied WebP files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p previews/rhynie-drive/images
+          curl --fail --location --silent --show-error --retry 3 'https://at.adobe.com/zxOoeL3XHcVf1O9N' -o 'previews/rhynie-drive/images/kitchen-layout.webp'
+          curl --fail --location --silent --show-error --retry 3 'https://at.adobe.com/5GDQ3Ex1po4YN82U' -o 'previews/rhynie-drive/images/living-front.webp'
+          curl --fail --location --silent --show-error --retry 3 'https://at.adobe.com/SyuIckEy4woHWG4J' -o 'previews/rhynie-drive/images/living-angle.webp'
+          curl --fail --location --silent --show-error --retry 3 'https://at.adobe.com/ZjVwnoUD2uXoLygi' -o 'previews/rhynie-drive/images/kitchen-coffee-wine.webp'
+          curl --fail --location --silent --show-error --retry 3 'https://at.adobe.com/0VLZRHaWCHHv0koh' -o 'previews/rhynie-drive/images/kitchen-sink-cabinets.webp'
+          curl --fail --location --silent --show-error --retry 3 'https://at.adobe.com/0iB12qCxFRHMCf2u' -o 'previews/rhynie-drive/images/kitchen-overview.webp'
+          cat <<'CHECKSUMS' | sha256sum --check --status
+          bf7eb035a8da6ddf98f64ffe5f6e3e34c4dcaa3cac3e4b9b037e0f466e516dfc  previews/rhynie-drive/images/kitchen-layout.webp
+          e22d3147a13d00e9a5b897562b89a350a844836b27df368371c7e36539ee2520  previews/rhynie-drive/images/living-front.webp
+          550a4e5ac67ae0bb0758e2a7513e94f58c855ed4c839729f54ea0ca538600a98  previews/rhynie-drive/images/living-angle.webp
+          3c84502875281e253331e65ba6e503f1232c1a0a7414f2a38dafd424e3f0075c  previews/rhynie-drive/images/kitchen-coffee-wine.webp
+          28c424f05f9607875f61f74e8057efc609b3f69d6fdb7a2932d3605a3f9a4fb7  previews/rhynie-drive/images/kitchen-sink-cabinets.webp
+          4cf4dc164ab62e4e056565da785ca29af916d4cce02eb1d5214f88d265d637b8  previews/rhynie-drive/images/kitchen-overview.webp
+          CHECKSUMS
+          for f in previews/rhynie-drive/images/*.webp; do test -s "$f"; done
+      - name: Commit assets and fast-forward against concurrent site changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add previews/rhynie-drive/images/*.webp
+          git diff --cached --check
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Publish six approved Rhynie Drive renovation visuals'
+          for i in 1 2 3 4; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
