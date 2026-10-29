@@ -358,6 +358,7 @@ footer{background:#09040e;border-color:#5a2058}
 @media(max-width:600px){.intro{padding-block:62px}.scene-details h2{font-size:clamp(41px,10vw,59px)}}
 
 </style>
+<link rel="stylesheet" href="assets/home-features.css?v=1">
 </head>
 <body id="top">
   
@@ -365,14 +366,14 @@ footer{background:#09040e;border-color:#5a2058}
     <div class="header-inner">
       <a href="#top" class="brand-link" aria-label="RawBar home"><img class="brand-logo" src="rawbar-logo.svg" alt="RawBar"></a>
       <nav class="header-nav" aria-label="Main navigation">
-        <a href="#about">Our Story</a><a href="#menu">Food &amp; Drinks</a><a href="#experience">The Space</a><a href="#events">Private Events</a><a href="#visit">Visit</a>
+        <a href="#menu">Menu</a><a href="#events">Events</a><a href="#members">Members</a><a href="#private-events">Venue Hire</a><a href="#visit">Visit</a>
       </nav>
       <a class="button header-reserve" href="reservations/">Book a table <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><span class="bars" aria-hidden="true"></span></button>
     </div>
   </header>
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" inert>
-    <a href="#about">Our Story</a><a href="#menu">Food &amp; Drinks</a><a href="#experience">The Space</a><a href="#events">Private Events</a><a href="#visit">Visit</a>
+    <a href="#about">The Experience</a><a href="#menu">Menu</a><a href="#events">Events</a><a href="#members">Premium Members</a><a href="#private-events">Venue Hire</a><a href="#policies">Dress Code</a><a href="#social">Instagram</a><a href="#visit">Visit</a>
     <a href="reservations/">Reserve a table</a>
   </nav>
   <main>
@@ -453,15 +454,31 @@ footer{background:#09040e;border-color:#5a2058}
       </div>
     </section>
 
-    <section class="event" id="events" aria-labelledby="event-title">
-      <img src="https://static.wixstatic.com/media/2a68c5_eb7276c8425b41a8899984eeff70188ef000.jpg" alt="Atmosphere at RawBar Restaurant and Lounge" loading="lazy">
-      <div class="container event-content">
-        <p class="eyebrow">Private events</p>
-        <h2 id="event-title" class="serif">Let's make it<br><em>a night.</em></h2>
-        
-        <a class="button" href="mailto:info@rawbarja.com?subject=Private%20Event%20Enquiry%20%E2%80%94%20RawBar">Enquire about events <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
-    </section>
+    <section id="events" class="rb-block" aria-labelledby="events-title"><div class="container rb-grid"><div>
+<p class="eyebrow">Upcoming events</p><h2 id="events-title">What's on.</h2>
+<div class="rb-event-state">No dates announced</div>
+<a class="text-link" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/rawbarja/">Event updates <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div><div class="rb-photo"><img loading="lazy" src="https://static.wixstatic.com/media/2a68c5_eb7276c8425b41a8899984eeff70188ef000.jpg" alt="RawBar lounge atmosphere"></div></div></section>
+<section id="private-events" class="rb-block rb-venue" aria-labelledby="hire-title"><div class="container rb-grid">
+<div><p class="eyebrow">Private events</p><h2 id="hire-title">Your occasion.<br><em>Our space.</em></h2><p>90A Barbican Road, Kingston</p></div>
+<form class="rb-venue-form" id="venue-form"><h3>Venue enquiry</h3><div class="rb-fields">
+<label>Full name<input name="name" type="text" required autocomplete="name" maxlength="80" placeholder="Your name"></label>
+<label>Email<input name="email" type="email" required autocomplete="email" maxlength="120" placeholder="you@example.com"></label>
+<label>Occasion<select name="occasion" required><option value="">Select</option><option>Birthday</option><option>Private dinner</option><option>Corporate event</option><option>Celebration</option><option>Other</option></select></label>
+<label>Preferred date<input name="date" type="date"></label>
+<label>Guests<input name="guests" type="number" min="1" max="999" placeholder="Estimated guests"></label>
+<label>Phone<input name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="Optional"></label>
+<label class="rb-wide">Details<textarea name="details" rows="3" maxlength="1500" placeholder="Tell us about your event"></textarea></label>
+</div><button class="button" type="submit">Prepare enquiry <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+<p class="rb-note" id="enquiry-help">Opens your email app. Nothing is sent automatically.</p></form></div></section>
+<section class="rb-block" id="members" aria-labelledby="members-title"><div class="container rb-grid"><div>
+<p class="eyebrow">Premium Members</p><h2 id="members-title">Your card.<br><em>Your name.</em></h2>
+<a href="members/" class="button">Create demo card <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<p class="rb-member-note">Preview only. No real membership is created.</p>
+</div><div class="rb-member-card" aria-label="Sample RawBar membership card">
+<div class="rb-card-top"><img alt="RawBar" src="rawbar-logo.svg"><span>PREMIUM</span></div>
+<strong>SAMPLE MEMBER</strong><div class="rb-card-foot"><span>DEMO / NOT VALID</span><i aria-hidden="true"></i></div>
+</div></div></section>
 
     <section class="visit" id="visit" aria-labelledby="visit-title">
       <div class="container visit-layout">
@@ -477,10 +494,22 @@ footer{background:#09040e;border-color:#5a2058}
             <div class="visit-row"><div class="visit-label">Opening hours</div><div class="visit-value">Tuesday – Saturday <br>4:00 PM – 12:00 AM<small>Bar service listed until 1:00 AM. Sunday hours are not listed; confirm before visiting. Monday closed.</small></div></div>
             <div class="visit-row"><div class="visit-label">Contact</div><div class="visit-value"><a href="tel:+18766723623">(876) 672-3623</a><br><a href="mailto:info@rawbarja.com">info@rawbarja.com</a></div></div>
           </div>
-          <details class="dress-note"><summary>Dress code &amp; reservation notes</summary><p>RawBar requests glamorous dress. Casual slides, flip-flops, beach footwear, Crocs, sportswear and shorts are not permitted. Collared or dress shirts are requested for gentlemen. The current site asks guests to book at least one hour in advance. <a href="https://www.rawbarja.com/terms-conditions" target="_blank" rel="noopener noreferrer"><u>Read the full policies</u></a>.</p></details>
+          
         </div>
       </div>
     </section>
+<section id="policies" class="rb-block" aria-labelledby="policies-title"><div class="container rb-grid"><div>
+<p class="eyebrow">Dress code &amp; policies</p><h2 id="policies-title">Dress for<br>the night.</h2></div><div class="rb-policies-list">
+<div><span>Dress code</span><strong>Glamorous attire</strong></div>
+<div><span>Not permitted</span><strong>Shorts, casual slides, flip-flops, Crocs, beach or foam shoes, T-shirts and sportswear</strong></div>
+<div><span>Gentlemen</span><strong>Collared or dress shirts</strong></div>
+<div><span>Reservations</span><strong>At least one hour in advance</strong></div>
+<a href="https://www.rawbarja.com/terms-conditions" class="text-link" target="_blank" rel="noopener noreferrer">Full policies <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div></div></section>
+<section id="social" class="rb-block" aria-labelledby="social-title"><div class="container">
+<div class="rb-social-head"><div><p class="eyebrow">Instagram</p><h2 id="social-title">@rawbarja</h2></div>
+<a href="https://www.instagram.com/rawbarja/" target="_blank" rel="noopener noreferrer" class="text-link">Follow RawBar <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div><div class="rb-social-grid"><a href="https://www.instagram.com/rawbarja/" target="_blank" rel="noopener noreferrer" aria-label="See RawBar on Instagram"><img loading="lazy" src="https://static.wixstatic.com/media/2a68c5_330590c624f54a7998ec8e373cdde88a~mv2.jpeg" alt="RawBar interior"></a><a href="https://www.instagram.com/rawbarja/" target="_blank" rel="noopener noreferrer" aria-label="See RawBar on Instagram"><img loading="lazy" src="https://static.wixstatic.com/media/2a68c5_b55c253ecdae4b62a75af89cdbe9b703~mv2.jpg" alt="RawBar food"></a><a href="https://www.instagram.com/rawbarja/" target="_blank" rel="noopener noreferrer" aria-label="See RawBar on Instagram"><img loading="lazy" src="https://static.wixstatic.com/media/2a68c5_cfcd87618e334afd86c20eadacf2a574~mv2.jpg" alt="RawBar dining"></a></div></div></section>
   </main>
   <footer>
     <div class="container footer-top">
@@ -510,5 +539,6 @@ footer{background:#09040e;border-color:#5a2058}
     window.addEventListener('resize',function(){if(window.innerWidth>840&&nav.classList.contains('open'))setOpen(false);});
   })();
   </script>
+<script defer src="assets/home-features.js?v=1"></script>
 </body>
 </html>
