@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#0b0611">
+<title>Premium Members | RawBar</title>
+<meta name="description" content="Preview a personalized RawBar Premium Members card. An interactive design demonstration only.">
+<link rel="canonical" href="https://criocreatives.com/previews/raw-bar-website-redesign/members/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0b0611;--purple:#a846f4;--pink:#fa2ab3;--ink:#f8eff8;--quiet:#c6aecb;--hair:#614064;--body:"Century Gothic","CenturyGothic","Avenir Next",Avenir,Arial,sans-serif;--heading:"Manrope",Arial,sans-serif}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{margin:0;background:radial-gradient(ellipse at 70% 16%,#3c0e4f 0%,transparent 56%),var(--black);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}button,input{font:inherit}
+:focus-visible{outline:2px solid #70dbfd;outline-offset:4px}
+header{border-bottom:1px solid rgba(255,255,255,.17);height:94px;display:flex;align-items:center}
+.header-inner{width:min(1280px,calc(100% - 80px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+header img{width:173px;height:auto;display:block}
+.back{font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;border-bottom:1px solid #bd7cc3;padding-bottom:8px}
+.back:hover{color:#ff71c9}
+main{min-height:calc(100svh - 94px);padding:92px 0 115px}
+.shell{width:min(1280px,calc(100% - 80px));margin:auto;display:grid;grid-template-columns:1.06fr .94fr;gap:9vw;align-items:center}
+.eyebrow{margin:0;color:#ff78cc;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.2em}
+h1,h2{font-family:var(--heading);font-weight:800;letter-spacing:-.07em}
+h1{font-size:clamp(67px,7.1vw,113px);line-height:1.06;margin:25px 0 28px}
+h1 em{font-style:normal;color:#ff37b9}
+.intro .brief{max-width:430px;color:#d2bed5;font-size:14px;line-height:1.75}
+.preview-card{margin-top:48px;width:min(470px,100%);aspect-ratio:1.62;background:linear-gradient(128deg,#2c103c,#73258b 57%,#1e0b2b);border:1px solid #bf68d3;box-shadow:0 24px 50px rgba(0,0,0,.3);padding:26px;border-radius:16px;display:flex;flex-direction:column;justify-content:space-between;transform:rotate(-4deg)}
+.preview-card img{width:137px}
+.preview-card strong{font:800 29px var(--heading);letter-spacing:-.045em}
+.preview-card-top,.preview-card-foot{display:flex;justify-content:space-between;align-items:center;gap:15px;font-size:10px;font-weight:700;letter-spacing:.1em}
+.preview-card-foot .bars{width:100px;height:32px;background:repeating-linear-gradient(90deg,#f5e3f4 0 2px,transparent 2px 5px,#f5e3f4 5px 6px,transparent 6px 9px)}
+.panel{background:rgba(24,9,33,.92);border:1px solid #684277;padding:40px}
+.panel h2{font-size:37px;margin:0 0 29px}
+.form-item{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.form-item label{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ecd0e8}
+.form-item input{height:55px;padding:0 15px;background:#24102e;border:1px solid #714f76;border-radius:0;color:#fff;font-size:14px;color-scheme:dark}
+.form-item input:focus{border-color:#ff75d3;outline:1px solid #ff75d3}
+.form-item input::placeholder{color:#aa96b3}
+.button{display:inline-flex;align-items:center;justify-content:space-between;gap:30px;width:100%;min-height:58px;padding:0 21px;border:1px solid var(--pink);background:var(--pink);color:#18081c;font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;cursor:pointer}
+.button:hover{background:#ff80d5;border-color:#ff80d5}
+.note{font-size:11px;line-height:1.7;color:#c0aec4;margin:17px 0 0}
+footer{border-top:1px solid #40274c;padding:22px 0 27px;text-align:center;color:#ab96b1;font-size:10px}
+dialog{border:0;background:transparent;color:white;max-width:none;max-height:100svh;width:100%;height:100%;padding:0;overflow:auto}
+dialog::backdrop{background:rgba(4,1,8,.85);backdrop-filter:blur(9px)}
+.modal-layout{min-height:100%;display:flex;align-items:center;justify-content:center;padding:48px 20px}
+.modal-inner{width:min(650px,100%);position:relative}
+.modal-top{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:22px}
+.modal-top h2{font-size:27px;letter-spacing:-.045em;margin:0}
+.close{width:39px;height:39px;background:#2d1639;border:1px solid #78488a;color:#fff;font-size:25px;line-height:1;cursor:pointer}
+.member-card{position:relative;isolation:isolate;width:100%;aspect-ratio:1.6;border-radius:18px;padding:clamp(21px,4vw,40px);background:linear-gradient(130deg,#220b37 0%,#6d258e 52%,#14061f 100%);border:1px solid #d77ae9;box-shadow:0 28px 74px rgba(0,0,0,.5);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.member-card:before{content:"";position:absolute;inset:-80%;z-index:-1;background:linear-gradient(90deg,transparent 45%,rgba(255,255,255,.08) 50%,transparent 55%);transform:rotate(28deg);pointer-events:none}
+.member-card-top,.member-card-foot{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.member-card-top img{width:clamp(108px,23vw,182px);height:auto}
+.member-card-top span{font-size:clamp(8px,1.4vw,11px);font-weight:800;letter-spacing:.17em}
+.member-card-body{display:flex;flex-direction:column;gap:8px;min-width:0}
+.member-name{font:800 clamp(22px,5vw,42px)/1.15 var(--heading);letter-spacing:-.055em;overflow-wrap:anywhere}
+.member-email,.member-phone{font-size:clamp(10px,1.5vw,13px);color:#f4d6f2;overflow-wrap:anywhere}
+.member-card-foot{align-items:end}
+.card-number{display:block;font-size:clamp(9px,1.4vw,12px);letter-spacing:.12em;font-weight:800}
+.card-disclaimer{display:block;font-size:clamp(8px,1vw,10px);margin-top:8px;color:#f3caee}
+.barcode{display:block;width:min(45%,190px);height:auto;flex:0 0 auto;background:white;border:7px solid white;border-radius:2px}
+.modal-note{margin:20px 0 0;color:#d9c0df;font-size:12px;line-height:1.65}
+.modal-actions{display:flex;gap:13px;margin-top:25px}
+.modal-actions .button{width:auto;flex:1;justify-content:center}
+.modal-actions .outline{background:transparent;border-color:#a665b7;color:white}
+.modal-actions .outline:hover{background:#52295e}
+@media(max-width:920px){.shell{grid-template-columns:1fr;gap:75px}.intro{max-width:720px}.panel{max-width:720px;width:100%}}
+@media(max-width:600px){header{height:74px}.header-inner,.shell{width:calc(100% - 36px)}header img{width:125px}main{padding:60px 0 76px}h1{font-size:clamp(54px,13vw,77px)}.panel{padding:23px}.panel h2{font-size:30px}.preview-card{margin-top:42px;padding:21px}.preview-card img{width:115px}.preview-card strong{font-size:24px}
+.modal-layout{padding:20px 12px}.member-card{border-radius:11px;padding:18px}.modal-top h2{font-size:20px}.member-card-foot{gap:8px}.barcode{border-width:3px}.modal-actions{flex-direction:column}.modal-actions .button{width:100%}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+@media print{body>*:not(dialog){display:none!important}dialog{position:static;display:block!important;width:100%;height:auto}.modal-top,.modal-note,.modal-actions{display:none}.member-card{print-color-adjust:exact;-webkit-print-color-adjust:exact;box-shadow:none}}
+</style>
+</head>
+<body>
+<header><div class="header-inner"><a href="../" aria-label="RawBar homepage"><img src="../rawbar-logo.svg" alt="RawBar"></a><a href="../#members" class="back">Back to RawBar</a></div></header>
+<main><div class="shell">
+<section class="intro"><p class="eyebrow">Premium Members</p><h1>Your card.<br><em>Your name.</em></h1><p class="brief">Create a personalised membership card preview.</p>
+<div class="preview-card" aria-hidden="true"><div class="preview-card-top"><img alt="" src="../rawbar-logo.svg"><span>PREMIUM</span></div><strong>SAMPLE MEMBER</strong><div class="preview-card-foot"><span>DEMO / NOT VALID</span><i class="bars"></i></div></div>
+</section>
+<section class="panel" aria-labelledby="form-title"><h2 id="form-title">Create your card</h2><form id="member-form" autocomplete="off">
+<div class="form-item"><label for="member-name-input">Full name</label><input id="member-name-input" name="fullName" type="text" placeholder="Your full name" maxlength="52" required autocomplete="name"></div>
+<div class="form-item"><label for="member-email-input">Email address</label><input id="member-email-input" name="email" type="email" placeholder="you@example.com" maxlength="120" required autocomplete="email"></div>
+<div class="form-item"><label for="member-phone-input">Phone number (optional)</label><input id="member-phone-input" name="phone" type="tel" placeholder="876..." maxlength="35" autocomplete="tel"></div>
+<button class="button" type="submit">Generate demo card <span aria-hidden="true">+</span></button>
+<p class="note">Demo only. Details stay in this browser tab. No account or usable membership is created.</p>
+</form></section>
+</div></main>
+<footer>RawBar Premium Members / Interactive website concept by Crio Creatives</footer>
+<dialog id="member-modal" aria-labelledby="member-result-title">
+<div class="modal-layout"><div class="modal-inner">
+<div class="modal-top"><h2 id="member-result-title">Your preview card</h2><button id="modal-close" class="close" type="button" aria-label="Close card">×</button></div>
+<div class="member-card" role="img" aria-label="Preview-only RawBar Premium Members card with your entered details and a dummy barcode">
+<div class="member-card-top"><img alt="RawBar" src="../rawbar-logo.svg"><span>PREMIUM / DEMO</span></div>
+<div class="member-card-body"><strong class="member-name" id="output-name">SAMPLE MEMBER</strong><span class="member-email" id="output-email"></span><span class="member-phone" id="output-phone" hidden></span></div>
+<div class="member-card-foot"><div><span class="card-number" id="output-id">DEMO</span><span class="card-disclaimer">SAMPLE / NOT VALID</span></div><svg class="barcode" id="output-barcode" viewBox="0 0 220 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"></svg></div>
+</div><p class="modal-note">This card is not an actual RawBar membership. The barcode is decorative, not scannable. No details were sent or saved.</p>
+<div class="modal-actions"><button type="button" id="modal-edit" class="button outline">Edit details</button><button type="button" id="modal-done" class="button">Done</button></div>
+</div></div></dialog>
+<script>
+(()=>{'use strict';
+const form=document.getElementById('member-form'),modal=document.getElementById('member-modal'),ns='http://www.w3.org/2000/svg';
+const set=(id,value)=>document.getElementById(id).textContent=value;
+const barcode=document.getElementById('output-barcode');
+function randomSeed(){const a=new Uint32Array(1);if(window.crypto&&crypto.getRandomValues){crypto.getRandomValues(a);return a[0]>>>0}return Math.floor(Math.random()*4294967295)>>>0}
+function paint(seed){barcode.replaceChildren();let state=seed>>>0;const next=()=>{state=(Math.imul(1664525,state)+1013904223)>>>0;return state/4294967296};let x=5;
+while(x<215){const width=1+Math.floor(next()*3),gap=1+Math.floor(next()*4),height=45+Math.floor(next()*17);const r=document.createElementNS(ns,'rect');r.setAttribute('x',String(x));r.setAttribute('y','2');r.setAttribute('width',String(Math.min(width,215-x)));r.setAttribute('height',String(height));r.setAttribute('fill','#111');barcode.appendChild(r);x+=width+gap;}}
+function close(){modal.close()}
+document.getElementById('modal-close').addEventListener('click',close);
+document.getElementById('modal-done').addEventListener('click',close);
+document.getElementById('modal-edit').addEventListener('click',()=>{close();document.getElementById('member-name-input').focus()});
+modal.addEventListener('click',e=>{if(e.target===modal)close()});
+form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;
+const name=form.elements.namedItem('fullName').value.trim(),email=form.elements.namedItem('email').value.trim(),phone=form.elements.namedItem('phone').value.trim();
+if(!name||!email)return;
+set('output-name',name.toLocaleUpperCase());set('output-email',email);
+const phoneNode=document.getElementById('output-phone');phoneNode.hidden=!phone;phoneNode.textContent=phone;
+const seed=randomSeed();set('output-id','RB-DEMO-'+String(seed%100000000).padStart(8,'0'));paint(seed);
+if(typeof modal.showModal==='function')modal.showModal();else modal.setAttribute('open','');});
+})();
+</script>
+</body></html>
