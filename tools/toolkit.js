@@ -232,6 +232,32 @@
       used.add(candidate.toLowerCase());r.name=candidate;
     }
   }
+  // One image remains a direct download. For batches, default to the existing
+  // ZIP behavior; users can opt into separate image downloads per output.
+  const zipEnabled = () => $('#zip-files')?.checked !== false;
+  async function downloadResults(results){
+    if(results.length===1){
+      download(results[0].blob,results[0].name);
+      return 'Started 1 image download.';
+    }
+    if(zipEnabled()){
+      const data=[];let size=0;
+      for(const r of results){
+        const u=new Uint8Array(await r.blob.arrayBuffer());
+        size+=u.length;
+        if(size>1500000000)throw new Error('Batch exceeds ZIP capacity. Process fewer files at a time.');
+        data.push({name:r.name,data:u});
+      }
+      download(zipFiles(data),'crio-'+tool+'-'+results.length+'-images.zip');
+      return 'Started ZIP download containing '+results.length+' images.';
+    }
+    for(let i=0;i<results.length;i++){
+      download(results[i].blob,results[i].name);
+      // Give browsers a chance to register each individual download.
+      if(i<results.length-1)await new Promise(resolve=>setTimeout(resolve,150));
+    }
+    return 'Started '+results.length+' individual downloads. If prompted, allow multiple downloads in your browser.';
+  }
   async function run(){
     if(!fileList.length||!browserSupported)return;
     runBtn.disabled=true;runBtn.textContent='Processing…';
@@ -245,13 +271,8 @@
       }
       if(!results.length)throw new Error(errors.join(' / ')||'Nothing could be processed.');
       safeUniqueNames(results);
-      if(results.length===1)download(results[0].blob,results[0].name);
-      else {
-        const data=[];let size=0;
-        for(const r of results){const u=new Uint8Array(await r.blob.arrayBuffer());size+=u.length;if(size>1500000000)throw new Error('Batch exceeds ZIP capacity. Process fewer files at a time.');data.push({name:r.name,data:u});}
-        download(zipFiles(data),'crio-'+tool+'-'+results.length+'-images.zip');
-      }
-      showStatus('Downloaded '+results.length+' file'+(results.length===1?'':'s')+'.'+(errors.length?' '+errors.length+' failed: '+errors.join(' / '):''),!!errors.length);
+      const message=await downloadResults(results);
+      showStatus(message+(errors.length?' '+errors.length+' failed: '+errors.join(' / '):''),!!errors.length);
     }catch(e){showStatus(e.message||'Conversion failed. Try a smaller image.',true);}
     finally{runBtn.disabled=!fileList.length;runBtn.textContent='Process & download';}
   }
