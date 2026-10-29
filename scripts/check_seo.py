@@ -77,8 +77,8 @@ def main():
         # without applying the main marketing pages\u0027 strict metadata template.
         if rel.startswith("previews/"):
             # Client concept previews marked noindex must not enter the sitemap.
-            if rel not in {"previews/404.html", "previews/portfolio/index.html",
-                           "previews/raw-bar-website-redesign/index.html"}:
+            if (rel not in {"previews/404.html", "previews/portfolio/index.html"}
+                and not rel.startswith("previews/raw-bar-website-redesign/")):
                 expected_urls.add(page_url(rel))
             continue
         source = file.read_text(encoding="utf-8")
