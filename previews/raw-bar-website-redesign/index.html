@@ -454,11 +454,25 @@ footer{background:#09040e;border-color:#5a2058}
       </div>
     </section>
 
-    <section id="events" class="rb-block" aria-labelledby="events-title"><div class="container rb-grid"><div>
-<p class="eyebrow">Upcoming events</p><h2 id="events-title">What's on.</h2>
-<div class="rb-event-state">No dates announced</div>
-<a class="text-link" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/rawbarjamaica/">Event updates <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-</div><div class="rb-photo"><img loading="lazy" src="https://static.wixstatic.com/media/2a68c5_330590c624f54a7998ec8e373cdde88a~mv2.jpeg" alt="RawBar lounge atmosphere"></div></div></section>
+    <section id="events" class="rb-block rb-events-update" aria-labelledby="events-title"><div class="container">
+<div class="rb-events-top"><h2 id="events-title">What's on.</h2><a class="text-link" href="https://www.instagram.com/rawbarjamaica/" target="_blank" rel="noopener noreferrer">More events <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+<div class="rb-featured-events"><a class="rb-featured-event rb-tone-violet" href="https://www.instagram.com/p/DdWxqMkEftp/" target="_blank" rel="noopener noreferrer" data-event-day="2026-11-21" aria-label="Casanova SAT / NOV 21, view event source">
+<div class="rb-featured-top"><time datetime="2026-11-21">SAT / NOV 21</time><span class="rb-featured-state" data-event-state>EVENT</span></div>
+<div class="rb-featured-info"><h3>Casanova</h3><p>Party of the Century</p><span class="rb-featured-link">View event <span aria-hidden="true">↗</span></span></div>
+</a>
+<a class="rb-featured-event rb-tone-orange" href="https://www.instagram.com/rawbarjamaica/" target="_blank" rel="noopener noreferrer" data-event-day="2026-10-31" aria-label="Halloween Night SAT / OCT 31, view event source">
+<div class="rb-featured-top"><time datetime="2026-10-31">SAT / OCT 31</time><span class="rb-featured-state" data-event-state>EVENT</span></div>
+<div class="rb-featured-info"><h3>Halloween Night</h3><p>Part 2 · 3rd Anniversary</p><span class="rb-featured-link">View event <span aria-hidden="true">↗</span></span></div>
+</a>
+<a class="rb-featured-event rb-tone-red" href="https://www.instagram.com/rawbarjamaica/" target="_blank" rel="noopener noreferrer" data-event-day="2026-10-30" aria-label="Beyond Scary FRI / OCT 30, view event source">
+<div class="rb-featured-top"><time datetime="2026-10-30">FRI / OCT 30</time><span class="rb-featured-state" data-event-state>EVENT</span></div>
+<div class="rb-featured-info"><h3>Beyond Scary</h3><p>Halloween Night · 3rd Anniversary</p><span class="rb-featured-link">View event <span aria-hidden="true">↗</span></span></div>
+</a>
+<a class="rb-featured-event rb-tone-magenta" href="https://www.instagram.com/rawbarjamaica/" target="_blank" rel="noopener noreferrer" data-event-day="2026-10-20" aria-label="Lagos TUE / OCT 20, view event source">
+<div class="rb-featured-top"><time datetime="2026-10-20">TUE / OCT 20</time><span class="rb-featured-state" data-event-state>EVENT</span></div>
+<div class="rb-featured-info"><h3>Lagos</h3><p>Ladies in Leopard &amp; Print</p><span class="rb-featured-link">View event <span aria-hidden="true">↗</span></span></div>
+</a></div><div class="rb-weekly-events"><a href="https://www.instagram.com/rawbarjamaica/" target="_blank" rel="noopener noreferrer"><span>EVERY SATURDAY</span><strong>Raw It Up</strong><span>DJ Jamie &amp; guest DJs</span></a><a href="https://www.instagram.com/rawbarjamaica/" target="_blank" rel="noopener noreferrer"><span>EVERY SUNDAY</span><strong>After</strong><span>Resident DJs</span></a></div>
+</div></section>
 <section id="private-events" class="rb-block rb-venue" aria-labelledby="hire-title"><div class="container rb-grid">
 <div><p class="eyebrow">Private events</p><h2 id="hire-title">Your occasion.<br><em>Our space.</em></h2><p>90A Barbican Road, Kingston</p></div>
 <form class="rb-venue-form" id="venue-form"><h3>Venue enquiry</h3><div class="rb-fields">
@@ -540,5 +554,11 @@ footer{background:#09040e;border-color:#5a2058}
   })();
   </script>
 <script defer src="assets/home-features.js?v=1"></script>
+<script>
+(()=>{const stamp=Date.now();document.querySelectorAll('[data-event-day]').forEach(el=>{
+const cutoff=Date.parse(el.dataset.eventDay+'T23:59:59-05:00');
+const label=el.querySelector('[data-event-state]');if(label){const past=stamp>cutoff;label.textContent=past?'PAST EVENT':'DATED EVENT';label.classList.toggle('is-past',past);}
+});})();
+</script>
 </body>
 </html>

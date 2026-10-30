@@ -45,3 +45,26 @@
 .rb-policies-list>div{grid-template-columns:1fr;gap:7px}.rb-social-head{align-items:start;flex-direction:column;gap:20px}
 .rb-social-grid{gap:6px}.rb-social-grid a{aspect-ratio:.8}}
 @media(prefers-reduced-motion:reduce){.rb-social-grid img{transition:none}}
+/* Actual dated and weekly events. Typography remains concise. */
+.rb-events-update{background:#200b2b!important;padding:105px 0!important}
+.rb-events-top{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:38px}
+.rb-events-top h2{margin:0;font:800 clamp(49px,6vw,89px)/1.07 "Manrope",Arial,sans-serif;letter-spacing:-.071em}
+.rb-featured-events{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.rb-featured-event{position:relative;isolation:isolate;overflow:hidden;min-height:340px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(240,126,221,.28);transition:border-color .25s,transform .25s;background:linear-gradient(145deg,#391452,#17091f)}
+.rb-featured-event:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.7;background:radial-gradient(circle at 115% 10%,rgba(255,110,210,.55),transparent 52%),repeating-linear-gradient(-50deg,transparent 0,transparent 40px,rgba(255,255,255,.022) 40px,rgba(255,255,255,.022) 41px)}
+.rb-tone-orange{background:linear-gradient(150deg,#6a2119,#220e19 75%)}.rb-tone-red{background:linear-gradient(140deg,#6b172e,#1c0717 80%)}.rb-tone-magenta{background:linear-gradient(145deg,#591146,#220920 74%)}
+.rb-featured-event:hover{border-color:#f9a2d9;transform:translateY(-3px)}
+.rb-featured-top{display:flex;align-items:start;justify-content:space-between;gap:15px;font:800 10px "Century Gothic","Avenir Next",Arial,sans-serif;letter-spacing:.08em}
+.rb-featured-top time{color:#fff}.rb-featured-state{color:#ffb0da;text-align:right;font-size:9px}.rb-featured-state.is-past{color:#bcb0c2}
+.rb-featured-info h3{font:800 clamp(28px,3vw,46px)/1.02 "Manrope",Arial,sans-serif;letter-spacing:-.055em;margin:0 0 12px}
+.rb-featured-info p{font:400 13px/1.55 "Century Gothic","Avenir Next",Arial,sans-serif!important;color:#f1d7ed;margin:0 0 25px}
+.rb-featured-link{font:800 10px "Century Gothic",Arial,sans-serif;text-transform:uppercase;letter-spacing:.09em;display:inline-block;border-bottom:1px solid rgba(255,255,255,.55);padding-bottom:8px}
+.rb-weekly-events{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,.22);border-bottom:1px solid rgba(255,255,255,.22);margin-top:25px}
+.rb-weekly-events a{display:flex;align-items:center;gap:22px;justify-content:space-between;padding:30px 16px;border-right:1px solid rgba(255,255,255,.2)}
+.rb-weekly-events a:last-child{border-right:0}
+.rb-weekly-events span{font:700 10px/1.4 "Century Gothic",Arial,sans-serif;letter-spacing:.08em;color:#e6b2dd}
+.rb-weekly-events strong{font:800 clamp(24px,2.65vw,38px) "Manrope",Arial,sans-serif;letter-spacing:-.05em}
+.rb-weekly-events a:hover strong{color:#ff70d0}
+@media(max-width:1120px){.rb-featured-events{grid-template-columns:repeat(2,minmax(0,1fr))}.rb-featured-event{min-height:270px}.rb-weekly-events a{flex-wrap:wrap;gap:12px}.rb-weekly-events strong{min-width:100%}}
+@media(max-width:600px){.rb-events-update{padding:75px 0!important}.rb-events-top{align-items:start;gap:20px;flex-direction:column}.rb-featured-events{grid-template-columns:1fr}.rb-featured-event{min-height:235px}.rb-weekly-events{grid-template-columns:1fr}.rb-weekly-events a{padding:22px 9px;border-right:0;border-bottom:1px solid rgba(255,255,255,.18)}.rb-weekly-events a:last-child{border-bottom:0}.rb-weekly-events strong{font-size:30px}}
+@media(prefers-reduced-motion:reduce){.rb-featured-event{transition:none}}
