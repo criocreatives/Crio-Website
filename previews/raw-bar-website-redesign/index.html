@@ -555,7 +555,7 @@ footer{background:#09040e;border-color:#5a2058}
 <script>
 (()=>{const stamp=Date.now();document.querySelectorAll('[data-event-day]').forEach(el=>{
 const cutoff=Date.parse(el.dataset.eventDay+'T23:59:59-05:00');
-const label=el.querySelector('[data-event-state]');if(label){const past=stamp>cutoff;label.textContent=past?'PAST EVENT':'DATED EVENT';label.classList.toggle('is-past',past);}
+const label=el.querySelector('[data-event-state]');if(label){const past=stamp>cutoff;label.textContent=past?'PAST EVENT':'UPCOMING';label.classList.toggle('is-past',past);}
 });})();
 </script>
 </body>
