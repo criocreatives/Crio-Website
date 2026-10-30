@@ -37,3 +37,14 @@ button.floating-cart[hidden]{display:none}
 body,button,input,select,textarea,p,small,label,.label,.eyebrow,.bread,.main-nav a,.hdr-cta,.btn,.pill,.group-top span,.dish .tag,.order-mode button,.service-note,.product-badge,.product-copy p,.cart-count,.cart-note,.cart-item-title,.field label,.choice,.booking-hint,.policy,.footer-links,.footer-meta,.total-row,.support-note{font-family:var(--body)}
 .mobile-menu{top:90px}@media(max-width:840px){.mobile-menu{top:73px}}
 .step-title{gap:0}
+
+/* Official RawBar menu and verified-price ordering */
+.rb-menu-price{flex:0 0 auto;max-width:235px;text-align:right;align-self:center;color:#fff;font:800 14px/1.65 "Century Gothic","Avenir Next",Arial,sans-serif}
+.rb-menu-policy{margin-top:39px;border-top:1px solid #61456e;padding-top:24px;color:#c8b2ce;font:400 12px/1.85 "Century Gothic","Avenir Next",Arial,sans-serif}
+.rb-menu-policy a{text-decoration:underline;text-underline-offset:4px;color:#ffc3e8}
+.simple-product{background:#1d0d27}
+.simple-product .product-copy{padding:23px}
+.simple-product .product-badge{position:static;display:inline-flex;align-self:start;margin-bottom:17px;border:1px solid #794b8b}
+.simple-product .product-copy h3{margin-bottom:11px}
+.simple-product .product-foot{border-top:1px solid #51355a;padding-top:18px;margin-top:9px}
+@media(max-width:600px){.rb-menu-price{max-width:148px;font-size:12px}.dish{align-items:flex-start}.menu-group{scroll-margin-top:85px}.simple-product .product-copy{padding:20px}}

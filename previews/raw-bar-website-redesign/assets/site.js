@@ -15,8 +15,8 @@ const menuGroups=document.querySelectorAll('[data-menu-group]');
 if(filterButtons.length){
  const choose=(category)=>{filterButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.menuFilter===category)));menuGroups.forEach(g=>g.hidden=category!=='all'&&g.dataset.menuGroup!==category);};
  filterButtons.forEach(b=>b.addEventListener('click',()=>choose(b.dataset.menuFilter)));
- const hash=location.hash.slice(1);choose(['starters','mains','desserts','drinks'].includes(hash)?hash:'all');
- window.addEventListener('hashchange',()=>{const cat=location.hash.slice(1);if(['starters','mains','desserts','drinks'].includes(cat))choose(cat)});
+ const hash=location.hash.slice(1);choose(['small','soups','pasta','mains','late','drinks'].includes(hash)?hash:'all');
+ window.addEventListener('hashchange',()=>{const cat=location.hash.slice(1);if(['small','soups','pasta','mains','late','drinks'].includes(cat))choose(cat)});
 }
 const currency=n=>'J$'+Math.max(0,n).toLocaleString('en-JM',{maximumFractionDigits:0});
 if(document.body.dataset.page==='ordering'){
