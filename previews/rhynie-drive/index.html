@@ -131,6 +131,12 @@ body.crio-architecture.arch-photographic.crio-ed.crio-ed--rhynie-drive section.h
   }
 }
 
+
+/* Original and alternative kitchen views presented as paired comparisons. */
+.rd-gallery.rd-compare{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.rd-compare-row{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;min-width:0}
+.rd-gallery .rd-figure.rd-wide{grid-column:1/-1}
+@media(max-width:650px){.rd-gallery.rd-compare,.rd-compare-row{grid-template-columns:1fr;gap:25px}}
 </style>
 </head>
 <body class="crio-architecture arch-photographic">
@@ -153,11 +159,17 @@ body.crio-architecture.arch-photographic.crio-ed.crio-ed--rhynie-drive section.h
 </div></section>
 <section class="rd-section" id="kitchen"><div class="rd-wrap">
 <div class="rd-head"><div><p class="rd-kicker">02 / Interior renovation</p><h2>Kitchen.</h2></div><p>Updated cabinetry, improved storage and a smaller, more functional island.</p></div>
-<div class="rd-gallery"><figure class="rd-figure wide"><button class="rd-image" type="button" data-src="/previews/rhynie-drive/images/kitchen-overview.webp" data-alt="Kitchen / Overall View" aria-label="Enlarge Kitchen / Overall View"><img src="/previews/rhynie-drive/images/kitchen-overview.webp" alt="Kitchen / Overall View" loading="lazy" decoding="async"></button><figcaption><strong>Kitchen / Overall View</strong></figcaption></figure></div>
+<div class="rd-gallery rd-compare">
+<figure class="rd-figure"><button class="rd-image" type="button" data-src="/previews/rhynie-drive/images/kitchen-overview.webp" data-alt="Kitchen / Original Proposal" aria-label="Enlarge original kitchen design"><img src="/previews/rhynie-drive/images/kitchen-overview.webp" width="1536" height="1024" alt="Kitchen / Original Proposal" loading="lazy" decoding="async"></button><figcaption><strong>Overall View</strong><span>Original proposal</span></figcaption></figure>
+<figure class="rd-figure"><button class="rd-image" type="button" data-src="/previews/rhynie-drive/images/kitchen-overview-alternative.webp" data-alt="Kitchen / Alternate Proposal" aria-label="Enlarge alternate kitchen design"><img src="/previews/rhynie-drive/images/kitchen-overview-alternative.webp" width="1536" height="1024" alt="Kitchen / Alternate Proposal" loading="lazy" decoding="async"></button><figcaption><strong>Overall View</strong><span>Alternative</span></figcaption></figure>
+</div>
 <div class="rd-divider-heading" id="details"><h3>Kitchen Details.</h3></div>
 <div class="rd-gallery">
-<figure class="rd-figure "><button class="rd-image" type="button" data-src="/previews/rhynie-drive/images/kitchen-sink-cabinets.webp" data-alt="Sink-side Display Cabinets" aria-label="Enlarge Sink-side Display Cabinets"><img src="/previews/rhynie-drive/images/kitchen-sink-cabinets.webp" alt="Sink-side Display Cabinets" loading="lazy" decoding="async"></button><figcaption><strong>Sink-side Display Cabinets</strong><span>New matching glass-front storage for plates and glassware.</span></figcaption></figure>
-<figure class="rd-figure "><button class="rd-image" type="button" data-src="/previews/rhynie-drive/images/kitchen-coffee-wine.webp" data-alt="Coffee Station & Wine Storage" aria-label="Enlarge Coffee Station & Wine Storage"><img src="/previews/rhynie-drive/images/kitchen-coffee-wine.webp" alt="Coffee Station & Wine Storage" loading="lazy" decoding="async"></button><figcaption><strong>Coffee Station & Wine Storage</strong><span>Coffee preparation nook with integrated bottle storage below.</span></figcaption></figure>
+<div class="rd-compare-row">
+<figure class="rd-figure"><button class="rd-image" type="button" data-src="/previews/rhynie-drive/images/kitchen-sink-cabinets.webp" data-alt="Sink-side Cabinets / Original Proposal" aria-label="Enlarge original sink-side cabinets"><img src="/previews/rhynie-drive/images/kitchen-sink-cabinets.webp" width="1536" height="1024" alt="Sink-side Cabinets / Original Proposal" loading="lazy" decoding="async"></button><figcaption><strong>Sink-side Cabinets</strong><span>Original proposal</span></figcaption></figure>
+<figure class="rd-figure"><button class="rd-image" type="button" data-src="/previews/rhynie-drive/images/kitchen-sink-alternative.webp" data-alt="Sink-side Cabinets / Alternate Proposal" aria-label="Enlarge alternate sink-side cabinets"><img src="/previews/rhynie-drive/images/kitchen-sink-alternative.webp" width="1536" height="1024" alt="Sink-side Cabinets / Alternate Proposal" loading="lazy" decoding="async"></button><figcaption><strong>Sink-side Cabinets</strong><span>Alternative</span></figcaption></figure>
+</div>
+<figure class="rd-figure rd-wide"><button class="rd-image" type="button" data-src="/previews/rhynie-drive/images/kitchen-coffee-wine.webp" data-alt="Coffee Station & Wine Storage" aria-label="Enlarge Coffee Station & Wine Storage"><img src="/previews/rhynie-drive/images/kitchen-coffee-wine.webp" alt="Coffee Station & Wine Storage" loading="lazy" decoding="async"></button><figcaption><strong>Coffee Station & Wine Storage</strong><span>Coffee preparation nook with integrated bottle storage below.</span></figcaption></figure>
 </div>
 <div class="rd-divider-heading" id="layout"><h3>Refined Island Layout.</h3></div>
 <div class="rd-metric"><strong>44–50 in.</strong><span>Target walkway clearance around the reduced and refined kitchen island, allowing easier movement through the existing room.</span></div>
