@@ -68,3 +68,7 @@
 @media(max-width:1120px){.rb-featured-events{grid-template-columns:repeat(2,minmax(0,1fr))}.rb-featured-event{min-height:270px}.rb-weekly-events a{flex-wrap:wrap;gap:12px}.rb-weekly-events strong{min-width:100%}}
 @media(max-width:600px){.rb-events-update{padding:75px 0!important}.rb-events-top{align-items:start;gap:20px;flex-direction:column}.rb-featured-events{grid-template-columns:1fr}.rb-featured-event{min-height:235px}.rb-weekly-events{grid-template-columns:1fr}.rb-weekly-events a{padding:22px 9px;border-right:0;border-bottom:1px solid rgba(255,255,255,.18)}.rb-weekly-events a:last-child{border-bottom:0}.rb-weekly-events strong{font-size:30px}}
 @media(prefers-reduced-motion:reduce){.rb-featured-event{transition:none}}
+
+/* Keep homepage navigation fitted with House Rules added. */
+.header-nav{gap:clamp(15px,2vw,32px)!important}
+@media(min-width:841px) and (max-width:1120px){.header-inner{gap:18px!important}.header-nav a{font-size:9px!important}.header-reserve{padding-inline:12px!important}}

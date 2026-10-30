@@ -74,10 +74,11 @@ dialog::backdrop{background:rgba(4,1,8,.85);backdrop-filter:blur(9px)}
 .modal-layout{padding:20px 12px}.member-card{border-radius:11px;padding:18px}.modal-top h2{font-size:20px}.member-card-foot{gap:8px}.barcode{border-width:3px}.modal-actions{flex-direction:column}.modal-actions .button{width:100%}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 @media print{body>*:not(dialog){display:none!important}dialog{position:static;display:block!important;width:100%;height:auto}.modal-top,.modal-note,.modal-actions{display:none}.member-card{print-color-adjust:exact;-webkit-print-color-adjust:exact;box-shadow:none}}
+.member-extra-nav{display:flex;align-items:center;gap:25px}@media(max-width:600px){.member-extra-nav{gap:13px}.member-extra-nav .back{font-size:9px}}
 </style>
 </head>
 <body>
-<header><div class="header-inner"><a href="../" aria-label="RawBar homepage"><img src="../rawbar-logo.svg" alt="RawBar"></a><a href="../#members" class="back">Back to RawBar</a></div></header>
+<header><div class="header-inner"><a href="../" aria-label="RawBar homepage"><img src="../rawbar-logo.svg" alt="RawBar"></a><div class="member-extra-nav"><a href="../house-rules/" class="back">House Rules</a><a href="../#members" class="back">Back to RawBar</a></div></div></header>
 <main><div class="shell">
 <section class="intro"><p class="eyebrow">Premium Members</p><h1>Your card.<br><em>Your name.</em></h1><p class="brief">Create a personalised membership card preview.</p>
 <div class="preview-card" aria-hidden="true"><div class="preview-card-top"><img alt="" src="../rawbar-logo.svg"><span>PREMIUM</span></div><strong>SAMPLE MEMBER</strong><div class="preview-card-foot"><span>DEMO / NOT VALID</span><i class="bars"></i></div></div>
