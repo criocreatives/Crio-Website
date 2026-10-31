@@ -1,0 +1,42 @@
+name: Upload Rhynie Drive Bedroom 3 images
+on:
+  push:
+    paths:
+      - .github/workflows/rhynie-bedroom-3-upload.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  upload-bedroom-3:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download and verify submitted WebP images
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p previews/rhynie-drive/images
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/Otj6n3aGoOiDCQ53' --output previews/rhynie-drive/images/bedroom-3-front-view.webp
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/BRLINWca7IfnKo3w' --output previews/rhynie-drive/images/bedroom-3-vanity-view.webp
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/TpuSiGpyiGPoCfGY' --output previews/rhynie-drive/images/bedroom-3-angled-view.webp
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/83ZOqvNvSyPgkLnP' --output previews/rhynie-drive/images/bedroom-3-media-wall.webp
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/nyz5FKK5Ghq0fOqy' --output previews/rhynie-drive/images/bedroom-3-window-view.webp
+          cd previews/rhynie-drive/images
+          printf '%s\n' \
+            '2f6865519bd6c96e996281cab119db9a0ab3bb0555747ae5616ee711b052195a  bedroom-3-front-view.webp' \
+            'cea4af32e5e1571c5a73a1c307dbbeafd0ecf8fb6bd255036e6a86297f60ddba  bedroom-3-vanity-view.webp' \
+            '82fed04b8d273d9897215b4451c890f187101778190241cbef790756f76d1203  bedroom-3-angled-view.webp' \
+            'a1ad2cd73a7f8910b6811c75581e27fa12a9d17dfd5dd8efa37d8e0f24b440a0  bedroom-3-media-wall.webp' \
+            '7c10e31b315ad513c3d497cbe9ebe53b3f643ea84f0cee8d7f64b0df110d05de  bedroom-3-window-view.webp' | sha256sum -c -
+      - name: Commit Bedroom 3 render files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add previews/rhynie-drive/images/bedroom-3-*.webp
+          if git diff --cached --quiet; then echo 'Bedroom 3 renders already current'; exit 0; fi
+          git commit -m 'Add five Rhynie Drive Bedroom 3 renders'
+          git push
