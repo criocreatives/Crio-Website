@@ -148,6 +148,15 @@ def main():
     if f"Sitemap: {BASE}/sitemap.xml" not in robots:
         failures.append("robots.txt: sitemap declaration missing")
 
+    # Prevent accidental reintroduction of the public contact form's spam bypass.
+    homepage = (ROOT / "index.html").read_text(encoding="utf-8")
+    if 'name="_captcha" value="false"' in homepage:
+        failures.append("index.html: reCAPTCHA must not be disabled")
+    if 'name="_honey"' not in homepage:
+        failures.append("index.html: FormSubmit honeypot is missing")
+    if 'name="_blacklist"' not in homepage or 'directoryinspector.com' not in homepage:
+        failures.append("index.html: contact-form spam blacklist is missing")
+
     if failures:
         print("SEO VALIDATION FAILED")
         for item in failures:
