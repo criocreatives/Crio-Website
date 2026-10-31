@@ -104,7 +104,8 @@
         'wordpress restore option','archive restore','recover website from archive',
         'reviewed your website','website score','digital presence','online presence',
         'potential business growth','technology solutions','quick conversation',
-        'web development services','kratvya.com','kratvya','finalscout.com','finalscout'
+        'web development services','kratvya.com','kratvya','finalscout.com','finalscout',
+        'directoryinspector.com','submit your site to multiple directories'
       ];
 
       if ((trap && trap.value.trim()) || elapsed < 3000 || spamPhrases.some(term => submissionText.includes(term))) {
