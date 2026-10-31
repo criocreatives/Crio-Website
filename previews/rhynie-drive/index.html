@@ -56,12 +56,19 @@ img{display:block;max-width:100%}button{font:inherit}
 .rd-end{background:#111214;color:#b4b4b9;padding:28px 0 35px}
 .rd-end .rd-wrap{display:flex;justify-content:space-between;gap:20px;align-items:center}
 .rd-end span{font:700 10px/1.6 var(--rd-body);letter-spacing:.12em;text-transform:uppercase}
-.rd-lightbox{padding:0;border:0;background:rgba(9,9,9,.98);color:#fff;max-width:none;max-height:none;width:100vw;height:100vh}
+.rd-lightbox{position:fixed;inset:0;margin:0;padding:0;border:0;background:rgba(9,9,9,.98);color:#fff;max-width:none;max-height:none;width:100vw;height:100vh;height:100dvh;overflow:hidden}
 .rd-lightbox::backdrop{background:rgba(9,9,9,.98)}
-.rd-lightbox-inner{height:100%;width:100%;display:grid;place-items:center;padding:35px}
-.rd-lightbox-inner img{max-width:96vw;max-height:90vh;width:auto;height:auto;object-fit:contain}
-.rd-close{position:fixed;top:18px;right:18px;color:#fff;background:#1a1a1a;border:1px solid #777;cursor:pointer;padding:11px 17px;z-index:4}
-.rd-image:focus-visible,.rd-close:focus-visible{outline:3px solid var(--rd-red);outline-offset:4px}
+.rd-lightbox-inner{position:relative;height:100%;width:100%;display:flex;align-items:center;justify-content:center;padding:60px 66px 65px;touch-action:pan-y;user-select:none}
+.rd-lightbox-media{width:100%;height:100%;min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;cursor:zoom-out}
+.rd-lightbox-media img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;cursor:default;user-select:none;-webkit-user-drag:none}
+.rd-lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:54px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.3);border-radius:4px;background:rgba(30,30,30,.75);color:#fff;font:400 32px/1 Arial,sans-serif;cursor:pointer;z-index:3}
+.rd-lightbox-prev{left:12px}
+.rd-lightbox-next{right:12px}
+.rd-lightbox-nav:hover,.rd-lightbox-nav:focus-visible{background:rgba(75,75,75,.94)}
+.rd-lightbox-count{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font:600 12px/1.4 var(--rd-body);letter-spacing:.08em;white-space:nowrap;color:#fff;pointer-events:none}
+.rd-close{position:absolute;top:18px;right:18px;color:#fff;background:#1a1a1a;border:1px solid #777;cursor:pointer;padding:11px 17px;z-index:4}
+.rd-image:focus-visible,.rd-close:focus-visible,.rd-lightbox-nav:focus-visible{outline:3px solid var(--rd-red);outline-offset:4px}
+@media(max-width:650px){.rd-lightbox-inner{padding:65px 14px 62px}.rd-lightbox-nav{width:42px;height:46px;font-size:28px;top:auto;bottom:8px;transform:none}.rd-lightbox-prev{left:15px}.rd-lightbox-next{right:15px}.rd-lightbox-count{bottom:22px}.rd-close{top:15px;right:15px}}
 @media(max-width:900px){.rd-wrap{width:calc(100% - 52px)}.rd-section{padding:66px 0 83px}}
 @media(max-width:650px){.rd-wrap{width:calc(100% - 32px)}.rd-section{padding:48px 0 64px}.rd-head{display:block;padding:18px 0 26px}.rd-head p:last-child{margin-top:18px}.rd-gallery{grid-template-columns:1fr;row-gap:29px}.rd-figure.wide{grid-column:auto}.rd-metric{display:block}.rd-metric span{display:block;margin-top:12px}.rd-divider-heading{margin-top:40px}.rd-end .rd-wrap{display:block}.rd-end span{display:block;margin-bottom:6px}.rd-lightbox-inner{padding:25px 10px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rd-image img{transition:none}}
@@ -196,16 +203,79 @@ body.crio-architecture.arch-photographic.crio-ed.crio-ed--rhynie-drive section.h
 </div></section>
 </main>
 <div class="rd-end"><div class="rd-wrap"><span>Rhynie Drive / Montego Bay, Jamaica</span><span>Chantier Construction · Crio Creatives</span></div></div>
-<dialog class="rd-lightbox" id="rdLightbox" aria-label="Full-size project image"><div class="rd-lightbox-inner"><button type="button" class="rd-close" id="rdClose" aria-label="Close image">Close</button><img id="rdLarge" alt=""></div></dialog>
+<dialog class="rd-lightbox" id="rdLightbox" aria-label="Project photo viewer" aria-modal="true">
+<div class="rd-lightbox-inner" id="rdLightboxInner">
+<button type="button" class="rd-close" id="rdClose" aria-label="Close photo viewer">Close</button>
+<button type="button" class="rd-lightbox-nav rd-lightbox-prev" id="rdPrev" aria-label="Previous photo">&#8249;</button>
+<div class="rd-lightbox-media" id="rdLightboxMedia"><img id="rdLarge" alt="" draggable="false"></div>
+<button type="button" class="rd-lightbox-nav rd-lightbox-next" id="rdNext" aria-label="Next photo">&#8250;</button>
+<span class="rd-lightbox-count" id="rdCount" aria-live="polite"></span>
+</div>
+</dialog>
 <script>
 (function(){
-const d=document.getElementById("rdLightbox"),image=document.getElementById("rdLarge");let source=null;
-document.querySelectorAll("[data-src]").forEach(button=>button.addEventListener("click",()=>{
-source=button;image.src=button.dataset.src;image.alt=button.dataset.alt||"";if(typeof d.showModal==="function")d.showModal();else d.setAttribute("open","");
+const dialog=document.getElementById("rdLightbox");
+const inner=document.getElementById("rdLightboxInner");
+const image=document.getElementById("rdLarge");
+const counter=document.getElementById("rdCount");
+const photos=Array.from(document.querySelectorAll(".rd-image[data-src]"));
+let current=0,source=null,touchStart=null,lastSwipe=0;
+function showPhoto(nextIndex){
+  if(!photos.length)return;
+  current=(nextIndex+photos.length)%photos.length;
+  const photo=photos[current];
+  image.src=photo.dataset.src;
+  image.alt=photo.dataset.alt||photo.querySelector("img")?.alt||"Project photo";
+  counter.textContent=(current+1)+" / "+photos.length;
+}
+function closeViewer(){
+  if(typeof dialog.close==="function"){if(dialog.open)dialog.close();}
+  else{dialog.removeAttribute("open");restoreFocus();}
+}
+function restoreFocus(){
+  image.removeAttribute("src");
+  if(source){source.focus({preventScroll:true});source=null;}
+}
+photos.forEach((button,index)=>button.addEventListener("click",()=>{
+  source=button;
+  showPhoto(index);
+  if(typeof dialog.showModal==="function")dialog.showModal();
+  else dialog.setAttribute("open","");
 }));
-document.getElementById("rdClose").addEventListener("click",()=>{if(typeof d.close==="function")d.close();else d.removeAttribute("open")});
-d.addEventListener("click",event=>{if(event.target===d&&typeof d.close==="function")d.close()});
-d.addEventListener("close",()=>{image.removeAttribute("src");if(source)source.focus()});
+document.getElementById("rdPrev").addEventListener("click",()=>showPhoto(current-1));
+document.getElementById("rdNext").addEventListener("click",()=>showPhoto(current+1));
+document.getElementById("rdClose").addEventListener("click",closeViewer);
+inner.addEventListener("click",event=>{
+  if(Date.now()-lastSwipe<450)return;
+  if(event.target===image||event.target.closest("button"))return;
+  closeViewer();
+});
+dialog.addEventListener("click",event=>{if(event.target===dialog)closeViewer();});
+dialog.addEventListener("keydown",event=>{
+  if(event.key==="ArrowRight"||event.key==="ArrowLeft"){
+    event.preventDefault();
+    showPhoto(current+(event.key==="ArrowRight"?1:-1));
+  }else if(event.key==="Escape"&&typeof dialog.close!=="function"){
+    event.preventDefault();
+    closeViewer();
+  }
+});
+inner.addEventListener("touchstart",event=>{
+  if(event.touches.length!==1){touchStart=null;return;}
+  touchStart={x:event.touches[0].clientX,y:event.touches[0].clientY};
+},{passive:true});
+inner.addEventListener("touchend",event=>{
+  if(!touchStart||!event.changedTouches.length)return;
+  const dx=event.changedTouches[0].clientX-touchStart.x;
+  const dy=event.changedTouches[0].clientY-touchStart.y;
+  touchStart=null;
+  if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.25){
+    lastSwipe=Date.now();
+    showPhoto(current+(dx<0?1:-1));
+  }
+},{passive:true});
+inner.addEventListener("touchcancel",()=>{touchStart=null;},{passive:true});
+dialog.addEventListener("close",restoreFocus);
 })();
 </script>
 <img src="https://librecounter.org/hidden.svg" referrerpolicy="unsafe-url" width="1" height="1" alt="" style="position:absolute;width:1px;height:1px;overflow:hidden">
