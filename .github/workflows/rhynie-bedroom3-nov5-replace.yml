@@ -1,0 +1,52 @@
+name: Replace Rhynie Drive Bedroom 3 renders Nov 5
+on:
+  push:
+    paths:
+      - .github/workflows/rhynie-bedroom3-nov5-replace.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  replace-render-images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download approved images
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p previews/rhynie-drive/images
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/IBRTJcYxOqFyZ6vU' --output 'previews/rhynie-drive/images/bedroom-3-front-view.webp'
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/7qHxKbuRotD0AZa2' --output 'previews/rhynie-drive/images/bedroom-3-angled-view.webp'
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/MZDiija6sgla4RnK' --output 'previews/rhynie-drive/images/bedroom-3-media-wall.webp'
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/FvS0ZPQ2lPnDwQ0m' --output 'previews/rhynie-drive/images/bedroom-3-vanity-view.webp'
+      - name: Verify exact WebP originals
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd previews/rhynie-drive/images
+          printf '%s\n' \
+            '60b593ea63dd13a8382134bb08dac900d5d689a41bf088e164d907bc994cf9c9  bedroom-3-front-view.webp' \
+            'd7f0fd9f4c616705d9d1fc4fe130120526c632941b00a7a976ffdaffdfa7d65c  bedroom-3-angled-view.webp' \
+            'd1d8271196811f9b0287a52692e57fa8717e223428f4828959decbab04a384e7  bedroom-3-media-wall.webp' \
+            'e19551316f5411b9507ea85df179d038bbd9b3ee8bd537760c970964daab3061  bedroom-3-vanity-view.webp' | sha256sum -c -
+          python3 - <<'PY'
+          from pathlib import Path
+          for name in ["bedroom-3-front-view.webp","bedroom-3-angled-view.webp","bedroom-3-media-wall.webp","bedroom-3-vanity-view.webp"]:
+              data = Path(name).read_bytes()
+              assert data[:4] == b'RIFF' and data[8:12] == b'WEBP'
+              assert len(data) > 100000
+              print(name, len(data))
+          PY
+      - name: Commit replaced Bedroom 3 images
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add previews/rhynie-drive/images/bedroom-3-front-view.webp previews/rhynie-drive/images/bedroom-3-angled-view.webp previews/rhynie-drive/images/bedroom-3-media-wall.webp previews/rhynie-drive/images/bedroom-3-vanity-view.webp
+          if git diff --cached --quiet; then echo 'Images already current'; exit 0; fi
+          git commit -m 'Replace four Bedroom 3 renders with tropical feature-wall updates'
+          git push
