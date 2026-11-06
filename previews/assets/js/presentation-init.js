@@ -50,7 +50,7 @@
     img.alt = 'Crio Creatives';
     const label = document.createElement('span');
     label.className = 'crio-ed-label';
-    label.textContent = slug === 'index' ? 'Previews' : (slug === 'list' ? 'Preview directory' : 'Project preview');
+    label.textContent = slug === 'index' ? 'Preview directory' : 'Project preview';
     logo.append(img,label);
     const toggle = document.createElement('button');
     toggle.className = 'crio-ed-menu-toggle';
@@ -69,8 +69,7 @@
       nav.append(a);
     };
     for(const item of detailLinks) appendLink(item.href,item.label,'crio-ed-detail');
-    if(slug!=='index')appendLink('https://criocreatives.com/previews/','Previews');
-    if(slug!=='list')appendLink('https://criocreatives.com/previews/list/','All previews');
+    if(slug!=='index')appendLink('https://criocreatives.com/previews/','All previews');
     appendLink('https://portfolio.criocreatives.com/','Portfolio');
     appendLink('https://criocreatives.com/#contact','Contact','crio-ed-contact');
     inner.append(logo,toggle,nav);
@@ -78,7 +77,7 @@
     const rule=document.createElement('div');
     rule.className='crio-ed-rule';
     const left=document.createElement('span');
-    left.innerHTML=slug==='list' ? '<strong>Crio /</strong> All project previews' : '<strong>Crio /</strong> Selected project presentation';
+    left.innerHTML=slug==='index' ? '<strong>Crio /</strong> All project previews' : '<strong>Crio /</strong> Selected project presentation';
     const right=document.createElement('span');
     right.textContent=(document.title || 'Project preview').replace(/\s*\|.*$/,'').replace(/\s+—\s+Crio Creatives.*$/,'');
     rule.append(left,right);
