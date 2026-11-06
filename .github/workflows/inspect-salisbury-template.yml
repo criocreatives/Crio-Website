@@ -1,0 +1,39 @@
+name: Extract Salisbury layout reference for Tiny Living
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/inspect-salisbury-template.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract readable Salisbury markup and its CSS
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          raw=Path('previews/9-salisbury-avenue/index.html').read_text('utf-8')
+          raw=re.sub(r'data:[a-zA-Z0-9/+.\-]+;base64,[a-zA-Z0-9+/=]+','[embedded-data]',raw)
+          raw=re.sub(r'<svg\b[^>]*>.*?</svg>','[svg-icon]',raw,flags=re.S|re.I)
+          css=re.findall(r'<style[^>]*>(.*?)</style>',raw,flags=re.S|re.I)
+          markup=re.sub(r'<style[^>]*>.*?</style>','[stylesheet omitted]',raw,flags=re.S|re.I)
+          markup=re.sub(r'<script[^>]*>.*?</script>','[script omitted]',markup,flags=re.S|re.I)
+          p=Path('scripts/salisbury-template-inspection')
+          p.mkdir(parents=True,exist_ok=True)
+          (p/'layout.txt').write_text(markup[:190000])
+          (p/'css.txt').write_text('\n\n'.join(css)[:160000])
+          print('Readable markup',len(markup),'CSS',sum(map(len,css)),'source',len(raw))
+          PY
+      - name: Publish temporary review-only reference branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c qa/salisbury-template-inspection
+          git add scripts/salisbury-template-inspection
+          git commit -m "Extract Salisbury design structure for Tiny Living layout alignment"
+          git push origin HEAD:refs/heads/qa/salisbury-template-inspection
