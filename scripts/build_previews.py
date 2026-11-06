@@ -21,7 +21,7 @@ from urllib.parse import quote
 ROOT = Path(__file__).resolve().parents[1]
 PREVIEWS = ROOT / "previews"
 MANIFEST_DIR = PREVIEWS / "projects"
-TEMPLATE = ROOT / "scripts" / "templates" / "crio-project.html"
+TEMPLATE = ROOT / "scripts" / "templates" / "crio-project.html.tmpl"
 BASE_URL = "https://criocreatives.com/previews/"
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 ASPECT = re.compile(r"^[1-9]\d{0,4}/[1-9]\d{0,4}$")
