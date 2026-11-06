@@ -21,6 +21,16 @@ jobs:
         run: node scripts/build_previews.mjs
       - name: Verify generated pages are stable
         run: node scripts/build_previews.mjs --check
+      - name: Preserve generated staging pages and Salisbury source for QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: archviz-qa-${{ github.run_id }}
+          retention-days: 3
+          path: |
+            previews/*/index.html
+            previews/projects/*.json
+            previews/assets/css/arch-viz.css
+            scripts/build_previews.mjs
       - name: Validate metadata, navigation and sitemap
         run: |
           python3 scripts/check_seo.py
