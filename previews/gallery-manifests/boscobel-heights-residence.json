@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "slug": "boscobel-heights-residence",
+  "mode": "preserve-layout",
+  "template": "scripts/templates/legacy-gallery/boscobel-heights-residence.html.tmpl",
+  "card_library": "scripts/templates/legacy-gallery/boscobel-heights-residence.cards.json",
+  "galleries": [
+    {
+      "slot": "gallery_01",
+      "images": [
+        {
+          "file": "images/Image17.png",
+          "card": "images/Image17.png"
+        },
+        {
+          "file": "images/Image23.png",
+          "card": "images/Image23.png"
+        },
+        {
+          "file": "images/Image24.png",
+          "card": "images/Image24.png"
+        }
+      ]
+    },
+    {
+      "slot": "gallery_02",
+      "images": [
+        {
+          "file": "images/Image22.png",
+          "card": "images/Image22.png"
+        },
+        {
+          "file": "images/Image27.png",
+          "card": "images/Image27.png"
+        },
+        {
+          "file": "images/Image28.png",
+          "card": "images/Image28.png"
+        },
+        {
+          "file": "images/Image29.png",
+          "card": "images/Image29.png"
+        },
+        {
+          "file": "images/Image30.png",
+          "card": "images/Image30.png"
+        },
+        {
+          "file": "images/Image31.png",
+          "card": "images/Image31.png"
+        },
+        {
+          "file": "images/Image33.png",
+          "card": "images/Image33.png"
+        },
+        {
+          "file": "images/Image6.png",
+          "card": "images/Image6.png"
+        }
+      ]
+    }
+  ]
+}
