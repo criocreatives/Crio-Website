@@ -1,0 +1,16 @@
+/* Crio Arch/Viz rollout v1.0 — shared, reversible presentation layer. */
+body.crio-arch-standard{--arch-inset:clamp(16px,4vw,64px);--arch-gutter:clamp(12px,1.5vw,24px)}
+body.crio-arch-standard :is(.hero,.cover){position:relative;isolation:isolate;box-sizing:border-box;min-height:100svh;width:100%;max-width:none;margin:0;display:flex;align-items:flex-end;padding:clamp(88px,12vh,150px) var(--arch-inset) clamp(36px,7vh,80px);overflow:hidden;background:#111214;color:#f4f4f4}
+body.crio-arch-standard :is(.hero,.cover) :is(.hero-image,.hero-media,.hero-visual,.hero-frame){position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;margin:0!important;padding:0!important;z-index:-2!important;overflow:hidden!important;border:0!important;border-radius:0!important;transform:none!important}
+body.crio-arch-standard :is(.hero,.cover) :is(.hero-image,.hero-media,.hero-visual,.hero-frame) img{display:block;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:var(--arch-hero-position,center)!important;border-radius:0!important}
+body.crio-arch-standard :is(.hero,.cover)::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.67),transparent 65%);z-index:-1;pointer-events:none}
+body.crio-arch-standard :is(.hero,.cover) :is(.wrap,.hero-grid,.hero-copy,.cover-grid){position:relative;z-index:1;width:100%;max-width:1200px;margin-left:auto;margin-right:auto}
+body.crio-arch-standard :is(.hero,.cover) :is(h1,.display,.cover-title,.eyebrow,.kicker,.lead,.lede,.facts,.fact,.project-meta,p){color:#f4f4f4!important;text-shadow:0 1px 12px rgba(0,0,0,.28)}
+body.crio-arch-standard :is(.hero,.cover) :is(h1,.cover-title){font-family:Helvetica,Arial,sans-serif!important;line-height:1.02}
+body.crio-arch-standard .arch-viewer-trigger{position:relative;display:block;cursor:zoom-in}
+body.crio-arch-standard .arch-viewer-trigger::after{content:"⛶";position:absolute;right:12px;top:12px;width:34px;height:34px;display:grid;place-items:center;background:rgba(9,9,9,.75);color:#f4f4f4;border:1px solid rgba(244,244,244,.5);border-radius:3px;font:22px Arial,sans-serif;opacity:0;transition:opacity .18s ease;pointer-events:none}
+body.crio-arch-standard .arch-viewer-trigger:is(:hover,:focus-visible)::after{opacity:1}
+body.crio-arch-standard .arch-all-previews{white-space:nowrap}
+body.crio-arch-standard :is(.gallery,.gallery-grid,.rd-gallery,.collection-grid,.project-views,.views-grid){column-gap:var(--arch-gutter);row-gap:var(--arch-gutter)}
+@media(max-width:700px){body.crio-arch-standard :is(.hero,.cover){padding:100px 18px 38px}body.crio-arch-standard :is(.hero,.cover) :is(.hero-grid,.cover-grid){display:block!important}body.crio-arch-standard :is(.hero,.cover) :is(h1,.cover-title){font-size:clamp(40px,10vw,72px)!important}body.crio-arch-standard :is(.hero,.cover) :is(.hero-copy,.cover-side){max-width:100%!important}}
+@media(prefers-reduced-motion:reduce){body.crio-arch-standard .arch-viewer-trigger::after{transition:none}}
