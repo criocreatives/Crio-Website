@@ -93,7 +93,7 @@ def build(manifest_path):
     used_files=[]
     for section in galleries:
         slot=section.get("slot")
-        if not isinstance(slot,str) or not re.fullmatch("gallery_\d{2}",slot):
+        if not isinstance(slot,str) or not re.fullmatch(r"gallery_\d{2}",slot):
             raise ValueError(f"{slug}: invalid gallery slot {slot}")
         key=slot.upper()
         if key in replacements or template.count(f"[[{key}]]")!=1:
@@ -106,7 +106,8 @@ def build(manifest_path):
         for index,item in enumerate(files):
             name=valid_file(slug,item if isinstance(item,str) else item["file"])
             used_files.append(name)
-            part=original.get(name)
+            card_key=item.get("card",name) if isinstance(item,dict) else name
+            part=original.get(card_key)
             if part is None:
                 part=new_card(item,slot,index,next(iter(original.values())))
             pieces.append(part)
