@@ -4,6 +4,8 @@ on:
     branches: [feature/legacy-preview-gallery-manifests]
     paths:
       - .github/workflows/bootstrap-legacy-galleries.yml
+      - scripts/bootstrap_legacy_galleries.py
+      - scripts/build_legacy_galleries.py
   workflow_dispatch:
 
 permissions:
