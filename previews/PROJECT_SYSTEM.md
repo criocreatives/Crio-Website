@@ -51,3 +51,83 @@ The GitHub workflow builds and validates changed manifests on branch pushes, the
 All existing published previews remain where they are. Do not run a mass conversion or delete legacy source pages in order to enable the new workflow. `previews/9-salisbury-avenue/` remains a visual reference. New pages reuse Crio styling without copying byLYNCH's public design.
 
 To change styling across *managed* galleries, edit the shared CSS rather than every project page. Do not modify the original architectural renders or their filenames.
+
+## Existing pages: keep their exact layout
+
+Existing Crio pages do **not** all use the same design. Some are case studies with
+site diagrams or videos, others are design comparisons or custom client pages.
+Do not force these into the Tiny Living/Salisbury template.
+
+Two existing dark architectural presentations are now managed **without a
+visual redesign**:
+
+- Boscobel Heights Residence — 2 gallery groups, 11 image cards
+- Mannings Hill Road Apartment Complex — 1 gallery, 15 image cards, including
+  two separate cards using the same source image
+
+The following source files control those galleries:
+
+| Path | Purpose |
+| --- | --- |
+| `previews/gallery-manifests/<slug>.json` | Ordered file references and grouping |
+| `scripts/templates/legacy-gallery/<slug>.html.tmpl` | Exact approved page markup outside the galleries |
+| `scripts/templates/legacy-gallery/<slug>.cards.json` | Original card HTML, alt text, dimensions and captions preserved per file |
+| `scripts/build_legacy_galleries.py` | Reassemble the original page, or add cards for new source images |
+| `scripts/test_legacy_galleries.py` | Verify exact source rendering, repeated views and new image additions |
+
+To **reorder images**, edit the `images` array for the relevant gallery
+in `previews/gallery-manifests/<slug>.json`. Existing cards retain the full
+original HTML and their captions; ordering comes from the manifest.
+
+To **add a new image**, upload it under the existing project's `images/` or
+`renders/` directory, then add an object to the desired gallery:
+
+```json
+{
+  "file": "images/new-exterior-view.webp",
+  "alt": "Street-facing view of the proposed residence",
+  "caption": "Exterior / street approach",
+  "wide": true
+}
+```
+
+The generator validates the exact source filename and generates a compatible
+gallery card. There is no image recompression or renaming. For a *new* image,
+a descriptive `alt` is required. For an *existing* image, the `card` key
+retains the original markup exactly, even when the same image appears twice.
+Do not delete or alter the card library when merely reordering images.
+
+Run:
+
+```bash
+python3 scripts/build_legacy_galleries.py
+python3 scripts/build_legacy_galleries.py --check
+python3 scripts/test_legacy_galleries.py
+```
+
+The GitHub Actions workflow `build-legacy-crio-galleries.yml` runs these
+checks and commits regenerated pages on branch pushes. The existing preview URLs
+stay unchanged.
+
+## Which pages should use which system?
+
+- **New architectural presentations**: the Crio editorial manifest and shared
+  page template, as with Tiny Living.
+- **Existing architecture galleries**: preserve-layout manifests, as with
+  Boscobel Heights and Mannings Hill Road.
+- **Project-specific design stories, video walkthroughs, alternatives and
+  interactive demonstrations**: preserve their bespoke components; migrate
+  only the media/gallery sections when they can be reproduced without a
+  visible change.
+- **9 Salisbury Avenue**: remains the approved architectural presentation
+  reference. Do not rewrite or compress its embedded content automatically.
+- **Placeholder previews**: complete their project material before publishing
+  them as full case studies; don't manufacture missing assets or project facts.
+
+### Safety rule
+
+Never rewrite all legacy HTML files using the editorial generator. Managed
+manifest and preserve-layout manifest are separate build paths by design.
+Before migrating a legacy page, the initial generated HTML must compare
+**byte-for-byte** with the published source, or the changes need explicit visual
+QA before publication.
