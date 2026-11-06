@@ -1,0 +1,36 @@
+name: ArchViz staging migration and build
+on:
+  push:
+    branches:
+      - refactor/arch-viz-single-source-20261106
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Import legacy project content once
+        run: node scripts/import_archviz_once.mjs
+      - name: Render shared ArchViz templates
+        run: node scripts/build_previews.mjs
+      - name: Verify generated pages are stable
+        run: node scripts/build_previews.mjs --check
+      - name: Validate metadata, navigation and sitemap
+        run: |
+          python3 scripts/check_seo.py
+          git diff --check
+      - name: Commit generated static pages to staging only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/templates/crio-project.html.tmpl previews/projects previews/*/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "Generate ArchViz pages from shared manifest template [skip ci]"
+            git push origin HEAD:refactor/arch-viz-single-source-20261106
+          fi
