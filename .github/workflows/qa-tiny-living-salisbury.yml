@@ -82,11 +82,23 @@ jobs:
           })().catch(err=>{console.error(err);process.exit(1)});
           JS
           node /tmp/crio-qa/test.cjs
+      - name: Generate compact screenshot previews
+        run: |
+          python3 - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          for source in Path('scripts/qa-tiny-living').glob('*.png'):
+              with Image.open(source) as image:
+                  image.thumbnail((670,530))
+                  target=source.with_suffix('.jpg')
+                  image.convert('RGB').save(target,'JPEG',quality=47,optimize=True)
+                  print(target, target.stat().st_size)
+          PY
       - name: Write screenshots to temporary review branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git switch -c qa/tiny-living-salisbury-screenshots
+          git switch -c qa/tiny-living-salisbury-screenshots-small
           git add scripts/qa-tiny-living
           git commit -m "Temporary visual QA screenshots of Salisbury-aligned Tiny Living"
-          git push origin HEAD:refs/heads/qa/tiny-living-salisbury-screenshots
+          git push origin HEAD:refs/heads/qa/tiny-living-salisbury-screenshots-small
