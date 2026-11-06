@@ -231,6 +231,39 @@ def build(manifest_path: Path):
     html_text = TOKEN.sub(lambda match: replacements[match.group(1)], template)
     return project_dir / "index.html", html_text, total
 
+def reconcile_sitemap(manifest_paths, check=False):
+    """Update only manifest-managed URLs, leaving all other sitemap entries intact."""
+    sitemap_file = ROOT / "sitemap.xml"
+    original = sitemap_file.read_text(encoding="utf-8")
+    result = original
+    if "</urlset>" not in result:
+        raise ValueError("Malformed sitemap: closing urlset not found")
+    for path in manifest_paths:
+        m = json.loads(path.read_text(encoding="utf-8"))
+        slug = m["slug"]
+        url = BASE_URL + slug + "/"
+        # Existing sitemap deliberately uses a compact one-line URL entry.
+        entry = f"  <url><loc>{url}</loc></url>"
+        count = result.count(f"<loc>{url}</loc>")
+        if count > 1:
+            raise ValueError(f"Duplicate sitemap entry for {url}")
+        if m["indexable"] and not count:
+            result = result.replace("</urlset>", entry + "\n</urlset>")
+        elif not m["indexable"] and count:
+            result = re.sub(
+                r"(?m)^ *<url><loc>" + re.escape(url) + r"</loc></url>\n?",
+                "", result
+            )
+            if f"<loc>{url}</loc>" in result:
+                raise ValueError(f"Cannot remove nonstandard sitemap entry for {url}")
+    if check and result != original:
+        print("STALE: sitemap.xml (managed preview URLs)", file=sys.stderr)
+        return False
+    if not check and result != original:
+        sitemap_file.write_text(result, encoding="utf-8")
+        print("BUILT: sitemap.xml (managed preview URLs)")
+    return True
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project", help="Generate one project by slug")
@@ -254,6 +287,8 @@ def main():
             print(f"BUILT: {dest.relative_to(ROOT)} ({total} images)")
         else:
             print(f"OK: {dest.relative_to(ROOT)} ({total} images)")
+    if not reconcile_sitemap(paths, check=args.check):
+        failed = True
     return 1 if failed else 0
 
 if __name__ == "__main__":
