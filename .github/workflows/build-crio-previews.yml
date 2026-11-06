@@ -6,7 +6,7 @@ on:
       - previews/**/renders/**
       - previews/**/images/**
       - scripts/build_previews.py
-      - scripts/templates/crio-project.html
+      - scripts/templates/crio-project.html.tmpl
       - scripts/test_crio_preview_structure.py
       - scripts/test_crio_preview_browser.cjs
       - .github/workflows/build-crio-previews.yml
@@ -14,7 +14,7 @@ on:
     paths:
       - previews/projects/**
       - scripts/build_previews.py
-      - scripts/templates/crio-project.html
+      - scripts/templates/crio-project.html.tmpl
       - scripts/test_crio_preview_structure.py
       - scripts/test_crio_preview_browser.cjs
   workflow_dispatch:
