@@ -25,8 +25,8 @@ The established Crio editorial presentation format is standardized without redes
    ```json
    {"file":"renders/Exterior-03.webp","alt":"Street-facing facade in afternoon light","caption":"Facade / afternoon","aspect":"16/9"}
    ```
-4. Set `indexable` **explicitly**: `false` for client-only or unpublished previews, `true` when the page is approved for search indexing. An indexable public project must also be added to the existing sitemap; this is checked in CI.
-5. Run `python3 scripts/build_previews.py --project <new-slug>`. The renderer validates that every referenced image actually exists inside the corresponding project folder.
+4. Set `indexable` **explicitly**: `false` for pages not intended for search indexing, `true` only when public indexing is approved. The builder automatically adds or removes the project's sitemap entry without changing legacy entries. **Noindex is not access control**: anyone with the URL can still open the page, and the public preview directory may link to it. Do not upload confidential client material without authorization.
+5. Run `python3 scripts/build_previews.py --project <new-slug>`. The renderer validates every referenced image and synchronizes the project's sitemap entry.
 6. Run `python3 scripts/build_previews.py --check` and `python3 scripts/test_crio_preview_structure.py`. Open the generated page at desktop and mobile widths.
 
 **No HTML editing is required for normal project content, image replacement or gallery reordering.** The generated `index.html` is an output, not the source of truth; modifying it manually will be overwritten at the next regeneration.
