@@ -1,0 +1,176 @@
+{
+  "schema_version": 2,
+  "category": "arch-viz",
+  "slug": "74-chisholms-avenue",
+  "title": "74 Chisholms Avenue.",
+  "indexable": true,
+  "seo": {
+    "title": "74 Chisholms Avenue | Crio Creatives",
+    "description": "Concept design and architectural visualization for the 74 Chisholms Avenue warehouse yard development by Crio Creatives."
+  },
+  "hero": {
+    "src": "Image1.png",
+    "alt": "Aerial site context of 74 Chisholms Avenue",
+    "eyebrow": "Industrial / site development",
+    "lines": [
+      "74 Chisholms",
+      "Avenue."
+    ],
+    "description": "Concept design and visualization for the redevelopment of a corner property into a secure, functional warehouse yard with stacked container storage, a prefab office, parking and truck loading circulation.",
+    "focus": "center center"
+  },
+  "nav": [
+    {
+      "id": "overview",
+      "label": "Overview"
+    },
+    {
+      "id": "specifications",
+      "label": "Specifications"
+    },
+    {
+      "id": "walkthrough",
+      "label": "Walkthrough"
+    },
+    {
+      "id": "views",
+      "label": "Views"
+    },
+    {
+      "id": "development",
+      "label": "Development"
+    }
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "kind": "text",
+      "title": "A working yard first.",
+      "paragraphs": [
+        "The layout is organized around truck access, loading operations and clear separation between heavy-vehicle movement and day-to-day office use.",
+        "Ten 40-ft containers arranged five across and two high, with a dedicated loading platform and stair access.",
+        "A two-storey office positioned toward the front of the property, with a footprint shown at approximately 29 ft × 21 ft 3 in on the current dimensional plan, plus adjacent parking and restrained landscaping.",
+        "The central asphalt yard remains open so a trailer truck can reverse in from Wigton Ave and back toward the container loading area.",
+        "Five designated parking spaces are provided. When the yard is not being used for active loading or offloading, the open lot can also accommodate additional vehicles.",
+        "Two additional parking spaces may also be accommodated along the left side of the storage containers, subject to maintaining the required truck access and loading clearances."
+      ]
+    },
+    {
+      "id": "specifications",
+      "kind": "text",
+      "title": "Key site specifications.",
+      "paragraphs": [
+        "Current dimensional reference",
+        "Dimensions shown reflect the current concept model and are intended to communicate the proposed site arrangement, access and perimeter treatment.",
+        "Clear gate width at the primary vehicular entrance.",
+        "Masonry wall height, with 5 ft grille work between columns. Columns extend to 14 ft.",
+        "Reduced wall height approaching the main entrance.",
+        "Full-height dividing walls along the adjoining property boundaries.",
+        "Wall thickness with 18 in × 18 in structural columns.",
+        "Approximate spacing between perimeter wall columns.",
+        "Overall footprint of the stacked container storage bank shown on the current plan.",
+        "Current modeled office footprint as shown on the dimensional site drawing."
+      ]
+    },
+    {
+      "id": "walkthrough",
+      "kind": "text",
+      "title": "See the site in motion.",
+      "paragraphs": [
+        "Project walkthrough",
+        "A video walkthrough of the proposed warehouse yard, showing the office, container loading area, parking and the open truck manoeuvring space."
+      ]
+    },
+    {
+      "id": "views",
+      "kind": "gallery",
+      "title": "Project views.",
+      "paragraphs": [
+        "Select any view to open it full screen."
+      ],
+      "images": [
+        {
+          "src": "Image1.png",
+          "alt": "Aerial site context",
+          "caption": "01 Aerial site context",
+          "full": "Image1.png"
+        },
+        {
+          "src": "Image2.png",
+          "alt": "Office and yard overview",
+          "caption": "02 Office & yard overview",
+          "full": "Image2.png"
+        },
+        {
+          "src": "Image3.png",
+          "alt": "Container loading area",
+          "caption": "03 Container loading area",
+          "full": "Image3.png"
+        },
+        {
+          "src": "Image4.png",
+          "alt": "Office and parking view",
+          "caption": "04 Office & parking",
+          "full": "Image4.png"
+        },
+        {
+          "src": "Image5.png",
+          "alt": "Street and entrance view",
+          "caption": "05 Street & entrance view",
+          "full": "Image5.png"
+        },
+        {
+          "src": "Image6.jpg",
+          "alt": "Top-down site layout",
+          "caption": "06 Top-down site layout",
+          "full": "Image6.jpg"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "id": "development",
+      "kind": "gallery",
+      "title": "Technical views.",
+      "paragraphs": [
+        "Dimensioned references for the overall site, storage/loading area and supporting design development."
+      ],
+      "images": [
+        {
+          "src": "74%20Chisholm%20Avenue%20111.jpg",
+          "alt": "Dimensioned site layout showing property, gate, storage and office dimensions",
+          "caption": "07 Dimensioned site layout",
+          "full": "74%20Chisholm%20Avenue%20111.jpg"
+        },
+        {
+          "src": "74%20Chisholm%20Avenue%20storage%20unit.jpg",
+          "alt": "Dimensioned container storage and loading platform layout",
+          "caption": "08 Storage & loading dimensions",
+          "full": "74%20Chisholm%20Avenue%20storage%20unit.jpg"
+        },
+        {
+          "src": "74%20Chisholm%20Avenue%20Site%20mAp.jpg",
+          "alt": "Site map showing the proposed layout at 74 Chisholms Avenue",
+          "caption": "09 Site map",
+          "full": "74%20Chisholm%20Avenue%20Site%20mAp.jpg"
+        },
+        {
+          "src": "Image7.jpg",
+          "alt": "Isometric design model",
+          "caption": "10 Isometric design model",
+          "full": "Image7.jpg"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        1
+      ]
+    }
+  ]
+}

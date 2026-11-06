@@ -1,0 +1,242 @@
+{
+  "schema_version": 2,
+  "category": "arch-viz",
+  "slug": "lot-18-mount-boon",
+  "title": "LOT 18 MOUNT BOON.",
+  "indexable": true,
+  "seo": {
+    "title": "Lot 18 Mount Boon — Residential Design Case Study | Crio Creatives",
+    "description": "Residential design case study for Lot 18 Mount Boon, Discovery Bay, St. Ann — developed from original floor plans through 3D modeling, exterior, rooftop and interior design by Crio Creatives, LLC."
+  },
+  "hero": {
+    "src": "./renders/Image2.jpg",
+    "alt": "Aerial architectural visualization of Lot 18 Mount Boon",
+    "eyebrow": "Residential Design · 3D Visualization",
+    "lines": [
+      "LOT 18",
+      "MOUNT BOON."
+    ],
+    "description": "A complete residential design study for Lot 18 Mount Boon, developed from the floor plan upward. Crio Creatives designed the layouts, built the 3D model from those plans, and carried the concept through exterior architecture, rooftop amenities, landscaping and interior design.",
+    "focus": "center center"
+  },
+  "nav": [
+    {
+      "id": "plans",
+      "label": "Plans"
+    },
+    {
+      "id": "exterior",
+      "label": "Exterior"
+    },
+    {
+      "id": "interior",
+      "label": "Interior"
+    }
+  ],
+  "sections": [
+    {
+      "id": "project-overview",
+      "kind": "text",
+      "title": "Project Overview",
+      "paragraphs": [
+        "This was a top-to-bottom design project. The work began with the floor plan, which became the basis of the 3D model. From there, the building form, exterior language, landscape, rooftop amenities and interior spaces were designed as one coordinated residential concept."
+      ]
+    },
+    {
+      "id": "plans",
+      "kind": "gallery",
+      "title": "From Floor Plan to 3D Model",
+      "paragraphs": [
+        "The design process started with original ground-floor and first-floor layouts. Those plans established the spatial organization and circulation, then became the basis for the 3D model used to develop the architecture, exterior spaces and interiors.",
+        "Original ground-floor and first-floor layouts developed to establish the room relationships, circulation and overall organization of the home.",
+        "The approved floor-plan logic was translated into a complete 3D model, allowing the massing, facade, stairs, rooftop and exterior relationships to be resolved in three dimensions.",
+        "Rendered overhead views of both levels show how the original floor plans translate into the completed spatial design, including furniture, circulation and outdoor relationships."
+      ],
+      "images": [
+        {
+          "src": "./assets/page-02.jpg",
+          "alt": "Ground floor and first floor plans"
+        },
+        {
+          "src": "./assets/page-03.jpg",
+          "alt": "Early 3D model view of Lot 18 Mount Boon"
+        },
+        {
+          "src": "./renders/Image16.jpg",
+          "alt": "Top-down rendered ground-floor layout study"
+        },
+        {
+          "src": "./renders/Image29.jpg",
+          "alt": "Top-down rendered first-floor layout study"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "id": "exterior",
+      "kind": "gallery",
+      "title": "Exterior Design",
+      "paragraphs": [
+        "With the floor plan and base model established, the exterior was developed as a complete architectural composition — facade proportions, materials, balconies, stair structures, landscaping and circulation were all resolved as part of the design."
+      ],
+      "images": [
+        {
+          "src": "./renders/Image1.jpg",
+          "alt": "Front Facade"
+        },
+        {
+          "src": "./renders/Image2.jpg",
+          "alt": "Aerial Front View"
+        },
+        {
+          "src": "./renders/Image3.jpg",
+          "alt": "Rear Elevation"
+        },
+        {
+          "src": "./renders/Image4.jpg",
+          "alt": "Side Elevation"
+        },
+        {
+          "src": "./renders/Image5.jpg",
+          "alt": "Street View"
+        },
+        {
+          "src": "./renders/Image6.jpg",
+          "alt": "Rear Aerial"
+        },
+        {
+          "src": "./renders/Image7.jpg",
+          "alt": "Rear Stair Tower"
+        },
+        {
+          "src": "./renders/Image8.jpg",
+          "alt": "Garden + Stairs"
+        },
+        {
+          "src": "./renders/Image9.jpg",
+          "alt": "Stair Tower Detail"
+        },
+        {
+          "src": "./renders/Image10.jpg",
+          "alt": "Rooftop Aerial"
+        },
+        {
+          "src": "./renders/Image30.jpg",
+          "alt": "Courtyard View"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "rooftop-design",
+      "kind": "gallery",
+      "title": "Rooftop Design",
+      "paragraphs": [
+        "The rooftop was designed as an extension of the home rather than leftover space, combining social areas, shaded seating, planting, a glazed pavilion, fitness space and solar infrastructure into one usable amenity level."
+      ],
+      "images": [
+        {
+          "src": "./renders/Image11.jpg",
+          "alt": "Rooftop Pavilion"
+        },
+        {
+          "src": "./renders/Image12.jpg",
+          "alt": "Central Lounge"
+        },
+        {
+          "src": "./renders/Image13.jpg",
+          "alt": "Rooftop Overview"
+        },
+        {
+          "src": "./renders/Image15.jpg",
+          "alt": "Covered Seating"
+        },
+        {
+          "src": "./renders/Image14.jpg",
+          "alt": "Rooftop Gym I"
+        },
+        {
+          "src": "./renders/Image27.jpg",
+          "alt": "Rooftop Gym II"
+        },
+        {
+          "src": "./renders/Image28.jpg",
+          "alt": "Rooftop Gym III"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "interior",
+      "kind": "gallery",
+      "title": "Interior Design",
+      "paragraphs": [
+        "The interior was developed from the same floor-plan framework and carries the project into the living, dining and kitchen spaces. Warm timber, white and taupe cabinetry, dark feature surfaces, black frames and restrained olive accents create a consistent contemporary language."
+      ],
+      "images": [
+        {
+          "src": "./renders/Image17.jpg",
+          "alt": "Living Room"
+        },
+        {
+          "src": "./renders/Image18.jpg",
+          "alt": "Media Wall"
+        },
+        {
+          "src": "./renders/Image19.jpg",
+          "alt": "Dining Area"
+        },
+        {
+          "src": "./renders/Image20.jpg",
+          "alt": "Kitchen Overview"
+        },
+        {
+          "src": "./renders/Image21.jpg",
+          "alt": "Kitchen Storage Wall"
+        },
+        {
+          "src": "./renders/Image22.jpg",
+          "alt": "Kitchen Work Zone"
+        },
+        {
+          "src": "./renders/Image23.jpg",
+          "alt": "Kitchen to Dining"
+        },
+        {
+          "src": "./renders/Image24.jpg",
+          "alt": "Dining to Living"
+        },
+        {
+          "src": "./renders/Image25.jpg",
+          "alt": "Living Room II"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        2,
+        2,
+        2
+      ]
+    }
+  ],
+  "closing": {
+    "title": "Designed from floor plan to final render."
+  }
+}

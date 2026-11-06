@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "category": "arch-viz",
+  "slug": "chateau-de-chanel",
+  "title": "Chateau de Chanel.",
+  "indexable": true,
+  "seo": {
+    "title": "Chateau de Chanel | Crio Creatives Preview",
+    "description": "Chateau de Chanel project preview by Crio Creatives."
+  },
+  "hero": {
+    "src": null,
+    "alt": "",
+    "eyebrow": "Project Preview",
+    "lines": [
+      "Chateau de",
+      "Chanel."
+    ],
+    "description": "Project presentation by Crio Creatives. Images and project details will be added as the preview is developed.",
+    "focus": "center center"
+  },
+  "nav": [],
+  "sections": [
+    {
+      "id": "views",
+      "kind": "text",
+      "title": "Project Views",
+      "paragraphs": [
+        "The gallery is ready for the project images.",
+        "Project imagery will appear here as the presentation develops."
+      ]
+    }
+  ]
+}

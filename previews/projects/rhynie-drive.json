@@ -1,0 +1,256 @@
+{
+  "schema_version": 2,
+  "category": "arch-viz",
+  "slug": "rhynie-drive",
+  "title": "Rhynie Drive.",
+  "indexable": true,
+  "seo": {
+    "title": "Rhynie Drive | Chantier Construction — Crio Creatives",
+    "description": "Living room, kitchen, dining area, guestroom and bedrooms renovation proposal at Rhynie Drive, Montego Bay, Jamaica. Interior design and visualization by Crio Creatives for Chantier Construction."
+  },
+  "hero": {
+    "src": "/previews/rhynie-drive/images/living-front.webp?v=20261031-1",
+    "alt": "Proposed Rhynie Drive living-room interior",
+    "eyebrow": "Renovation / Montego Bay, Jamaica",
+    "lines": [
+      "Rhynie",
+      "Drive."
+    ],
+    "description": "Living room, kitchen, dining and bedroom renovations.",
+    "focus": "center center"
+  },
+  "nav": [
+    {
+      "id": "living",
+      "label": "Living Room"
+    },
+    {
+      "id": "kitchen",
+      "label": "Kitchen"
+    },
+    {
+      "id": "dining",
+      "label": "Dining Area"
+    },
+    {
+      "id": "bedroom",
+      "label": "Master Bedroom"
+    },
+    {
+      "id": "master-bathroom",
+      "label": "Master Bathroom"
+    }
+  ],
+  "sections": [
+    {
+      "id": "living",
+      "kind": "gallery",
+      "title": "Living Room.",
+      "paragraphs": [
+        "01 / Interior renovation"
+      ],
+      "images": [
+        {
+          "src": "/previews/rhynie-drive/images/living-front.webp?v=20261031-1",
+          "alt": "Living Room / Front View",
+          "caption": "Living Room / Front View"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/living-angle.webp?v=20261031-1",
+          "alt": "Living Room / Angled View",
+          "caption": "Living Room / Angled View"
+        }
+      ],
+      "groups": [
+        2
+      ]
+    },
+    {
+      "id": "kitchen",
+      "kind": "gallery",
+      "title": "Kitchen.",
+      "paragraphs": [
+        "02 / Interior renovation",
+        "Updated cabinetry, improved storage and a smaller, more functional island."
+      ],
+      "images": [
+        {
+          "src": "/previews/rhynie-drive/images/kitchen-overview.webp",
+          "alt": "Kitchen / Original Proposal",
+          "caption": "Overall View Original proposal"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/kitchen-overview-alternative.webp",
+          "alt": "Kitchen / Alternate Proposal",
+          "caption": "Overall View Alternative"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/kitchen-sink-cabinets.webp",
+          "alt": "Sink-side Cabinets / Original Proposal",
+          "caption": "Sink-side Cabinets Original proposal"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/kitchen-sink-alternative.webp",
+          "alt": "Sink-side Cabinets / Alternate Proposal",
+          "caption": "Sink-side Cabinets Alternative"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/kitchen-coffee-wine.webp",
+          "alt": "Coffee Station & Wine Storage",
+          "caption": "Coffee Station & Wine Storage Coffee preparation nook with integrated bottle storage below."
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "dining",
+      "kind": "gallery",
+      "title": "Dining Area.",
+      "paragraphs": [
+        "03 / Interior renovation",
+        "A welcoming dining setting with dark timber, upholstered seating and an outlook to the terrace."
+      ],
+      "images": [
+        {
+          "src": "/previews/rhynie-drive/images/dining-overview.webp",
+          "alt": "Dining Area / Overall View",
+          "caption": "Dining Area / Overall View Dining table and terrace outlook"
+        }
+      ],
+      "groups": [
+        1
+      ]
+    },
+    {
+      "id": "bedroom",
+      "kind": "gallery",
+      "title": "Master Bedroom.",
+      "paragraphs": [
+        "04 / Interior renovation",
+        "Warm timber finishes, a curtained canopy bed and relaxed seating overlooking the landscape."
+      ],
+      "images": [
+        {
+          "src": "/previews/rhynie-drive/images/master-bedroom-overview.webp",
+          "alt": "Master bedroom overall view with dark wood canopy bed, draped curtains, window and TV wall",
+          "caption": "Overall View Master bedroom proposal"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/master-bedroom-window-view.webp",
+          "alt": "Master bedroom view from the canopy bed toward window-side seating and landscape",
+          "caption": "View from Bed Window-side seating"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/master-bedroom-tv-wall.webp",
+          "alt": "Master bedroom TV wall with dark timber cabinetry, floor mirror and greenery",
+          "caption": "Media Wall TV and storage detail"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/master-bedroom-bed-view.webp",
+          "alt": "Frontal view of the master bedroom canopy bed with cream drapes and upholstered bench",
+          "caption": "Canopy Bed Bedroom focal point"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "id": "master-bathroom",
+      "kind": "gallery",
+      "title": "Master Bathroom.",
+      "paragraphs": [
+        "05 / Interior renovation",
+        "A cohesive, warm-toned bathroom renovation with refined architectural and lighting details.",
+        "Creation of an arched entrance to the shower, replacement light fixtures above the vanity mirrors, and a single consistent tile treatment across the bathroom floor."
+      ],
+      "images": [
+        {
+          "src": "/previews/rhynie-drive/images/master-bathroom-vanity-shower.webp",
+          "alt": "Master Bathroom / Vanity and new arched shower entrance",
+          "caption": "Vanity & Shower View Dual vanity, updated mirror lights and arched shower entrance"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/master-bathroom-tub-view.webp",
+          "alt": "Master Bathroom / Freestanding bathtub and unified floor tile",
+          "caption": "Freestanding Bath View Freestanding tub and continuous floor tile finish"
+        }
+      ],
+      "groups": [
+        2
+      ]
+    },
+    {
+      "id": "guestroom",
+      "kind": "gallery",
+      "title": "Guestroom.",
+      "paragraphs": [
+        "06 / Interior renovation",
+        "Downstairs bedroom with a dramatic palm-silhouette feature wall, warm timber finishes and a bright window-side seating area."
+      ],
+      "images": [
+        {
+          "src": "/previews/rhynie-drive/images/guestroom-overview.webp?v=20261105-1",
+          "alt": "Downstairs guestroom overall view with palm-silhouette accent wall, double bed, window-side chairs and media wall",
+          "caption": "Guestroom / Overall View Bed, seating area and media wall"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/guestroom-angled.webp?v=20261105-1",
+          "alt": "Downstairs guestroom angled view of bed, palm-silhouette feature wall and dressing table",
+          "caption": "Guestroom / Bed View Bed and dressing table"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/guestroom-seating.webp?v=20261105-1",
+          "alt": "Downstairs guestroom pair of upholstered chairs beside the terrace-facing windows",
+          "caption": "Guestroom / Seating View Window-side seating"
+        }
+      ],
+      "groups": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "bedroom-3",
+      "kind": "gallery",
+      "title": "Bedroom 3.",
+      "paragraphs": [
+        "07 / Interior renovation",
+        "Two double beds, a richly layered tropical botanical feature wall, warm timber finishes and coordinated natural textures."
+      ],
+      "images": [
+        {
+          "src": "/previews/rhynie-drive/images/bedroom-3-front-view.webp?v=20261105-1",
+          "alt": "Bedroom 3 / Double Beds — Front View",
+          "caption": "Double Beds / Front View Tropical botanical feature wall"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/bedroom-3-angled-view.webp?v=20261105-1",
+          "alt": "Bedroom 3 / Double Beds — Angled View",
+          "caption": "Double Beds / Angled View Bed arrangement and dressing table"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/bedroom-3-media-wall.webp?v=20261105-1",
+          "alt": "Bedroom 3 / Media Wall and Windows",
+          "caption": "Media Wall / Window View TV wall and natural light"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/bedroom-3-vanity-view.webp?v=20261105-1",
+          "alt": "Bedroom 3 / Vanity and Storage View",
+          "caption": "Vanity & Storage Mirror, dresser and timber detailing"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        1
+      ]
+    }
+  ]
+}

@@ -1,165 +1,282 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "category": "arch-viz",
   "slug": "tiny-living",
-  "indexable": true,
   "title": "Tiny Living",
+  "indexable": true,
   "seo": {
     "title": "Tiny Living | Architectural Visualization — Crio Creatives",
     "description": "Tiny Living is a compact residential architectural visualization by Crio Creatives, with 31 exterior, floor layout, living, kitchen, work, sleeping and bathroom views.",
     "share_description": "Explore 31 images of the Tiny Living compact residential design."
   },
   "hero": {
-    "image": "renders/Image1.webp",
+    "src": "./renders/Image1.webp",
     "alt": "Compact Tiny Living timber-clad cabin surrounded by trees",
     "eyebrow": "CRIO CREATIVES / RESIDENTIAL DESIGN",
-    "headline": [
+    "lines": [
       "Tiny",
       "Living."
     ],
     "description": "Compact residential architectural visualization, from the exterior setting through living, work, sleeping and service spaces.",
-    "index_label": "PROJECT VISUALIZATION"
+    "focus": "center center"
   },
-  "overview": {
-    "eyebrow": "PROJECT OVERVIEW",
-    "index_label": "VISUAL STUDY",
-    "headline": [
-      "Small footprint.",
-      "Complete perspective."
-    ],
-    "description": "Tiny Living explores a compact residence through exterior perspectives, overhead layouts and interior views. The visual study follows the cabin from the surrounding landscape into its living spaces, kitchen, sleeping and work areas, and bathroom.",
-    "tags": [
-      "COMPACT RESIDENCE",
-      "EXTERIOR VISUALIZATION",
-      "INTERIOR VISUALIZATION",
-      "31 PROJECT VIEWS"
-    ]
-  },
-  "navigation": [
+  "nav": [
     {
-      "label": "EXTERIOR",
-      "section": "exterior"
+      "id": "exterior",
+      "label": "EXTERIOR"
     },
     {
-      "label": "LIVING",
-      "section": "living"
+      "id": "living",
+      "label": "LIVING"
     },
     {
-      "label": "LAYOUT",
-      "section": "layout"
+      "id": "layout",
+      "label": "LAYOUT"
     },
     {
-      "label": "BATHROOM",
-      "section": "bathroom"
+      "id": "bathroom",
+      "label": "BATHROOM"
     }
   ],
-  "gallery": {
-    "default_aspect": "4/3",
-    "sections": [
-      {
-        "id": "exterior",
-        "label": "EXTERIOR",
-        "heading": [
-          "Exterior",
-          "perspectives."
-        ],
-        "description": "The compact cabin, surrounding landscape and exterior spatial relationships.",
-        "images": [
-          "renders/Image1.webp",
-          "renders/Image2.webp",
-          "renders/Image3.webp",
-          "renders/Image23.webp",
-          "renders/Image24.webp",
-          "renders/Image25.webp"
-        ]
-      },
-      {
-        "id": "layout",
-        "label": "SPATIAL LAYOUT",
-        "heading": [
-          "Spatial",
-          "layout."
-        ],
-        "description": "Overhead visualizations show the arrangement of the interior.",
-        "images": [
-          "renders/Image26.webp",
-          "renders/Image27.webp"
-        ]
-      },
-      {
-        "id": "living",
-        "label": "LIVING SPACES",
-        "heading": [
-          "Living",
-          "spaces."
-        ],
-        "description": "Interconnected living areas and furnishings within the compact footprint.",
-        "images": [
-          "renders/Image4.webp",
-          "renders/Image10.webp",
-          "renders/Image12.webp",
-          "renders/Image15.webp",
-          "renders/Image18.webp",
-          "renders/Image20.webp",
-          "renders/Image21.webp",
-          "renders/Image34.webp"
-        ]
-      },
-      {
-        "id": "kitchen",
-        "label": "KITCHEN",
-        "heading": [
-          "Kitchen",
-          "details."
-        ],
-        "description": "Cabinetry, counter surfaces and functional interior details.",
-        "images": [
-          "renders/Image14.webp",
-          "renders/Image16.webp",
-          "renders/Image19.webp",
-          "renders/Image28.webp"
-        ]
-      },
-      {
-        "id": "workspace",
-        "label": "WORK & REST",
-        "heading": [
-          "Work",
-          "& rest."
-        ],
-        "description": "Sleeping and work areas across the cabin interior.",
-        "images": [
-          "renders/Image11.webp",
-          "renders/Image13.webp",
-          "renders/Image17.webp",
-          "renders/Image22.webp",
-          "renders/Image35.webp"
-        ]
-      },
-      {
-        "id": "bathroom",
-        "label": "BATHROOM",
-        "heading": [
-          "Bathroom",
-          "finishes."
-        ],
-        "description": "Bathroom fittings and surfaces seen from multiple perspectives.",
-        "images": [
-          "renders/Image8.webp",
-          "renders/Image29.webp",
-          "renders/Image30.webp",
-          "renders/Image31.webp",
-          "renders/Image32.webp",
-          "renders/Image33.webp"
-        ]
-      }
-    ]
-  },
+  "sections": [
+    {
+      "kind": "text",
+      "id": "overview",
+      "title": "Small footprint. Complete perspective.",
+      "paragraphs": [
+        "Tiny Living explores a compact residence through exterior perspectives, overhead layouts and interior views. The visual study follows the cabin from the surrounding landscape into its living spaces, kitchen, sleeping and work areas, and bathroom."
+      ],
+      "items": [
+        "COMPACT RESIDENCE",
+        "EXTERIOR VISUALIZATION",
+        "INTERIOR VISUALIZATION",
+        "31 PROJECT VIEWS"
+      ]
+    },
+    {
+      "kind": "gallery",
+      "id": "exterior",
+      "title": "Exterior perspectives.",
+      "label": "EXTERIOR",
+      "paragraphs": [
+        "The compact cabin, surrounding landscape and exterior spatial relationships."
+      ],
+      "images": [
+        {
+          "src": "./renders/Image1.webp",
+          "alt": "EXTERIOR architectural visualization"
+        },
+        {
+          "src": "./renders/Image2.webp",
+          "alt": "EXTERIOR architectural visualization"
+        },
+        {
+          "src": "./renders/Image3.webp",
+          "alt": "EXTERIOR architectural visualization"
+        },
+        {
+          "src": "./renders/Image23.webp",
+          "alt": "EXTERIOR architectural visualization"
+        },
+        {
+          "src": "./renders/Image24.webp",
+          "alt": "EXTERIOR architectural visualization"
+        },
+        {
+          "src": "./renders/Image25.webp",
+          "alt": "EXTERIOR architectural visualization"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "kind": "gallery",
+      "id": "layout",
+      "title": "Spatial layout.",
+      "label": "SPATIAL LAYOUT",
+      "paragraphs": [
+        "Overhead visualizations show the arrangement of the interior."
+      ],
+      "images": [
+        {
+          "src": "./renders/Image26.webp",
+          "alt": "SPATIAL LAYOUT architectural visualization"
+        },
+        {
+          "src": "./renders/Image27.webp",
+          "alt": "SPATIAL LAYOUT architectural visualization"
+        }
+      ],
+      "groups": [
+        2
+      ]
+    },
+    {
+      "kind": "gallery",
+      "id": "living",
+      "title": "Living spaces.",
+      "label": "LIVING SPACES",
+      "paragraphs": [
+        "Interconnected living areas and furnishings within the compact footprint."
+      ],
+      "images": [
+        {
+          "src": "./renders/Image4.webp",
+          "alt": "LIVING SPACES architectural visualization"
+        },
+        {
+          "src": "./renders/Image10.webp",
+          "alt": "LIVING SPACES architectural visualization"
+        },
+        {
+          "src": "./renders/Image12.webp",
+          "alt": "LIVING SPACES architectural visualization"
+        },
+        {
+          "src": "./renders/Image15.webp",
+          "alt": "LIVING SPACES architectural visualization"
+        },
+        {
+          "src": "./renders/Image18.webp",
+          "alt": "LIVING SPACES architectural visualization"
+        },
+        {
+          "src": "./renders/Image20.webp",
+          "alt": "LIVING SPACES architectural visualization"
+        },
+        {
+          "src": "./renders/Image21.webp",
+          "alt": "LIVING SPACES architectural visualization"
+        },
+        {
+          "src": "./renders/Image34.webp",
+          "alt": "LIVING SPACES architectural visualization"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "kind": "gallery",
+      "id": "kitchen",
+      "title": "Kitchen details.",
+      "label": "KITCHEN",
+      "paragraphs": [
+        "Cabinetry, counter surfaces and functional interior details."
+      ],
+      "images": [
+        {
+          "src": "./renders/Image14.webp",
+          "alt": "KITCHEN architectural visualization"
+        },
+        {
+          "src": "./renders/Image16.webp",
+          "alt": "KITCHEN architectural visualization"
+        },
+        {
+          "src": "./renders/Image19.webp",
+          "alt": "KITCHEN architectural visualization"
+        },
+        {
+          "src": "./renders/Image28.webp",
+          "alt": "KITCHEN architectural visualization"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "kind": "gallery",
+      "id": "workspace",
+      "title": "Work & rest.",
+      "label": "WORK & REST",
+      "paragraphs": [
+        "Sleeping and work areas across the cabin interior."
+      ],
+      "images": [
+        {
+          "src": "./renders/Image11.webp",
+          "alt": "WORK & REST architectural visualization"
+        },
+        {
+          "src": "./renders/Image13.webp",
+          "alt": "WORK & REST architectural visualization"
+        },
+        {
+          "src": "./renders/Image17.webp",
+          "alt": "WORK & REST architectural visualization"
+        },
+        {
+          "src": "./renders/Image22.webp",
+          "alt": "WORK & REST architectural visualization"
+        },
+        {
+          "src": "./renders/Image35.webp",
+          "alt": "WORK & REST architectural visualization"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "kind": "gallery",
+      "id": "bathroom",
+      "title": "Bathroom finishes.",
+      "label": "BATHROOM",
+      "paragraphs": [
+        "Bathroom fittings and surfaces seen from multiple perspectives."
+      ],
+      "images": [
+        {
+          "src": "./renders/Image8.webp",
+          "alt": "BATHROOM architectural visualization"
+        },
+        {
+          "src": "./renders/Image29.webp",
+          "alt": "BATHROOM architectural visualization"
+        },
+        {
+          "src": "./renders/Image30.webp",
+          "alt": "BATHROOM architectural visualization"
+        },
+        {
+          "src": "./renders/Image31.webp",
+          "alt": "BATHROOM architectural visualization"
+        },
+        {
+          "src": "./renders/Image32.webp",
+          "alt": "BATHROOM architectural visualization"
+        },
+        {
+          "src": "./renders/Image33.webp",
+          "alt": "BATHROOM architectural visualization"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        2,
+        1
+      ]
+    }
+  ],
   "closing": {
-    "eyebrow": "CRIO CREATIVES / PROJECT PRESENTATION",
-    "headline": [
-      "Designed for",
-      "tiny living."
-    ],
-    "discipline": "ARCHITECTURAL VISUALIZATION & RESIDENTIAL DESIGN"
+    "title": "Designed for tiny living."
   }
 }
