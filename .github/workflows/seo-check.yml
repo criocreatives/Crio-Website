@@ -16,3 +16,5 @@ jobs:
           python-version: '3.12'
       - name: Validate SEO metadata, indexing, and sitemap
         run: python scripts/check_seo.py
+      - name: Verify unified preview directory and legacy redirects
+        run: python scripts/test_preview_directory.py

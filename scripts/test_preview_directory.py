@@ -1,0 +1,87 @@
+#!/usr/bin/env python3
+"""Prevent the old /previews/list/ split landing page from returning."""
+from html.parser import HTMLParser
+from pathlib import Path
+import re
+import sys
+import xml.etree.ElementTree as ET
+
+ROOT = Path(__file__).resolve().parents[1]
+PREVIEWS = ROOT / "previews"
+ROOT_URL = "https://criocreatives.com/previews/"
+OLD_URL = ROOT_URL + "list/"
+
+class Inspect(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.links = []
+        self.canonical = []
+        self.search = False
+        self.rows = []
+        self.noindex = False
+    def handle_starttag(self,tag,attrs):
+        d = dict(attrs)
+        if tag == "link" and d.get("rel") == "canonical":
+            self.canonical.append(d.get("href"))
+        if tag == "input" and d.get("id") == "preview-search":
+            self.search = d.get("type") == "search"
+        if tag == "a" and d.get("href","").startswith("/previews/"):
+            self.links.append(d["href"])
+        if tag == "meta" and d.get("name") == "robots":
+            self.noindex = "noindex" in d.get("content","")
+        if tag == "meta" and d.get("http-equiv") == "refresh":
+            self.rows.append(d.get("content", ""))
+
+def main():
+    root = (PREVIEWS / "index.html").read_text(encoding="utf-8")
+    old = (PREVIEWS / "list/index.html").read_text(encoding="utf-8")
+    nav = (PREVIEWS / "assets/js/presentation-init.js").read_text(encoding="utf-8")
+    fresh = Inspect()
+    stale = Inspect()
+    fresh.feed(root)
+    stale.feed(old)
+    assert fresh.canonical == [ROOT_URL], f"Directory canonical incorrect: {fresh.canonical}"
+    assert not fresh.noindex, "New primary directory should remain indexable"
+    assert fresh.search and 'id="preview-list"' in root, "Searchable preview grid missing"
+    assert "grid-template-columns:repeat(2,minmax(0,1fr))" in root, "Desktop two-column layout missing"
+    assert "api.github.com/repos/criocreatives/Crio-Website/git/trees/main?recursive=1" in root
+    assert "const excluded=new Set(['list','portfolio'])" in root
+    assert stale.canonical == [ROOT_URL] and stale.noindex, "Legacy redirect needs canonical + noindex"
+    assert any("url="+ROOT_URL in x for x in stale.rows), "Meta redirect missing"
+    assert "location.replace('/previews/' + location.search + location.hash)" in old, "JS redirect missing"
+    assert "/previews/list/" not in nav, "Preview navigation still links to obsolete directory"
+    assert "if(slug!=='index')appendLink('https://criocreatives.com/previews/','All previews')" in nav
+
+    expected = {
+        d.name for d in PREVIEWS.iterdir()
+        if d.is_dir() and (d / "index.html").is_file()
+        and d.name not in {"list", "portfolio"}
+    }
+    saved = set(re.findall(r'<li class="preview-row"><a href="/previews/([^/]+)/"', root))
+    assert saved == expected, f"Offline project snapshot mismatch: missing={expected-saved}, extra={saved-expected}"
+    counts = re.findall(r'<span class="row-num">(\d{2})</span>', root)
+    assert counts == [f"{i:02d}" for i in range(1,len(expected)+1)], "Unordered snapshot numbering"
+    xml = ET.parse(ROOT / "sitemap.xml")
+    urls = [n.text for n in xml.findall(".//{*}loc")]
+    assert urls.count(ROOT_URL) == 1 and OLD_URL not in urls, "Old list or duplicate root in sitemap"
+
+    # Any remaining old directory links in published source must be fixed, not
+    # silently left relying on the compatibility redirect.
+    stale_links = []
+    for suffix in (".html",".js",".css"):
+        for path in ROOT.rglob("*"+suffix):
+            if path == PREVIEWS / "list/index.html":
+                continue
+            source = path.read_text(encoding="utf-8")
+            if "/previews/list/" in source:
+                stale_links.append(str(path.relative_to(ROOT)))
+    assert not stale_links, f"Outdated /previews/list/ links: {stale_links}"
+    print(f"PASS: /previews/ is the single searchable directory, {len(expected)} projects, legacy redirect and sitemap verified.")
+    return 0
+
+if __name__ == "__main__":
+    try:
+        raise SystemExit(main())
+    except AssertionError as exc:
+        print(f"PREVIEW DIRECTORY CHECK FAILED: {exc}", file=sys.stderr)
+        raise SystemExit(1)

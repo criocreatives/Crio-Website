@@ -76,7 +76,7 @@ def main():
         # and analytics conventions. Include public pages in sitemap accounting
         # without applying the main marketing pages\u0027 strict metadata template.
         if rel.startswith("previews/"):
-            if rel in {"previews/404.html", "previews/portfolio/index.html"} or rel.startswith("previews/raw-bar-website-redesign/"):
+            if rel in {"previews/404.html", "previews/portfolio/index.html", "previews/list/index.html"} or rel.startswith("previews/raw-bar-website-redesign/"):
                 continue
             # Managed galleries have a validated manifest and an explicit
             # public/preview indexing decision; legacy project pages retain
