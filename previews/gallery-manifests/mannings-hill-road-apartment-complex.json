@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "slug": "mannings-hill-road-apartment-complex",
+  "mode": "preserve-layout",
+  "template": "scripts/templates/legacy-gallery/mannings-hill-road-apartment-complex.html.tmpl",
+  "card_library": "scripts/templates/legacy-gallery/mannings-hill-road-apartment-complex.cards.json",
+  "galleries": [
+    {
+      "slot": "gallery_01",
+      "images": [
+        {
+          "file": "images/Image3.jpg",
+          "card": "images/Image3.jpg"
+        },
+        {
+          "file": "images/Image2.jpg",
+          "card": "images/Image2.jpg"
+        },
+        {
+          "file": "images/Image3.jpg",
+          "card": "images/Image3.jpg::view-2"
+        },
+        {
+          "file": "images/Image4.jpg",
+          "card": "images/Image4.jpg"
+        },
+        {
+          "file": "images/Image5.jpg",
+          "card": "images/Image5.jpg"
+        },
+        {
+          "file": "images/Image6.jpg",
+          "card": "images/Image6.jpg"
+        },
+        {
+          "file": "images/Image7.jpg",
+          "card": "images/Image7.jpg"
+        },
+        {
+          "file": "images/Image8.jpg",
+          "card": "images/Image8.jpg"
+        },
+        {
+          "file": "images/Image9.jpg",
+          "card": "images/Image9.jpg"
+        },
+        {
+          "file": "images/Image10.jpg",
+          "card": "images/Image10.jpg"
+        },
+        {
+          "file": "images/Image11.jpg",
+          "card": "images/Image11.jpg"
+        },
+        {
+          "file": "images/Image12.jpg",
+          "card": "images/Image12.jpg"
+        },
+        {
+          "file": "images/Image13.jpg",
+          "card": "images/Image13.jpg"
+        },
+        {
+          "file": "images/Image14.jpg",
+          "card": "images/Image14.jpg"
+        },
+        {
+          "file": "images/Image15.jpg",
+          "card": "images/Image15.jpg"
+        }
+      ]
+    }
+  ]
+}
