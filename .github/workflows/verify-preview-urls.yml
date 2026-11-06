@@ -23,13 +23,26 @@ jobs:
             printf '%s -> %s\n' "${base}/${path}" "${code}"
             test "${code}" = "200"
           done
+      - name: Verify canonical preview directory and legacy redirect
+        run: |
+          set -euo pipefail
+          base="https://criocreatives.com/previews"
+          home=$(curl --fail --location --retry 5 --retry-delay 2 --silent --show-error "${base}/")
+          [[ "${home}" == *'id="preview-search"'* ]]
+          [[ "${home}" == *'id="preview-list"'* ]]
+          [[ "${home}" == *'rel="canonical" href="https://criocreatives.com/previews/"'* ]]
+          [[ "${home}" == *'href="/previews/tiny-living/"'* ]]
+          old=$(curl --fail --location --retry 5 --retry-delay 2 --silent --show-error "${base}/list/")
+          [[ "${old}" == *'location.replace('*'/previews/'* ]]
+          [[ "${old}" == *'noindex,follow'* ]]
+          echo "Directory and old-link redirect markup verified."
       - name: Verify all 31 Tiny Living original WebP renders
         run: |
           set -euo pipefail
           base="https://criocreatives.com/previews/tiny-living"
           html=$(curl --fail --location --retry 5 --retry-delay 2 --silent --show-error "${base}/")
-          [[ "${html}" == *'data-photo-index="30"'* ]]
-          [[ "${html}" == *'Tiny Living — Architectural Visualization'* ]]
+          [[ "${html}" == *'data-index="30"'* ]]
+          [[ "${html}" == *'Tiny Living | Architectural Visualization'* ]]
           for n in 1 2 3 4 8 $(seq 10 35)
           do
             url="${base}/renders/Image${n}.webp"
