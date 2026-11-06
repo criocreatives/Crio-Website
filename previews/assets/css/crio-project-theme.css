@@ -62,7 +62,7 @@ body.crio-ed.crio-project .hero h1,body.crio-ed.crio-project .hero h1 em{color:#
 body.crio-ed.crio-project .hero .hero-meta p,body.crio-ed.crio-project .hero .hero-index{color:#f4f4f4!important}
 body.crio-ed.crio-project .collection .gallery .shot,
 body.crio-ed.crio-project .collection .gallery-pair .shot,
-body.crio-ed.crio-project .collection .gallery .wide-image{aspect-ratio:4/3!important}
+body.crio-ed.crio-project .collection .gallery .wide-image{aspect-ratio:var(--project-image-ratio,4/3)!important}
 body.crio-ed.crio-project .gallery .shot img{width:100%!important;height:100%!important;object-fit:contain!important;background:#e8e8e8}
 body.crio-ed.crio-project .shot-caption{color:#f4f4f4!important;background:linear-gradient(transparent,rgba(0,0,0,.7))!important}
 body.crio-ed.crio-project .shot-caption :is(strong,em,.shot-open){color:#f4f4f4!important}
@@ -78,5 +78,5 @@ body.crio-ed.crio-project .shot:focus-visible{outline:3px solid var(--red)!impor
 @media(max-width:680px){
   body.crio-ed.crio-project .collection .gallery .shot,
   body.crio-ed.crio-project .collection .gallery-pair .shot,
-  body.crio-ed.crio-project .collection .gallery .wide-image{aspect-ratio:4/3!important}
+  body.crio-ed.crio-project .collection .gallery .wide-image{aspect-ratio:var(--project-image-ratio,4/3)!important}
 }
