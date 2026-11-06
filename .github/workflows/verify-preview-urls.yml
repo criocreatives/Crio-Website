@@ -23,3 +23,18 @@ jobs:
             printf '%s -> %s\n' "${base}/${path}" "${code}"
             test "${code}" = "200"
           done
+      - name: Verify all 31 Tiny Living original WebP renders
+        run: |
+          set -euo pipefail
+          base="https://criocreatives.com/previews/tiny-living"
+          html=$(curl --fail --location --retry 5 --retry-delay 2 --silent --show-error "${base}/")
+          [[ "${html}" == *'data-photo-index="30"'* ]]
+          [[ "${html}" == *'Tiny Living — Architectural Visualization'* ]]
+          for n in 1 2 3 4 8 $(seq 10 35)
+          do
+            url="${base}/renders/Image${n}.webp"
+            result=$(curl --location --retry 5 --retry-delay 2 --retry-all-errors --silent --show-error --output /dev/null --write-out '%{http_code}' "${url}")
+            echo "${url} -> ${result}"
+            test "${result}" = "200"
+          done
+          echo "Tiny Living: all 31 published images and page markup verified."
