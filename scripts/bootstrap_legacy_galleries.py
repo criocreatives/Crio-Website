@@ -45,17 +45,20 @@ def export(slug: str):
         slot = f"gallery_{number:02d}"
         entries = []
         snippets = {}
+        seen_images = {}
         for i, fig in enumerate(figures):
             actual = IMG.search(fig.group())
             if not actual:
                 raise ValueError(f"Figure missing image source {slot} #{i}")
             image = actual.group(1)
-            if image in snippets:
-                raise ValueError(f"Duplicate media key {image} in {slug}/{slot}")
+            seen_images[image] = seen_images.get(image, 0) + 1
+            # Keep the original markup distinct even when a source image is
+            # intentionally presented more than once in the gallery.
+            key = image if seen_images[image] == 1 else f"{image}::view-{seen_images[image]}"
             # Retain each original figure, including its trailing whitespace.
             part = body[fig.start():figures[i+1].start() if i+1<len(figures) else len(body)]
-            snippets[image] = part
-            entries.append({"file": image})
+            snippets[key] = part
+            entries.append({"file": image, "card": key})
         preamble = body[:figures[0].start()]
         inventory.append({"slot": slot, "images": entries})
         html_data["galleries"][slot] = {"preamble": preamble, "cards": snippets}
