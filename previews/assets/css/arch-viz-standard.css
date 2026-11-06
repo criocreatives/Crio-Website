@@ -40,3 +40,10 @@ body.crio-arch-standard :is(.hero,.cover) > .hero-content{position:relative!impo
 body.crio-arch-standard :is(.hero,.cover) .hero-content :is(h1,p,span){color:#f4f4f4!important}
 @media(max-width:900px){body.crio-arch-standard > header.arch-salisbury-header{padding:20px 16px 35px!important}body.crio-arch-standard .arch-salisbury-nav{padding:12px 16px!important;flex-wrap:wrap!important;gap:8px!important}body.crio-arch-standard .arch-salisbury-links{width:100%;justify-content:flex-start!important;overflow-x:auto!important;flex-wrap:nowrap!important}body.crio-arch-standard .arch-salisbury-links a{padding:8px 11px!important;font-size:9px!important}body.crio-arch-standard .arch-salisbury-brand img{width:125px!important}body.crio-arch-standard .arch-salisbury-kicker{margin-bottom:-25px!important}body.crio-arch-standard :is(.hero,.cover){min-height:calc(100svh - 170px)!important;padding:80px 22px 40px!important}body.crio-arch-standard :is(.hero,.cover) :is(h1,.cover-title){font-size:clamp(46px,10vw,84px)!important}}
 @media(max-width:520px){body.crio-arch-standard .arch-salisbury-brand span{font-size:8px}body.crio-arch-standard .arch-salisbury-kicker{font-size:8px}body.crio-arch-standard .arch-salisbury-kicker span:last-child{display:none}}
+
+/* Placeholder projects have no approved photography: never fabricate a hero image. */
+body.crio-arch-standard.arch-no-hero-image .hero{min-height:52vh!important;background:#111214!important}
+body.crio-arch-standard.arch-no-hero-image .hero::after{display:none!important}
+body.crio-arch-standard.arch-no-hero-image .hero :is(h1,.lead,.eyebrow){color:#f4f4f4!important}
+body.crio-arch-standard .arch-salisbury-nav{position:relative!important}
+body.crio-arch-standard .arch-salisbury-links{height:auto!important}
