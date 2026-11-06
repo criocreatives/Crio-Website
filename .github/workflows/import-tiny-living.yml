@@ -1,0 +1,53 @@
+name: Import Tiny Living original renders
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/import-tiny-living.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download uploaded Tiny Living WebP archive
+        env:
+          ARCHIVE_URL: https://at.adobe.com/X1XJfuIPqu7DHwAR
+        run: |
+          curl --fail --location --retry 3 --retry-delay 2 --show-error --silent "$ARCHIVE_URL" -o /tmp/tiny-living.zip
+          test "$(stat -c %s /tmp/tiny-living.zip)" -gt 5000000
+          unzip -t /tmp/tiny-living.zip | tail -3
+      - name: Verify and extract all original images without re-encoding
+        run: |
+          python3 - <<'PY'
+          from zipfile import ZipFile
+          from pathlib import Path
+          import re
+          zip_path=Path('/tmp/tiny-living.zip')
+          out=Path('previews/tiny-living/renders')
+          expected=[1,2,3,4,8,*range(10,36)]
+          names=[f'Image{n}.webp' for n in expected]
+          with ZipFile(zip_path) as z:
+              actual=z.namelist()
+              assert len(actual)==31 and sorted(actual)==sorted(names), f'Unexpected archive contents: {actual}'
+              out.mkdir(parents=True,exist_ok=True)
+              for filename in names:
+                  data=z.read(filename)
+                  assert len(data)>10000 and data[:4]==b'RIFF' and data[8:12]==b'WEBP', f'Invalid WebP: {filename}'
+                  (out/filename).write_bytes(data)
+          assert len(list(out.glob('*.webp')))==31
+          print('Verified and copied all 31 original WebP renders, byte-for-byte.')
+          PY
+      - name: Commit import to review branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c project/tiny-living-gallery-2026
+          git add previews/tiny-living/renders
+          git diff --cached --check
+          git commit -m "Add all 31 original Tiny Living WebP architectural renders"
+          git push origin HEAD:refs/heads/project/tiny-living-gallery-2026
