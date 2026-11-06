@@ -3,58 +3,218 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Tiny Living | Crio Creatives Preview</title>
-  <meta name="description" content="Tiny Living project preview by Crio Creatives.">
-  <meta name="theme-color" content="#090909">
-  <meta property="og:title" content="Tiny Living">
-  <meta property="og:description" content="Project preview by Crio Creatives.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://criocreatives.com/previews/tiny-living/">
+  <meta name="theme-color" content="#111214">
+  <title>Tiny Living — Architectural Visualization | Crio Creatives</title>
+  <meta name="description" content="Tiny Living: a compact residential architectural visualization by Crio Creatives, featuring 31 exterior, floor layout, kitchen, living, work, sleeping and bathroom renders.">
   <link rel="canonical" href="https://criocreatives.com/previews/tiny-living/">
-  <link rel="icon" type="image/png" href="https://criocreatives.com/assets/logos/Crio%20Creatives%20Logo%20favicon.png">
+  <link rel="icon" href="https://criocreatives.com/assets/logos/Crio%20Creatives%20Logo%20favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Crio Creatives">
+  <meta property="og:title" content="Tiny Living — Crio Creatives">
+  <meta property="og:description" content="A compact residential concept, explored through 31 architectural visualizations.">
+  <meta property="og:url" content="https://criocreatives.com/previews/tiny-living/">
+  <meta property="og:image" content="https://criocreatives.com/previews/tiny-living/renders/Image1.webp">
+  <meta property="og:image:alt" content="Tiny Living compact timber cabin nestled among trees">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="./renders/Image1.webp" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="/previews/assets/css/presentation-editorial.css?v=2">
+  <link rel="stylesheet" href="/previews/assets/css/architecture-2026.css?v=2">
+  <script defer src="/previews/assets/js/presentation-init.js"></script>
   <style>
-    :root{--red:#ed1c24;--bg:#090909;--surface:#111214;--surface2:#17191d;--ink:#f4f4f4;--muted:#b4b4b9;--line:rgba(255,255,255,.13);--max:1240px}
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
-    header{position:sticky;top:0;z-index:10;height:68px;border-bottom:1px solid rgba(255,255,255,.18);background:rgba(237,28,36,.96);backdrop-filter:blur(16px)}
-    .header-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand img{display:block;width:168px;height:48px;object-fit:cover;border-radius:9px}
-    .site-link{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:9px;background:var(--red);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-    .hero{padding:94px 0 68px;border-bottom:1px solid var(--line);background:radial-gradient(circle at 82% 12%,rgba(237,28,36,.14),transparent 28%)}
-    .eyebrow{margin:0 0 18px;color:var(--red);font-size:11px;font-weight:800;letter-spacing:.17em;text-transform:uppercase}
-    h1{margin:0;max-width:1050px;font-size:clamp(50px,8vw,112px);line-height:.9;letter-spacing:-.06em}
-    h1 span{color:var(--red)} .lead{max-width:720px;margin:28px 0 0;color:var(--muted);font-size:18px;line-height:1.65}
-    section{padding:68px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:28px}
-    h2{margin:0;font-size:clamp(34px,5vw,60px);letter-spacing:-.045em}.section-note{max-width:520px;margin:0;color:var(--muted);line-height:1.6}
-    .upload-placeholder{min-height:420px;border:1px dashed rgba(255,255,255,.22);border-radius:18px;background:linear-gradient(135deg,var(--surface2),var(--surface));display:grid;place-items:center;text-align:center;padding:40px}
-    .upload-placeholder strong{display:block;font-size:28px;letter-spacing:-.03em;margin-bottom:10px}.upload-placeholder p{margin:0;color:var(--muted);line-height:1.6}
-    footer{border-top:1px solid var(--line);padding:28px 0 38px;color:#777;font-size:12px}
-    @media(max-width:700px){.wrap{width:calc(100% - 28px)}header{height:62px}.brand img{width:147px;height:42px}.site-link{min-height:42px;padding:0 13px;font-size:10px}.hero{padding:62px 0 48px}.section-head{display:block}.section-note{margin-top:12px}section{padding:48px 0}.upload-placeholder{min-height:320px}}
+    :root{--tl-red:#ed1c24;--tl-paper:#f4f4f4;--tl-ink:#090909;--tl-muted:#595b62;--tl-dark:#111214;--tl-line:#d2d3d5;--tl-body:"Century Gothic","Avenir Next",Avenir,Arial,sans-serif;--tl-display:Helvetica,Arial,sans-serif}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:82px}
+    body.tl-page{margin:0;min-width:320px;background:var(--tl-paper);color:var(--tl-ink);font-family:var(--tl-body);line-height:1.65;-webkit-font-smoothing:antialiased}
+    .tl-page a{color:inherit;text-decoration:none}.tl-page button{font:inherit}.tl-page img{display:block;max-width:100%}
+    .tl-page :is(a,button):focus-visible{outline:3px solid var(--tl-red);outline-offset:4px}
+    .tl-container{width:min(1340px,calc(100% - 96px));margin-inline:auto}
+    .tl-header{position:sticky;top:0;z-index:40;height:72px;background:var(--tl-dark);border-bottom:1px solid rgba(255,255,255,.14);color:#fff}
+    .tl-nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .tl-brand{display:block;flex:none}.tl-brand img{width:172px;height:45px;object-fit:contain;object-position:left center}
+    .tl-links{display:flex;gap:clamp(14px,2.3vw,34px);align-items:center;font-family:var(--tl-body);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+    .tl-links a:hover{color:#ff646a}.tl-links .tl-external{color:#ff646a}
+    .tl-page section.tl-hero{position:relative;min-height:clamp(550px,78svh,940px);padding:0;display:flex;align-items:end;overflow:hidden;color:#fff;background:#181818;isolation:isolate}
+    .tl-hero-photo{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center 58%;z-index:0}
+    .tl-hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.12) 0%,rgba(0,0,0,.1) 34%,rgba(0,0,0,.7) 100%)}
+    .tl-hero-content{position:relative;z-index:2;width:100%;padding-block:100px 80px}
+    .tl-kicker{margin:0 0 24px;color:#fff;font-family:var(--tl-body);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+    .tl-page .tl-hero h1{margin:0;color:#fff;font-family:var(--tl-display);font-size:clamp(80px,13vw,194px);line-height:.81;font-weight:800;letter-spacing:-.082em;text-transform:uppercase}
+    .tl-page .tl-hero h1 span{color:#fff}
+    .tl-hero-footer{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-top:35px}
+    .tl-hero-description{max-width:470px;margin:0;font-size:15px;color:#efefef;line-height:1.6}
+    .tl-hero-count{margin:0;white-space:nowrap;font:700 11px/1.4 var(--tl-body);letter-spacing:.16em}
+    .tl-intro{padding:52px 0 54px;border-bottom:1px solid var(--tl-line)}
+    .tl-intro-grid{display:grid;grid-template-columns:1fr 2fr;gap:56px;align-items:start}
+    .tl-intro-eyebrow{font:700 11px/1.5 var(--tl-body);letter-spacing:.15em;text-transform:uppercase;color:var(--tl-red)}
+    .tl-intro-copy{max-width:830px;margin:0;font-family:var(--tl-display);font-size:clamp(23px,3vw,43px);font-weight:700;letter-spacing:-.05em;line-height:1.15}
+    .tl-page section.tl-section{padding:74px 0 84px;border-bottom:1px solid var(--tl-line);background:var(--tl-paper)}
+    .tl-section-title{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:24px;align-items:start;margin-bottom:28px}
+    .tl-number{color:var(--tl-red);font:700 12px/1.2 var(--tl-body);letter-spacing:.14em;padding-top:10px}
+    .tl-page .tl-section-title h2{margin:0;color:var(--tl-ink);font:800 clamp(37px,5.5vw,76px)/.95 var(--tl-display);letter-spacing:-.07em}
+    .tl-section-title p{margin:13px 0 0;color:var(--tl-muted);font-size:13px}
+    .tl-section-count{padding-top:10px;color:var(--tl-muted);font:700 10px/1.4 var(--tl-body);letter-spacing:.13em}
+    .tl-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}
+    .tl-photo{position:relative;display:block;width:100%;padding:0;appearance:none;background:#dedede;border:0;overflow:hidden;cursor:zoom-in;aspect-ratio:4/3}
+    .tl-photo img{width:100%;height:100%;max-width:none;object-fit:contain;transition:transform .3s ease}
+    .tl-photo:hover img{transform:scale(1.02)}
+    .tl-photo.tl-wide{grid-column:1/-1;aspect-ratio:8/3}
+    .tl-photo.tl-wide img{object-fit:contain;background:#e4e4e4}
+    .tl-cta{padding:94px 0;background:var(--tl-dark);color:#fff}
+    .tl-cta-row{display:flex;align-items:end;justify-content:space-between;gap:35px}
+    .tl-page .tl-cta h2{margin:0;color:#fff;font:800 clamp(42px,6vw,88px)/.96 var(--tl-display);letter-spacing:-.065em}
+    .tl-contact{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border:1px solid rgba(255,255,255,.2);background:var(--tl-red);color:#fff!important;font:700 11px/1.4 var(--tl-body);letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}
+    .tl-contact:hover{background:#c9151d}
+    .tl-footer{background:#0b0b0c;color:#a6a6a9;border-top:1px solid rgba(255,255,255,.1);padding:26px 0;font-size:12px}
+    .tl-footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .tl-footer a{color:#f4f4f4}
+    .tl-lightbox{inset:0;margin:0;padding:0;width:100vw;height:100dvh;max-width:none;max-height:none;border:0;background:#08090a;color:#fff}
+    .tl-lightbox::backdrop{background:rgba(0,0,0,.96)}
+    .tl-lightbox-inner{position:relative;display:flex;align-items:center;justify-content:center;min-height:100%;padding:60px 70px 80px}
+    .tl-lightbox-image{display:block;max-width:min(100%,1700px);width:auto;height:auto;max-height:calc(100dvh - 125px);object-fit:contain}
+    .tl-lightbox button{position:fixed;z-index:2;display:grid;place-items:center;width:44px;height:44px;border:1px solid #3f4145;background:#18191c;color:#fff;cursor:pointer;font-size:21px}
+    .tl-close{top:16px;right:16px}.tl-prev{left:16px;top:50%;transform:translateY(-50%)}.tl-next{right:16px;top:50%;transform:translateY(-50%)}
+    .tl-lightbox-tools{position:fixed;bottom:12px;left:0;right:0;display:flex;gap:22px;justify-content:center;align-items:center;font:700 11px/1.4 var(--tl-body);letter-spacing:.1em}
+    .tl-lightbox-tools a{color:#fff;text-decoration:underline;text-underline-offset:4px}
+    @media(max-width:1050px){.tl-links a:nth-child(3),.tl-links a:nth-child(4){display:none}}
+    @media(max-width:720px){
+      .tl-container{width:calc(100% - 32px)}
+      .tl-header{height:64px}.tl-brand img{width:146px;height:40px}
+      .tl-links{gap:16px;font-size:9px}.tl-links a:nth-child(2){display:none}
+      .tl-page section.tl-hero{min-height:clamp(540px,78svh,820px)}
+      .tl-hero-content{padding-block:70px 47px}
+      .tl-page .tl-hero h1{font-size:clamp(72px,18vw,132px)}
+      .tl-hero-footer{display:block}.tl-hero-count{margin-top:20px}
+      .tl-intro{padding:35px 0}.tl-intro-grid{grid-template-columns:1fr;gap:15px}
+      .tl-page section.tl-section{padding:48px 0 55px}
+      .tl-section-title{grid-template-columns:38px minmax(0,1fr);gap:14px;margin-bottom:22px}
+      .tl-section-count{display:none}.tl-number{padding-top:8px}
+      .tl-gallery{grid-template-columns:1fr;gap:12px}
+      .tl-photo.tl-wide{grid-column:auto;aspect-ratio:4/3}
+      .tl-cta{padding:65px 0}.tl-cta-row{display:block}.tl-contact{margin-top:25px}
+      .tl-lightbox-inner{padding:55px 8px 80px}
+      .tl-lightbox-image{max-height:calc(100dvh - 140px)}
+      .tl-prev,.tl-next{top:auto;bottom:17px;transform:none}
+      .tl-lightbox-tools{bottom:21px}
+      .tl-footer-inner{display:block}.tl-footer-inner a{display:inline-block;margin-top:10px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tl-photo img{transition:none}.tl-photo:hover img{transform:none}}
   </style>
-<link rel="stylesheet" href="/previews/assets/css/presentation-editorial.css?v=2">
-<script defer src="/previews/assets/js/presentation-init.js"></script>
-<link rel="stylesheet" href="/previews/assets/css/architecture-2026.css?v=1">
 </head>
-<body class="crio-architecture arch-placeholder">
-<header><div class="wrap header-inner">
-  <a class="brand" href="https://criocreatives.com/" aria-label="Crio Creatives website"><img src="https://criocreatives.com/assets/logos/Crio%20Creatives%20Logo%20wide%20white.svg" alt="Crio Creatives"></a>
-  <a class="site-link" href="https://criocreatives.com/">Crio website <svg class="crio-icon crio-icon--arrow-up-right" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:inline-block;vertical-align:-.125em;flex-shrink:0;pointer-events:none"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-</div></header>
-<main>
-  <section class="hero"><div class="wrap">
-    <p class="eyebrow">Project Preview</p>
-    <h1>Tiny<br><span>Living</span>.</h1>
-    <p class="lead">Project presentation by Crio Creatives. Images and project details will be added as the preview is developed.</p>
-  </div></section>
-  <section id="views"><div class="wrap">
-    <div class="section-head"><h2>Project Views</h2><p class="section-note">The gallery is ready for the project images.</p></div>
-    <div class="upload-placeholder"><div><strong>Presentation in progress.</strong><p>Project imagery will appear here as the presentation develops.</p></div></div>
-  </div></section>
-</main>
-<footer><div class="wrap">© 2026 Crio Creatives · Tiny Living</div></footer>
-
-<!-- LibreCounter: privacy-friendly page analytics -->
-<img src="https://librecounter.org/hidden.svg" referrerpolicy="unsafe-url" alt="" width="1" height="1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">
+<body class="crio-architecture tl-page">
+  <header class="tl-header"><div class="tl-container tl-nav">
+    <a class="tl-brand" href="https://criocreatives.com/" aria-label="Crio Creatives website"><img src="https://criocreatives.com/assets/logos/Crio%20Creatives%20Logo%20wide%20white.svg" alt="Crio Creatives"></a>
+    <nav class="tl-links" aria-label="Project navigation"><a href="#exterior">Exterior</a><a href="#living">Interior</a><a href="#layout">Layout</a><a href="#bathroom">Bathroom</a><a class="tl-external" href="https://criocreatives.com/">Crio website</a></nav>
+  </div></header>
+  <main>
+    <section class="tl-hero" aria-labelledby="tiny-living-title">
+      <img class="tl-hero-photo" src="./renders/Image1.webp" alt="Timber-clad compact Tiny Living cabin in a landscaped woodland setting" width="1440" height="1080" fetchpriority="high">
+      <div class="tl-container tl-hero-content"><p class="tl-kicker">Residential Design / Architectural Visualization</p>
+        <h1 id="tiny-living-title">Tiny<br><span>Living.</span></h1>
+        <div class="tl-hero-footer"><p class="tl-hero-description">A compact residential concept explored through exterior, interior and spatial visualizations.</p><p class="tl-hero-count">31 PROJECT VIEWS</p></div>
+      </div>
+    </section>
+    <div class="tl-intro"><div class="tl-container tl-intro-grid"><div class="tl-intro-eyebrow">The project</div><p class="tl-intro-copy">Small footprint. A complete visual study of the spaces inside and out.</p></div></div>
+  <section class="tl-section" id="exterior" aria-labelledby="exterior-heading">
+    <div class="tl-container">
+      <div class="tl-section-title"><div class="tl-number">01</div><div><h2 id="exterior-heading">Exterior</h2><p>The cabin in its landscape</p></div><div class="tl-section-count">06 VIEWS</div></div>
+      <div class="tl-gallery"><button class="tl-photo" type="button" data-photo-index="0" aria-label="Open exterior rendering 1"><img src="./renders/Image1.webp" alt="Exterior architectural rendering of the Tiny Living cabin, view 1" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="1" aria-label="Open exterior rendering 2"><img src="./renders/Image2.webp" alt="Exterior architectural rendering of the Tiny Living cabin, view 2" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="2" aria-label="Open exterior rendering 3"><img src="./renders/Image3.webp" alt="Exterior architectural rendering of the Tiny Living cabin, view 3" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="3" aria-label="Open exterior rendering 4"><img src="./renders/Image23.webp" alt="Exterior architectural rendering of the Tiny Living cabin, view 4" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="4" aria-label="Open exterior rendering 5"><img src="./renders/Image24.webp" alt="Exterior architectural rendering of the Tiny Living cabin, view 5" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="5" aria-label="Open exterior rendering 6"><img src="./renders/Image25.webp" alt="Exterior architectural rendering of the Tiny Living cabin, view 6" width="1440" height="1080" loading="lazy" decoding="async"></button></div>
+    </div>
+  </section>
+  <section class="tl-section" id="layout" aria-labelledby="layout-heading">
+    <div class="tl-container">
+      <div class="tl-section-title"><div class="tl-number">02</div><div><h2 id="layout-heading">Spatial Layout</h2><p>Overhead views of the interior arrangement</p></div><div class="tl-section-count">02 VIEWS</div></div>
+      <div class="tl-gallery"><button class="tl-photo tl-wide" type="button" data-photo-index="6" aria-label="Open spatial layout rendering 1"><img src="./renders/Image26.webp" alt="Overhead cutaway visualization of the Tiny Living floor layout, view 1" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="7" aria-label="Open spatial layout rendering 2"><img src="./renders/Image27.webp" alt="Overhead cutaway visualization of the Tiny Living floor layout, view 2" width="1440" height="1080" loading="lazy" decoding="async"></button></div>
+    </div>
+  </section>
+  <section class="tl-section" id="living" aria-labelledby="living-heading">
+    <div class="tl-container">
+      <div class="tl-section-title"><div class="tl-number">03</div><div><h2 id="living-heading">Living Spaces</h2><p>Open-plan living and shared interior perspectives</p></div><div class="tl-section-count">08 VIEWS</div></div>
+      <div class="tl-gallery"><button class="tl-photo" type="button" data-photo-index="8" aria-label="Open living spaces rendering 1"><img src="./renders/Image4.webp" alt="Living room interior visualization, view 1" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="9" aria-label="Open living spaces rendering 2"><img src="./renders/Image10.webp" alt="Living room interior visualization, view 2" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="10" aria-label="Open living spaces rendering 3"><img src="./renders/Image12.webp" alt="Living room interior visualization, view 3" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="11" aria-label="Open living spaces rendering 4"><img src="./renders/Image15.webp" alt="Living room interior visualization, view 4" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="12" aria-label="Open living spaces rendering 5"><img src="./renders/Image18.webp" alt="Living room interior visualization, view 5" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="13" aria-label="Open living spaces rendering 6"><img src="./renders/Image20.webp" alt="Living room interior visualization, view 6" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="14" aria-label="Open living spaces rendering 7"><img src="./renders/Image21.webp" alt="Living room interior visualization, view 7" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="15" aria-label="Open living spaces rendering 8"><img src="./renders/Image34.webp" alt="Living room interior visualization, view 8" width="1440" height="1080" loading="lazy" decoding="async"></button></div>
+    </div>
+  </section>
+  <section class="tl-section" id="kitchen" aria-labelledby="kitchen-heading">
+    <div class="tl-container">
+      <div class="tl-section-title"><div class="tl-number">04</div><div><h2 id="kitchen-heading">Kitchen</h2><p>Cabinetry, counters and compact amenities</p></div><div class="tl-section-count">04 VIEWS</div></div>
+      <div class="tl-gallery"><button class="tl-photo" type="button" data-photo-index="16" aria-label="Open kitchen rendering 1"><img src="./renders/Image14.webp" alt="Kitchen and cabinetry interior visualization, view 1" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="17" aria-label="Open kitchen rendering 2"><img src="./renders/Image16.webp" alt="Kitchen and cabinetry interior visualization, view 2" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="18" aria-label="Open kitchen rendering 3"><img src="./renders/Image19.webp" alt="Kitchen and cabinetry interior visualization, view 3" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="19" aria-label="Open kitchen rendering 4"><img src="./renders/Image28.webp" alt="Kitchen and cabinetry interior visualization, view 4" width="1440" height="1080" loading="lazy" decoding="async"></button></div>
+    </div>
+  </section>
+  <section class="tl-section" id="workspace" aria-labelledby="workspace-heading">
+    <div class="tl-container">
+      <div class="tl-section-title"><div class="tl-number">05</div><div><h2 id="workspace-heading">Work & Rest</h2><p>Sleeping and workspace arrangements</p></div><div class="tl-section-count">05 VIEWS</div></div>
+      <div class="tl-gallery"><button class="tl-photo" type="button" data-photo-index="20" aria-label="Open work & rest rendering 1"><img src="./renders/Image11.webp" alt="Sleeping area and workspace visualization, view 1" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="21" aria-label="Open work & rest rendering 2"><img src="./renders/Image13.webp" alt="Sleeping area and workspace visualization, view 2" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="22" aria-label="Open work & rest rendering 3"><img src="./renders/Image17.webp" alt="Sleeping area and workspace visualization, view 3" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="23" aria-label="Open work & rest rendering 4"><img src="./renders/Image22.webp" alt="Sleeping area and workspace visualization, view 4" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="24" aria-label="Open work & rest rendering 5"><img src="./renders/Image35.webp" alt="Sleeping area and workspace visualization, view 5" width="1440" height="1080" loading="lazy" decoding="async"></button></div>
+    </div>
+  </section>
+  <section class="tl-section" id="bathroom" aria-labelledby="bathroom-heading">
+    <div class="tl-container">
+      <div class="tl-section-title"><div class="tl-number">06</div><div><h2 id="bathroom-heading">Bathroom</h2><p>Fixtures, finishes and circulation</p></div><div class="tl-section-count">06 VIEWS</div></div>
+      <div class="tl-gallery"><button class="tl-photo" type="button" data-photo-index="25" aria-label="Open bathroom rendering 1"><img src="./renders/Image8.webp" alt="Bathroom interior visualization, view 1" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="26" aria-label="Open bathroom rendering 2"><img src="./renders/Image29.webp" alt="Bathroom interior visualization, view 2" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="27" aria-label="Open bathroom rendering 3"><img src="./renders/Image30.webp" alt="Bathroom interior visualization, view 3" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="28" aria-label="Open bathroom rendering 4"><img src="./renders/Image31.webp" alt="Bathroom interior visualization, view 4" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="29" aria-label="Open bathroom rendering 5"><img src="./renders/Image32.webp" alt="Bathroom interior visualization, view 5" width="1440" height="1080" loading="lazy" decoding="async"></button>
+        <button class="tl-photo" type="button" data-photo-index="30" aria-label="Open bathroom rendering 6"><img src="./renders/Image33.webp" alt="Bathroom interior visualization, view 6" width="1440" height="1080" loading="lazy" decoding="async"></button></div>
+    </div>
+  </section>
+    <section class="tl-cta"><div class="tl-container tl-cta-row"><h2>Design by<br>Crio Creatives.</h2><a class="tl-contact" href="https://criocreatives.com/#contact">Contact Crio</a></div></section>
+  </main>
+  <footer class="tl-footer"><div class="tl-container tl-footer-inner"><span>© 2026 Crio Creatives, LLC · Tiny Living</span><a href="https://criocreatives.com/">criocreatives.com</a></div></footer>
+  <dialog class="tl-lightbox" id="tl-lightbox" aria-label="Tiny Living gallery viewer">
+    <div class="tl-lightbox-inner">
+      <button type="button" class="tl-close" aria-label="Close image viewer">×</button>
+      <button type="button" class="tl-prev" aria-label="Previous image">‹</button>
+      <img class="tl-lightbox-image" id="tl-lightbox-image" alt="" width="1440" height="1080">
+      <button type="button" class="tl-next" aria-label="Next image">›</button>
+      <div class="tl-lightbox-tools"><span id="tl-gallery-status">01 / 31</span><a id="tl-original" target="_blank" rel="noopener" href="./renders/Image1.webp">Full resolution</a></div>
+    </div>
+  </dialog>
+  <script>
+    (() => {
+      const images=Array.from(document.querySelectorAll('.tl-photo'));
+      const modal=document.getElementById('tl-lightbox');
+      const viewer=document.getElementById('tl-lightbox-image');
+      const status=document.getElementById('tl-gallery-status');
+      const original=document.getElementById('tl-original');
+      let active=0;
+      const openImage=(index)=>{
+        active=(index+images.length)%images.length;
+        const source=images[active].querySelector('img');
+        viewer.src=source.src;
+        viewer.alt=source.alt;
+        original.href=source.src;
+        status.textContent=String(active+1).padStart(2,'0')+' / '+images.length;
+        if(!modal.open)modal.showModal();
+      };
+      images.forEach((button,i)=>button.addEventListener('click',()=>openImage(i)));
+      modal.querySelector('.tl-close').addEventListener('click',()=>modal.close());
+      modal.querySelector('.tl-prev').addEventListener('click',()=>openImage(active-1));
+      modal.querySelector('.tl-next').addEventListener('click',()=>openImage(active+1));
+      modal.addEventListener('keydown',e=>{
+        if(e.key==='ArrowLeft'){e.preventDefault();openImage(active-1);}
+        if(e.key==='ArrowRight'){e.preventDefault();openImage(active+1);}
+      });
+      modal.addEventListener('click',e=>{if(e.target===modal)modal.close();});
+    })();
+  </script>
+  <img src="https://librecounter.org/hidden.svg" referrerpolicy="strict-origin-when-cross-origin" alt="" width="1" height="1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">
 </body>
 </html>
