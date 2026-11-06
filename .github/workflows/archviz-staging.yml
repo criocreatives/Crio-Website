@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - refactor/arch-viz-single-source-20261106
+  pull_request:
+    branches:
+      - main
 permissions:
   contents: write
 jobs:
@@ -36,6 +39,7 @@ jobs:
           python3 scripts/check_seo.py
           git diff --check
       - name: Commit generated static pages to staging only
+        if: github.event_name == 'push'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
