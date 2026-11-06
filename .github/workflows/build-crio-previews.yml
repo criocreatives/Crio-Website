@@ -1,0 +1,67 @@
+name: Build standardized Crio previews
+on:
+  push:
+    paths:
+      - previews/projects/**
+      - previews/**/renders/**
+      - previews/**/images/**
+      - scripts/build_previews.py
+      - scripts/templates/crio-project.html.tmpl
+      - scripts/test_crio_preview_structure.py
+      - scripts/test_crio_preview_browser.cjs
+      - .github/workflows/build-crio-previews.yml
+  pull_request:
+    paths:
+      - previews/projects/**
+      - scripts/build_previews.py
+      - scripts/templates/crio-project.html.tmpl
+      - scripts/test_crio_preview_structure.py
+      - scripts/test_crio_preview_browser.cjs
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: preview-render-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout preview source branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
+          persist-credentials: true
+      - name: Validate and generate each managed Crio preview
+        run: |
+          python3 -m py_compile scripts/build_previews.py scripts/test_crio_preview_structure.py
+          python3 scripts/build_previews.py
+          python3 scripts/build_previews.py --check
+          python3 scripts/test_crio_preview_structure.py
+          python3 scripts/check_seo.py
+          node --check previews/assets/js/crio-project-gallery.js
+      - name: Install lightweight browser QA dependencies
+        run: npm install --prefix /tmp/crio-preview-qa --no-save playwright-core@1.56.1
+      - name: Start local website and verify responsive project layouts
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/crio-preview-http.log 2>&1 &
+          sleep 2
+          NODE_PATH=/tmp/crio-preview-qa/node_modules node scripts/test_crio_preview_browser.cjs
+      - name: Commit generated pages back to source branch
+        if: github.event_name == 'push'
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add previews/*/index.html sitemap.xml
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m "Regenerate standardized Crio preview pages from manifests"
+            git push origin "HEAD:refs/heads/${BRANCH}"
+          else
+            echo "All generated pages already match project manifests."
+          fi

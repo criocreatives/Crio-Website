@@ -76,9 +76,31 @@ def main():
         # and analytics conventions. Include public pages in sitemap accounting
         # without applying the main marketing pages\u0027 strict metadata template.
         if rel.startswith("previews/"):
-            # Client concept previews marked noindex must not enter the sitemap.
-            if (rel not in {"previews/404.html", "previews/portfolio/index.html"}
-                and not rel.startswith("previews/raw-bar-website-redesign/")):
+            if rel in {"previews/404.html", "previews/portfolio/index.html"} or rel.startswith("previews/raw-bar-website-redesign/"):
+                continue
+            # Managed galleries have a validated manifest and an explicit
+            # public/preview indexing decision; legacy project pages retain
+            # their original SEO and sitemap behavior.
+            parts = Path(rel).parts
+            managed = (len(parts) == 3 and parts[-1] == "index.html"
+                       and (ROOT / "previews" / "projects" / (parts[1] + ".json")).is_file())
+            if managed:
+                source = file.read_text(encoding="utf-8")
+                page = Inspector()
+                page.feed(source)
+                if any("noindex" in text for text in page.meta.get("robots", [])):
+                    continue
+                url = page_url(rel)
+                expected_urls.add(url)
+                if not page.title.strip() or page.links.get("canonical") != [url]:
+                    report_failure(failures, rel, "managed preview title/canonical missing or wrong")
+                if len(page.headings) != 1 or page.images_missing_alt:
+                    report_failure(failures, rel, "managed preview requires one heading and alt text on all images")
+                if not any(40 <= len(x) <= 220 for x in page.meta.get("description", [])):
+                    report_failure(failures, rel, "managed preview metadata description missing")
+                if page.meta.get("og:url") != [url] or len(page.meta.get("og:image", [])) != 1:
+                    report_failure(failures, rel, "managed preview social metadata missing")
+            else:
                 expected_urls.add(page_url(rel))
             continue
         source = file.read_text(encoding="utf-8")
