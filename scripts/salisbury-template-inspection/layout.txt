@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light"><meta name="theme-color" content="#F4F4F4">
+<meta name="description" content="A residential interior design preview for 9 Salisbury Avenue, Kingston, by Crio Creatives.">
+<title>9 Salisbury Avenue | Interior Design — Crio Creatives</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="9 Salisbury Avenue | Interior Design — Crio Creatives">
+<meta property="og:description" content="Contemporary residential interior design and architectural visualization at 9 Salisbury Avenue, Kingston.">
+<meta property="og:url" content="https://criocreatives.com/previews/9-salisbury-avenue/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://criocreatives.com/previews/9-salisbury-avenue/">
+<link rel="icon" type="image/png" href="/previews/assets/icons/Crio%20Creatives%20favicon.png">
+[stylesheet omitted]
+<link rel="stylesheet" href="/previews/assets/css/presentation-editorial.css?v=2">
+
+[stylesheet omitted]
+[script omitted]
+</head>
+<body>
+<a href="#overview" style="position:absolute;left:-9999px;top:0;z-index:1000;background:#ed1c24;color:white;padding:15px" onfocus="this.style.left='15px'" onblur="this.style.left='-9999px'">Skip to project</a>
+<header id="site-header">
+ <a class="logo" href="https://criocreatives.com/" aria-label="Crio Creatives home"><img src="https://criocreatives.com/assets/logos/Crio%20Creatives%20Logo%20wide%20white.svg" alt="Crio Creatives" width="177" height="51"></a>
+ <div class="header-right"><nav class="nav" aria-label="Project sections"><a href="#overview">OVERVIEW</a><a href="#living">LIVING</a><a href="#bedroom">BEDROOM</a><a href="#details">DETAILS</a><a href="#balcony">BALCONY</a></nav><span class="header-tag"><i class="red-dot"></i>PRIVATE PREVIEW</span></div>
+</header>
+<main id="top">
+<section class="hero" aria-labelledby="hero-heading">
+ <img class="hero-image" src="[embedded-data]" fetchpriority="high" decoding="async" alt="A bright contemporary living room with soft neutral seating, slatted wood details, white brick media wall and wide balcony glazing">
+ <div class="hero-content"><div class="hero-eyebrow"><span class="red-line"></span>9 SALISBURY AVENUE / KINGSTON</div><h1 id="hero-heading">Living,<br><em>deliberately.</em></h1>
+  <div class="hero-meta"><p>An interior design study for 9 Salisbury Avenue, Kingston — composed around natural light, refined materials and everyday function.</p><div class="hero-index">SELECTED PROJECT VIEWS<span>20 IMAGES / 04 COLLECTIONS</span><button class="hero-open" id="hero-open" type="button">VIEW FULL IMAGE</button></div></div>
+ </div><a href="#overview" class="scroll-cue">EXPLORE THE PROJECT</a>
+</section>
+
+<section class="overview section" id="overview" aria-labelledby="overview-heading">
+  <div class="overview-index"><span class="eyebrow"><span class="red-line"></span>PROJECT OVERVIEW</span><p>DESIGN STUDY<br>01 — 04</p></div>
+  <div class="overview-body"><h2 id="overview-heading">Quiet confidence.<br><span class="muted-heading">Considered detail.</span></h2>
+  <p>At 9 Salisbury Avenue, Kingston, a residential interior shaped by natural light, layered neutrals and the warmth of timber. From the open-plan living area to private bedrooms and functional spaces, the design language remains purposeful and understated.</p>
+  <div class="overview-tags"><span>WARM TIMBER</span><span>TEXTURED SURFACES</span><span>CLEAN LINES</span><span>INDOOR–OUTDOOR LIVING</span></div></div>
+</section>
+<section class="collection section" id="living">
+ <div class="section-heading"><div class="eyebrow"><span class="red-line"></span>01 / LIVING</div><div class="section-heading-body"><h2>An atmosphere <i>of ease.</i></h2><p>Open views, tactile materials and a restrained palette establish a relaxed setting for everyday living.</p></div></div>
+ <div class="gallery gallery-living">
+ <figure class="shot wide-image" data-index="1" tabindex="0" role="button" aria-label="Open full-screen image: Living room — media wall">
+     <img src="[embedded-data]" alt="White brick television wall with a timber console and sage accent chair" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>02 / 20</em><strong>Living room — media wall</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure>
+ <div class="gallery-pair"><figure class="shot " data-index="2" tabindex="0" role="button" aria-label="Open full-screen image: Living room — seating">
+     <img src="[embedded-data]" alt="Soft neutral sofa set against a textured wall with warm artwork" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>03 / 20</em><strong>Living room — seating</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure><figure class="shot " data-index="3" tabindex="0" role="button" aria-label="Open full-screen image: Living room — evening">
+     <img src="[embedded-data]" alt="Living room scene with warm artificial lighting after dark" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>04 / 20</em><strong>Living room — evening</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure></div>
+ </div>
+ <div class="editorial-note"><span>DESIGN NOTE / 01</span><p>Timber accents and white brick introduce warmth and texture, while subtle lighting lets the space transition from daylight to evening.</p></div>
+</section>
+<section class="collection section" id="bedroom">
+ <div class="section-heading"><div class="eyebrow"><span class="red-line"></span>02 / BEDROOM</div><div class="section-heading-body"><h2>Private spaces. <i>Personal character.</i></h2><p>A cooler accent palette complements the same warm joinery and soft finishes seen throughout the residence.</p></div></div>
+ <div class="gallery gallery-bedroom">
+ <figure class="shot wide-image" data-index="4" tabindex="0" role="button" aria-label="Open full-screen image: Bedroom — perspective">
+     <img src="[embedded-data]" alt="Contemporary bedroom with deep blue accent wall and large balcony glazing" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>05 / 20</em><strong>Bedroom — perspective</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure>
+ <div class="gallery-pair"><figure class="shot " data-index="5" tabindex="0" role="button" aria-label="Open full-screen image: Bedroom — media wall">
+     <img src="[embedded-data]" alt="Bedroom television wall with timber cabinet and textured plaster" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>06 / 20</em><strong>Bedroom — media wall</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure><figure class="shot " data-index="6" tabindex="0" role="button" aria-label="Open full-screen image: Bedroom — headboard">
+     <img src="[embedded-data]" alt="Front-facing bedroom view with blue accent wall and framed artwork" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>07 / 20</em><strong>Bedroom — headboard</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure></div>
+ <div class="gallery-pair"><figure class="shot " data-index="8" tabindex="0" role="button" aria-label="Open full-screen image: Bedroom — across the room">
+     <img src="[embedded-data]" alt="View across the bedroom toward a TV wall and open balcony door" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>09 / 20</em><strong>Bedroom — across the room</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure><figure class="shot " data-index="9" tabindex="0" role="button" aria-label="Open full-screen image: Bedroom — sleeping area">
+     <img src="[embedded-data]" alt="Bedroom with patterned bedding, integrated headboard and natural light" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>10 / 20</em><strong>Bedroom — sleeping area</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure></div>
+ <figure class="shot wide-image" data-index="7" tabindex="0" role="button" aria-label="Open full-screen image: Bedroom — joinery detail">
+     <img src="[embedded-data]" alt="Bedroom media wall with floating cabinetry, LED lighting and timber slats" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>08 / 20</em><strong>Bedroom — joinery detail</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure>
+ </div>
+</section>
+<section class="collection section" id="details">
+ <div class="section-heading"><div class="eyebrow"><span class="red-line"></span>03 / THE DETAILS</div><div class="section-heading-body"><h2>Utility, <i>beautifully resolved.</i></h2><p>Storage, circulation and service areas receive the same attention to composition, lighting and finishes.</p></div></div>
+ <div class="gallery gallery-details">
+  <div class="gallery-triptych"><figure class="shot portrait" data-index="10" tabindex="0" role="button" aria-label="Open full-screen image: Dressing room — entry">
+     <img src="[embedded-data]" alt="Open louvred doors framing a walk-in dressing area with illuminated mirror" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>11 / 20</em><strong>Dressing room — entry</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure><figure class="shot portrait" data-index="11" tabindex="0" role="button" aria-label="Open full-screen image: Dressing room — joinery">
+     <img src="[embedded-data]" alt="Timber shelves and drawers beside a full-height illuminated mirror" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>12 / 20</em><strong>Dressing room — joinery</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure><figure class="shot portrait" data-index="12" tabindex="0" role="button" aria-label="Open full-screen image: Storage — wardrobe">
+     <img src="[embedded-data]" alt="Minimal white wardrobe with hanging rail and integrated cubbies" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>13 / 20</em><strong>Storage — wardrobe</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure></div>
+  <div class="gallery-pair portrait-pair"><figure class="shot portrait" data-index="13" tabindex="0" role="button" aria-label="Open full-screen image: Dressing room — storage">
+     <img src="[embedded-data]" alt="Open shelving and shoe storage with warm timber accents" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>14 / 20</em><strong>Dressing room — storage</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure><figure class="shot portrait" data-index="14" tabindex="0" role="button" aria-label="Open full-screen image: Laundry — utility">
+     <img src="[embedded-data]" alt="Compact laundry niche with stacked black washer and dryer and adjacent sink" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>15 / 20</em><strong>Laundry — utility</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure></div>
+  <div class="gallery-pair portrait-pair"><figure class="shot portrait" data-index="15" tabindex="0" role="button" aria-label="Open full-screen image: Entry — detail">
+     <img src="[embedded-data]" alt="Vertical timber slat feature wall with floating shelves and concealed lighting" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>16 / 20</em><strong>Entry — detail</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure><figure class="shot portrait" data-index="16" tabindex="0" role="button" aria-label="Open full-screen image: Entry — angle">
+     <img src="[embedded-data]" alt="Angled view of the timber slat feature wall and white floating shelves" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>17 / 20</em><strong>Entry — angle</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure></div>
+ </div>
+ <div class="editorial-note"><span>DESIGN NOTE / 02</span><p>Simple integrated cabinetry, floating elements and discreet illumination turn secondary spaces into a continuation of the architectural story.</p></div>
+</section>
+<section class="collection section" id="balcony">
+ <div class="section-heading"><div class="eyebrow"><span class="red-line"></span>04 / OUTDOOR LIVING</div><div class="section-heading-body"><h2>Room to <i>step outside.</i></h2><p>Glazed openings and an intimate balcony extend the rooms into a quiet outdoor retreat.</p></div></div>
+ <div class="gallery gallery-balcony"><div class="gallery-triptych"><figure class="shot portrait" data-index="17" tabindex="0" role="button" aria-label="Open full-screen image: Balcony — retreat">
+     <img src="[embedded-data]" alt="Narrow sheltered balcony with glass balustrade and suspended lounge chair" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>18 / 20</em><strong>Balcony — retreat</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure><figure class="shot portrait" data-index="18" tabindex="0" role="button" aria-label="Open full-screen image: Balcony — connection">
+     <img src="[embedded-data]" alt="Balcony seating beside glazed French doors and light tiled flooring" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>19 / 20</em><strong>Balcony — connection</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure><figure class="shot portrait" data-index="19" tabindex="0" role="button" aria-label="Open full-screen image: Balcony — seating">
+     <img src="[embedded-data]" alt="Two black lounge chairs and woven accent table on a glass-fronted balcony" loading="lazy" decoding="async">
+     <figcaption class="shot-caption"><span><em>20 / 20</em><strong>Balcony — seating</strong></span><span class="shot-open" aria-hidden="true">VIEW</span></figcaption>
+   </figure></div></div>
+</section>
+
+<section class="end-section" aria-labelledby="end-title"><div class="end-wrap"><p class="end-eyebrow">CRIO CREATIVES / PROJECT PRESENTATION</p><h2 id="end-title">Designed to<br><span>be lived in.</span></h2><div class="end-divider"><span class="footer-brand"><img class="footer-logo-real" src="https://criocreatives.com/assets/logos/Crio%20Creatives%20Logo%20wide%20white.svg" alt="Crio Creatives" width="152" height="44"></span><span>ARCHITECTURAL VISUALIZATION &amp; INTERIOR DESIGN</span><button class="back-top" id="back-top" type="button">BACK TO TOP</button></div></div></section>
+</main>
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-hidden="true" hidden>
+ <div class="lightbox-bar"><div><div id="lightbox-title" class="lightbox-headline">Image</div><span class="lightbox-label">CRIO CREATIVES / IMAGE VIEWER</span></div><button class="icon-btn" id="lightbox-close" aria-label="Close full-screen image" type="button">×</button></div>
+ <div class="lightbox-main"><button class="lightbox-button" id="lightbox-prev" type="button" aria-label="Previous image">PREV</button><div class="lightbox-image-wrap"><img id="lightbox-image" class="lightbox-image" alt=""></div><button class="lightbox-button" id="lightbox-next" type="button" aria-label="Next image">NEXT</button></div>
+ <div class="lightbox-bottom"><span>IMAGE <strong id="lightbox-counter">01 / 20</strong></span><span class="lightbox-nudge">LEFT / RIGHT KEYS TO NAVIGATE · ESC TO CLOSE</span></div>
+</div>
+[script omitted]
+[script omitted]
+</body></html>
