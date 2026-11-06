@@ -1,63 +1,92 @@
 #!/usr/bin/env python3
-"""Structural checks for the current standardized Crio preview contract."""
+"""Structural contract for manifest-generated Arch/Viz previews.
+
+Checks the actual checked-in HTML, not a CSS approximation. No third-party modules.
+"""
 import json
+import subprocess
 from html.parser import HTMLParser
 from pathlib import Path
-from build_previews import MANIFEST_DIR, build, ROOT
 
-class ImagesAndSections(HTMLParser):
+ROOT = Path(__file__).resolve().parents[1]
+PROJECTS = ROOT / "previews" / "projects"
+
+class Page(HTMLParser):
     def __init__(self):
         super().__init__()
-        self.figure_indices = []
-        self.figure_sources = []
-        self.sections = []
-        self.canonical = []
-        self.hero = []
+        self.title_count = self.h1_count = 0
+        self.canonicals = []
         self.stylesheets = []
-        self.h1_count = 0
-        self.title_count = 0
+        self.sections = []
+        self.gallery_sources = []
+        self.gallery_alts = []
+        self.anchors = []
+        self.active_figure = False
+        self.all_previews_footer = False
+        self.footer = False
+        self.logo_refs = 0
+        self.has_viewer = False
 
     def handle_starttag(self, tag, attrs):
-        d = dict(attrs)
-        if tag == "figure" and "shot" in d.get("class", "").split():
-            self.figure_indices.append(int(d["data-index"]))
-        if tag == "section" and "collection" in d.get("class","").split():
-            self.sections.append(d["id"])
-        if tag == "img" and d.get("src","").startswith("./"):
-            self.figure_sources.append(d["src"])
-        if tag == "img" and d.get("class") == "hero-image":
-            self.hero.append(d["src"])
-        if tag == "link" and d.get("rel") == "canonical":
-            self.canonical.append(d.get("href"))
-        if tag == "link" and d.get("rel") == "stylesheet":
-            self.stylesheets.append(d.get("href"))
-        if tag == "h1":
-            self.h1_count += 1
+        a = dict(attrs)
         if tag == "title":
             self.title_count += 1
+        elif tag == "h1":
+            self.h1_count += 1
+        elif tag == "link" and a.get("rel") == "canonical":
+            self.canonicals.append(a.get("href"))
+        elif tag == "link" and a.get("rel") == "stylesheet":
+            self.stylesheets.append(a.get("href"))
+        elif tag == "section" and "av-section" in a.get("class", "").split():
+            self.sections.append(a.get("id"))
+        elif tag == "figure" and "av-shot" in a.get("class", "").split():
+            self.active_figure = True
+        elif tag == "img":
+            if self.active_figure:
+                self.gallery_sources.append(a.get("src"))
+                self.gallery_alts.append(a.get("alt"))
+            if "Crio Creatives" == a.get("alt"):
+                self.logo_refs += 1
+        elif tag == "a":
+            self.anchors.append(a.get("href"))
+            if self.footer and a.get("href") == "/previews/":
+                self.all_previews_footer = True
+        elif tag == "footer":
+            self.footer = True
+        elif tag == "dialog" and a.get("id") == "av-dialog":
+            self.has_viewer = True
+
+    def handle_endtag(self, tag):
+        if tag == "figure":
+            self.active_figure = False
+        if tag == "footer":
+            self.footer = False
+
 
 def main():
-    for path in sorted(MANIFEST_DIR.glob("*.json")):
+    subprocess.run(["node", str(ROOT / "scripts/build_previews.mjs"), "--check"], cwd=ROOT, check=True)
+    paths = sorted(PROJECTS.glob("*.json"))
+    assert paths, "No managed preview manifests"
+    for path in paths:
         m = json.loads(path.read_text(encoding="utf-8"))
-        out, source, total = build(path)
-        assert source == out.read_text(encoding="utf-8"), f"Stale generated page: {out}"
-        page = ImagesAndSections()
-        page.feed(source)
-        assert page.figure_indices == list(range(total)), f"{path}: gallery order is broken"
-        assert len(page.figure_sources) == total + 1, f"{path}: gallery count plus hero"
-        assert len(page.hero) == 1
-        assert page.sections == [s["id"] for s in m["gallery"]["sections"]]
-        assert page.canonical == [f"https://criocreatives.com/previews/{m['slug']}/"]
-        assert page.title_count == page.h1_count == 1
-        assert len(page.stylesheets) == 3
-        assert "crio-project-base.css?v=1" in page.stylesheets[0]
-        assert "presentation-editorial.css?v=2" in page.stylesheets[1]
-        assert "crio-project-theme.css?v=1" in page.stylesheets[2]
-        assert 'class="crio-project"' in source
-        assert 'crio-project-gallery.js?v=1' in source
-        assert '<style>' not in source, f"{path}: inline page stylesheet regression"
-        assert "data-index=\"30\"" in source if m["slug"] == "tiny-living" else True
-        print(f"PASS: {m['slug']}, {len(page.sections)} collections, {total} images")
+        assert m["schema_version"] == 2 and m["category"] == "arch-viz"
+        html = (ROOT / "previews" / m["slug"] / "index.html").read_text(encoding="utf-8")
+        page = Page()
+        page.feed(html)
+        sources = [im["src"] for s in m["sections"] for im in s.get("images", [])]
+        assert page.title_count == page.h1_count == 1, path
+        assert page.canonicals == [f"https://criocreatives.com/previews/{m['slug']}/"], path
+        assert page.gallery_sources == sources, f"Gallery source order changed: {path}"
+        assert len(page.gallery_alts) == len(sources) and all(page.gallery_alts), path
+        assert page.sections == [s["id"] for s in m["sections"]], path
+        assert len(page.stylesheets) == 1 and page.stylesheets[0].startswith("/previews/assets/css/arch-viz.css"), path
+        assert page.anchors.count("/previews/") == 1 and not page.all_previews_footer, path
+        assert page.has_viewer and page.logo_refs == 1, path
+        assert "arch-viz-standard.css" not in html
+        assert "presentation-editorial.css" not in html
+        assert "crio-project-theme.css" not in html
+        assert "<style>" not in html
+        print(f"PASS {m['slug']}: {len(sources)} gallery images, {len(page.sections)} sections")
     return 0
 
 if __name__ == "__main__":
