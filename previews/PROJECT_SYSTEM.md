@@ -8,7 +8,7 @@ The established Crio editorial presentation format is standardized without redes
 | --- | --- |
 | `previews/projects/<slug>.json` | Project metadata, hero, copy, gallery order and images |
 | `previews/<slug>/renders/` or `images/` | Original image files, unchanged |
-| `scripts/templates/crio-project.html` | Shared page structure |
+| `scripts/templates/crio-project.html.tmpl` | Shared page structure |
 | `previews/assets/css/crio-project-base.css` | Approved Crio editorial geometry and typography |
 | `previews/assets/css/crio-project-theme.css` | Shared off-white theme and native-ratio galleries |
 | `previews/assets/css/presentation-editorial.css` | Site-wide presentation integration, unchanged |
