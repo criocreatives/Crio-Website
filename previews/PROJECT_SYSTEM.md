@@ -11,12 +11,13 @@ only gallery images open in the fullscreen viewer.
   navigation, project copy, gallery order, captions, and image paths.
 - Original media stays under each project's `images/` or `renders/` directory.
 - `scripts/templates/crio-project.html.tmpl` supplies the shared HTML structure.
-- `assets/js/site.js` owns the shared sticky, scroll-morphing header and menu;
-  Arch/Viz pages use its controller instead of adding a second header handler.
+- Arch/Viz pages use the home page's exact header markup, `style.css`, and
+  `assets/js/site.js` controller. Do not create a second header shell or morph.
 - `previews/assets/css/arch-viz.css` and `previews/assets/js/arch-viz.js`
-  supply the shared responsive design and gallery viewer. Header labels are
-  uppercase, section copy is left-aligned, and gallery images have a viewport
-  height limit while retaining their original aspect ratio.
+  supply the project layout and gallery viewer. Header labels are uppercase,
+  section copy uses the full content width and is left-aligned, and gallery
+  images have a viewport height limit while retaining their original aspect
+  ratio.
 - `scripts/build_previews.py` invokes the deterministic manifest renderer.
 - `previews/<slug>/index.html` is generated output. Edit the manifest, then
   regenerate the page; manual changes to generated HTML will be overwritten.
