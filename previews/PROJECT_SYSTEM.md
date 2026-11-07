@@ -17,7 +17,9 @@ only gallery images open in the fullscreen viewer.
   supply the project layout and gallery viewer. Header labels are uppercase,
   section copy uses the full content width and is left-aligned, and gallery
   images have a viewport height limit while retaining their original aspect
-  ratio.
+  ratio. Gallery thumbnails have no expand icon. The fullscreen viewer uses
+  the viewport for the image; navigation sits beside the image on desktop and
+  in a bottom row on mobile.
 - `scripts/build_previews.py` invokes the deterministic manifest renderer.
 - `previews/<slug>/index.html` is generated output. Edit the manifest, then
   regenerate the page; manual changes to generated HTML will be overwritten.
