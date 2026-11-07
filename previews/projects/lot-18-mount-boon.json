@@ -86,47 +86,58 @@
       "images": [
         {
           "src": "./renders/Image1.jpg",
-          "alt": "Front Facade"
+          "alt": "Front Facade",
+          "caption": "Front Facade Primary street-facing elevation with stone accents, black framing and landscaped frontage."
         },
         {
           "src": "./renders/Image2.jpg",
-          "alt": "Aerial Front View"
+          "alt": "Aerial Front View",
+          "caption": "Aerial Front View High-angle view showing the overall massing, roof terrace and front garden."
         },
         {
           "src": "./renders/Image3.jpg",
-          "alt": "Rear Elevation"
+          "alt": "Rear Elevation",
+          "caption": "Rear Elevation Rear facade and external stair tower with upper-level glazing."
         },
         {
           "src": "./renders/Image4.jpg",
-          "alt": "Side Elevation"
+          "alt": "Side Elevation",
+          "caption": "Side Elevation Long side elevation with a restrained window rhythm and planted edge."
         },
         {
           "src": "./renders/Image5.jpg",
-          "alt": "Street View"
+          "alt": "Street View",
+          "caption": "Street View Front boundary, driveway and the building's relationship to the road."
         },
         {
           "src": "./renders/Image6.jpg",
-          "alt": "Rear Aerial"
+          "alt": "Rear Aerial",
+          "caption": "Rear Aerial Rear garden, stepping-stone path and circulation around the building."
         },
         {
           "src": "./renders/Image7.jpg",
-          "alt": "Rear Stair Tower"
+          "alt": "Rear Stair Tower",
+          "caption": "Rear Stair Tower External stair structure and rooftop access viewed from above."
         },
         {
           "src": "./renders/Image8.jpg",
-          "alt": "Garden + Stairs"
+          "alt": "Garden + Stairs",
+          "caption": "Garden + Stairs Landscaped rear courtyard with secondary stairs and circulation."
         },
         {
           "src": "./renders/Image9.jpg",
-          "alt": "Stair Tower Detail"
+          "alt": "Stair Tower Detail",
+          "caption": "Stair Tower Detail Low-angle view emphasizing the black steel external stair tower."
         },
         {
           "src": "./renders/Image10.jpg",
-          "alt": "Rooftop Aerial"
+          "alt": "Rooftop Aerial",
+          "caption": "Rooftop Aerial Aerial view clarifying the roof pavilion, solar panels and terrace layout."
         },
         {
           "src": "./renders/Image30.jpg",
-          "alt": "Courtyard View"
+          "alt": "Courtyard View",
+          "caption": "Courtyard View Lower rear courtyard, stairs and planted central zone."
         }
       ],
       "groups": [
@@ -148,31 +159,38 @@
       "images": [
         {
           "src": "./renders/Image11.jpg",
-          "alt": "Rooftop Pavilion"
+          "alt": "Rooftop Pavilion",
+          "caption": "Rooftop Pavilion Glazed rooftop pavilion opening directly onto the terrace."
         },
         {
           "src": "./renders/Image12.jpg",
-          "alt": "Central Lounge"
+          "alt": "Central Lounge",
+          "caption": "Central Lounge Open-air lounge centered around a fire-pit seating arrangement."
         },
         {
           "src": "./renders/Image13.jpg",
-          "alt": "Rooftop Overview"
+          "alt": "Rooftop Overview",
+          "caption": "Rooftop Overview Wide view of the rooftop social spaces, shade structures and planting."
         },
         {
           "src": "./renders/Image15.jpg",
-          "alt": "Covered Seating"
+          "alt": "Covered Seating",
+          "caption": "Covered Seating Shaded lounge zone with soft seating and planted edges."
         },
         {
           "src": "./renders/Image14.jpg",
-          "alt": "Rooftop Gym I"
+          "alt": "Rooftop Gym I",
+          "caption": "Rooftop Gym I Fitness room with free weights and cardio equipment."
         },
         {
           "src": "./renders/Image27.jpg",
-          "alt": "Rooftop Gym II"
+          "alt": "Rooftop Gym II",
+          "caption": "Rooftop Gym II Alternate gym view showing the glazing and open workout area."
         },
         {
           "src": "./renders/Image28.jpg",
-          "alt": "Rooftop Gym III"
+          "alt": "Rooftop Gym III",
+          "caption": "Rooftop Gym III Wide fitness-room view with terrace access and natural light."
         }
       ],
       "groups": [
@@ -192,39 +210,48 @@
       "images": [
         {
           "src": "./renders/Image17.jpg",
-          "alt": "Living Room"
+          "alt": "Living Room",
+          "caption": "Living Room Open-plan living room with warm neutrals, timber accents and a dark media wall."
         },
         {
           "src": "./renders/Image18.jpg",
-          "alt": "Media Wall"
+          "alt": "Media Wall",
+          "caption": "Media Wall Front-facing composition of the television wall and low floating console."
         },
         {
           "src": "./renders/Image19.jpg",
-          "alt": "Dining Area"
+          "alt": "Dining Area",
+          "caption": "Dining Area Six-seat dining arrangement with vertical timber feature panel and ring pendant."
         },
         {
           "src": "./renders/Image20.jpg",
-          "alt": "Kitchen Overview"
+          "alt": "Kitchen Overview",
+          "caption": "Kitchen Overview U-shaped kitchen with peninsula seating and layered white, taupe and timber finishes."
         },
         {
           "src": "./renders/Image21.jpg",
-          "alt": "Kitchen Storage Wall"
+          "alt": "Kitchen Storage Wall",
+          "caption": "Kitchen Storage Wall Tall refrigerator wall with open shelving and integrated timber detailing."
         },
         {
           "src": "./renders/Image22.jpg",
-          "alt": "Kitchen Work Zone"
+          "alt": "Kitchen Work Zone",
+          "caption": "Kitchen Work Zone Sink, cooktop and prep surfaces arranged around the compact U-shaped plan."
         },
         {
           "src": "./renders/Image23.jpg",
-          "alt": "Kitchen to Dining"
+          "alt": "Kitchen to Dining",
+          "caption": "Kitchen to Dining View through the kitchen toward the dining area and open-plan circulation."
         },
         {
           "src": "./renders/Image24.jpg",
-          "alt": "Dining to Living"
+          "alt": "Dining to Living",
+          "caption": "Dining to Living Dining area aligned toward the living room with repeated circular pendant lighting."
         },
         {
           "src": "./renders/Image25.jpg",
-          "alt": "Living Room II"
+          "alt": "Living Room II",
+          "caption": "Living Room II Alternate living-room view highlighting the staircase feature and full circulation path."
         }
       ],
       "groups": [

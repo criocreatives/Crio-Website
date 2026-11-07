@@ -5,6 +5,7 @@ Checks the actual checked-in HTML, not a CSS approximation. No third-party modul
 """
 import json
 import subprocess
+from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -26,6 +27,8 @@ class Page(HTMLParser):
         self.footer = False
         self.logo_refs = 0
         self.has_viewer = False
+        self.hero_image = None
+        self.hero_contains_interactive = False
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -42,6 +45,8 @@ class Page(HTMLParser):
         elif tag == "figure" and "av-shot" in a.get("class", "").split():
             self.active_figure = True
         elif tag == "img":
+            if a.get("class") == "av-hero-image":
+                self.hero_image = a.get("src")
             if self.active_figure:
                 self.gallery_sources.append(a.get("src"))
                 self.gallery_alts.append(a.get("alt"))
@@ -51,6 +56,8 @@ class Page(HTMLParser):
             self.anchors.append(a.get("href"))
             if self.footer and a.get("href") == "/previews/":
                 self.all_previews_footer = True
+            if self.hero_image and a.get("href") == self.hero_image:
+                self.hero_contains_interactive = True
         elif tag == "footer":
             self.footer = True
         elif tag == "dialog" and a.get("id") == "av-dialog":
@@ -82,10 +89,16 @@ def main():
         assert len(page.stylesheets) == 1 and page.stylesheets[0].startswith("/previews/assets/css/arch-viz.css"), path
         assert page.anchors.count("/previews/") == 1 and not page.all_previews_footer, path
         assert page.has_viewer and page.logo_refs == 1, path
+        assert not page.hero_contains_interactive, f"Hero image is linked to a viewer: {path}"
         assert "arch-viz-standard.css" not in html
         assert "presentation-editorial.css" not in html
         assert "crio-project-theme.css" not in html
         assert "<style>" not in html
+        assert 'VIEW FULL IMAGE' not in html
+        for section in m["sections"]:
+            for image in section.get("images", []):
+                if image.get("caption"):
+                    assert image["caption"] in unescape(html), f"Gallery caption missing: {path}: {image['src']}"
         print(f"PASS {m['slug']}: {len(sources)} gallery images, {len(page.sections)} sections")
     return 0
 

@@ -11,6 +11,12 @@ def main():
     assert entries, "No gallery manifests"
     for p in entries:
         manifest=json.loads(p.read_text(encoding="utf-8"))
+        if (ROOT/"previews"/"projects"/(manifest["slug"]+".json")).exists():
+            page=(ROOT/"previews"/manifest["slug"]/"index.html").read_text(encoding="utf-8")
+            assert 'class="av-page"' in page, f"Arch/Viz generator was overwritten: {manifest['slug']}"
+            assert "presentation-init.js" not in page, f"Legacy header reintroduced: {manifest['slug']}"
+            print(f"PASS: {manifest['slug']} remains owned by the shared Arch/Viz generator")
+            continue
         target,generated,count=build(p)
         assert target.read_text(encoding="utf-8")==generated, f"Unexpected HTML changes: {p}"
         assert count==sum(len(group["images"]) for group in manifest["galleries"])

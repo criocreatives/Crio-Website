@@ -35,6 +35,9 @@ const assert = require('node:assert/strict');
         if (project.hero.src) {
           await page.waitForFunction(()=>document.querySelector('.av-hero-image')?.complete,{timeout:5000});
           assert.ok(await page.locator('.av-hero-image').evaluate(el => el.naturalWidth > 0),url+' hero file loaded');
+          await page.locator('.av-hero-image').evaluate(el => el.click());
+          assert.equal(await page.locator('#av-dialog').evaluate(el => el.open),false,url+' hero image does not open viewer');
+          assert.equal(await page.locator('.av-view-hero').count(),0,url+' no full-screen hero control');
         }
         if (size.name === 'mobile') {
           const toggle = page.locator('.av-menu-toggle');
@@ -45,6 +48,8 @@ const assert = require('node:assert/strict');
         }
         if (galleryCount) {
           const first=page.locator('.av-shot').first();
+          await first.scrollIntoViewIfNeeded();
+          await first.locator('img').evaluate(el => el.decode());
           assert.ok(await first.locator('img').evaluate(el => el.naturalWidth > 0),url+' first gallery image loaded');
           await first.click();
           assert.equal(await page.locator('#av-dialog').evaluate(el => el.open),true,url+' viewer opened');
@@ -55,6 +60,10 @@ const assert = require('node:assert/strict');
           }
           await page.keyboard.press('Escape');
           assert.equal(await page.locator('#av-dialog').evaluate(el => el.open),false,url+' viewer closed');
+        }
+        const ending = page.locator('.av-ending');
+        if (await ending.count()) {
+          assert.equal(await ending.evaluate(el => getComputedStyle(el).backgroundColor),'rgb(244, 244, 244)',url+' off-white ending');
         }
         assert.deepEqual(issues,[],url+' browser console errors');
         console.log('PASS',project.slug,size.name,'gallery='+galleryCount,'overflow='+overflow);

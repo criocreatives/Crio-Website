@@ -3,7 +3,6 @@
   const dialog = document.getElementById('av-dialog');
   if (!dialog) return;
   const shots = [...document.querySelectorAll('.av-shot')];
-  const hero = document.querySelector('.av-hero-image');
   const view = document.getElementById('av-full');
   const count = document.getElementById('av-count');
   const closeButton = document.getElementById('av-close');
@@ -13,8 +12,6 @@
     src: new URL(el.dataset.full || el.querySelector('img').src, document.baseURI).href,
     alt: el.querySelector('img').alt
   }));
-  const heroUnique = Boolean(hero) && !images.some(item => item.src === hero.src);
-  if (heroUnique) images.unshift({src: hero.src, alt: hero.alt});
   let index = 0;
   let opener = null;
   let touchX = null;
@@ -37,7 +34,7 @@
     if (dialog.open) dialog.close();
   }
   shots.forEach((shot, i) => {
-    const showShot = () => open(i + (heroUnique ? 1 : 0), shot);
+    const showShot = () => open(i, shot);
     shot.addEventListener('click', showShot);
     shot.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -45,11 +42,6 @@
         showShot();
       }
     });
-  });
-  document.querySelector('.av-view-hero')?.addEventListener('click', e => {
-    if (!hero) return;
-    const heroIndex = images.findIndex(item => item.src === hero.src);
-    open(Math.max(0, heroIndex), e.currentTarget);
   });
   closeButton.addEventListener('click', close);
   prevButton.addEventListener('click', () => show(index - 1));
