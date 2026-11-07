@@ -32,7 +32,7 @@ async function state(page) {
   assert.ok(executablePath, 'Install Chrome/Chromium or set CHROME_BIN');
   const browser = await chromium.launch({ executablePath, headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
   try {
-    for (const viewport of [{ name: 'desktop', width: 1440, height: 900 }, { name: 'mobile', width: 390, height: 844 }]) {
+    for (const viewport of [{ name: 'desktop', width: 1440, height: 900 }, { name: 'tablet', width: 1024, height: 768 }, { name: 'mobile', width: 390, height: 844 }]) {
       const home = await browser.newPage({ viewport: { width: viewport.width, height: viewport.height }, reducedMotion: 'reduce' });
       await home.goto('http://127.0.0.1:8765/', { waitUntil: 'load' });
       await home.waitForFunction(() => document.querySelector('#site-header')?.style.getPropertyValue('--morph-left'));
@@ -53,10 +53,22 @@ async function state(page) {
         assert.equal(await page.locator('#site-header .nav').count(), route === 'payment-details/index.html' ? 0 : 1, `${route}: expected nav slot`);
         await page.evaluate(() => { document.body.style.minHeight = '2500px'; });
         assert.deepEqual(await state(page), homeTop, `${route} ${viewport.name}: initial header differs from home`);
-        const transform = await page.locator('#site-header .nav a').evaluateAll(links => links.map(link => getComputedStyle(link).textTransform));
+        const linkStyles = await page.locator('#site-header .nav a').evaluateAll(links => links.map(link => ({
+          transform: getComputedStyle(link).textTransform,
+          whiteSpace: getComputedStyle(link).whiteSpace
+        })));
+        const transform = linkStyles.map(link => link.transform);
         assert.ok(transform.every(value => value === 'uppercase'), `${route}: header links must render in uppercase`);
-        if (viewport.width <= 900 && await page.locator('#site-header .menu-toggle').count()) {
+        assert.ok(linkStyles.every(link => link.whiteSpace === 'nowrap'), `${route}: menu labels must stay on one line`);
+        const logoBounds = await page.locator('#site-header .header-logo').evaluate(logo => {
+          const image = logo.getBoundingClientRect();
+          const header = logo.closest('#site-header').getBoundingClientRect();
+          return { left: image.left, right: image.right, headerLeft: header.left, headerRight: header.right };
+        });
+        assert.ok(logoBounds.left >= logoBounds.headerLeft && logoBounds.right <= logoBounds.headerRight, `${route}: header logo must not be clipped`);
+        if (viewport.width <= 1280 && await page.locator('#site-header .menu-toggle').count()) {
           const button = page.locator('#site-header .menu-toggle');
+          assert.equal(await button.isVisible(), true, `${route}: compact menu is visible before links can wrap`);
           await button.click();
           assert.equal(await page.locator('#site-header .nav').isVisible(), true, `${route}: mobile nav opens`);
           await page.keyboard.press('Escape');
