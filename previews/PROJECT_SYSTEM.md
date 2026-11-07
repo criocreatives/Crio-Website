@@ -19,7 +19,8 @@ only gallery images open in the fullscreen viewer.
   images have a viewport height limit while retaining their original aspect
   ratio. Gallery thumbnails have no expand icon. The fullscreen viewer uses
   the viewport for the image; navigation sits beside the image on desktop and
-  in a bottom row on mobile.
+  in a bottom row on mobile. Previous/next work by button, arrow key, and
+  horizontal swipe; Escape closes the viewer.
 - `scripts/build_previews.py` invokes the deterministic manifest renderer.
 - `previews/<slug>/index.html` is generated output. Edit the manifest, then
   regenerate the page; manual changes to generated HTML will be overwritten.
