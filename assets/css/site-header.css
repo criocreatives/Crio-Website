@@ -106,14 +106,17 @@
   align-items: center;
   flex: 0 0 auto;
   min-height: 32px;
-  margin-right: 1px;
-  padding: 0 23px 0 0;
+  margin-right: 0;
+  padding: 0 23px;
   color: #f4f4f4;
   opacity: .9;
   text-decoration: none;
   white-space: nowrap;
   transition: color .18s ease, opacity .18s ease;
 }
+
+.site-header .nav a:first-child { padding-left: 0; }
+.site-header .nav a:last-child { padding-right: 0; }
 
 .site-header .nav a:not(:last-child)::after {
   position: absolute;
@@ -135,6 +138,7 @@
 
 .site-header .nav a.nav-contact {
   margin-right: 0;
+  padding-left: 23px;
   padding-right: 0;
   color: #ed1c24;
   font-weight: 900;
@@ -158,7 +162,9 @@
 }
 
 @media (max-width: 1050px) and (min-width: 901px) {
-  .site-header .nav a { padding-right: 15px; }
+  .site-header .nav a { padding-right: 15px; padding-left: 15px; }
+  .site-header .nav a:first-child { padding-left: 0; }
+  .site-header .nav a:last-child { padding-right: 0; }
   .site-header .header-context { margin-left: 14px; padding-left: 14px; }
 }
 
