@@ -52,6 +52,16 @@ jobs:
             qa/originals/*.html
       - name: Remove temporary baseline copies before site validation
         run: rm -rf qa/originals
+      - name: Report legacy presentation references without changing unrelated categories
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          names=('arch-viz-standard.css','architecture-2026.css','crio-project-base.css','crio-project-theme.css','presentation-editorial.css','crio-project-gallery.js')
+          pages=[p for p in Path('.').rglob('*.html') if not str(p).startswith('qa/')]
+          for name in names:
+              uses=[p.as_posix() for p in pages if name in p.read_text(encoding='utf-8',errors='replace')]
+              print('LEGACY_REFERENCES',name,':',','.join(uses) if uses else 'NONE')
+          PY
       - name: Validate metadata, navigation and sitemap
         run: |
           python3 scripts/check_seo.py
