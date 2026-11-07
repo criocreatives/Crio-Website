@@ -1,4 +1,4 @@
-/* One shared Arch/Viz viewer and responsive navigation, no external dependencies. */
+/* Shared Arch/Viz gallery viewer; the site-wide header controller owns navigation and scroll morphing. */
 (() => {
   const dialog = document.getElementById('av-dialog');
   if (!dialog) return;
@@ -62,19 +62,4 @@
     touchX = null;
   }, {passive:true});
 
-  const nav = document.getElementById('av-project-nav');
-  const toggle = document.querySelector('.av-menu-toggle');
-  if (nav && toggle) {
-    toggle.addEventListener('click', () => {
-      const expanding = toggle.getAttribute('aria-expanded') !== 'true';
-      toggle.setAttribute('aria-expanded', String(expanding));
-      nav.classList.toggle('av-open', expanding);
-    });
-    nav.addEventListener('click', e => {
-      if (e.target.closest('a')) {
-        nav.classList.remove('av-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
 })();
