@@ -162,9 +162,9 @@
   .site-header .header-context { margin-left: 14px; padding-left: 14px; }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1280px) {
   .site-header .header-inner {
-    width: calc(100vw - 40px);
+    width: calc(100vw - 80px);
   }
 
   .site-header .header-context { display: none; }
@@ -224,6 +224,10 @@
   }
 
   .site-header .nav a.nav-contact { padding: 13px 0; }
+}
+
+@media (max-width: 900px) {
+  .site-header .header-inner { width: calc(100vw - 40px); }
 }
 
 @media (max-width: 520px) {

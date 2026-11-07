@@ -14,7 +14,7 @@ CONFIG = ROOT / "scripts/site-header-pages.json"
 TEMPLATE = ROOT / "scripts/templates/site-header.html.tmpl"
 START = "<!-- CRIO-HEADER:START -->"
 END = "<!-- CRIO-HEADER:END -->"
-CSS_HREF = "/assets/css/site-header.css?v=1"
+CSS_HREF = "/assets/css/site-header.css?v=2"
 SCRIPT_SRC = "/assets/js/site-header.js?v=1"
 
 
@@ -61,7 +61,7 @@ def ensure_assets(page: str) -> str:
     head = page[:head_end.start()]
     tail = page[head_end.start():]
     css_tag = f'<link rel="stylesheet" href="{CSS_HREF}" data-site-header>'
-    css_pattern = re.compile(r'<link\b(?=[^>]*href=["\']' + re.escape(CSS_HREF) + r'["\'])[^>]*>', re.I)
+    css_pattern = re.compile(r'<link\b(?=[^>]*href=["\'][^"\']*/assets/css/site-header\.css(?:\?[^"\']*)?["\'])[^>]*>', re.I)
     head = css_pattern.sub("", head)
     script_tag = f'<script defer src="{SCRIPT_SRC}" data-crio-site-header></script>'
     script_pattern = re.compile(r'<script\b(?=[^>]*src=["\']' + re.escape(SCRIPT_SRC) + r'["\'])[^>]*>\s*</script>', re.I)
