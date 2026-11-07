@@ -58,10 +58,11 @@ async function headerState(page) {
         assert.equal(await page.locator('#site-header').count(),1,url+' shared site header controller');
         assert.equal(await page.locator('script[src^="/assets/js/site.js"]').count(),1,url+' shared site scroll morph');
         assert.equal(await page.locator('link[href="/style.css?v=4"]').count(),1,url+' exact home header stylesheet');
-        assert.equal(await page.locator('link[href="/previews/assets/css/arch-viz.css?v=4"]').count(),1,url+' current Arch/Viz layout stylesheet');
+        assert.equal(await page.locator('link[href="/previews/assets/css/arch-viz.css?v=5"]').count(),1,url+' current Arch/Viz layout stylesheet');
         assert.equal(await page.locator('.av-hero').count(),1,url+' single hero');
         assert.equal(await page.locator('h1').count(),1,url+' one title');
         assert.equal(await page.locator('.av-shot').count(),galleryCount,url+' gallery count');
+        assert.equal(await page.locator('.av-expand').count(),0,url+' gallery thumbnails have no corner expand icons');
         assert.equal(await page.locator('link[rel="stylesheet"]').count(),2,url+' Arch/Viz and site stylesheets');
         assert.equal(await page.locator('.site-header a[href="/previews/"]').count(),1,url+' header All Previews');
         assert.equal(await page.locator('footer a[href="/previews/"]').count(),0,url+' no footer All Previews');
@@ -126,10 +127,26 @@ async function headerState(page) {
           assert.ok(await first.locator('img').evaluate(el => el.getBoundingClientRect().height <= Math.min(innerHeight*(innerWidth<=640?.58:.68),720)+2),url+' first gallery image is height limited (limit '+maxGalleryHeight+')');
           await first.click();
           assert.equal(await page.locator('#av-dialog').evaluate(el => el.open),true,url+' viewer opened');
+          const viewerLayout=await page.locator('#av-dialog').evaluate(dialog=>{
+            const rect=el=>{const r=el.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom}};
+            return {dialog:rect(dialog),body:rect(dialog.querySelector('.av-dialog-body')),image:rect(dialog.querySelector('#av-full')),prev:rect(dialog.querySelector('#av-prev')),next:rect(dialog.querySelector('#av-next'))};
+          });
+          assert.ok(Math.abs(viewerLayout.dialog.width-size.width)<2&&Math.abs(viewerLayout.dialog.height-size.height)<2,url+' viewer fills the viewport');
+          if(size.name==='mobile'){
+            assert.ok(viewerLayout.image.width>=size.width-30,url+' mobile viewer image uses nearly the full screen width');
+            assert.ok(viewerLayout.prev.y>=viewerLayout.image.bottom,url+' mobile previous control is below the image');
+            assert.ok(viewerLayout.next.y>=viewerLayout.image.bottom,url+' mobile next control is below the image');
+            assert.ok(viewerLayout.next.bottom<=viewerLayout.dialog.bottom,url+' mobile navigation stays inside the viewer');
+            assert.ok(Math.abs(viewerLayout.prev.y-viewerLayout.next.y)<2,url+' mobile controls share the bottom row');
+          }else assert.ok(viewerLayout.image.width>=viewerLayout.body.width*.7,url+' desktop viewer image uses most of the available width');
           if (galleryCount > 1) {
             const before=await page.locator('#av-count').innerText();
             await page.keyboard.press('ArrowRight');
             assert.notEqual(await page.locator('#av-count').innerText(),before,url+' viewer next image');
+            await page.locator('#av-prev').click();
+            assert.equal(await page.locator('#av-count').innerText(),before,url+' viewer previous control');
+            await page.locator('#av-next').click();
+            assert.notEqual(await page.locator('#av-count').innerText(),before,url+' viewer next control');
           }
           await page.keyboard.press('Escape');
           assert.equal(await page.locator('#av-dialog').evaluate(el => el.open),false,url+' viewer closed');
