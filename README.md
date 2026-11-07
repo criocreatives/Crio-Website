@@ -27,4 +27,4 @@ After pushing, verify the live canonical host, `/robots.txt`, `/sitemap.xml`, so
 
 ## Privacy
 
-The site uses FormSubmit for enquiries, LibreCounter for page analytics, and may load Google advertising code. Changes affecting tracking, cookies, or collection should be reviewed against `/privacy/`. A client-side PIN alone is not a substitute for server-side access control on sensitive information.
+The site uses FormSubmit for enquiries, Google Analytics 4 for website analytics, and may load Google advertising code. Changes affecting tracking, cookies, or collection should be reviewed against `/privacy/`. A client-side PIN alone is not a substitute for server-side access control on sensitive information.
