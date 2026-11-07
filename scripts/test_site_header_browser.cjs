@@ -60,6 +60,22 @@ async function state(page) {
         const transform = linkStyles.map(link => link.transform);
         assert.ok(transform.every(value => value === 'uppercase'), `${route}: header links must render in uppercase`);
         assert.ok(linkStyles.every(link => link.whiteSpace === 'nowrap'), `${route}: menu labels must stay on one line`);
+        if (viewport.width > 1280) {
+          const dividerAlignment = await page.locator('#site-header .nav a').evaluateAll(links => links.slice(0, -1).map((link, index) => {
+            const labelRect = element => {
+              const range = document.createRange();
+              range.selectNodeContents(element);
+              return range.getBoundingClientRect();
+            };
+            const current = labelRect(link);
+            const next = labelRect(links[index + 1]);
+            const linkRect = link.getBoundingClientRect();
+            const divider = getComputedStyle(link, '::after');
+            const dividerCenter = linkRect.right - parseFloat(divider.right) - parseFloat(divider.width) / 2;
+            return Math.abs(dividerCenter - (current.right + next.left) / 2);
+          }));
+          assert.ok(dividerAlignment.every(offset => offset <= 1), `${route}: desktop dividers must be centered between link labels (${dividerAlignment.join(', ')})`);
+        }
         const logoBounds = await page.locator('#site-header .header-logo').evaluate(logo => {
           const image = logo.getBoundingClientRect();
           const header = logo.closest('#site-header').getBoundingClientRect();
