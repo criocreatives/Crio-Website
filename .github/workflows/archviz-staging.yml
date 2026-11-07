@@ -50,6 +50,8 @@ jobs:
             previews/assets/css/arch-viz.css
             scripts/build_previews.mjs
             qa/originals/*.html
+      - name: Remove temporary baseline copies before site validation
+        run: rm -rf qa/originals
       - name: Validate metadata, navigation and sitemap
         run: |
           python3 scripts/check_seo.py
