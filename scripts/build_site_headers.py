@@ -14,7 +14,7 @@ CONFIG = ROOT / "scripts/site-header-pages.json"
 TEMPLATE = ROOT / "scripts/templates/site-header.html.tmpl"
 START = "<!-- CRIO-HEADER:START -->"
 END = "<!-- CRIO-HEADER:END -->"
-CSS_HREF = "/assets/css/site-header.css?v=2"
+CSS_HREF = "/assets/css/site-header.css?v=3"
 SCRIPT_SRC = "/assets/js/site-header.js?v=1"
 
 
