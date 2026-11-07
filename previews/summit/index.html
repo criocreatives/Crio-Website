@@ -11,9 +11,6 @@
 *{box-sizing:border-box} html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 .wrap{width:min(1180px,calc(100% - 36px));margin:auto}
-header{background:rgba(237,28,36,.96);color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.18);position:sticky;top:0;z-index:5}
-.brand{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.crio-logo{display:block;width:168px;height:48px;object-fit:contain}
 .kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#aaa}
 .hero{padding:76px 0 54px;background:linear-gradient(135deg,#111 0%,#1c1d20 100%);color:#fff}
 .hero h1{font-size:clamp(42px,7vw,82px);line-height:.93;letter-spacing:-.055em;margin:10px 0 22px;max-width:900px}
@@ -38,9 +35,13 @@ section{padding:58px 0}.section-head{display:flex;justify-content:space-between;
 </style>
 <link rel="stylesheet" href="/previews/assets/css/presentation-editorial.css?v=2">
 <script defer src="/previews/assets/js/presentation-init.js"></script>
+<link rel="stylesheet" href="/assets/css/site-header.css?v=1" data-site-header>
+<script defer src="/assets/js/site-header.js?v=1" data-crio-site-header></script>
 </head>
 <body>
-<header><div class="wrap brand"><img class="crio-logo" src="https://criocreatives.com/assets/logos/Crio%20Creatives%20Logo%20wide%20white.svg" alt="Crio Creatives"><div class="kicker">Creative Preview / Summit</div></div></header>
+<!-- CRIO-HEADER:START -->
+<header class="site-header" id="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Crio Creatives home"><img class="header-logo" src="/assets/logos/Crio%20Creatives%20Logo%20wide%20white.svg" alt="Crio Creatives"></a><span class="header-context">Project Preview</span> <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">MENU</button><nav class="nav" id="site-nav" aria-label="Primary navigation"><a href="/previews/">All Previews</a><a href="https://portfolio.criocreatives.com/">Portfolio</a><a href="/#contact" class="nav-contact">Contact</a></nav></div></header>
+<!-- CRIO-HEADER:END -->
 
 <div class="hero"><div class="wrap">
 <div class="kicker">Summit × Appleton Estate</div>

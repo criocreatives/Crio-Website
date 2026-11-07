@@ -24,7 +24,7 @@ async function headerState(page) {
     .filter(f => f.endsWith('.json'))
     .map(f => JSON.parse(fs.readFileSync(path.join('previews/projects',f),'utf8')));
   const browser = await chromium.launch({
-    executablePath:'/usr/bin/google-chrome', headless:true,
+    executablePath:process.env.CHROME_BIN || ['/usr/bin/google-chrome','/usr/bin/chromium'].find(fs.existsSync), headless:true,
     args:['--no-sandbox','--disable-dev-shm-usage']
   });
   const sizes = [{name:'desktop',width:1440,height:900},{name:'mobile',width:390,height:844}];
@@ -56,14 +56,15 @@ async function headerState(page) {
         await page.goto(url,{waitUntil:'load',timeout:30000});
         assert.equal(await page.locator('.site-header').count(),1,url+' single header');
         assert.equal(await page.locator('#site-header').count(),1,url+' shared site header controller');
-        assert.equal(await page.locator('script[src^="/assets/js/site.js"]').count(),1,url+' shared site scroll morph');
+        assert.equal(await page.locator('script[src^="/assets/js/site-header.js"]').count(),1,url+' shared site header morph');
+        assert.equal(await page.locator('link[href="/assets/css/site-header.css?v=1"]').count(),1,url+' shared site header stylesheet');
         assert.equal(await page.locator('link[href="/style.css?v=4"]').count(),1,url+' exact home header stylesheet');
         assert.equal(await page.locator('link[href="/previews/assets/css/arch-viz.css?v=5"]').count(),1,url+' current Arch/Viz layout stylesheet');
         assert.equal(await page.locator('.av-hero').count(),1,url+' single hero');
         assert.equal(await page.locator('h1').count(),1,url+' one title');
         assert.equal(await page.locator('.av-shot').count(),galleryCount,url+' gallery count');
         assert.equal(await page.locator('.av-expand').count(),0,url+' gallery thumbnails have no corner expand icons');
-        assert.equal(await page.locator('link[rel="stylesheet"]').count(),2,url+' Arch/Viz and site stylesheets');
+        assert.equal(await page.locator('link[rel="stylesheet"]').count(),3,url+' Arch/Viz, site and shared header stylesheets');
         assert.equal(await page.locator('.site-header a[href="/previews/"]').count(),1,url+' header All Previews');
         assert.equal(await page.locator('footer a[href="/previews/"]').count(),0,url+' no footer All Previews');
         assert.ok(await page.locator('#site-nav a').evaluateAll(links => links.every(link => getComputedStyle(link).textTransform === 'uppercase')),url+' header links uppercase');

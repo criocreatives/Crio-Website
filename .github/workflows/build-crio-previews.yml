@@ -7,20 +7,36 @@ on:
       - previews/**/images/**
       - previews/assets/css/arch-viz.css
       - previews/assets/js/arch-viz.js
+      - assets/css/site-header.css
+      - assets/js/site-header.js
+      - assets/js/site.js
+      - scripts/build_site_headers.py
+      - scripts/site-header-pages.json
       - scripts/build_previews.py
       - scripts/templates/crio-project.html.tmpl
+      - scripts/templates/site-header.html.tmpl
       - scripts/test_crio_preview_structure.py
       - scripts/test_crio_preview_browser.cjs
+      - scripts/test_site_header_browser.cjs
+      - scripts/test_site_headers.py
       - .github/workflows/build-crio-previews.yml
   pull_request:
     paths:
       - previews/projects/**
       - previews/assets/css/arch-viz.css
       - previews/assets/js/arch-viz.js
+      - assets/css/site-header.css
+      - assets/js/site-header.js
+      - assets/js/site.js
+      - scripts/build_site_headers.py
+      - scripts/site-header-pages.json
       - scripts/build_previews.py
       - scripts/templates/crio-project.html.tmpl
+      - scripts/templates/site-header.html.tmpl
       - scripts/test_crio_preview_structure.py
       - scripts/test_crio_preview_browser.cjs
+      - scripts/test_site_header_browser.cjs
+      - scripts/test_site_headers.py
   workflow_dispatch:
 
 permissions:
@@ -44,6 +60,8 @@ jobs:
           python3 -m py_compile scripts/build_previews.py scripts/test_crio_preview_structure.py
           python3 scripts/build_previews.py
           python3 scripts/build_previews.py --check
+          python3 scripts/build_site_headers.py --check
+          python3 scripts/test_site_headers.py
           python3 scripts/test_crio_preview_structure.py
           python3 scripts/check_seo.py
           node --check previews/assets/js/arch-viz.js
@@ -54,6 +72,7 @@ jobs:
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/crio-preview-http.log 2>&1 &
           sleep 2
           NODE_PATH=/tmp/crio-preview-qa/node_modules node scripts/test_crio_preview_browser.cjs
+          NODE_PATH=/tmp/crio-preview-qa/node_modules node scripts/test_site_header_browser.cjs
       - name: Commit generated pages back to source branch
         if: github.event_name == 'push'
         env:

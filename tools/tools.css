@@ -1,6 +1,5 @@
 /* Crio Tools — extends the existing Crio Creatives visual language */
 .tools-body{background:#090909;color:#f4f4f4;min-height:100vh}
-.tools-body .site-header{background:rgba(237,28,36,.96)}
 .tools-page{padding-top:95px;min-height:calc(100svh - 200px)}
 .tools-container{width:min(1360px,calc(100% - 80px));margin-inline:auto}
 .tools-breadcrumbs{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:30px 0 18px;color:#a8a8ac;font-size:12px}
@@ -79,8 +78,5 @@
 @media(max-width:900px){.tools-container{width:calc(100% - 40px)}.tools-page{padding-top:74px}.tools-intro{padding:38px 0 42px}}
 @media(max-width:620px){.tools-container{width:calc(100% - 32px)}.tools-grid{grid-template-columns:1fr}.tools-card{min-height:207px;padding:23px}.tools-intro h1{font-size:clamp(45px,13vw,68px)}.tools-section{padding-bottom:70px}.tools-footer-inner{align-items:flex-start;flex-direction:column}.tool-panel{padding:20px}.tool-heading{padding:25px 0 27px}}
 @media(prefers-reduced-motion:reduce){.tools-card{transition:none}}
-
-/* Shared floating-header and editorial type language. */
-.tools-body .site-header{background:var(--charcoal)!important}
 .tools-body .tools-breadcrumbs,.tools-body .tool-primary{font-family:"Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif}
 .tools-body :is(h1,h2,h3){font-family:Helvetica,Arial,sans-serif}
