@@ -50,7 +50,10 @@ def main():
     assert any("url="+ROOT_URL in x for x in stale.rows), "Meta redirect missing"
     assert "location.replace('/previews/' + location.search + location.hash)" in old, "JS redirect missing"
     assert "/previews/list/" not in nav, "Preview navigation still links to obsolete directory"
-    assert "if(slug!=='index')appendLink('https://criocreatives.com/previews/','All previews')" in nav
+    assert "crio-ed-bar" not in nav and "createElement('header')" not in nav, "Preview script must not inject a competing header"
+    assert "crio-ed-rule" in nav, "Project presentation label strip should remain"
+    assert 'id="site-header"' in root and 'src="/assets/js/site-header.js?v=1"' in root
+    assert 'href="/previews/"' not in root.split('id="site-header"', 1)[1].split('</header>', 1)[0], "Directory header must not link to itself"
 
     expected = {
         d.name for d in PREVIEWS.iterdir()

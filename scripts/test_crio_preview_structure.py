@@ -86,9 +86,10 @@ def main():
         assert page.gallery_sources == sources, f"Gallery source order changed: {path}"
         assert len(page.gallery_alts) == len(sources) and all(page.gallery_alts), path
         assert page.sections == [s["id"] for s in m["sections"]], path
-        assert len(page.stylesheets) == 2 and page.stylesheets[0].startswith("/previews/assets/css/arch-viz.css") and page.stylesheets[1] == "/style.css?v=4", path
+        assert len(page.stylesheets) == 3 and page.stylesheets[0] == "/assets/css/site-header.css?v=1" and page.stylesheets[1].startswith("/previews/assets/css/arch-viz.css") and page.stylesheets[2] == "/style.css?v=4", path
         assert 'id="site-header"' in html and 'id="site-nav"' in html, path
-        assert 'src="/assets/js/site.js?v=3"' in html, f"Shared site header controller missing: {path}"
+        assert 'src="/assets/js/site-header.js?v=1"' in html and 'src="/assets/js/site.js?v=4"' in html, f"Shared header or site controller missing: {path}"
+        assert html.count('id="site-header"') == 1 and html.count('id="site-nav"') == 1, path
         assert page.anchors.count("/previews/") == 1 and not page.all_previews_footer, path
         assert page.has_viewer and page.logo_refs == 1, path
         assert not page.hero_contains_interactive, f"Hero image is linked to a viewer: {path}"

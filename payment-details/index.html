@@ -23,10 +23,6 @@ a,button,input,summary{touch-action:manipulation}
 :is(a,button,summary):focus-visible{outline:2px solid var(--crio);outline-offset:4px}
 ::selection{background:var(--crio);color:var(--paper)}
 /* The shared site header, with only the brand and page label. */
-.payment-header .crio-shell-inner{width:min(1000px,calc(100vw - 64px));justify-content:center;gap:24px}
-.payment-header-label{position:relative;padding-left:24px;color:var(--paper);font-size:14px;font-weight:500;line-height:1.3;white-space:nowrap}
-.payment-header-label:before{content:"";position:absolute;left:0;top:50%;width:1px;height:34px;transform:translateY(-50%);background:linear-gradient(180deg,transparent,rgba(244,244,244,.18) 28%,rgba(244,244,244,.18) 72%,transparent);pointer-events:none}
-@media(max-width:520px){.payment-header-label{padding-left:16px}.payment-header-label:before{height:28px}}
 /* Compact access screen. */
 body.crio-payment-page>main.page{display:block;min-height:0;padding:145px 24px 24px}
 .access-layout{width:min(520px,100%);margin:auto}
@@ -50,7 +46,7 @@ body.crio-payment-page>main.page{display:block;min-height:0;padding:145px 24px 2
 .access-footer p{margin:0}.access-footer nav{display:flex;flex-wrap:wrap;gap:18px}.access-footer a{text-decoration:none}.access-footer a:hover{color:var(--crio)}
 /* Protected payment view. */
 .shell{width:min(1000px,calc(100% - 64px));margin:auto;min-height:100vh}
-.hero{padding:145px 0 20px}.hero .brand{display:none}
+.hero{padding:145px 0 20px}
 .hero h1{margin:0 0 12px;font-size:40px;line-height:1.05;letter-spacing:-.045em;font-weight:500;text-transform:lowercase}
 .hero h1::first-letter{text-transform:uppercase}
 .hero p{max-width:950px;margin:0;color:var(--muted);font-size:15px;line-height:1.65}
@@ -88,16 +84,20 @@ summary:after{content:"+";display:grid;place-items:center;width:26px;height:26px
 .security{margin-top:18px;padding:2px 0 2px 16px;border-left:2px solid var(--crio);color:var(--muted);font-size:13px;line-height:1.65}.security strong{color:var(--ink);font-size:14px;font-weight:600;line-height:1.8}
 .footer{display:flex;justify-content:space-between;gap:18px;padding:18px 0 24px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;line-height:1.6}.footer strong{color:var(--ink);font-weight:600}
 @keyframes spin{to{transform:rotate(360deg)}}
-@media(max-width:900px){.payment-header .crio-shell-inner{width:calc(100vw - 40px)}body.crio-payment-page>main.page{padding-top:112px}.hero{padding-top:112px}.shell{width:calc(100% - 40px)}.card .row{grid-template-columns:120px minmax(0,1fr) auto}.quick-card .row{grid-template-columns:1fr auto;gap:3px 10px}.quick-card .label,.quick-card .value{grid-column:1}.quick-card .copy{grid-column:2;grid-row:1/3}.wire-grid .row{grid-template-columns:185px minmax(0,1fr) auto}}
+@media(max-width:900px){body.crio-payment-page>main.page{padding-top:112px}.hero{padding-top:112px}.shell{width:calc(100% - 40px)}.card .row{grid-template-columns:120px minmax(0,1fr) auto}.quick-card .row{grid-template-columns:1fr auto;gap:3px 10px}.quick-card .label,.quick-card .value{grid-column:1}.quick-card .copy{grid-column:2;grid-row:1/3}.wire-grid .row{grid-template-columns:185px minmax(0,1fr) auto}}
 @media(max-width:760px){.cards{grid-template-columns:1fr;gap:14px}.card.wide{grid-column:auto}.card .row,.quick-card .row{grid-template-columns:140px minmax(0,1fr) auto;gap:10px}.quick-card .label,.quick-card .value,.quick-card .copy{grid-column:auto;grid-row:auto}.hero h1{font-size:34px}.hero p{font-size:14px}.quicknav{gap:10px 20px;padding:12px 0}.quicknav a{font-size:12px}.shell main{padding-top:21px}.section{margin-top:24px}.kicker{margin-bottom:12px}.card-head{padding:14px 16px}.rows{padding-inline:16px}.wire-grid .row{grid-template-columns:170px minmax(0,1fr) auto}.access-footer{flex-direction:column;align-items:center;gap:10px;font-size:11px}.footer{gap:14px}}
-@media(max-width:520px){.payment-header .crio-shell-inner{width:calc(100vw - 32px);gap:12px}.payment-header .crio-shell-logo{width:140px;height:auto}.payment-header-label{font-size:12px}body.crio-payment-page>main.page{padding:106px 20px 20px}.panel{padding:23px}.panel h1{font-size:31px}.panel>p{font-size:14px}.form{margin-top:17px}.form label{font-size:14px}.form input{padding-inline:13px}.form button{min-width:124px;padding:0 12px;font-size:12px}.help{font-size:12px}.access-footer{width:calc(100% - 40px);padding:16px 0 20px}.access-footer nav{gap:16px}.shell{width:calc(100% - 32px)}.hero{padding:106px 0 16px}.hero h1{font-size:31px;margin-bottom:10px}.hero p{font-size:14px;line-height:1.6}.quicknav{gap:9px 16px}.quicknav a{font-size:12px}.card-head{gap:11px;padding:14px}.card-title h2{font-size:22px}.card-title p{font-size:13px}.currency{font-size:10px;padding:5px 6px}.logo-box{width:42px;height:42px}.logo-box.wide{width:70px}.logo-box.mercury-logo{width:100px}.mercury .card-head{flex-wrap:wrap}.mercury .card-title{flex:1;min-width:130px}.mercury .currency{margin-left:0}.rows{padding-inline:14px}.card .row,.wire-grid .row,.quick-card .row{grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:9px 0}.card .label,.wire-grid .label{grid-column:1}.card .value,.wire-grid .value{grid-column:1}.card .copy,.wire-grid .copy{grid-column:2;grid-row:1/3;min-height:44px}.label,.value{font-size:14px;line-height:1.5}.label{color:#55575F}.value{font-weight:600}.copy{font-size:11px}details{margin:10px}summary{grid-template-columns:31px minmax(0,1fr) 25px;gap:10px;padding:12px 11px}.wire-option-icon{width:31px;height:32px;font-size:9px}.wire-option-title strong{font-size:18px}.wire-option-title small{font-size:12px}.wire-option-title{overflow-wrap:anywhere}summary:after{width:25px;height:25px}.subnote{padding:11px 12px 3px;font-size:13px}.wire-grid{padding:0 12px 5px}.note{margin-top:19px;padding:16px 14px;gap:10px}.note h3{font-size:20px}.note p{font-size:13px}.security{font-size:12px}.footer{flex-direction:column;gap:10px;font-size:12px}}
-@media(max-width:360px){.payment-header .crio-shell-logo{width:128px}.payment-header-label{font-size:11px}.panel{padding:20px}.form button{min-width:113px}.form input{padding-inline:11px}.card-head{gap:9px}.logo-box.wide{width:64px}.card-title h2{font-size:21px}}
+@media(max-width:520px){body.crio-payment-page>main.page{padding:106px 20px 20px}.panel{padding:23px}.panel h1{font-size:31px}.panel>p{font-size:14px}.form{margin-top:17px}.form label{font-size:14px}.form input{padding-inline:13px}.form button{min-width:124px;padding:0 12px;font-size:12px}.help{font-size:12px}.access-footer{width:calc(100% - 40px);padding:16px 0 20px}.access-footer nav{gap:16px}.shell{width:calc(100% - 32px)}.hero{padding:106px 0 16px}.hero h1{font-size:31px;margin-bottom:10px}.hero p{font-size:14px;line-height:1.6}.quicknav{gap:9px 16px}.quicknav a{font-size:12px}.card-head{gap:11px;padding:14px}.card-title h2{font-size:22px}.card-title p{font-size:13px}.currency{font-size:10px;padding:5px 6px}.logo-box{width:42px;height:42px}.logo-box.wide{width:70px}.logo-box.mercury-logo{width:100px}.mercury .card-head{flex-wrap:wrap}.mercury .card-title{flex:1;min-width:130px}.mercury .currency{margin-left:0}.rows{padding-inline:14px}.card .row,.wire-grid .row,.quick-card .row{grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:9px 0}.card .label,.wire-grid .label{grid-column:1}.card .value,.wire-grid .value{grid-column:1}.card .copy,.wire-grid .copy{grid-column:2;grid-row:1/3;min-height:44px}.label,.value{font-size:14px;line-height:1.5}.label{color:#55575F}.value{font-weight:600}.copy{font-size:11px}details{margin:10px}summary{grid-template-columns:31px minmax(0,1fr) 25px;gap:10px;padding:12px 11px}.wire-option-icon{width:31px;height:32px;font-size:9px}.wire-option-title strong{font-size:18px}.wire-option-title small{font-size:12px}.wire-option-title{overflow-wrap:anywhere}summary:after{width:25px;height:25px}.subnote{padding:11px 12px 3px;font-size:13px}.wire-grid{padding:0 12px 5px}.note{margin-top:19px;padding:16px 14px;gap:10px}.note h3{font-size:20px}.note p{font-size:13px}.security{font-size:12px}.footer{flex-direction:column;gap:10px;font-size:12px}}
+@media(max-width:360px){.panel{padding:20px}.form button{min-width:113px}.form input{padding-inline:11px}.card-head{gap:9px}.logo-box.wide{width:64px}.card-title h2{font-size:21px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}a,button,input{transition:none!important}.spinner{animation:none}}
-@media print{@page{margin:12mm}body,.shell{background:#fff}.shell{width:100%;min-height:0}.payment-header,.copy,.quicknav{display:none!important}.hero{padding:0 0 18px}.hero h1{font-size:32px}.shell main{padding:18px 0}.section{margin-top:22px}.card{box-shadow:none;break-inside:avoid}.cards{display:block}.card+.card{margin-top:14px}.card-head:before{filter:none}details{display:block;overflow:visible;break-inside:avoid}details>summary{display:none}details:not([open])>*:not(summary){display:block}details::details-content{content-visibility:visible!important;height:auto!important}.footer{padding-bottom:0}}
+@media print{@page{margin:12mm}body,.shell{background:#fff}.shell{width:100%;min-height:0}.copy,.quicknav{display:none!important}.hero{padding:0 0 18px}.hero h1{font-size:32px}.shell main{padding:18px 0}.section{margin-top:22px}.card{box-shadow:none;break-inside:avoid}.cards{display:block}.card+.card{margin-top:14px}.card-head:before{filter:none}details{display:block;overflow:visible;break-inside:avoid}details>summary{display:none}details:not([open])>*:not(summary){display:block}details::details-content{content-visibility:visible!important;height:auto!important}.footer{padding-bottom:0}}
 </style>
+<link rel="stylesheet" href="/assets/css/site-header.css?v=1" data-site-header>
+<script defer src="/assets/js/site-header.js?v=1" data-crio-site-header></script>
 </head>
 <body class="crio-payment-page">
-<header class="crio-shell-header payment-header" id="site-header"><div class="crio-shell-inner"><a class="crio-shell-brand" href="/" aria-label="Crio Creatives home"><img class="crio-shell-logo" src="/assets/logos/Crio%20Creatives%20Logo%20wide%20white.svg" alt="Crio Creatives" width="177" height="51"></a><span class="payment-header-label">Payment information</span></div></header>
+<!-- CRIO-HEADER:START -->
+<header class="site-header" id="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Crio Creatives home"><img class="header-logo" src="/assets/logos/Crio%20Creatives%20Logo%20wide%20white.svg" alt="Crio Creatives"></a><span class="header-context">Payment Information</span> </div></header>
+<!-- CRIO-HEADER:END -->
 <main class="page"><div class="access-layout">
 <section class="panel" aria-labelledby="access-title">
 <div class="panel-heading"><svg viewBox="0 0 20 22" fill="none" aria-hidden="true"><rect x="3" y="9" width="14" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 9V6a4 4 0 0 1 8 0v3M10 13v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Client access</div>
@@ -116,12 +116,13 @@ const MAX_ATTEMPTS=5,LOCK_MS=15*60*1000,RELOCK_MS=30*60*1000,STORE_KEY="crio_pd_
 const PAYMENT_THEME=document.getElementById("payment-theme").outerHTML;
 const PAYMENT_HEADER=document.getElementById("site-header").outerHTML;
 const PAYMENT_SHELL_CSS=document.querySelector("link[data-payment-shell]").outerHTML;
-const PAYMENT_SHELL_SCRIPT='<script src="/assets/js/site.js?v=2"><'+'/script>';
+const PAYMENT_HEADER_CSS=document.querySelector("link[data-site-header]").outerHTML;
+const PAYMENT_SHELL_SCRIPT='<script defer src="/assets/js/site-header.js?v=1"><'+'/script>';
 const sentenceLabel=text=>text.startsWith("$")?text:text.replace(/\b[A-Z][a-z]+\b/g,(word,index)=>index===0?word:word.toLowerCase());
 const themeDetails=html=>html
   .replace(/style-src 'unsafe-inline'/g,"style-src 'self' 'unsafe-inline'")
   .replace(/script-src 'unsafe-inline'/g,"script-src 'self' 'unsafe-inline'")
-  .replace(/<style\b[^>]*>[\s\S]*?<\/style>/i,()=>PAYMENT_SHELL_CSS+PAYMENT_THEME)
+  .replace(/<style\b[^>]*>[\s\S]*?<\/style>/i,()=>PAYMENT_SHELL_CSS+PAYMENT_HEADER_CSS+PAYMENT_THEME)
   .replace(/<body\b[^>]*>/i,tag=>tag+PAYMENT_HEADER)
   .replace(/(<div class="label">)([^<]*)(<\/div>)/g,(_,start,text,end)=>start+sentenceLabel(text)+end)
   .replace(/<\/body>/i,()=>PAYMENT_SHELL_SCRIPT+"</body>");
@@ -144,5 +145,5 @@ updateLockUI();
 })();
 </script>
 <footer class="access-footer"><p>Crio Creatives / Client payments</p><nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/privacy/#cookies">Cookies &amp; Tracking</a></nav></footer>
-<script src="/assets/js/site.js?v=2"></script>
+<script src="/assets/js/site.js?v=4"></script>
 </body></html>

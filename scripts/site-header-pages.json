@@ -1,0 +1,56 @@
+{
+  "index.html": {
+    "links": [
+      {"href":"#work","label":"Work"},
+      {"href":"#services","label":"Services"},
+      {"href":"/tools/","label":"Tools"},
+      {"href":"/plugins/","label":"Plugins"},
+      {"href":"/visual-atlas/","label":"Visual Atlas"},
+      {"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},
+      {"href":"#contact","label":"Contact","class":"nav-contact"}
+    ]
+  },
+  "404.html": {
+    "context":"Page Not Found",
+    "links":[{"href":"/","label":"Home"},{"href":"/previews/","label":"All Previews"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]
+  },
+  "privacy/index.html": {
+    "context":"Privacy Policy",
+    "links":[{"href":"/","label":"Home"},{"href":"/terms/","label":"Terms"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]
+  },
+  "terms/index.html": {
+    "context":"Terms of Use",
+    "links":[{"href":"/","label":"Home"},{"href":"/privacy/","label":"Privacy"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]
+  },
+  "thanks/index.html": {
+    "links":[{"href":"/","label":"Home"},{"href":"/#work","label":"Work"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]
+  },
+  "payment-details/index.html": {
+    "context":"Payment Information",
+    "links":[]
+  },
+  "visual-atlas/index.html": {
+    "context":"Visual Atlas",
+    "links":[{"href":"/","label":"Home"},{"href":"/#work","label":"Work"},{"href":"/tools/","label":"Tools"},{"href":"/plugins/","label":"Plugins"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]
+  },
+  "tools/index.html": {
+    "context":"Tools",
+    "links":[{"href":"/","label":"Home"},{"href":"/#work","label":"Work"},{"href":"/#services","label":"Services"},{"href":"/plugins/","label":"Plugins"},{"href":"/visual-atlas/","label":"Visual Atlas"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]
+  },
+  "tools/compressor/index.html":{"context":"Tools","links":[{"href":"/","label":"Home"},{"href":"/tools/","label":"All Tools"},{"href":"/#services","label":"Services"},{"href":"/plugins/","label":"Plugins"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]},
+  "tools/converter/index.html":{"context":"Tools","links":[{"href":"/","label":"Home"},{"href":"/tools/","label":"All Tools"},{"href":"/#services","label":"Services"},{"href":"/plugins/","label":"Plugins"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]},
+  "tools/qr/index.html":{"context":"Tools","links":[{"href":"/","label":"Home"},{"href":"/tools/","label":"All Tools"},{"href":"/#services","label":"Services"},{"href":"/plugins/","label":"Plugins"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]},
+  "tools/resizer/index.html":{"context":"Tools","links":[{"href":"/","label":"Home"},{"href":"/tools/","label":"All Tools"},{"href":"/#services","label":"Services"},{"href":"/plugins/","label":"Plugins"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]},
+  "tools/watermarker/index.html":{"context":"Tools","links":[{"href":"/","label":"Home"},{"href":"/tools/","label":"All Tools"},{"href":"/#services","label":"Services"},{"href":"/plugins/","label":"Plugins"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]},
+  "plugins/index.html":{"context":"Plugins","links":[{"href":"/","label":"Home"},{"href":"/#work","label":"Work"},{"href":"/#services","label":"Services"},{"href":"/tools/","label":"Tools"},{"href":"/visual-atlas/","label":"Visual Atlas"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]},
+  "plugins/3d-pattern-builder/index.html":{"context":"Plugins","links":[{"href":"/","label":"Home"},{"href":"/plugins/","label":"All Plugins"},{"href":"/#services","label":"Services"},{"href":"/tools/","label":"Tools"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]},
+  "plugins/rail-fence-tool/index.html":{"context":"Plugins","links":[{"href":"/","label":"Home"},{"href":"/plugins/","label":"All Plugins"},{"href":"/#services","label":"Services"},{"href":"/tools/","label":"Tools"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]},
+  "plugins/stage-truss-builder/index.html":{"context":"Plugins","links":[{"href":"/","label":"Home"},{"href":"/plugins/","label":"All Plugins"},{"href":"/#services","label":"Services"},{"href":"/tools/","label":"Tools"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]},
+  "previews/404.html":{"context":"Project Preview","links":[{"href":"/","label":"Home"},{"href":"/previews/","label":"All Previews"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]},
+  "previews/index.html":{"context":"Project Previews","placement":"body","links":[{"href":"/","label":"Home"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]},
+  "previews/good-morning/index.html":{"context":"Project Preview","links":[{"href":"/previews/","label":"All Previews"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]},
+  "previews/graphic-design/index.html":{"context":"Project Preview","links":[{"href":"/previews/","label":"All Previews"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]},
+  "previews/koolya/index.html":{"context":"Project Preview","placement":"body","links":[{"href":"#identity","label":"Identity"},{"href":"#logos","label":"Logos"},{"href":"#machine","label":"Machine"},{"href":"#environment","label":"Environment"},{"href":"/previews/","label":"All Previews"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]},
+  "previews/runkus-epk/index.html":{"context":"Project Preview","links":[{"href":"#bio","label":"Bio"},{"href":"#release","label":"Release"},{"href":"#videos","label":"Videos"},{"href":"#press","label":"Press"},{"href":"/previews/","label":"All Previews"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]},
+  "previews/summit/index.html":{"context":"Project Preview","links":[{"href":"/previews/","label":"All Previews"},{"href":"https://portfolio.criocreatives.com/","label":"Portfolio"},{"href":"/#contact","label":"Contact","class":"nav-contact"}]}
+}

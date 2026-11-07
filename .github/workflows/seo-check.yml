@@ -18,3 +18,8 @@ jobs:
         run: python scripts/check_seo.py
       - name: Verify unified preview directory and legacy redirects
         run: python scripts/test_preview_directory.py
+      - name: Verify shared site header generation and page slots
+        run: |
+          python scripts/build_site_headers.py --check
+          python scripts/test_site_headers.py
+          node --check assets/js/site-header.js
