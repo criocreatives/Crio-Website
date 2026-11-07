@@ -79,6 +79,12 @@
       "paragraphs": [
         "Project walkthrough",
         "A video walkthrough of the proposed warehouse yard, showing the office, container loading area, parking and the open truck manoeuvring space."
+      ],
+      "videos": [
+        {
+          "src": "74%20chisholm%20ave.mp4",
+          "type": "video/mp4"
+        }
       ]
     },
     {
