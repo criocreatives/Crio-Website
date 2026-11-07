@@ -24,14 +24,37 @@ const assert = require('node:assert/strict');
         page.on('pageerror', e => issues.push(e.message));
         await page.goto(url,{waitUntil:'load',timeout:30000});
         assert.equal(await page.locator('.av-header').count(),1,url+' single header');
+        assert.equal(await page.locator('#site-header').count(),1,url+' shared site header controller');
+        assert.equal(await page.locator('script[src^="/assets/js/site.js"]').count(),1,url+' shared site scroll morph');
         assert.equal(await page.locator('.av-hero').count(),1,url+' single hero');
         assert.equal(await page.locator('h1').count(),1,url+' one title');
         assert.equal(await page.locator('.av-shot').count(),galleryCount,url+' gallery count');
         assert.equal(await page.locator('link[rel="stylesheet"]').count(),1,url+' one stylesheet');
         assert.equal(await page.locator('.av-header a[href="/previews/"]').count(),1,url+' header All Previews');
         assert.equal(await page.locator('footer a[href="/previews/"]').count(),0,url+' no footer All Previews');
+        assert.ok(await page.locator('#site-nav a').evaluateAll(links => links.every(link => getComputedStyle(link).textTransform === 'uppercase')),url+' header links uppercase');
+        assert.equal(await page.locator('.av-brand span').evaluate(el => getComputedStyle(el).textTransform),'uppercase',url+' project preview label uppercase');
+        const sectionText = await page.locator('.av-section-head').first().evaluate(el => {
+          const heading = el.querySelector('h2');
+          return {alignment:getComputedStyle(heading).textAlign,headLeft:heading.getBoundingClientRect().left,containerLeft:el.getBoundingClientRect().left};
+        });
+        assert.equal(sectionText.alignment,'left',url+' section text left aligned');
+        assert.ok(Math.abs(sectionText.headLeft-sectionText.containerLeft)<2,url+' section heading starts at the text block edge');
         const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
         assert.ok(overflow <= 2,url+' horizontal overflow: '+overflow);
+        await page.evaluate(() => window.scrollTo(0,240));
+        await page.waitForFunction(() => document.querySelector('#site-header')?.classList.contains('scrolled'));
+        await page.waitForTimeout(500);
+        const compactHeader = await page.locator('.av-header').evaluate(el => {
+          const r=el.getBoundingClientRect();
+          return {x:r.x,y:r.y,width:r.width,height:r.height,captionOpacity:getComputedStyle(el.querySelector('.av-caption')).opacity};
+        });
+        assert.equal(compactHeader.x,0,url+' morphed header flush left');
+        assert.equal(compactHeader.y,0,url+' morphed header pinned to top');
+        assert.equal(compactHeader.width,size.width,url+' morphed header spans viewport');
+        assert.equal(compactHeader.captionOpacity,'0',url+' label strip tucks away in compact header');
+        await page.evaluate(() => window.scrollTo(0,0));
+        await page.waitForFunction(() => !document.querySelector('#site-header')?.classList.contains('scrolled'));
         if (project.hero.src) {
           await page.waitForFunction(()=>document.querySelector('.av-hero-image')?.complete,{timeout:5000});
           assert.ok(await page.locator('.av-hero-image').evaluate(el => el.naturalWidth > 0),url+' hero file loaded');
@@ -51,6 +74,8 @@ const assert = require('node:assert/strict');
           await first.scrollIntoViewIfNeeded();
           await first.locator('img').evaluate(el => el.decode());
           assert.ok(await first.locator('img').evaluate(el => el.naturalWidth > 0),url+' first gallery image loaded');
+          const maxGalleryHeight=Math.min(size.height*(size.width<=640?.58:.68),720);
+          assert.ok(await first.locator('img').evaluate(el => el.getBoundingClientRect().height <= Math.min(innerHeight*(innerWidth<=640?.58:.68),720)+2),url+' first gallery image is height limited (limit '+maxGalleryHeight+')');
           await first.click();
           assert.equal(await page.locator('#av-dialog').evaluate(el => el.open),true,url+' viewer opened');
           if (galleryCount > 1) {
@@ -60,6 +85,14 @@ const assert = require('node:assert/strict');
           }
           await page.keyboard.press('Escape');
           assert.equal(await page.locator('#av-dialog').evaluate(el => el.open),false,url+' viewer closed');
+        }
+        if(project.slug==='boscobel-heights-residence'){
+          const tall=page.locator('.av-shot img[src$="Image17.png"]');
+          await tall.scrollIntoViewIfNeeded();
+          await tall.evaluate(el=>el.decode());
+          const tallHeight=await tall.evaluate(el=>el.getBoundingClientRect().height);
+          const tallLimit=Math.min(size.height*(size.name==='mobile'?.58:.68),720);
+          assert.ok(tallHeight<=tallLimit+2,url+' Image17 is height limited: '+tallHeight+' > '+tallLimit);
         }
         const ending = page.locator('.av-ending');
         if (await ending.count()) {
