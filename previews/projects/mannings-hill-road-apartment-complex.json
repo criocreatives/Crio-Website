@@ -1,0 +1,121 @@
+{
+  "schema_version": 2,
+  "category": "arch-viz",
+  "slug": "mannings-hill-road-apartment-complex",
+  "title": "Mannings Hill Road Apartment Complex.",
+  "indexable": true,
+  "seo": {
+    "title": "Mannings Hill Road Apartment Complex | Crio Creatives Preview",
+    "description": "Mannings Hill Road Apartment Complex project preview by Crio Creatives."
+  },
+  "hero": {
+    "src": "images/Image3.jpg",
+    "alt": "Mannings Hill Road Apartment Complex project view",
+    "eyebrow": "Architectural Visualization · Project Preview",
+    "lines": [
+      "Mannings Hill Road",
+      "Apartment Complex."
+    ],
+    "description": "Exterior design and landscaping developed by Crio Creatives, presented within the existing site and parking layout.",
+    "focus": "center center"
+  },
+  "nav": [],
+  "sections": [
+    {
+      "id": "views",
+      "kind": "gallery",
+      "title": "Exterior, Landscape + Site Planning.",
+      "paragraphs": [
+        "The project work focused on the exterior design language for the apartment complex and the surrounding landscaping, developed within the existing site and parking arrangement. The visualization set shows how the architectural and landscape elements work together across the property.",
+        "Select any image to view it at full size."
+      ],
+      "images": [
+        {
+          "src": "images/Image3.jpg",
+          "alt": "Mannings Hill Road Apartment Complex project view 1",
+          "full": "images/Image3.jpg"
+        },
+        {
+          "src": "images/Image2.jpg",
+          "alt": "Mannings Hill Road Apartment Complex project view 2",
+          "full": "images/Image2.jpg"
+        },
+        {
+          "src": "images/Image3.jpg",
+          "alt": "Mannings Hill Road Apartment Complex project view 3",
+          "full": "images/Image3.jpg"
+        },
+        {
+          "src": "images/Image4.jpg",
+          "alt": "Mannings Hill Road Apartment Complex project view 4",
+          "full": "images/Image4.jpg"
+        },
+        {
+          "src": "images/Image5.jpg",
+          "alt": "Mannings Hill Road Apartment Complex project view 5",
+          "full": "images/Image5.jpg"
+        },
+        {
+          "src": "images/Image6.jpg",
+          "alt": "Mannings Hill Road Apartment Complex project view 6",
+          "full": "images/Image6.jpg"
+        },
+        {
+          "src": "images/Image7.jpg",
+          "alt": "Mannings Hill Road Apartment Complex project view 7",
+          "full": "images/Image7.jpg"
+        },
+        {
+          "src": "images/Image8.jpg",
+          "alt": "Mannings Hill Road Apartment Complex project view 8",
+          "full": "images/Image8.jpg"
+        },
+        {
+          "src": "images/Image9.jpg",
+          "alt": "Mannings Hill Road Apartment Complex project view 9",
+          "full": "images/Image9.jpg"
+        },
+        {
+          "src": "images/Image10.jpg",
+          "alt": "Mannings Hill Road Apartment Complex project view 10",
+          "full": "images/Image10.jpg"
+        },
+        {
+          "src": "images/Image11.jpg",
+          "alt": "Mannings Hill Road Apartment Complex project view 11",
+          "full": "images/Image11.jpg"
+        },
+        {
+          "src": "images/Image12.jpg",
+          "alt": "Mannings Hill Road Apartment Complex project view 12",
+          "full": "images/Image12.jpg"
+        },
+        {
+          "src": "images/Image13.jpg",
+          "alt": "Mannings Hill Road Apartment Complex project view 13",
+          "full": "images/Image13.jpg"
+        },
+        {
+          "src": "images/Image14.jpg",
+          "alt": "Mannings Hill Road Apartment Complex project view 14",
+          "full": "images/Image14.jpg"
+        },
+        {
+          "src": "images/Image15.jpg",
+          "alt": "Mannings Hill Road Apartment Complex project view 15",
+          "full": "images/Image15.jpg"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "schema_version": 2,
+  "category": "arch-viz",
+  "slug": "tyre-warehouse-automotive",
+  "title": "A new standard.",
+  "indexable": true,
+  "seo": {
+    "title": "TWA Automotive | Showroom Vision — Crio Creatives",
+    "description": "A new architectural vision for Tyre Warehouse Automotive: transforming an established Old Hope Road service centre into a dedicated vehicle showroom and retail destination."
+  },
+  "hero": {
+    "src": "twa-facade-glazing-2026.jpg",
+    "alt": "Glazing and light-grey cladding detail along the proposed Tyre Warehouse Automotive dealership façade",
+    "eyebrow": "Tyre Warehouse Automotive Showroom conversion / Kingston, Jamaica",
+    "lines": [
+      "A new",
+      "standard."
+    ],
+    "description": "A contemporary destination for vehicle discovery, presentation and automotive retail.",
+    "focus": "center center"
+  },
+  "nav": [
+    {
+      "id": "site",
+      "label": "Site"
+    },
+    {
+      "id": "vision",
+      "label": "Vision"
+    },
+    {
+      "id": "design",
+      "label": "Views"
+    },
+    {
+      "id": "experience",
+      "label": "Experience"
+    }
+  ],
+  "sections": [
+    {
+      "id": "site",
+      "kind": "gallery",
+      "title": "An established site. A new direction.",
+      "paragraphs": [
+        "Old Hope Road · Kingston",
+        "The existing Tyre Warehouse service centre forms the foundation for a new vehicle showroom. These two aerial images establish the current service-centre condition and surrounding site context."
+      ],
+      "images": [
+        {
+          "src": "existing-aerial.jpg",
+          "alt": "Existing Tyre Warehouse service centre on Old Hope Road",
+          "caption": "Existing service centre Before / 01",
+          "full": "existing-aerial.jpg"
+        },
+        {
+          "src": "site-context-map.jpg",
+          "alt": "Labeled aerial map of Tyre Warehouse along Old Hope Road near Oxford Road and South Avenue",
+          "caption": "Site context — Old Hope Road Location / 02",
+          "full": "site-context-map.jpg"
+        }
+      ],
+      "groups": [
+        2
+      ]
+    },
+    {
+      "id": "vision",
+      "kind": "text",
+      "title": "From service centre to showroom.",
+      "paragraphs": [
+        "Convert the existing service bays into a contemporary vehicle display showroom.",
+        "Full-height glazing, a unified façade and a prominent TWA entrance establish a distinct dealership identity."
+      ]
+    },
+    {
+      "id": "design",
+      "kind": "gallery",
+      "title": "The proposed showroom.",
+      "paragraphs": [
+        "Six design views, including the hero perspective. Select an image to view it full size."
+      ],
+      "images": [
+        {
+          "src": "twa-aerial-elevation-2026.jpg",
+          "alt": "Aerial perspective of the TWA dealership frontage and road",
+          "caption": "Aerial overview 01 / 06",
+          "full": "twa-aerial-elevation-2026.jpg"
+        },
+        {
+          "src": "twa-facade-angled-2026.jpg",
+          "alt": "Angled street perspective of the proposed TWA showroom",
+          "caption": "Oblique frontage 02 / 06",
+          "full": "twa-facade-angled-2026.jpg"
+        },
+        {
+          "src": "twa-facade-centered-2026.jpg",
+          "alt": "Centered showroom frontage and vehicle display glazing",
+          "caption": "Primary elevation 03 / 06",
+          "full": "twa-facade-centered-2026.jpg"
+        },
+        {
+          "src": "twa-entrance-street-2026.jpg",
+          "alt": "Street-level approach to the TWA main entrance",
+          "caption": "Customer entrance 04 / 06",
+          "full": "twa-entrance-street-2026.jpg"
+        },
+        {
+          "src": "twa-entrance-detail-2026.jpg",
+          "alt": "Close view of TWA lettering, signage and entrance portal",
+          "caption": "Brand & signage detail 05 / 06",
+          "full": "twa-entrance-detail-2026.jpg"
+        },
+        {
+          "src": "twa-facade-glazing-2026.jpg",
+          "alt": "Low oblique detail view of TWA showroom glazing and grey façade cladding",
+          "caption": "Glazing & cladding detail 06 / 06",
+          "full": "twa-facade-glazing-2026.jpg"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "id": "experience",
+      "kind": "text",
+      "title": "Designed to showcase the product.",
+      "paragraphs": [
+        "An open, visually connected display floor that gives every model space to be seen and explored.",
+        "A composed architectural backdrop with a clear entrance and prominent identity, adaptable to the final retail branding programme.",
+        "Inviting glazing, legible access and a professional sales environment designed to support discovery and consultation.",
+        "Concept presentation prepared for Tyre Warehouse Automotive. Renderings communicate design intent; final layout, finishes and specifications are subject to development."
+      ]
+    }
+  ],
+  "closing": {
+    "title": "A destination worthy of the vehicles inside.",
+    "description": "A defined showroom presence, a considered vehicle display environment and a platform for the next phase of TWA's automotive retail offering."
+  }
+}

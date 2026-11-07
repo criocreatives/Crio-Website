@@ -25,6 +25,7 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "previews/gallery-manifests"
+ARCHVIZ_DATA = ROOT / "previews/projects"
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 FILE_EXTS = {".jpg",".jpeg",".png",".webp",".gif",".avif"}
 TOKEN = re.compile(r"\[\[(GALLERY_\d\d)\]\]",re.I)
@@ -132,6 +133,14 @@ def main():
     for path in paths:
         if not path.is_file():
             raise SystemExit(f"Missing gallery manifest {path}")
+        manifest=json.loads(path.read_text(encoding="utf-8"))
+        managed=ARCHVIZ_DATA / f"{manifest.get('slug','')}.json"
+        if managed.is_file():
+            page=ROOT / "previews" / manifest["slug"] / "index.html"
+            if not page.is_file():
+                raise SystemExit(f"Missing manifest-generated Arch/Viz page {page}")
+            print(f"SKIP: {manifest['slug']} is generated from previews/projects")
+            continue
         dest,markup,count=build(path)
         current=dest.read_text(encoding="utf-8") if dest.exists() else ""
         if args.check:

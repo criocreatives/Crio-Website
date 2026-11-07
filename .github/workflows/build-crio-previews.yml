@@ -5,6 +5,8 @@ on:
       - previews/projects/**
       - previews/**/renders/**
       - previews/**/images/**
+      - previews/assets/css/arch-viz.css
+      - previews/assets/js/arch-viz.js
       - scripts/build_previews.py
       - scripts/templates/crio-project.html.tmpl
       - scripts/test_crio_preview_structure.py
@@ -13,6 +15,8 @@ on:
   pull_request:
     paths:
       - previews/projects/**
+      - previews/assets/css/arch-viz.css
+      - previews/assets/js/arch-viz.js
       - scripts/build_previews.py
       - scripts/templates/crio-project.html.tmpl
       - scripts/test_crio_preview_structure.py
@@ -42,7 +46,7 @@ jobs:
           python3 scripts/build_previews.py --check
           python3 scripts/test_crio_preview_structure.py
           python3 scripts/check_seo.py
-          node --check previews/assets/js/crio-project-gallery.js
+          node --check previews/assets/js/arch-viz.js
       - name: Install lightweight browser QA dependencies
         run: npm install --prefix /tmp/crio-preview-qa --no-save playwright-core@1.56.1
       - name: Start local website and verify responsive project layouts

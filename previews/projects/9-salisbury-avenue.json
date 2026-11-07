@@ -1,0 +1,215 @@
+{
+  "schema_version": 2,
+  "category": "arch-viz",
+  "slug": "9-salisbury-avenue",
+  "title": "9 Salisbury Avenue",
+  "indexable": true,
+  "seo": {
+    "title": "9 Salisbury Avenue | Interior Design — Crio Creatives",
+    "description": "A residential interior design preview for 9 Salisbury Avenue, Kingston, by Crio Creatives."
+  },
+  "hero": {
+    "src": "./media/salisbury-01.webp",
+    "alt": "A bright contemporary living room with soft neutral seating, slatted wood details, white brick media wall and wide balcony glazing",
+    "eyebrow": "9 SALISBURY AVENUE / KINGSTON",
+    "lines": [
+      "Living,",
+      "deliberately."
+    ],
+    "description": "An interior design study for 9 Salisbury Avenue, Kingston — composed around natural light, refined materials and everyday function.",
+    "focus": "center center"
+  },
+  "nav": [
+    {
+      "id": "overview",
+      "label": "OVERVIEW"
+    },
+    {
+      "id": "living",
+      "label": "LIVING"
+    },
+    {
+      "id": "bedroom",
+      "label": "BEDROOM"
+    },
+    {
+      "id": "details",
+      "label": "DETAILS"
+    }
+  ],
+  "sections": [
+    {
+      "kind": "text",
+      "id": "overview",
+      "label": "PROJECT OVERVIEW",
+      "title": "Quiet confidence.  Considered detail.",
+      "paragraphs": [
+        "At 9 Salisbury Avenue, Kingston, a residential interior shaped by natural light, layered neutrals and the warmth of timber. From the open-plan living area to private bedrooms and functional spaces, the design language remains purposeful and understated."
+      ],
+      "items": []
+    },
+    {
+      "id": "living",
+      "kind": "gallery",
+      "label": "01 / LIVING",
+      "title": "An atmosphere  of ease.",
+      "paragraphs": [
+        "Open views, tactile materials and a restrained palette establish a relaxed setting for everyday living."
+      ],
+      "images": [
+        {
+          "src": "./media/salisbury-02.webp",
+          "alt": "White brick television wall with a timber console and sage accent chair",
+          "caption": "Living room — media wall"
+        },
+        {
+          "src": "./media/salisbury-03.webp",
+          "alt": "Soft neutral sofa set against a textured wall with warm artwork",
+          "caption": "Living room — seating"
+        },
+        {
+          "src": "./media/salisbury-04.webp",
+          "alt": "Living room scene with warm artificial lighting after dark",
+          "caption": "Living room — evening"
+        }
+      ],
+      "groups": [
+        1,
+        2
+      ],
+      "note": "DESIGN NOTE / 01  Timber accents and white brick introduce warmth and texture, while subtle lighting lets the space transition from daylight to evening."
+    },
+    {
+      "id": "bedroom",
+      "kind": "gallery",
+      "label": "02 / BEDROOM",
+      "title": "Private spaces.  Personal character.",
+      "paragraphs": [
+        "A cooler accent palette complements the same warm joinery and soft finishes seen throughout the residence."
+      ],
+      "images": [
+        {
+          "src": "./media/salisbury-05.webp",
+          "alt": "Contemporary bedroom with deep blue accent wall and large balcony glazing",
+          "caption": "Bedroom — perspective"
+        },
+        {
+          "src": "./media/salisbury-06.webp",
+          "alt": "Bedroom television wall with timber cabinet and textured plaster",
+          "caption": "Bedroom — media wall"
+        },
+        {
+          "src": "./media/salisbury-07.webp",
+          "alt": "Front-facing bedroom view with blue accent wall and framed artwork",
+          "caption": "Bedroom — headboard"
+        },
+        {
+          "src": "./media/salisbury-08.webp",
+          "alt": "View across the bedroom toward a TV wall and open balcony door",
+          "caption": "Bedroom — across the room"
+        },
+        {
+          "src": "./media/salisbury-09.webp",
+          "alt": "Bedroom with patterned bedding, integrated headboard and natural light",
+          "caption": "Bedroom — sleeping area"
+        },
+        {
+          "src": "./media/salisbury-10.webp",
+          "alt": "Bedroom media wall with floating cabinetry, LED lighting and timber slats",
+          "caption": "Bedroom — joinery detail"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "id": "details",
+      "kind": "gallery",
+      "label": "03 / THE DETAILS",
+      "title": "Utility,  beautifully resolved.",
+      "paragraphs": [
+        "Storage, circulation and service areas receive the same attention to composition, lighting and finishes."
+      ],
+      "images": [
+        {
+          "src": "./media/salisbury-11.webp",
+          "alt": "Open louvred doors framing a walk-in dressing area with illuminated mirror",
+          "caption": "Dressing room — entry"
+        },
+        {
+          "src": "./media/salisbury-12.webp",
+          "alt": "Timber shelves and drawers beside a full-height illuminated mirror",
+          "caption": "Dressing room — joinery"
+        },
+        {
+          "src": "./media/salisbury-13.webp",
+          "alt": "Minimal white wardrobe with hanging rail and integrated cubbies",
+          "caption": "Storage — wardrobe"
+        },
+        {
+          "src": "./media/salisbury-14.webp",
+          "alt": "Open shelving and shoe storage with warm timber accents",
+          "caption": "Dressing room — storage"
+        },
+        {
+          "src": "./media/salisbury-15.webp",
+          "alt": "Compact laundry niche with stacked black washer and dryer and adjacent sink",
+          "caption": "Laundry — utility"
+        },
+        {
+          "src": "./media/salisbury-16.webp",
+          "alt": "Vertical timber slat feature wall with floating shelves and concealed lighting",
+          "caption": "Entry — detail"
+        },
+        {
+          "src": "./media/salisbury-17.webp",
+          "alt": "Angled view of the timber slat feature wall and white floating shelves",
+          "caption": "Entry — angle"
+        }
+      ],
+      "groups": [
+        3,
+        2,
+        2
+      ],
+      "note": "DESIGN NOTE / 02  Simple integrated cabinetry, floating elements and discreet illumination turn secondary spaces into a continuation of the architectural story."
+    },
+    {
+      "id": "balcony",
+      "kind": "gallery",
+      "label": "04 / OUTDOOR LIVING",
+      "title": "Room to  step outside.",
+      "paragraphs": [
+        "Glazed openings and an intimate balcony extend the rooms into a quiet outdoor retreat."
+      ],
+      "images": [
+        {
+          "src": "./media/salisbury-18.webp",
+          "alt": "Narrow sheltered balcony with glass balustrade and suspended lounge chair",
+          "caption": "Balcony — retreat"
+        },
+        {
+          "src": "./media/salisbury-19.webp",
+          "alt": "Balcony seating beside glazed French doors and light tiled flooring",
+          "caption": "Balcony — connection"
+        },
+        {
+          "src": "./media/salisbury-20.webp",
+          "alt": "Two black lounge chairs and woven accent table on a glass-fronted balcony",
+          "caption": "Balcony — seating"
+        }
+      ],
+      "groups": [
+        3
+      ]
+    }
+  ],
+  "closing": {
+    "title": "Designed to be lived in.",
+    "discipline": "ARCHITECTURAL VISUALIZATION & INTERIOR DESIGN"
+  }
+}
