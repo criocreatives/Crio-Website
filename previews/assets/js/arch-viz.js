@@ -1,2 +1,88 @@
-/* One Arch/Viz image viewer, with focus restoration and keyboard/swipe support. */
-(()=>{const d=document.getElementById("av-dialog");if(!d)return;const shots=[...document.querySelectorAll(".av-shot")],hero=document.querySelector(".av-hero-image"),list=shots.map(s=>({src:s.dataset.full||s.querySelector("img").src,alt:s.querySelector("img").alt})),heroUnique=!!hero&&!list.some(x=>new URL(x.src,document.baseURI).href===hero.src);if(heroUnique)list.unshift({src:hero.src,alt:hero.alt}),img=document.getElementById("av-full"),count=document.getElementById("av-count");let pos=0,opener=null,x0=0;function show(i){if(!list.length)return;pos=(i+list.length)%list.length;img.src=list[pos].src;img.alt=list[pos].alt;count.textContent=(pos+1)+" / "+list.length}function open(i,trigger){opener=trigger;show(i);if(!d.open)d.showModal();document.getElementById("av-close").focus()}function close(){if(d.open)d.close();opener?.focus?.()}shots.forEach((s,i)=>{s.addEventListener("click",()=>open(i+(heroUnique?1:0),s));s.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open(i+(heroUnique?1:0),s)}})});document.querySelector(".av-view-hero")?.addEventListener("click",e=>{if(!hero)return;open(heroUnique?0:list.findIndex(x=>new URL(x.src,document.baseURI).href===hero.src),e.currentTarget)});document.getElementById("av-close").addEventListener("click",close);document.getElementById("av-prev").addEventListener("click",()=>show(pos-1));document.getElementById("av-next").addEventListener("click",()=>show(pos+1));d.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"){e.preventDefault();show(pos-1)}if(e.key==="ArrowRight"){e.preventDefault();show(pos+1)}});d.addEventListener("close",()=>opener?.focus?.());d.addEventListener("click",e=>{if(e.target===d)close()});d.addEventListener("touchstart",e=>{x0=e.changedTouches[0]?.screenX||0},{passive:true});d.addEventListener("touchend",e=>{const delta=(e.changedTouches[0]?.screenX||0)-x0;if(Math.abs(delta)>60)show(pos+(delta<0?1:-1))},{passive:true})const nav=document.getElementById("av-project-nav"),toggle=document.querySelector(".av-menu-toggle");if(nav&&toggle){toggle.addEventListener("click",()=>{const next=toggle.getAttribute("aria-expanded")!=="true";toggle.setAttribute("aria-expanded",String(next));nav.classList.toggle("av-open",next)});nav.addEventListener("click",e=>{if(e.target.closest("a")){nav.classList.remove("av-open");toggle.setAttribute("aria-expanded","false")}})} })();
+/* One shared Arch/Viz viewer and responsive navigation, no external dependencies. */
+(() => {
+  const dialog = document.getElementById('av-dialog');
+  if (!dialog) return;
+  const shots = [...document.querySelectorAll('.av-shot')];
+  const hero = document.querySelector('.av-hero-image');
+  const view = document.getElementById('av-full');
+  const count = document.getElementById('av-count');
+  const closeButton = document.getElementById('av-close');
+  const prevButton = document.getElementById('av-prev');
+  const nextButton = document.getElementById('av-next');
+  const images = shots.map(el => ({
+    src: new URL(el.dataset.full || el.querySelector('img').src, document.baseURI).href,
+    alt: el.querySelector('img').alt
+  }));
+  const heroUnique = Boolean(hero) && !images.some(item => item.src === hero.src);
+  if (heroUnique) images.unshift({src: hero.src, alt: hero.alt});
+  let index = 0;
+  let opener = null;
+  let touchX = null;
+
+  function show(nextIndex) {
+    if (!images.length) return;
+    index = (nextIndex + images.length) % images.length;
+    view.src = images[index].src;
+    view.alt = images[index].alt;
+    count.textContent = (index + 1) + ' / ' + images.length;
+  }
+  function open(nextIndex, source) {
+    if (!images.length) return;
+    opener = source;
+    show(nextIndex);
+    if (!dialog.open) dialog.showModal();
+    closeButton.focus();
+  }
+  function close() {
+    if (dialog.open) dialog.close();
+  }
+  shots.forEach((shot, i) => {
+    const showShot = () => open(i + (heroUnique ? 1 : 0), shot);
+    shot.addEventListener('click', showShot);
+    shot.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        showShot();
+      }
+    });
+  });
+  document.querySelector('.av-view-hero')?.addEventListener('click', e => {
+    if (!hero) return;
+    const heroIndex = images.findIndex(item => item.src === hero.src);
+    open(Math.max(0, heroIndex), e.currentTarget);
+  });
+  closeButton.addEventListener('click', close);
+  prevButton.addEventListener('click', () => show(index - 1));
+  nextButton.addEventListener('click', () => show(index + 1));
+  dialog.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
+  });
+  dialog.addEventListener('close', () => opener?.focus?.());
+  dialog.addEventListener('click', e => { if (e.target === dialog) close(); });
+  dialog.addEventListener('touchstart', e => {
+    touchX = e.changedTouches[0]?.screenX ?? null;
+  }, {passive:true});
+  dialog.addEventListener('touchend', e => {
+    if (touchX === null) return;
+    const delta = (e.changedTouches[0]?.screenX ?? touchX) - touchX;
+    if (Math.abs(delta) > 60) show(index + (delta < 0 ? 1 : -1));
+    touchX = null;
+  }, {passive:true});
+
+  const nav = document.getElementById('av-project-nav');
+  const toggle = document.querySelector('.av-menu-toggle');
+  if (nav && toggle) {
+    toggle.addEventListener('click', () => {
+      const expanding = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(expanding));
+      nav.classList.toggle('av-open', expanding);
+    });
+    nav.addEventListener('click', e => {
+      if (e.target.closest('a')) {
+        nav.classList.remove('av-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+})();
