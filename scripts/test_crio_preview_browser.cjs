@@ -57,7 +57,7 @@ async function headerState(page) {
         assert.equal(await page.locator('.site-header').count(),1,url+' single header');
         assert.equal(await page.locator('#site-header').count(),1,url+' shared site header controller');
         assert.equal(await page.locator('script[src^="/assets/js/site-header.js"]').count(),1,url+' shared site header morph');
-        assert.equal(await page.locator('link[href="/assets/css/site-header.css?v=2"]').count(),1,url+' shared site header stylesheet');
+        assert.equal(await page.locator('link[href="/assets/css/site-header.css?v=3"]').count(),1,url+' shared site header stylesheet');
         assert.equal(await page.locator('link[href="/style.css?v=4"]').count(),1,url+' exact home header stylesheet');
         assert.equal(await page.locator('link[href="/previews/assets/css/arch-viz.css?v=5"]').count(),1,url+' current Arch/Viz layout stylesheet');
         assert.equal(await page.locator('.av-hero').count(),1,url+' single hero');
