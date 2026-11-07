@@ -58,6 +58,7 @@ async function headerState(page) {
         assert.equal(await page.locator('#site-header').count(),1,url+' shared site header controller');
         assert.equal(await page.locator('script[src^="/assets/js/site.js"]').count(),1,url+' shared site scroll morph');
         assert.equal(await page.locator('link[href="/style.css?v=4"]').count(),1,url+' exact home header stylesheet');
+        assert.equal(await page.locator('link[href="/previews/assets/css/arch-viz.css?v=4"]').count(),1,url+' current Arch/Viz layout stylesheet');
         assert.equal(await page.locator('.av-hero').count(),1,url+' single hero');
         assert.equal(await page.locator('h1').count(),1,url+' one title');
         assert.equal(await page.locator('.av-shot').count(),galleryCount,url+' gallery count');
@@ -68,6 +69,13 @@ async function headerState(page) {
         assert.equal(await page.locator('.menu-toggle').evaluate(el => getComputedStyle(el).textTransform),'uppercase',url+' menu label uppercase');
         assert.equal(await page.locator('.av-caption').count(),1,url+' single project label strip');
         assert.equal(await page.locator('.av-caption').evaluate(el => getComputedStyle(el).textTransform),'uppercase',url+' project label uppercase');
+        const topStack = await page.evaluate(() => {
+          const caption = document.querySelector('.av-caption').getBoundingClientRect();
+          const hero = document.querySelector('.av-hero').getBoundingClientRect();
+          return {bodyTop:parseFloat(getComputedStyle(document.body).paddingTop),captionTop:caption.top,captionHeight:caption.height,heroTop:hero.top};
+        });
+        assert.equal(topStack.captionTop,topStack.bodyTop,url+' label strip occupies the paper header row');
+        assert.equal(topStack.heroTop,topStack.bodyTop+topStack.captionHeight,url+' hero begins below the header and label strip');
         assert.deepEqual(await headerState(page),homeReference[size.name].top,url+' header matches home page at page top');
         const sectionText = await page.locator('.av-section-head').first().evaluate(el => {
           const heading = el.querySelector('h2');
