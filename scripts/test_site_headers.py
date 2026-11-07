@@ -51,6 +51,7 @@ def main():
         assert page.navs == (1 if not config or config.get("links") else 0), f"{name}: unexpected navigation slot count"
         assert source.count("/assets/css/site-header.css?v=1") == 1, f"{name}: shared header CSS must load once"
         assert source.count("data-crio-site-header") == 1, f"{name}: shared header controller must load once"
+        assert not re.search(r'<script\b[^>]*src=["\']https?://[^"\']*/assets/js/site\.js', source, re.I), f"{name}: page must not load an external competing site controller"
         assert "crio-shell-header" not in source and "crio-ed-bar" not in source, f"{name}: legacy header remains"
         if config:
             for link in config.get("links", []):
