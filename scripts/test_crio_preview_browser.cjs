@@ -4,6 +4,21 @@ const {chromium} = require('playwright-core');
 const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
+async function headerState(page) {
+  return page.locator('#site-header').evaluate(el => {
+    const rect = node => {
+      const r=node.getBoundingClientRect();
+      return [r.x,r.y,r.width,r.height].map(value=>Math.round(value*100)/100);
+    };
+    const style=getComputedStyle(el);
+    return {
+      outer:rect(el),background:style.backgroundColor,radius:style.borderRadius,
+      padding:style.padding,border:style.borderWidth,shadow:style.boxShadow,
+      inner:rect(el.querySelector('.header-inner')),
+      logo:rect(el.querySelector('.header-logo'))
+    };
+  });
+}
 (async () => {
   const manifests = fs.readdirSync('previews/projects')
     .filter(f => f.endsWith('.json'))
@@ -12,48 +27,73 @@ const assert = require('node:assert/strict');
     executablePath:'/usr/bin/google-chrome', headless:true,
     args:['--no-sandbox','--disable-dev-shm-usage']
   });
+  const sizes = [{name:'desktop',width:1440,height:900},{name:'mobile',width:390,height:844}];
+  const homeReference = {};
+  const referencePages = [];
   try {
+    for (const size of sizes) {
+      const reference=await browser.newPage({viewport:{width:size.width,height:size.height},reducedMotion:'reduce'});
+      referencePages.push(reference);
+      await reference.goto('http://127.0.0.1:8765/',{waitUntil:'load',timeout:30000});
+      await reference.waitForFunction(()=>document.querySelector('#site-header')?.style.getPropertyValue('--morph-left'));
+      homeReference[size.name]={top:await headerState(reference)};
+      await reference.evaluate(()=>window.scrollTo(0,240));
+      await reference.waitForFunction(()=>document.querySelector('#site-header')?.classList.contains('scrolled'));
+      await reference.waitForTimeout(500);
+      homeReference[size.name].scrolled=await headerState(reference);
+      await reference.evaluate(()=>window.scrollTo(0,0));
+      await reference.waitForFunction(()=>!document.querySelector('#site-header')?.classList.contains('scrolled'));
+    }
     for (const project of manifests) {
       assert.equal(project.schema_version,2);
       assert.equal(project.category,'arch-viz');
       const galleryCount = project.sections.reduce((total, s) => total + (s.images?.length || 0), 0);
-      for (const size of [{name:'desktop',width:1440,height:900},{name:'mobile',width:390,height:844}]) {
+      for (const size of sizes) {
         const page = await browser.newPage({viewport:{width:size.width,height:size.height},reducedMotion:'reduce'});
         const url = 'http://127.0.0.1:8765/previews/' + project.slug + '/';
         const issues = [];
         page.on('pageerror', e => issues.push(e.message));
         await page.goto(url,{waitUntil:'load',timeout:30000});
-        assert.equal(await page.locator('.av-header').count(),1,url+' single header');
+        assert.equal(await page.locator('.site-header').count(),1,url+' single header');
         assert.equal(await page.locator('#site-header').count(),1,url+' shared site header controller');
         assert.equal(await page.locator('script[src^="/assets/js/site.js"]').count(),1,url+' shared site scroll morph');
+        assert.equal(await page.locator('link[href="/style.css?v=4"]').count(),1,url+' exact home header stylesheet');
         assert.equal(await page.locator('.av-hero').count(),1,url+' single hero');
         assert.equal(await page.locator('h1').count(),1,url+' one title');
         assert.equal(await page.locator('.av-shot').count(),galleryCount,url+' gallery count');
-        assert.equal(await page.locator('link[rel="stylesheet"]').count(),1,url+' one stylesheet');
-        assert.equal(await page.locator('.av-header a[href="/previews/"]').count(),1,url+' header All Previews');
+        assert.equal(await page.locator('link[rel="stylesheet"]').count(),2,url+' Arch/Viz and site stylesheets');
+        assert.equal(await page.locator('.site-header a[href="/previews/"]').count(),1,url+' header All Previews');
         assert.equal(await page.locator('footer a[href="/previews/"]').count(),0,url+' no footer All Previews');
         assert.ok(await page.locator('#site-nav a').evaluateAll(links => links.every(link => getComputedStyle(link).textTransform === 'uppercase')),url+' header links uppercase');
-        assert.equal(await page.locator('.av-brand span').evaluate(el => getComputedStyle(el).textTransform),'uppercase',url+' project preview label uppercase');
+        assert.equal(await page.locator('.menu-toggle').evaluate(el => getComputedStyle(el).textTransform),'uppercase',url+' menu label uppercase');
+        assert.equal(await page.locator('.av-caption').count(),1,url+' single project label strip');
+        assert.equal(await page.locator('.av-caption').evaluate(el => getComputedStyle(el).textTransform),'uppercase',url+' project label uppercase');
+        assert.deepEqual(await headerState(page),homeReference[size.name].top,url+' header matches home page at page top');
         const sectionText = await page.locator('.av-section-head').first().evaluate(el => {
           const heading = el.querySelector('h2');
-          return {alignment:getComputedStyle(heading).textAlign,headLeft:heading.getBoundingClientRect().left,containerLeft:el.getBoundingClientRect().left};
+          const paragraph=el.querySelector('p:not(.av-section-label)');
+          const list=el.querySelector('ul');
+          return {alignment:getComputedStyle(heading).textAlign,headLeft:heading.getBoundingClientRect().left,containerLeft:el.getBoundingClientRect().left,paragraphWidth:paragraph?.getBoundingClientRect().width,listWidth:list?.getBoundingClientRect().width,containerWidth:el.getBoundingClientRect().width};
         });
         assert.equal(sectionText.alignment,'left',url+' section text left aligned');
         assert.ok(Math.abs(sectionText.headLeft-sectionText.containerLeft)<2,url+' section heading starts at the text block edge');
+        if(sectionText.paragraphWidth) assert.ok(Math.abs(sectionText.paragraphWidth-sectionText.containerWidth)<2,url+' section paragraph uses the full content width');
+        if(sectionText.listWidth) assert.ok(Math.abs(sectionText.listWidth-sectionText.containerWidth)<2,url+' section list uses the full content width');
         const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
         assert.ok(overflow <= 2,url+' horizontal overflow: '+overflow);
-        await page.evaluate(() => window.scrollTo(0,240));
+        await page.evaluate(() => {
+          document.body.style.minHeight=Math.max(document.body.scrollHeight,innerHeight+400)+'px';
+          window.scrollTo(0,240);
+        });
         await page.waitForFunction(() => document.querySelector('#site-header')?.classList.contains('scrolled'));
         await page.waitForTimeout(500);
-        const compactHeader = await page.locator('.av-header').evaluate(el => {
-          const r=el.getBoundingClientRect();
-          return {x:r.x,y:r.y,width:r.width,height:r.height,captionOpacity:getComputedStyle(el.querySelector('.av-caption')).opacity};
-        });
-        assert.equal(compactHeader.x,0,url+' morphed header flush left');
-        assert.equal(compactHeader.y,0,url+' morphed header pinned to top');
-        assert.equal(compactHeader.width,size.width,url+' morphed header spans viewport');
-        assert.equal(compactHeader.captionOpacity,'0',url+' label strip tucks away in compact header');
-        await page.evaluate(() => window.scrollTo(0,0));
+        const compactHeader = await headerState(page);
+        assert.equal(compactHeader.outer[0],0,url+' morphed header flush left');
+        assert.equal(compactHeader.outer[1],0,url+' morphed header pinned to top');
+        assert.equal(compactHeader.outer[2],size.width,url+' morphed header spans viewport');
+        assert.deepEqual(compactHeader,homeReference[size.name].scrolled,url+' morphed header exactly matches home page');
+        assert.equal(await page.locator('.av-caption').evaluate(el => getComputedStyle(el).opacity),'0',url+' label strip tucks away in compact header');
+        await page.evaluate(() => { window.scrollTo(0,0); document.body.style.minHeight=''; });
         await page.waitForFunction(() => !document.querySelector('#site-header')?.classList.contains('scrolled'));
         if (project.hero.src) {
           await page.waitForFunction(()=>document.querySelector('.av-hero-image')?.complete,{timeout:5000});
@@ -63,10 +103,10 @@ const assert = require('node:assert/strict');
           assert.equal(await page.locator('.av-view-hero').count(),0,url+' no full-screen hero control');
         }
         if (size.name === 'mobile') {
-          const toggle = page.locator('.av-menu-toggle');
+          const toggle = page.locator('.menu-toggle');
           await toggle.click();
           assert.equal(await toggle.getAttribute('aria-expanded'),'true',url+' mobile menu expanded');
-          assert.ok(await page.locator('.av-header a[href="/previews/"]').isVisible(),url+' All Previews visible in menu');
+          assert.ok(await page.locator('.site-header a[href="/previews/"]').isVisible(),url+' All Previews visible in menu');
           await toggle.click();
         }
         if (galleryCount) {
@@ -103,5 +143,5 @@ const assert = require('node:assert/strict');
         await page.close();
       }
     }
-  } finally { await browser.close(); }
+  } finally { await Promise.all(referencePages.map(page=>page.close())); await browser.close(); }
 })().catch(err => {console.error(err);process.exit(1)});
