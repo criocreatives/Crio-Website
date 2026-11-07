@@ -26,6 +26,18 @@ jobs:
         run: node scripts/build_previews.mjs
       - name: Verify generated pages are stable
         run: node scripts/build_previews.mjs --check
+      - name: Capture original main-branch pages for lossless content audit
+        run: |
+          git fetch --no-tags --depth=1 origin main
+          mkdir -p qa/originals
+          for slug in 9-salisbury-avenue 74-chisholms-avenue boscobel-heights-residence chateau-de-chanel experimental-circular-home lot-18-mount-boon mannings-hill-road-apartment-complex rhynie-drive tiny-living tyre-warehouse-automotive; do
+            git show "origin/main:previews/$slug/index.html" > "qa/originals/$slug.html"
+          done
+      - name: Check shared generator, viewer and manifest invariants
+        run: |
+          node --check scripts/build_previews.mjs
+          node --check previews/assets/js/arch-viz.js
+          python3 scripts/test_crio_preview_structure.py
       - name: Preserve generated staging pages and Salisbury source for QA
         uses: actions/upload-artifact@v4
         with:
@@ -37,6 +49,7 @@ jobs:
             previews/9-salisbury-avenue/media/*.webp
             previews/assets/css/arch-viz.css
             scripts/build_previews.mjs
+            qa/originals/*.html
       - name: Validate metadata, navigation and sitemap
         run: |
           python3 scripts/check_seo.py
