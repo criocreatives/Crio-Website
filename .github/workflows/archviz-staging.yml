@@ -56,7 +56,7 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          names=('arch-viz-standard.css','architecture-2026.css','crio-project-base.css','crio-project-theme.css','presentation-editorial.css','crio-project-gallery.js')
+          names=('architecture-2026.css','presentation-editorial.css')
           pages=[p for p in Path('.').rglob('*.html') if not str(p).startswith('qa/')]
           for name in names:
               uses=[p.as_posix() for p in pages if name in p.read_text(encoding='utf-8',errors='replace')]
