@@ -45,10 +45,11 @@ def main():
     assert not fresh.noindex, "New primary directory should remain indexable"
     assert fresh.search and 'id="preview-groups"' in root, "Searchable grouped preview list missing"
     assert re.search(r"grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)", styles), "Desktop two-column layout missing"
-    assert "/previews/assets/css/preview-directory.css?v=2" in root, "Directory stylesheet missing"
+    assert "/previews/assets/css/preview-directory.css?v=3" in root, "Directory stylesheet missing"
     assert "Browse the archive" not in root and "All previews" not in root, "Removed archive labels returned"
     assert '<h1 class="directory-heading" id="directory-heading">Preview <span>index.</span></h1>' in root, "Preview index heading and red word styling hook missing"
-    assert re.search(r"\.row-name\s*\{[^}]*font:\s*700[^}]*var\(--directory-font\)", styles), "Project list should use the Century Gothic font stack"
+    assert re.search(r"\.row-name\s*\{[^}]*font:\s*400[^}]*var\(--directory-font\)", styles), "Project list should use the Century Gothic font stack"
+    assert re.search(r"\.row-num\s*\{[^}]*font:\s*400[^}]*var\(--directory-font\)", styles), "Project numbers should use the normal text weight"
     assert "CRIO / PREVIEWS" not in root and "Internal directory" not in root, "Internal directory labels returned"
     for heading in ("Architecture &amp; Interior Design", "Graphic Design &amp; Branding", "Web Design", "Music &amp; Artist Promotion"):
         assert heading in root, f"Preview category missing: {heading}"
