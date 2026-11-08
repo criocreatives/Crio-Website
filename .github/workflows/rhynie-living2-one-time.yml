@@ -1,0 +1,54 @@
+name: Upload Rhynie Drive Living Room 2 renders
+on:
+  push:
+    paths:
+      - .github/workflows/rhynie-living2-one-time.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  upload-living2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download supplied Living Room 2 original WebP files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p previews/rhynie-drive/images
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/AQZ2yczuI1hGW4SM' --output 'previews/rhynie-drive/images/living-room-2-seating.webp'
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/n8I8LOfoKiiNYHrF' --output 'previews/rhynie-drive/images/living-room-2-media-wall.webp'
+      - name: Validate exact image bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd previews/rhynie-drive/images
+          printf '%s\n' \
+            'cce5eed0aa8639873b21ce70d54ea40738d792a0e5b7516420ce69595eff55e0  living-room-2-seating.webp' \
+            '55f035e15c8c6278a73d5dbf686cb09305331efc6e126019639f5e209a6117d4  living-room-2-media-wall.webp' | sha256sum -c -
+          python3 - <<'PY'
+          from pathlib import Path
+          for name in ["living-room-2-seating.webp","living-room-2-media-wall.webp"]:
+              raw=Path(name).read_bytes()
+              assert len(raw)>100000, name
+              assert raw[:4]==b'RIFF' and raw[8:12]==b'WEBP', name
+              print(name,len(raw))
+          PY
+      - name: Commit original Living Room 2 render assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add previews/rhynie-drive/images/living-room-2-seating.webp previews/rhynie-drive/images/living-room-2-media-wall.webp
+          if git diff --cached --quiet; then echo 'Images already current'; exit 0; fi
+          git commit -m 'Add Rhynie Drive Living Room 2 image assets'
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:refs/heads/main; then exit 0; fi
+            sleep 2
+          done
+          exit 1
