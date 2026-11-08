@@ -6,7 +6,7 @@
   "indexable": true,
   "seo": {
     "title": "Rhynie Drive | Chantier Construction — Crio Creatives",
-    "description": "Living room, kitchen and pantry, dining area, guestroom and bedrooms renovation proposal at Rhynie Drive, Montego Bay, Jamaica. Interior design and visualization by Crio Creatives for Chantier Construction."
+    "description": "Kitchen and pantry, living room, powder room, dining area, and bedroom renovations proposed at Rhynie Drive, Montego Bay, Jamaica. Interior design and visualization by Crio Creatives for Chantier Construction."
   },
   "hero": {
     "src": "/previews/rhynie-drive/images/living-front.webp?v=20261031-1",
@@ -16,17 +16,21 @@
       "Rhynie",
       "Drive."
     ],
-    "description": "Living room, kitchen, pantry, dining and bedroom renovations.",
+    "description": "Kitchen and pantry, living room, powder room, dining area and bedroom renovations.",
     "focus": "center center"
   },
   "nav": [
     {
-      "id": "living",
-      "label": "Living Room"
-    },
-    {
       "id": "kitchen",
       "label": "Kitchen & Pantry"
+    },
+    {
+      "id": "living",
+      "label": "Living Room #1"
+    },
+    {
+      "id": "powder-room",
+      "label": "Powder Room"
     },
     {
       "id": "dining",
@@ -35,42 +39,15 @@
     {
       "id": "bedroom",
       "label": "Master Bedroom"
-    },
-    {
-      "id": "master-bathroom",
-      "label": "Master Bathroom"
     }
   ],
   "sections": [
-    {
-      "id": "living",
-      "kind": "gallery",
-      "title": "Living Room.",
-      "paragraphs": [
-        "01 / Interior renovation"
-      ],
-      "images": [
-        {
-          "src": "/previews/rhynie-drive/images/living-front.webp?v=20261031-1",
-          "alt": "Living Room / Front View",
-          "caption": "Living Room / Front View"
-        },
-        {
-          "src": "/previews/rhynie-drive/images/living-angle.webp?v=20261031-1",
-          "alt": "Living Room / Angled View",
-          "caption": "Living Room / Angled View"
-        }
-      ],
-      "groups": [
-        2
-      ]
-    },
     {
       "id": "kitchen",
       "kind": "gallery",
       "title": "Kitchen & Pantry.",
       "paragraphs": [
-        "02 / Interior renovation",
+        "01 / Interior renovation",
         "A single, cohesive kitchen proposal with refined cabinetry, integrated coffee and wine storage, and a complementary pantry with open shelving and warm wood finishes."
       ],
       "images": [
@@ -113,11 +90,58 @@
       ]
     },
     {
+      "id": "living",
+      "kind": "gallery",
+      "title": "Living Room #1.",
+      "paragraphs": [
+        "02 / Interior renovation"
+      ],
+      "images": [
+        {
+          "src": "/previews/rhynie-drive/images/living-front.webp?v=20261031-1",
+          "alt": "Living Room / Front View",
+          "caption": "Living Room / Front View"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/living-angle.webp?v=20261031-1",
+          "alt": "Living Room / Angled View",
+          "caption": "Living Room / Angled View"
+        }
+      ],
+      "groups": [
+        2
+      ]
+    },
+    {
+      "id": "powder-room",
+      "kind": "gallery",
+      "title": "Powder Room.",
+      "paragraphs": [
+        "03 / Interior renovation",
+        "A compact powder room with a warm herringbone feature wall, timber cabinetry and coordinated neutral floor tiles."
+      ],
+      "images": [
+        {
+          "src": "/previews/rhynie-drive/images/powder-room-toilet.webp",
+          "alt": "Powder room toilet alcove with dark timber storage surround, warm herringbone wall tile, neutral floor and styling",
+          "caption": "Powder Room / Toilet Alcove"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/powder-room-vanity.webp",
+          "alt": "Powder room vanity with timber cabinet, vessel sink, round mirror, herringbone wall tile and small window",
+          "caption": "Powder Room / Vanity & Mirror"
+        }
+      ],
+      "groups": [
+        2
+      ]
+    },
+    {
       "id": "dining",
       "kind": "gallery",
       "title": "Dining Area.",
       "paragraphs": [
-        "03 / Interior renovation",
+        "04 / Interior renovation",
         "A welcoming dining setting with dark timber, upholstered seating and an outlook to the terrace."
       ],
       "images": [
@@ -136,7 +160,7 @@
       "kind": "gallery",
       "title": "Master Bedroom.",
       "paragraphs": [
-        "04 / Interior renovation",
+        "05 / Interior renovation",
         "Warm timber finishes, a curtained canopy bed and relaxed seating overlooking the landscape."
       ],
       "images": [
@@ -172,7 +196,7 @@
       "kind": "gallery",
       "title": "Master Bathroom.",
       "paragraphs": [
-        "05 / Interior renovation",
+        "06 / Interior renovation",
         "A cohesive, warm-toned bathroom renovation with refined architectural and lighting details.",
         "Creation of an arched entrance to the shower, replacement light fixtures above the vanity mirrors, and a single consistent tile treatment across the bathroom floor."
       ],
@@ -189,36 +213,6 @@
         }
       ],
       "groups": [
-        2
-      ]
-    },
-    {
-      "id": "guestroom",
-      "kind": "gallery",
-      "title": "Guestroom.",
-      "paragraphs": [
-        "06 / Interior renovation",
-        "Downstairs bedroom with a dramatic palm-silhouette feature wall, warm timber finishes and a bright window-side seating area."
-      ],
-      "images": [
-        {
-          "src": "/previews/rhynie-drive/images/guestroom-overview.webp?v=20261108-1",
-          "alt": "Downstairs guestroom overall view with palm-silhouette accent wall, double bed, window-side chairs and media wall",
-          "caption": "Guestroom / Overall View Bed, seating area and media wall"
-        },
-        {
-          "src": "/previews/rhynie-drive/images/guestroom-angled.webp?v=20261108-1",
-          "alt": "Downstairs guestroom angled view of bed, palm-silhouette feature wall and dressing table",
-          "caption": "Guestroom / Bed View Bed and dressing table"
-        },
-        {
-          "src": "/previews/rhynie-drive/images/guestroom-seating.webp?v=20261108-1",
-          "alt": "Downstairs guestroom pair of upholstered chairs beside the terrace-facing windows",
-          "caption": "Guestroom / Seating View Window-side seating"
-        }
-      ],
-      "groups": [
-        1,
         2
       ]
     },
@@ -280,6 +274,36 @@
         1,
         2,
         1
+      ]
+    },
+    {
+      "id": "guestroom",
+      "kind": "gallery",
+      "title": "Guestroom.",
+      "paragraphs": [
+        "09 / Interior renovation",
+        "Downstairs bedroom with a dramatic palm-silhouette feature wall, warm timber finishes and a bright window-side seating area."
+      ],
+      "images": [
+        {
+          "src": "/previews/rhynie-drive/images/guestroom-overview.webp?v=20261108-1",
+          "alt": "Downstairs guestroom overall view with palm-silhouette accent wall, double bed, window-side chairs and media wall",
+          "caption": "Guestroom / Overall View Bed, seating area and media wall"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/guestroom-angled.webp?v=20261108-1",
+          "alt": "Downstairs guestroom angled view of bed, palm-silhouette feature wall and dressing table",
+          "caption": "Guestroom / Bed View Bed and dressing table"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/guestroom-seating.webp?v=20261108-1",
+          "alt": "Downstairs guestroom pair of upholstered chairs beside the terrace-facing windows",
+          "caption": "Guestroom / Seating View Window-side seating"
+        }
+      ],
+      "groups": [
+        1,
+        2
       ]
     }
   ]
