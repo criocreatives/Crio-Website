@@ -53,7 +53,6 @@ def main():
     assert root.count('<section class="preview-group"') == 4, "Static directory groups are incomplete"
     assert "Internal directory compact view" not in root, "Superseded directory CSS override returned"
     assert "presentation-init.js" not in root and "presentation-editorial.css" not in root, "Project presentation chrome should not load on the directory"
-    assert "presentation-init.js" not in root and "presentation-editorial.css" not in root, "Project presentation chrome should not load on the directory"
     assert "api.github.com/repos/criocreatives/Crio-Website/git/trees/main?recursive=1" in root
     assert "const excluded=new Set(['list','portfolio'])" in root
     assert stale.canonical == [ROOT_URL] and stale.noindex, "Legacy redirect needs canonical + noindex"
