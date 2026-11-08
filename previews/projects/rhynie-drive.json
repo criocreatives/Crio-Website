@@ -217,11 +217,35 @@
       ]
     },
     {
+      "id": "bedroom-2",
+      "kind": "gallery",
+      "title": "Bedroom 2.",
+      "paragraphs": [
+        "07 / Interior renovation",
+        "A calm bedroom with warm timber detailing, neutral textiles, generous daylight and a window-side seating nook."
+      ],
+      "images": [
+        {
+          "src": "/previews/rhynie-drive/images/bedroom-2-overview.webp",
+          "alt": "Bedroom 2 overall view with double bed, neutral textiles and two upholstered chairs beside the windows",
+          "caption": "Bedroom 2 / Overall View"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/bedroom-2-media-wall.webp",
+          "alt": "Bedroom 2 view towards the media wall, timber wardrobe, floor mirror and entrance",
+          "caption": "Bedroom 2 / Media Wall & Storage"
+        }
+      ],
+      "groups": [
+        2
+      ]
+    },
+    {
       "id": "bedroom-3",
       "kind": "gallery",
       "title": "Bedroom 3.",
       "paragraphs": [
-        "07 / Interior renovation",
+        "08 / Interior renovation",
         "Two double beds, a richly layered tropical botanical feature wall, warm timber finishes and coordinated natural textures."
       ],
       "images": [
