@@ -48,4 +48,15 @@ jobs:
           git add previews/rhynie-drive/images/guestroom-overview.webp previews/rhynie-drive/images/guestroom-angled.webp previews/rhynie-drive/images/guestroom-seating.webp
           if git diff --cached --quiet; then echo 'Guestroom images already current'; exit 0; fi
           git commit -m 'Replace three Guestroom WebPs with November 8 originals'
-          git push origin HEAD:refs/heads/main
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:refs/heads/main; then
+              echo "Guestroom image push succeeded on attempt $attempt"
+              exit 0
+            fi
+            echo "Push conflicted with concurrent repository change, retrying"
+            sleep 2
+          done
+          echo 'Could not push after four attempts' >&2
+          exit 1
