@@ -1,22 +1,5 @@
 /* Crio Creatives | project-specific editorial styling and footer. */
 (() => {
-  // GA4 for Crio's dedicated client-preview property.
-  if (window.location.hostname === 'criocreatives.com' && window.location.pathname.startsWith('/previews/')) {
-    const ga4Id = 'G-L4VQ7CB9E3';
-    if (!document.querySelector('script[data-crio-ga4="' + ga4Id + '"]')
-        && !document.querySelector('script[src*="googletagmanager.com/gtag/js?id=' + ga4Id + '"]')) {
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
-      window.gtag('js', new Date());
-      window.gtag('config', ga4Id);
-      const tag = document.createElement('script');
-      tag.async = true;
-      tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + ga4Id;
-      tag.dataset.crioGa4 = ga4Id;
-      document.head.appendChild(tag);
-    }
-  }
-
   function initialize() {
     const body = document.body;
     if (!body || body.classList.contains('crio-ed')) return;

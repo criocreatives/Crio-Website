@@ -1,6 +1,6 @@
 (() => {
-  // GA4: track the public main site, not protected payment information or other Crio subdomains.
-  if (/^(?:www\.)?criocreatives\.com$/.test(window.location.hostname)
+  // GA4: track the public main site and its portfolio, not protected payment information.
+  if (/^(?:(?:www\.)?criocreatives\.com|portfolio\.criocreatives\.com)$/.test(window.location.hostname)
       && !/^\/payment-details(?:\/|$)/.test(window.location.pathname)) {
     const ga4Id = 'G-8SQ1DJNJWM';
     if (!document.querySelector('script[data-crio-ga4="' + ga4Id + '"]')

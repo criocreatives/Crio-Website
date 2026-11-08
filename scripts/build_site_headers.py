@@ -53,7 +53,7 @@ def render(template: str, config: dict) -> str:
 
 def ensure_assets(page: str) -> str:
     page = re.sub(r'(?:\sdata-site-header)+', ' data-site-header', page)
-    page = re.sub(r'(src=["\'])/?assets/js/site\.js\?v=\d+', r'\1/assets/js/site.js?v=4', page, flags=re.I)
+    page = re.sub(r'(src=["\'])/?assets/js/site\.js\?v=\d+', r'\1/assets/js/site.js?v=5', page, flags=re.I)
     page = re.sub(r'<script\b[^>]*src=["\'][^"\']*/plugins/site\.js(?:\?[^"\']*)?["\'][^>]*>\s*</script>\s*', '', page, flags=re.I)
     head_end = re.search(r"</head\s*>", page, re.I)
     if not head_end:
