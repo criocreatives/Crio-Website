@@ -6,7 +6,7 @@
   "indexable": true,
   "seo": {
     "title": "Rhynie Drive | Chantier Construction — Crio Creatives",
-    "description": "Living room, kitchen, dining area, guestroom and bedrooms renovation proposal at Rhynie Drive, Montego Bay, Jamaica. Interior design and visualization by Crio Creatives for Chantier Construction."
+    "description": "Living room, kitchen and pantry, dining area, guestroom and bedrooms renovation proposal at Rhynie Drive, Montego Bay, Jamaica. Interior design and visualization by Crio Creatives for Chantier Construction."
   },
   "hero": {
     "src": "/previews/rhynie-drive/images/living-front.webp?v=20261031-1",
@@ -16,7 +16,7 @@
       "Rhynie",
       "Drive."
     ],
-    "description": "Living room, kitchen, dining and bedroom renovations.",
+    "description": "Living room, kitchen, pantry, dining and bedroom renovations.",
     "focus": "center center"
   },
   "nav": [
@@ -26,7 +26,7 @@
     },
     {
       "id": "kitchen",
-      "label": "Kitchen"
+      "label": "Kitchen & Pantry"
     },
     {
       "id": "dining",
@@ -68,41 +68,47 @@
     {
       "id": "kitchen",
       "kind": "gallery",
-      "title": "Kitchen.",
+      "title": "Kitchen & Pantry.",
       "paragraphs": [
         "02 / Interior renovation",
-        "Updated cabinetry, improved storage and a smaller, more functional island."
+        "A single, cohesive kitchen proposal with refined cabinetry, integrated coffee and wine storage, and a complementary pantry with open shelving and warm wood finishes."
       ],
       "images": [
         {
-          "src": "/previews/rhynie-drive/images/kitchen-overview.webp",
-          "alt": "Kitchen / Original Proposal",
-          "caption": "Overall View Original proposal"
-        },
-        {
           "src": "/previews/rhynie-drive/images/kitchen-overview-alternative.webp",
-          "alt": "Kitchen / Alternate Proposal",
-          "caption": "Overall View Alternative"
-        },
-        {
-          "src": "/previews/rhynie-drive/images/kitchen-sink-cabinets.webp",
-          "alt": "Sink-side Cabinets / Original Proposal",
-          "caption": "Sink-side Cabinets Original proposal"
+          "alt": "Kitchen / Overall view with cream cabinetry, stone counters and warm wood island",
+          "caption": "Kitchen / Overall View"
         },
         {
           "src": "/previews/rhynie-drive/images/kitchen-sink-alternative.webp",
-          "alt": "Sink-side Cabinets / Alternate Proposal",
-          "caption": "Sink-side Cabinets Alternative"
+          "alt": "Kitchen / Sink-side cabinetry with cream cupboards, marble counters and dark-framed window",
+          "caption": "Kitchen / Sink & Cabinetry"
         },
         {
           "src": "/previews/rhynie-drive/images/kitchen-coffee-wine.webp",
-          "alt": "Coffee Station & Wine Storage",
-          "caption": "Coffee Station & Wine Storage Coffee preparation nook with integrated bottle storage below."
+          "alt": "Kitchen / Dedicated coffee station and wine storage",
+          "caption": "Kitchen / Coffee & Wine Station"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/pantry-overview.webp",
+          "alt": "Pantry / Overall view of two-sided shelving, dark timber base cabinets, cereal dispensers and end window",
+          "caption": "Pantry / Overall View"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/pantry-dispensers.webp",
+          "alt": "Pantry / Twin wooden cereal dispensers within open shelving with jars, baskets and wood base cabinetry",
+          "caption": "Pantry / Display & Dispensers"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/pantry-storage.webp",
+          "alt": "Pantry / Tall cream storage cupboard, open shelves, timber base cabinetry and window",
+          "caption": "Pantry / Storage Wall"
         }
       ],
       "groups": [
         1,
         2,
+        1,
         2
       ]
     },
