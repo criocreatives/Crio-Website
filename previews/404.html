@@ -67,18 +67,5 @@ body.crio-error-page .button:hover{transform:translateY(-2px)}
 </div>
 </main>
 
-<script>
-// Use the Previews property rather than the shared main-site script's property.
-if (location.hostname === 'criocreatives.com' && location.pathname.startsWith('/previews/')) {
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function () { dataLayer.push(arguments); };
-  gtag('js', new Date());
-  gtag('config', 'G-L4VQ7CB9E3');
-  const tag = document.createElement('script');
-  tag.async = true;
-  tag.src = 'https://www.googletagmanager.com/gtag/js?id=G-L4VQ7CB9E3';
-  document.head.appendChild(tag);
-}
-</script>
-<script src="/assets/js/site.js?v=4"></script></body>
+<script src="/assets/js/site.js?v=5"></script></body>
 </html>

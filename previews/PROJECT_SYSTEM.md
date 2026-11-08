@@ -40,9 +40,10 @@ python3 scripts/test_crio_preview_browser.cjs
 python3 scripts/check_seo.py
 ```
 
-The separate legacy-gallery builder skips projects with manifests in
-`previews/projects/`, so it cannot overwrite generated Arch/Viz pages. Keep
-Graphic Design, Web Design, and Events pages in their existing systems.
+Each project page has one owner: the shared renderer reads its project
+manifest and emits the page. Do not keep a second generator for the same
+project. Graphic Design, Web Design, and Events pages remain in their existing
+systems.
 
 The shared header contains the sole “All Previews” link. Do not add project
 recommendations or previous/next project links. Existing project URLs remain
