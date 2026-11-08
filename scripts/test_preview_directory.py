@@ -36,14 +36,24 @@ def main():
     root = (PREVIEWS / "index.html").read_text(encoding="utf-8")
     old = (PREVIEWS / "list/index.html").read_text(encoding="utf-8")
     nav = (PREVIEWS / "assets/js/presentation-init.js").read_text(encoding="utf-8")
+    styles = (PREVIEWS / "assets/css/preview-directory.css").read_text(encoding="utf-8")
     fresh = Inspect()
     stale = Inspect()
     fresh.feed(root)
     stale.feed(old)
     assert fresh.canonical == [ROOT_URL], f"Directory canonical incorrect: {fresh.canonical}"
     assert not fresh.noindex, "New primary directory should remain indexable"
-    assert fresh.search and 'id="preview-list"' in root, "Searchable preview grid missing"
-    assert "grid-template-columns:repeat(2,minmax(0,1fr))" in root, "Desktop two-column layout missing"
+    assert fresh.search and 'id="preview-groups"' in root, "Searchable grouped preview list missing"
+    assert "grid-template-columns:repeat(2,minmax(0,1fr))" in styles, "Desktop two-column layout missing"
+    assert "/previews/assets/css/preview-directory.css?v=1" in root, "Directory stylesheet missing"
+    assert "Browse the archive" not in root and "All previews" not in root, "Removed archive labels returned"
+    assert "CRIO / PREVIEWS" not in root and "Internal directory" not in root, "Internal directory labels returned"
+    for heading in ("Architecture &amp; Interior Design", "Graphic Design &amp; Branding", "Web Design", "Music &amp; Artist Promotion"):
+        assert heading in root, f"Preview category missing: {heading}"
+    assert root.count('<section class="preview-group"') == 4, "Static directory groups are incomplete"
+    assert "Internal directory compact view" not in root, "Superseded directory CSS override returned"
+    assert "presentation-init.js" not in root and "presentation-editorial.css" not in root, "Project presentation chrome should not load on the directory"
+    assert "presentation-init.js" not in root and "presentation-editorial.css" not in root, "Project presentation chrome should not load on the directory"
     assert "api.github.com/repos/criocreatives/Crio-Website/git/trees/main?recursive=1" in root
     assert "const excluded=new Set(['list','portfolio'])" in root
     assert stale.canonical == [ROOT_URL] and stale.noindex, "Legacy redirect needs canonical + noindex"
