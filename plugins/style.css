@@ -30,7 +30,7 @@ h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.055em}
 .hero{position:relative;padding:clamp(195px,19vw,278px) 0 43px;min-height:min(870px,94svh);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
 .hero::before{content:"";position:absolute;top:2%;right:-16%;width:min(700px,62vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(237,28,36,.075),transparent 65%);pointer-events:none}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(265px,.58fr);gap:clamp(42px,6vw,120px);align-items:end;position:relative}
-.hero h1{font-size:clamp(68px,9.2vw,154px);line-height:.88;margin:0;text-transform:uppercase;font-weight:800;letter-spacing:-.079em}
+.hero h1{font-size:clamp(68px,9.2vw,154px);line-height:.88;margin:0;text-transform:uppercase;font-weight:700;letter-spacing:-.079em}
 .hero h1 em{font-style:normal;color:var(--red)}
 .hero-side{border-top:2px solid var(--red);padding-top:25px;margin-bottom:8px}
 .hero-side p{font-size:clamp(18px,1.85vw,25px);line-height:1.45;letter-spacing:-.02em;color:#41434A;margin:0 0 28px}
