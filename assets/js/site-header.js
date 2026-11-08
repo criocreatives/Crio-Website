@@ -57,9 +57,26 @@
     if (returnFocus) button.focus();
   };
 
+  const updateNavigation = () => {
+    if (!button) return;
+    header.classList.remove('nav-compact');
+    const linkWidth = nav ? Array.from(nav.children).reduce((width, link) => width + link.getBoundingClientRect().width, 0) : 0;
+    const needsMenu = window.innerWidth <= 1280 || (nav && (nav.scrollWidth > nav.clientWidth + 1 || linkWidth > nav.clientWidth + 1));
+    header.classList.toggle('nav-compact', needsMenu);
+    if (needsMenu) closeMenu();
+  };
+
+  const handleResize = () => {
+    updateNavigation();
+    queueUpdate();
+    if (!header.classList.contains('nav-compact')) closeMenu();
+  };
+
   updateHeader();
+  updateNavigation();
+  if (document.fonts?.ready) document.fonts.ready.then(updateNavigation);
   window.addEventListener('scroll', queueUpdate, { passive: true });
-  window.addEventListener('resize', queueUpdate, { passive: true });
+  window.addEventListener('resize', handleResize, { passive: true });
 
   if (!button || !nav) return;
   button.addEventListener('click', () => {
@@ -78,7 +95,4 @@
   document.addEventListener('click', event => {
     if (!header.contains(event.target)) closeMenu();
   });
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 900) closeMenu();
-  }, { passive: true });
 })();

@@ -91,8 +91,8 @@ summary:after{content:"+";display:grid;place-items:center;width:26px;height:26px
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}a,button,input{transition:none!important}.spinner{animation:none}}
 @media print{@page{margin:12mm}body,.shell{background:#fff}.shell{width:100%;min-height:0}.copy,.quicknav{display:none!important}.hero{padding:0 0 18px}.hero h1{font-size:32px}.shell main{padding:18px 0}.section{margin-top:22px}.card{box-shadow:none;break-inside:avoid}.cards{display:block}.card+.card{margin-top:14px}.card-head:before{filter:none}details{display:block;overflow:visible;break-inside:avoid}details>summary{display:none}details:not([open])>*:not(summary){display:block}details::details-content{content-visibility:visible!important;height:auto!important}.footer{padding-bottom:0}}
 </style>
-<link rel="stylesheet" href="/assets/css/site-header.css?v=3" data-site-header>
-<script defer src="/assets/js/site-header.js?v=1" data-crio-site-header></script>
+<link rel="stylesheet" href="/assets/css/site-header.css?v=4" data-site-header>
+<script defer src="/assets/js/site-header.js?v=2" data-crio-site-header></script>
 </head>
 <body class="crio-payment-page">
 <!-- CRIO-HEADER:START -->
@@ -117,7 +117,7 @@ const PAYMENT_THEME=document.getElementById("payment-theme").outerHTML;
 const PAYMENT_HEADER=document.getElementById("site-header").outerHTML;
 const PAYMENT_SHELL_CSS=document.querySelector("link[data-payment-shell]").outerHTML;
 const PAYMENT_HEADER_CSS=document.querySelector("link[data-site-header]").outerHTML;
-const PAYMENT_SHELL_SCRIPT='<script defer src="/assets/js/site-header.js?v=1"><'+'/script>';
+const PAYMENT_SHELL_SCRIPT='<script defer src="/assets/js/site-header.js?v=2"><'+'/script>';
 const sentenceLabel=text=>text.startsWith("$")?text:text.replace(/\b[A-Z][a-z]+\b/g,(word,index)=>index===0?word:word.toLowerCase());
 const themeDetails=html=>html
   .replace(/style-src 'unsafe-inline'/g,"style-src 'self' 'unsafe-inline'")

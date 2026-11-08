@@ -64,7 +64,7 @@ def main():
     assert "/previews/list/" not in nav, "Preview navigation still links to obsolete directory"
     assert "crio-ed-bar" not in nav and "createElement('header')" not in nav, "Preview script must not inject a competing header"
     assert "crio-ed-rule" in nav, "Project presentation label strip should remain"
-    assert 'id="site-header"' in root and 'src="/assets/js/site-header.js?v=1"' in root
+    assert 'id="site-header"' in root and 'src="/assets/js/site-header.js?v=2"' in root
     assert 'href="/previews/"' not in root.split('id="site-header"', 1)[1].split('</header>', 1)[0], "Directory header must not link to itself"
 
     expected = {
