@@ -141,12 +141,12 @@ body.crio-preview-list .directory-main {
 
 .row-num {
   color: var(--directory-red);
-  font: 700 10px var(--directory-font);
+  font: 400 10px var(--directory-font);
 }
 
 .row-name {
   overflow-wrap: anywhere;
-  font: 700 clamp(15px, 1.2vw, 17px)/1.25 var(--directory-font);
+  font: 400 clamp(15px, 1.2vw, 17px)/1.25 var(--directory-font);
 }
 
 .directory-empty {
