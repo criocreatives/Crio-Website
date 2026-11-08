@@ -1,0 +1,51 @@
+name: Upload verified Rhynie Drive pantry images
+on:
+  push:
+    paths:
+      - .github/workflows/rhynie-pantry-one-time-upload.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  upload-pantry-images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download original approved pantry renders
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p previews/rhynie-drive/images
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/mwn6Q30bAGfieqqC' --output 'previews/rhynie-drive/images/pantry-overview.webp'
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/9xS4o56niARZR4JN' --output 'previews/rhynie-drive/images/pantry-dispensers.webp'
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/DHDg0ABwsA2967CU' --output 'previews/rhynie-drive/images/pantry-storage.webp'
+      - name: Verify binary integrity and dimensions
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd previews/rhynie-drive/images
+          printf '%s\n' \
+            'ea70c14ecf4e9f5ab22d1ff0cb75049fbd0e15248699fd01e91eab969b07de70  pantry-overview.webp' \
+            '286c88bbea11c18142605bc13bfc8c737fe645d61eef1306bed51664693f234d  pantry-dispensers.webp' \
+            'a416c54007872337837d2e8d1a2fd1cc1b6f1a33729b2f2f019fb97f0fb1af9d  pantry-storage.webp' | sha256sum -c -
+          python3 - <<'PY'
+          from pathlib import Path
+          from struct import unpack
+          for name in ["pantry-overview.webp","pantry-dispensers.webp","pantry-storage.webp"]:
+              data=Path(name).read_bytes()
+              assert data[:4]==b'RIFF' and data[8:12]==b'WEBP', f'Not a WebP: {name}'
+              assert len(data)>100000, f'Image unexpectedly small: {name}'
+              print(f'{name}: verified {len(data)} bytes')
+          PY
+      - name: Commit three pantry WebPs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add previews/rhynie-drive/images/pantry-overview.webp previews/rhynie-drive/images/pantry-dispensers.webp previews/rhynie-drive/images/pantry-storage.webp
+          if git diff --cached --quiet; then echo 'All three files already current'; exit 0; fi
+          git commit -m 'Add three pantry renders to Rhynie Drive assets'
+          git push origin HEAD:refs/heads/main
