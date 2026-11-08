@@ -4,6 +4,7 @@ const {chromium} = require('playwright-core');
 const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
+const baseUrl = process.env.BASE_URL || 'http://127.0.0.1:8765';
 async function headerState(page) {
   return page.locator('#site-header').evaluate(el => {
     const rect = node => {
@@ -34,7 +35,7 @@ async function headerState(page) {
     for (const size of sizes) {
       const reference=await browser.newPage({viewport:{width:size.width,height:size.height},reducedMotion:'reduce'});
       referencePages.push(reference);
-      await reference.goto('http://127.0.0.1:8765/',{waitUntil:'load',timeout:30000});
+      await reference.goto(`${baseUrl}/`,{waitUntil:'load',timeout:30000});
       await reference.waitForFunction(()=>document.querySelector('#site-header')?.style.getPropertyValue('--morph-left'));
       homeReference[size.name]={top:await headerState(reference)};
       await reference.evaluate(()=>window.scrollTo(0,240));
@@ -50,14 +51,14 @@ async function headerState(page) {
       const galleryCount = project.sections.reduce((total, s) => total + (s.images?.length || 0), 0);
       for (const size of sizes) {
         const page = await browser.newPage({viewport:{width:size.width,height:size.height},reducedMotion:'reduce'});
-        const url = 'http://127.0.0.1:8765/previews/' + project.slug + '/';
+        const url = `${baseUrl}/previews/${project.slug}/`;
         const issues = [];
         page.on('pageerror', e => issues.push(e.message));
         await page.goto(url,{waitUntil:'load',timeout:30000});
         assert.equal(await page.locator('.site-header').count(),1,url+' single header');
         assert.equal(await page.locator('#site-header').count(),1,url+' shared site header controller');
         assert.equal(await page.locator('script[src^="/assets/js/site-header.js"]').count(),1,url+' shared site header morph');
-        assert.equal(await page.locator('link[href="/assets/css/site-header.css?v=3"]').count(),1,url+' shared site header stylesheet');
+        assert.equal(await page.locator('link[href="/assets/css/site-header.css?v=4"]').count(),1,url+' shared site header stylesheet');
         assert.equal(await page.locator('link[href="/style.css?v=4"]').count(),1,url+' exact home header stylesheet');
         assert.equal(await page.locator('link[href="/previews/assets/css/arch-viz.css?v=5"]').count(),1,url+' current Arch/Viz layout stylesheet');
         assert.equal(await page.locator('.av-hero').count(),1,url+' single hero');

@@ -14,8 +14,8 @@ CONFIG = ROOT / "scripts/site-header-pages.json"
 TEMPLATE = ROOT / "scripts/templates/site-header.html.tmpl"
 START = "<!-- CRIO-HEADER:START -->"
 END = "<!-- CRIO-HEADER:END -->"
-CSS_HREF = "/assets/css/site-header.css?v=3"
-SCRIPT_SRC = "/assets/js/site-header.js?v=1"
+CSS_HREF = "/assets/css/site-header.css?v=4"
+SCRIPT_SRC = "/assets/js/site-header.js?v=2"
 
 
 def esc(value: str) -> str:
@@ -64,7 +64,7 @@ def ensure_assets(page: str) -> str:
     css_pattern = re.compile(r'<link\b(?=[^>]*href=["\'][^"\']*/assets/css/site-header\.css(?:\?[^"\']*)?["\'])[^>]*>', re.I)
     head = css_pattern.sub("", head)
     script_tag = f'<script defer src="{SCRIPT_SRC}" data-crio-site-header></script>'
-    script_pattern = re.compile(r'<script\b(?=[^>]*src=["\']' + re.escape(SCRIPT_SRC) + r'["\'])[^>]*>\s*</script>', re.I)
+    script_pattern = re.compile(r'<script\b(?=[^>]*src=["\']/?assets/js/site-header\.js(?:\?[^"\']*)?["\'])[^>]*>\s*</script>', re.I)
     head = script_pattern.sub("", head)
     # Place the one shared CSS and controller after page styles, before parsing the body.
     head = head.rstrip() + "\n" + css_tag + "\n" + script_tag + "\n"

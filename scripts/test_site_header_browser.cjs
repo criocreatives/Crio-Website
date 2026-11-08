@@ -5,6 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { chromium } = require('playwright-core');
 
+const baseUrl = process.env.BASE_URL || 'http://127.0.0.1:8765';
 const pages = Object.keys(JSON.parse(fs.readFileSync('scripts/site-header-pages.json', 'utf8')));
 for (const file of fs.readdirSync('previews/projects').filter(name => name.endsWith('.json'))) {
   pages.push(`previews/${path.basename(file, '.json')}/index.html`);
@@ -34,7 +35,7 @@ async function state(page) {
   try {
     for (const viewport of [{ name: 'desktop', width: 1440, height: 900 }, { name: 'tablet', width: 1024, height: 768 }, { name: 'mobile', width: 390, height: 844 }]) {
       const home = await browser.newPage({ viewport: { width: viewport.width, height: viewport.height }, reducedMotion: 'reduce' });
-      await home.goto('http://127.0.0.1:8765/', { waitUntil: 'load' });
+      await home.goto(`${baseUrl}/`, { waitUntil: 'load' });
       await home.waitForFunction(() => document.querySelector('#site-header')?.style.getPropertyValue('--morph-left'));
       await home.evaluate(() => { document.body.style.minHeight = '2500px'; });
       const homeTop = await state(home);
@@ -47,7 +48,7 @@ async function state(page) {
         const page = await browser.newPage({ viewport: { width: viewport.width, height: viewport.height }, reducedMotion: 'reduce' });
         const errors = [];
         page.on('pageerror', error => errors.push(error.message));
-        await page.goto(`http://127.0.0.1:8765/${route}`, { waitUntil: 'load', timeout: 30000 });
+        await page.goto(`${baseUrl}/${route}`, { waitUntil: 'load', timeout: 30000 });
         await page.waitForFunction(() => document.querySelector('#site-header')?.style.getPropertyValue('--morph-left'));
         assert.equal(await page.locator('#site-header').count(), 1, `${route}: one shared header`);
         assert.equal(await page.locator('#site-header .nav').count(), route === 'payment-details/index.html' ? 0 : 1, `${route}: expected nav slot`);
@@ -60,7 +61,18 @@ async function state(page) {
         const transform = linkStyles.map(link => link.transform);
         assert.ok(transform.every(value => value === 'uppercase'), `${route}: header links must render in uppercase`);
         assert.ok(linkStyles.every(link => link.whiteSpace === 'nowrap'), `${route}: menu labels must stay on one line`);
-        if (viewport.width > 1280) {
+        const navigationLayout = await page.locator('#site-header').evaluate(header => {
+          const nav = header.querySelector('.nav');
+          const compact = header.classList.contains('nav-compact');
+          header.classList.remove('nav-compact');
+          const linkWidth = nav ? Array.from(nav.children).reduce((width, link) => width + link.getBoundingClientRect().width, 0) : 0;
+          const overflows = nav ? nav.scrollWidth > nav.clientWidth + 1 || linkWidth > nav.clientWidth + 1 : false;
+          header.classList.toggle('nav-compact', compact);
+          return { compact, overflows };
+        });
+        assert.ok(navigationLayout.compact || !navigationLayout.overflows, `${route} ${viewport.name}: inline navigation must fit before displaying`);
+        if (viewport.width <= 1280 && await page.locator('#site-header .menu-toggle').count()) assert.equal(navigationLayout.compact, true, `${route}: narrow viewport uses the shared menu`);
+        if (viewport.width > 1280 && !navigationLayout.compact) {
           const dividerAlignment = await page.locator('#site-header .nav a').evaluateAll(links => links.slice(0, -1).map((link, index) => {
             const labelRect = element => {
               const range = document.createRange();
@@ -82,7 +94,7 @@ async function state(page) {
           return { left: image.left, right: image.right, headerLeft: header.left, headerRight: header.right };
         });
         assert.ok(logoBounds.left >= logoBounds.headerLeft && logoBounds.right <= logoBounds.headerRight, `${route}: header logo must not be clipped`);
-        if (viewport.width <= 1280 && await page.locator('#site-header .menu-toggle').count()) {
+        if (navigationLayout.compact && await page.locator('#site-header .menu-toggle').count() && await page.locator('#site-header .nav').count()) {
           const button = page.locator('#site-header .menu-toggle');
           assert.equal(await button.isVisible(), true, `${route}: compact menu is visible before links can wrap`);
           await button.click();
