@@ -6,7 +6,7 @@
   "indexable": true,
   "seo": {
     "title": "Rhynie Drive | Chantier Construction — Crio Creatives",
-    "description": "Kitchen and pantry, living room, powder room, dining area, and bedroom renovations proposed at Rhynie Drive, Montego Bay, Jamaica. Interior design and visualization by Crio Creatives for Chantier Construction."
+    "description": "Kitchen and pantry, two living rooms including an upstairs ocean-facing lounge, powder room, dining area, and bedroom renovations proposed at Rhynie Drive, Montego Bay, Jamaica. Interior design and visualization by Crio Creatives for Chantier Construction."
   },
   "hero": {
     "src": "/previews/rhynie-drive/images/living-front.webp?v=20261031-1",
@@ -16,7 +16,7 @@
       "Rhynie",
       "Drive."
     ],
-    "description": "Kitchen and pantry, living room, powder room, dining area and bedroom renovations.",
+    "description": "Kitchen and pantry, downstairs and upstairs living rooms, powder room, dining area and bedroom renovations.",
     "focus": "center center"
   },
   "nav": [
@@ -31,6 +31,10 @@
     {
       "id": "powder-room",
       "label": "Powder Room"
+    },
+    {
+      "id": "living-2",
+      "label": "Living Room #2"
     },
     {
       "id": "dining",
@@ -137,11 +141,35 @@
       ]
     },
     {
+      "id": "living-2",
+      "kind": "gallery",
+      "title": "Living Room #2.",
+      "paragraphs": [
+        "04 / Interior renovation",
+        "Upstairs living room with a vaulted exposed-rafter ceiling, warm timber furniture and an ocean-facing terrace."
+      ],
+      "images": [
+        {
+          "src": "/previews/rhynie-drive/images/living-room-2-seating.webp",
+          "alt": "Upstairs living room with vaulted exposed-rafter ceiling, sofa, timber-framed lounge chairs and doors opening to the ocean-facing terrace",
+          "caption": "Living Room #2 / Seating & Terrace"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/living-room-2-media-wall.webp",
+          "alt": "Upstairs living room with vaulted ceiling, ocean view, media wall, rattan-fronted console and cream sofa",
+          "caption": "Living Room #2 / Media Wall & Ocean View"
+        }
+      ],
+      "groups": [
+        2
+      ]
+    },
+    {
       "id": "dining",
       "kind": "gallery",
       "title": "Dining Area.",
       "paragraphs": [
-        "04 / Interior renovation",
+        "05 / Interior renovation",
         "A welcoming dining setting with dark timber, upholstered seating and an outlook to the terrace."
       ],
       "images": [
@@ -160,7 +188,7 @@
       "kind": "gallery",
       "title": "Master Bedroom.",
       "paragraphs": [
-        "05 / Interior renovation",
+        "06 / Interior renovation",
         "Warm timber finishes, a curtained canopy bed and relaxed seating overlooking the landscape."
       ],
       "images": [
@@ -196,7 +224,7 @@
       "kind": "gallery",
       "title": "Master Bathroom.",
       "paragraphs": [
-        "06 / Interior renovation",
+        "07 / Interior renovation",
         "A cohesive, warm-toned bathroom renovation with refined architectural and lighting details.",
         "Creation of an arched entrance to the shower, replacement light fixtures above the vanity mirrors, and a single consistent tile treatment across the bathroom floor."
       ],
@@ -221,7 +249,7 @@
       "kind": "gallery",
       "title": "Bedroom 2.",
       "paragraphs": [
-        "07 / Interior renovation",
+        "08 / Interior renovation",
         "A calm bedroom with warm timber detailing, neutral textiles, generous daylight and a window-side seating nook."
       ],
       "images": [
@@ -245,7 +273,7 @@
       "kind": "gallery",
       "title": "Bedroom 3.",
       "paragraphs": [
-        "08 / Interior renovation",
+        "09 / Interior renovation",
         "Two double beds, a richly layered tropical botanical feature wall, warm timber finishes and coordinated natural textures."
       ],
       "images": [
@@ -281,7 +309,7 @@
       "kind": "gallery",
       "title": "Guestroom.",
       "paragraphs": [
-        "09 / Interior renovation",
+        "10 / Interior renovation",
         "Downstairs bedroom with a dramatic palm-silhouette feature wall, warm timber finishes and a bright window-side seating area."
       ],
       "images": [
