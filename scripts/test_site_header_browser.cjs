@@ -33,6 +33,14 @@ async function state(page) {
   assert.ok(executablePath, 'Install Chrome/Chromium or set CHROME_BIN');
   const browser = await chromium.launch({ executablePath, headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
   try {
+    const preinit = await browser.newPage({ viewport: { width: 1458, height: 850 }, reducedMotion: 'reduce' });
+    await preinit.route('**/assets/js/site-header.js*', route => route.abort());
+    await preinit.goto(`${baseUrl}/previews/rhynie-drive/index.html`, { waitUntil: 'load', timeout: 30000 });
+    assert.equal(await preinit.locator('#site-header').evaluate(header => header.classList.contains('nav-compact')), true, 'long preview navigation is compact before the shared script runs');
+    assert.equal(await preinit.locator('#site-header .menu-toggle').isVisible(), true, 'long preview navigation exposes its menu before the shared script runs');
+    assert.equal(await preinit.locator('#site-header .nav').isVisible(), false, 'long preview navigation cannot overlap the logo before the shared script runs');
+    await preinit.close();
+
     for (const viewport of [{ name: 'desktop', width: 1440, height: 900 }, { name: 'tablet', width: 1024, height: 768 }, { name: 'mobile', width: 390, height: 844 }]) {
       const home = await browser.newPage({ viewport: { width: viewport.width, height: viewport.height }, reducedMotion: 'reduce' });
       await home.goto(`${baseUrl}/`, { waitUntil: 'load' });

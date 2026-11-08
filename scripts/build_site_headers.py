@@ -23,8 +23,9 @@ def esc(value: str) -> str:
 
 
 def render(template: str, config: dict) -> str:
+    items = config.get("links", [])
     links = []
-    for item in config.get("links", []):
+    for item in items:
         cls = f' class="{esc(item["class"])}"' if item.get("class") else ""
         current = ' aria-current="page"' if item.get("current") else ""
         links.append(f'<a href="{esc(item["href"])}"{cls}{current}>{esc(item["label"])}</a>')
@@ -37,6 +38,8 @@ def render(template: str, config: dict) -> str:
     values = {
         "HOME_HREF": esc(config.get("homeHref", "/")),
         "CONTEXT": context_html,
+        # Avoid an overlapping first paint for long navs before the controller measures them.
+        "NAV_CLASS": " nav-compact" if len(items) >= 9 else "",
         "MENU": menu,
         "NAV_LABEL": esc(config.get("navLabel", "Primary navigation")),
         "NAV_LINKS": nav,
@@ -44,6 +47,7 @@ def render(template: str, config: dict) -> str:
     # NAV and its accessible label are rendered together so empty navigation omits both controls.
     rendered = template.replace("[[HOME_HREF]]", values["HOME_HREF"])
     rendered = rendered.replace("[[CONTEXT]]", values["CONTEXT"])
+    rendered = rendered.replace("[[NAV_CLASS]]", values["NAV_CLASS"])
     rendered = rendered.replace("[[MENU]]", values["MENU"])
     rendered = re.sub(r'<nav class="nav" id="site-nav" aria-label="\[\[NAV_LABEL\]\]">\[\[NAV_LINKS\]\]</nav>', nav_html, rendered)
     if "[[" in rendered:

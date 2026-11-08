@@ -7,7 +7,8 @@ function renderHeader(config,t){
  const context=config.context?`<span class="header-context">${esc(config.context)}</span>`:"";
  const menu=links?'<button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">MENU</button>':"";
  const nav=links?`<nav class="nav" id="site-nav" aria-label="${esc(config.navLabel||"Project navigation")}">${links}</nav>`:"";
- return t.replace("[[HOME_HREF]]",esc(config.homeHref||"/")).replace("[[CONTEXT]]",context).replace("[[MENU]]",menu).replace(/<nav class="nav" id="site-nav" aria-label="\[\[NAV_LABEL\]\]">\[\[NAV_LINKS\]\]<\/nav>/,nav).trim();
+ const navClass=config.links.length>=9?" nav-compact":"";
+ return t.replace("[[HOME_HREF]]",esc(config.homeHref||"/")).replace("[[CONTEXT]]",context).replace("[[NAV_CLASS]]",navClass).replace("[[MENU]]",menu).replace(/<nav class="nav" id="site-nav" aria-label="\[\[NAV_LABEL\]\]">\[\[NAV_LINKS\]\]<\/nav>/,nav).trim();
 }
 function render(m,t,headerTemplate){
  const canonical="https://criocreatives.com/previews/"+m.slug+"/", gallery=m.sections.filter(s=>s.kind==="gallery"),galleryTotal=gallery.reduce((n,s)=>n+s.images.length,0),total=galleryTotal;
