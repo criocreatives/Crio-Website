@@ -41,10 +41,12 @@ jobs:
           set -euo pipefail
           base="https://criocreatives.com/previews/tiny-living"
           html=$(curl --fail --location --retry 5 --retry-delay 2 --silent --show-error "${base}/")
-          [[ "${html}" == *'data-index="30"'* ]]
           [[ "${html}" == *'Tiny Living | Architectural Visualization'* ]]
+          gallery_count=$(grep -o 'data-full=' <<< "${html}" | wc -l)
+          test "${gallery_count}" -eq 31
           for n in 1 2 3 4 8 $(seq 10 35)
           do
+            [[ "${html}" == *"data-full=\"./renders/Image${n}.webp\""* ]]
             url="${base}/renders/Image${n}.webp"
             result=$(curl --location --retry 5 --retry-delay 2 --retry-all-errors --silent --show-error --output /dev/null --write-out '%{http_code}' "${url}")
             echo "${url} -> ${result}"
