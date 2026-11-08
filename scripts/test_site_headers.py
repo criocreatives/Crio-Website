@@ -18,7 +18,9 @@ class Page(HTMLParser):
         self.headers = 0
         self.navs = 0
         self.nav_links = []
+        self.header_classes = ""
         self.header_depth = 0
+        self.nav_depth = 0
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
@@ -27,14 +29,18 @@ class Page(HTMLParser):
         if tag == "header" and attrs.get("id") == "site-header":
             self.headers += 1
             self.header_depth += 1
+            self.header_classes = attrs.get("class", "")
         elif tag == "nav" and attrs.get("id") == "site-nav":
             self.navs += 1
-        elif tag == "a" and self.header_depth:
+            self.nav_depth += 1
+        elif tag == "a" and self.nav_depth:
             self.nav_links.append(attrs.get("href", ""))
 
     def handle_endtag(self, tag):
         if tag == "header" and self.header_depth:
             self.header_depth -= 1
+        if tag == "nav" and self.nav_depth:
+            self.nav_depth -= 1
 
 
 def main():
@@ -49,6 +55,7 @@ def main():
         assert page.headers == 1, f"{name}: expected exactly one site header"
         config = CONFIG.get(name)
         assert page.navs == (1 if not config or config.get("links") else 0), f"{name}: unexpected navigation slot count"
+        assert ("nav-compact" in page.header_classes.split()) == (len(page.nav_links) >= 9), f"{name}: long navigation must start in the safe compact state"
         assert source.count("/assets/css/site-header.css?v=4") == 1, f"{name}: shared header CSS must load once"
         assert len(re.findall(r'/assets/css/site-header\.css(?:\?[^"\']*)?["\']', source)) == 1, f"{name}: old or duplicate shared header CSS remains"
         assert source.count("data-crio-site-header") == 1, f"{name}: shared header controller must load once"

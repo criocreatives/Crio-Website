@@ -4,6 +4,7 @@
 Checks the actual checked-in HTML, not a CSS approximation. No third-party modules.
 """
 import json
+import re
 import subprocess
 from html import unescape
 from html.parser import HTMLParser
@@ -88,6 +89,8 @@ def main():
         assert page.sections == [s["id"] for s in m["sections"]], path
         assert len(page.stylesheets) == 3 and page.stylesheets[0] == "/assets/css/site-header.css?v=4" and page.stylesheets[1].startswith("/previews/assets/css/arch-viz.css") and page.stylesheets[2] == "/style.css?v=4", path
         assert 'id="site-header"' in html and 'id="site-nav"' in html, path
+        initial_compact = len(re.findall(r'<nav class="nav"[^>]*>(.*?)</nav>', html)[0].split("<a ")) - 1 >= 9
+        assert ("site-header nav-compact" in html) == initial_compact, f"{path}: long navigation must start in the safe compact state"
         assert 'src="/assets/js/site-header.js?v=2"' in html and 'src="/assets/js/site.js?v=5"' in html, f"Shared header or site controller missing: {path}"
         assert html.count('id="site-header"') == 1 and html.count('id="site-nav"') == 1, path
         assert page.anchors.count("/previews/") == 1 and not page.all_previews_footer, path
