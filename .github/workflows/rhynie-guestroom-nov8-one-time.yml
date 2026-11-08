@@ -1,0 +1,51 @@
+name: Replace Rhynie Drive Guestroom originals Nov 8
+on:
+  push:
+    paths:
+      - .github/workflows/rhynie-guestroom-nov8-one-time.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  replace-guestroom:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download three user-provided original WebP images
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p previews/rhynie-drive/images
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/ZUaDH3I3fRihlhYz' --output 'previews/rhynie-drive/images/guestroom-overview.webp'
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/OTixSBtTnHmBPRYr' --output 'previews/rhynie-drive/images/guestroom-angled.webp'
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/qk2Z6Dn0y2I0rcns' --output 'previews/rhynie-drive/images/guestroom-seating.webp'
+      - name: Verify exact uploaded bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd previews/rhynie-drive/images
+          printf '%s\n' \
+            'eab7e268bdc217d7858336d4687b13c42ad98231a4323863b2ca4d9bbfc76d57  guestroom-overview.webp' \
+            'e36221923f7c241c0896d1f8f8615936abe0a2d0c7635a58afd5d1f30a54b0c6  guestroom-angled.webp' \
+            'd893dd6ae27e1c5f1b20258dc156b469a9f11ed1c7e784cf5d79dac5731937d1  guestroom-seating.webp' | sha256sum -c -
+          python3 - <<'PY'
+          from pathlib import Path
+          names = ["guestroom-overview.webp","guestroom-angled.webp","guestroom-seating.webp"]
+          for name in names:
+              b = Path(name).read_bytes()
+              assert b[:4] == b'RIFF' and b[8:12] == b'WEBP', f'Invalid WebP: {name}'
+              assert len(b) > 100000, f'File unexpectedly small: {name}'
+              print(f'{name}: validated {len(b)} bytes')
+          PY
+      - name: Commit Guestroom image replacements
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add previews/rhynie-drive/images/guestroom-overview.webp previews/rhynie-drive/images/guestroom-angled.webp previews/rhynie-drive/images/guestroom-seating.webp
+          if git diff --cached --quiet; then echo 'Guestroom images already current'; exit 0; fi
+          git commit -m 'Replace three Guestroom WebPs with November 8 originals'
+          git push origin HEAD:refs/heads/main
