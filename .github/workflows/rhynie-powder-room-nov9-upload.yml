@@ -1,0 +1,58 @@
+name: Replace Rhynie Drive Powder Room original images Nov 9
+on:
+  push:
+    paths:
+      - .github/workflows/rhynie-powder-room-nov9-upload.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: rhynie-powder-room-nov9-upload
+  cancel-in-progress: false
+jobs:
+  replace-powder-room-images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download approved user-uploaded originals
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p previews/rhynie-drive/images
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/hyIT6anmxPt0c2oe' --output 'previews/rhynie-drive/images/powder-room-vanity.webp'
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/5WRX0OvLfmrdRRet' --output 'previews/rhynie-drive/images/powder-room-toilet.webp'
+      - name: Verify exact WebP bytes and source image dimensions
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd previews/rhynie-drive/images
+          printf '%s\n' \
+            'a25b52160ed7784318cf8e87f6ddc431c429d35c6a4c610b940932bca00da7f7  powder-room-vanity.webp' \
+            'ee7e3636792f4cb4f3e4d57b6c5e5697b45b956a007e675599a81b6ed3a63f0d  powder-room-toilet.webp' | sha256sum -c -
+          python3 - <<'PY'
+          from pathlib import Path
+          from struct import unpack
+          for name in ["powder-room-vanity.webp","powder-room-toilet.webp"]:
+              b=Path(name).read_bytes()
+              assert b[:4]==b'RIFF' and b[8:12]==b'WEBP', name
+              assert len(b)>30000, name
+              print(f'{name}: verified {len(b)} bytes')
+          PY
+      - name: Commit exactly two replacement files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add previews/rhynie-drive/images/powder-room-toilet.webp previews/rhynie-drive/images/powder-room-vanity.webp
+          if git diff --cached --quiet; then echo 'Images already up to date'; exit 0; fi
+          git commit -m 'Replace Powder Room renders with November 9 originals'
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:refs/heads/main; then exit 0; fi
+            sleep 2
+          done
+          exit 1
