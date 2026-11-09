@@ -72,28 +72,28 @@
           "alt": "Pantry variation A: central white cubby storage flanked by tall cream shaker cabinets and warm timber base cabinets"
         },
         {
-          "src": "/previews/rhynie-drive/images/pantry-option-a-freezer-wide.webp",
-          "alt": "Pantry variation A: white open cubbies, tall cream cabinetry, timber base cabinets and a white chest freezer beside the window"
-        },
-        {
-          "src": "/previews/rhynie-drive/images/pantry-option-a-freezer-detail.webp",
-          "alt": "Pantry variation A: white chest freezer, timber door and window, with dark wooden flooring"
-        },
-        {
           "src": "/previews/rhynie-drive/images/pantry-option-b-floating-shelves.webp",
           "alt": "Pantry variation B: two warm timber floating shelves between cream full-height cabinets above wood base cupboards"
         },
         {
+          "src": "/previews/rhynie-drive/images/pantry-option-a-freezer-wide.webp",
+          "alt": "Pantry variation A: white open cubbies, tall cream cabinetry, timber base cabinets and a white chest freezer beside the window"
+        },
+        {
           "src": "/previews/rhynie-drive/images/pantry-option-b-freezer-view.webp",
           "alt": "Pantry variation B: timber floating shelves with glass food jars, full-height cream cabinet and white chest freezer below the window"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/pantry-option-a-freezer-detail.webp",
+          "alt": "Pantry variation A: white chest freezer, timber door and window, with dark wooden flooring"
         }
       ],
       "groups": [
         1,
         2,
-        1,
         2,
-        2
+        2,
+        1
       ]
     },
     {
