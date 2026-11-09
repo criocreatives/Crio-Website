@@ -1,0 +1,49 @@
+name: Replace Rhynie Drive Living Room 2 seating render Nov 9
+on:
+  push:
+    paths:
+      - .github/workflows/rhynie-living2-seating-replacement.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  replace-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download exact user-provided image
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/YlT8trV0a1jBawIX' --output previews/rhynie-drive/images/living-room-2-seating.webp
+      - name: Validate file integrity
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd previews/rhynie-drive/images
+          echo '6ce2d908305d08a351058673312053940a70fdd27712f0f57362188d5025efca  living-room-2-seating.webp' | sha256sum -c -
+          python3 - <<'PY'
+          from pathlib import Path
+          b=Path("living-room-2-seating.webp").read_bytes()
+          assert len(b)>100000
+          assert b[:4]==b'RIFF' and b[8:12]==b'WEBP'
+          print(f"Verified: {len(b)} original bytes")
+          PY
+      - name: Commit replacement photo
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add previews/rhynie-drive/images/living-room-2-seating.webp
+          if git diff --cached --quiet; then echo "Already current"; exit 0; fi
+          git commit -m 'Replace Living Room 2 seating view with approved render'
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:refs/heads/main; then exit 0; fi
+            sleep 2
+          done
+          exit 1
