@@ -146,7 +146,7 @@
       "title": "Living Room #2.",
       "paragraphs": [
         "04 / Interior renovation",
-        "The upstairs lounge pairs cream seating and warm timber accents with palm-inspired wall art, a rattan-fronted media console and doors opening to an ocean-facing terrace."
+        "The upstairs lounge pairs cream seating and warm timber accents with palm-inspired wall art, a rattan-fronted media console and an ocean-facing terrace. The dry bar adds a walnut-slat feature wall, floating shelves, coffee station and undercounter beverage cooler."
       ],
       "images": [
         {
@@ -156,10 +156,15 @@
         {
           "src": "/previews/rhynie-drive/images/living-room-2-media-wall.webp?v=20261109-3",
           "alt": "Upstairs living room with vaulted ceiling, timber ceiling fan, rattan-fronted television console and white seating overlooking the sea"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/living-room-2-dry-bar.webp",
+          "alt": "Upstairs living room dry bar with walnut slatted wall, floating timber shelves, coffee machine, undercounter beverage cooler and sunlit hallway"
         }
       ],
       "groups": [
-        2
+        2,
+        1
       ]
     },
     {
