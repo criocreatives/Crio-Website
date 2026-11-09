@@ -1,0 +1,53 @@
+name: Upload Rhynie Drive Upstairs Living Room Dry Bar
+on:
+  push:
+    paths:
+      - .github/workflows/rhynie-living-room-dry-bar-once.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: rhynie-living-room-dry-bar-original-upload
+  cancel-in-progress: false
+jobs:
+  upload-dry-bar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download supplied WebP original
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p previews/rhynie-drive/images
+          curl --fail --location --retry 4 --retry-delay 2 --silent --show-error 'https://at.adobe.com/FLt9wC3zp7THSmiO' --output 'previews/rhynie-drive/images/living-room-2-dry-bar.webp'
+      - name: Verify exact original image bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'ac09eaa5499f2e4ec1d1aaafa79dcee07c97065f75eb439c4528039a39c0b315  previews/rhynie-drive/images/living-room-2-dry-bar.webp' | sha256sum -c -
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('previews/rhynie-drive/images/living-room-2-dry-bar.webp')
+          b=p.read_bytes()
+          assert b[0:4]==b'RIFF' and b[8:12]==b'WEBP'
+          assert len(b)==96130, len(b)
+          print(f'Verified supplied WebP: {len(b)} bytes')
+          PY
+      - name: Commit only the dry bar image
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 'previews/rhynie-drive/images/living-room-2-dry-bar.webp'
+          if git diff --cached --quiet; then echo "Already uploaded"; exit 0; fi
+          git commit -m 'Add approved upstairs Living Room dry bar WebP'
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:refs/heads/main; then exit 0; fi
+            sleep 2
+          done
+          exit 1
