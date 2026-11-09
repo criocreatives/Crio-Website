@@ -1,0 +1,60 @@
+name: Rhynie Drive replace both upstairs living room renders
+on:
+  push:
+    paths:
+      - .github/workflows/rhynie-living2-latest-upload-once.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: rhynie-living-room-2-latest
+  cancel-in-progress: false
+jobs:
+  upload-approved-renders:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Fetch exact user-supplied WebP originals
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p previews/rhynie-drive/images
+          curl --fail --location --retry 4 --retry-delay 2 --silent --show-error 'https://at.adobe.com/wj1OviXwIasEe6ga' --output 'previews/rhynie-drive/images/living-room-2-seating.webp'
+          curl --fail --location --retry 4 --retry-delay 2 --silent --show-error 'https://at.adobe.com/pvNHiNuu9FledZYs' --output 'previews/rhynie-drive/images/living-room-2-media-wall.webp'
+      - name: Validate WebP bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd previews/rhynie-drive/images
+          printf '%s\n' \
+            'ca20b0b42d541d5d873fdbf87629705de822ca4d9f5e04507107e264bdec7cc8  living-room-2-seating.webp' \
+            'f37d3ae17ac1b61465f994fb7ebdfd35c563d99126931bfb7b754c834d4d109e  living-room-2-media-wall.webp' | sha256sum -c -
+          python3 - <<'PY'
+          from pathlib import Path
+          for file in ['living-room-2-seating.webp','living-room-2-media-wall.webp']:
+              blob=Path(file).read_bytes()
+              assert blob[0:4]==b'RIFF' and blob[8:12]==b'WEBP', file
+              assert len(blob)>30000, file
+              print(f'{file}: {len(blob)} bytes verified')
+          PY
+      - name: Commit exactly the two replacement images
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add previews/rhynie-drive/images/living-room-2-seating.webp previews/rhynie-drive/images/living-room-2-media-wall.webp
+          if git diff --cached --quiet; then echo 'Both images already current'; exit 0; fi
+          git commit -m 'Update both upstairs Living Room 2 photos from latest renders'
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:refs/heads/main; then
+              echo 'Original WebPs committed to main'
+              exit 0
+            fi
+            sleep 2
+          done
+          exit 1
