@@ -1,0 +1,68 @@
+name: Upload approved Rhynie Drive pantry alternatives and powder room
+on:
+  push:
+    paths:
+      - .github/workflows/rhynie-pantry-powder-nov09-once.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: rhynie-pantry-powder-nov09-upload
+  cancel-in-progress: false
+jobs:
+  upload-approved-renders:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download seven original WebP renders
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p previews/rhynie-drive/images
+          curl --fail --location --retry 4 --retry-delay 1 --silent --show-error 'https://at.adobe.com/8QGW1xP0VIQ7oo1R' --output 'previews/rhynie-drive/images/powder-room-vanity.webp'
+          curl --fail --location --retry 4 --retry-delay 1 --silent --show-error 'https://at.adobe.com/LvhwfO5YTNyAY1nz' --output 'previews/rhynie-drive/images/pantry-option-b-freezer-view.webp'
+          curl --fail --location --retry 4 --retry-delay 1 --silent --show-error 'https://at.adobe.com/IAB7B3jBckt8YjpS' --output 'previews/rhynie-drive/images/pantry-option-a-storage-wall.webp'
+          curl --fail --location --retry 4 --retry-delay 1 --silent --show-error 'https://at.adobe.com/mT16L0cC8dkUMK11' --output 'previews/rhynie-drive/images/pantry-option-b-floating-shelves.webp'
+          curl --fail --location --retry 4 --retry-delay 1 --silent --show-error 'https://at.adobe.com/YGXN5uC6TYqOKVOZ' --output 'previews/rhynie-drive/images/pantry-option-a-freezer-wide.webp'
+          curl --fail --location --retry 4 --retry-delay 1 --silent --show-error 'https://at.adobe.com/U3yA7zs7ry2E2G03' --output 'previews/rhynie-drive/images/pantry-option-a-freezer-detail.webp'
+          curl --fail --location --retry 4 --retry-delay 1 --silent --show-error 'https://at.adobe.com/krNBc4BCSV3vc3rB' --output 'previews/rhynie-drive/images/powder-room-toilet.webp'
+      - name: Verify submitted binary files exactly
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd previews/rhynie-drive/images
+          printf '%s\n' \
+            '09202e97f3763648f75859b90c92aa3a0a2973773610c5508df9e9e154e3741f  powder-room-vanity.webp' \
+            'd3735c580ef7b16e40c2e63ff10a66211a0a8c4462040b4201694aa63a7b0a3f  pantry-option-b-freezer-view.webp' \
+            '659ee876ff8e18fe9b90024e37ed5ea355267ea3ea64bb50f11026293bf6b494  pantry-option-a-storage-wall.webp' \
+            '130fa70cc0c16611dd778cb7095fb0b5a12baeaa5586ab17fed2e191c09790d3  pantry-option-b-floating-shelves.webp' \
+            '247d6dd17875b80bda6ad4e4540c6525d61e30a67f399e693fc8a5cf13fc0c74  pantry-option-a-freezer-wide.webp' \
+            '69de7453be4fd7e03d4aee25d67d5754f489a471b2194636530c1c4f2deb7cff  pantry-option-a-freezer-detail.webp' \
+            '4b49977f98d7964522bf0dba2701da4631861940d057c5a8e86b3d383a6ce3e6  powder-room-toilet.webp' | sha256sum -c -
+          python3 - <<'PY'
+          from pathlib import Path
+          files = ["powder-room-vanity.webp","pantry-option-b-freezer-view.webp","pantry-option-a-storage-wall.webp","pantry-option-b-floating-shelves.webp","pantry-option-a-freezer-wide.webp","pantry-option-a-freezer-detail.webp","powder-room-toilet.webp"]
+          for name in files:
+              b=Path(name).read_bytes()
+              assert b[:4]==b'RIFF' and b[8:12]==b'WEBP', name
+              assert len(b)>30000, name
+              print(f'{name}: verified {len(b)} bytes')
+          PY
+      - name: Commit the approved replacement renders
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add previews/rhynie-drive/images/powder-room-vanity.webp previews/rhynie-drive/images/pantry-option-b-freezer-view.webp previews/rhynie-drive/images/pantry-option-a-storage-wall.webp previews/rhynie-drive/images/pantry-option-b-floating-shelves.webp previews/rhynie-drive/images/pantry-option-a-freezer-wide.webp previews/rhynie-drive/images/pantry-option-a-freezer-detail.webp previews/rhynie-drive/images/powder-room-toilet.webp
+          if git diff --cached --quiet; then echo 'Images already current'; exit 0; fi
+          git commit -m 'Replace Rhynie Drive powder room and pantry media with approved variants'
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:refs/heads/main; then exit 0; fi
+            sleep 2
+          done
+          exit 1
