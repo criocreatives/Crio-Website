@@ -17,7 +17,7 @@
       "Drive Villa",
       "Renovation"
     ],
-    "description": "Kitchen and pantry, downstairs and upstairs living rooms, powder room, dining area and bedroom renovations.",
+    "description": "Kitchen and pantry, downstairs and upstairs living rooms, staircase landing, powder room, dining area and bedroom renovations.",
     "focus": "center center"
   },
   "nav": [
@@ -32,6 +32,10 @@
     {
       "id": "powder-room",
       "label": "Powder Room"
+    },
+    {
+      "id": "staircase-landing",
+      "label": "Staircase Landing"
     },
     {
       "id": "living-2",
@@ -142,11 +146,33 @@
       ]
     },
     {
+      "id": "staircase-landing",
+      "kind": "gallery",
+      "title": "Staircase Landing.",
+      "paragraphs": [
+        "04 / Interior renovation",
+        "Two variations for the upstairs landing use warm timber slats, a tropical planter and woven accent lighting. One pairs botanical wallpaper with coastal artwork; the other uses a simpler wall with a bird-of-paradise print and timber wall sconce."
+      ],
+      "images": [
+        {
+          "src": "/previews/rhynie-drive/images/staircase-landing-variation-1.webp",
+          "alt": "Staircase landing variation one with pale botanical wallpaper, large coastal palm artwork, timber slat feature, tropical planter and woven floor lantern"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/staircase-landing-variation-2.webp",
+          "alt": "Staircase landing variation two with clean cream wall, bird-of-paradise artwork, timber slat feature with sconce, tropical planter and woven lantern"
+        }
+      ],
+      "groups": [
+        2
+      ]
+    },
+    {
       "id": "living-2",
       "kind": "gallery",
       "title": "Living Room #2.",
       "paragraphs": [
-        "04 / Interior renovation",
+        "05 / Interior renovation",
         "The upstairs lounge features a vaulted exposed-rafter ceiling, warm walnut media wall with integrated lighting, a tropical floral accent wall and cream seating with burgundy accents overlooking the ocean-facing terrace. The adjoining dry bar includes walnut-slat detailing, floating shelves, a coffee station and undercounter beverage cooler."
       ],
       "images": [
@@ -173,7 +199,7 @@
       "kind": "gallery",
       "title": "Dining Area.",
       "paragraphs": [
-        "05 / Interior renovation",
+        "06 / Interior renovation",
         "A dark timber dining table and upholstered chairs create a welcoming space beside large windows and terrace doors."
       ],
       "images": [
@@ -191,7 +217,7 @@
       "kind": "gallery",
       "title": "Master Bedroom.",
       "paragraphs": [
-        "06 / Interior renovation",
+        "07 / Interior renovation",
         "A curtained timber canopy bed anchors the master bedroom, complemented by window-side seating and a warm timber media wall with TV storage."
       ],
       "images": [
@@ -223,7 +249,7 @@
       "kind": "gallery",
       "title": "Master Bathroom.",
       "paragraphs": [
-        "07 / Interior renovation",
+        "08 / Interior renovation",
         "Botanical wallpaper adds texture to the vanity wall, alongside updated lights above the mirrors, a tiled arch framing the shower entrance, a freestanding bath and a consistent neutral floor tile treatment."
       ],
       "images": [
@@ -245,7 +271,7 @@
       "kind": "gallery",
       "title": "Bedroom 2.",
       "paragraphs": [
-        "08 / Interior renovation",
+        "09 / Interior renovation",
         "Warm timber finishes and neutral textiles define the room, with a window-side seating nook, media wall, wardrobe and mirror."
       ],
       "images": [
@@ -267,7 +293,7 @@
       "kind": "gallery",
       "title": "Bedroom 3.",
       "paragraphs": [
-        "09 / Interior renovation",
+        "10 / Interior renovation",
         "Two double beds sit against a layered tropical botanical feature wall, with natural textiles, a dressing table and a media wall."
       ],
       "images": [
@@ -299,7 +325,7 @@
       "kind": "gallery",
       "title": "Guestroom.",
       "paragraphs": [
-        "10 / Interior renovation",
+        "11 / Interior renovation",
         "The downstairs guestroom combines a bold palm-silhouette feature wall, warm timber finishes, a dressing table and media wall with bright window-side seating."
       ],
       "images": [
