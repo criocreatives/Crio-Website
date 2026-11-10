@@ -1,0 +1,61 @@
+name: Upload Bedroom 2 Twin Beds WebP
+on:
+  push:
+    paths:
+      - .github/workflows/rhynie-bedroom2-twins-20261110-once.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: rhynie-bedroom-2-twins-upload
+  cancel-in-progress: false
+jobs:
+  convert-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download and verify original user image
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 4 --retry-delay 2 --silent --show-error 'https://at.adobe.com/cotaU5ysh6iKTCiH' --output /tmp/rhynie-bedroom2-twin-beds.jpeg
+          echo '81f13ec2d351bea3f7f38cba63c6f0e856519455ce6b9dcc7159f0351e998ceb  /tmp/rhynie-bedroom2-twin-beds.jpeg' | sha256sum -c -
+      - name: Convert to optimized WebP, preserving dimensions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet 'Pillow==11.3.0'
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageOps
+          source=Path('/tmp/rhynie-bedroom2-twin-beds.jpeg')
+          dest=Path('previews/rhynie-drive/images/bedroom-2-twin-beds.webp')
+          dest.parent.mkdir(parents=True, exist_ok=True)
+          with Image.open(source) as original:
+              image=ImageOps.exif_transpose(original).convert('RGB')
+              assert image.size==(1448,1086), image.size
+              image.save(dest, format='WEBP', quality=95, method=6)
+          data=dest.read_bytes()
+          assert data[:4]==b'RIFF' and data[8:12]==b'WEBP' and len(data)>100000
+          with Image.open(dest) as converted:
+              assert converted.format=='WEBP' and converted.size==(1448,1086)
+          print(f'Verified WebP {dest}: {len(data)} bytes, 1448x1086')
+          PY
+      - name: Commit the new Bedroom 2 image only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add previews/rhynie-drive/images/bedroom-2-twin-beds.webp
+          if git diff --cached --quiet; then echo 'Already uploaded'; exit 0; fi
+          git commit -m 'Add Bedroom 2 twin-bed render in WebP format'
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:refs/heads/main; then exit 0; fi
+            sleep 2
+          done
+          exit 1
