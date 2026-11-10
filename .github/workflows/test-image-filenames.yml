@@ -68,11 +68,9 @@ jobs:
           python3 scripts/test_site_headers.py
           python3 scripts/check_seo.py
       - name: Install browser QA dependencies
-        run: |
-          npm install --prefix /tmp/crio-image-qa --no-save playwright@1.56.1
-          /tmp/crio-image-qa/node_modules/.bin/playwright install --with-deps chromium
+        run: npm install --prefix /tmp/crio-image-qa --no-save playwright-core@1.56.1
       - name: Start local website and test image workbench in Chromium
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/crio-image-http.log 2>&1 &
           sleep 2
-          NODE_PATH=/tmp/crio-image-qa/node_modules node scripts/test_image_workbench_browser.cjs
+          NODE_PATH=/tmp/crio-image-qa/node_modules CHROME_BIN=/usr/bin/chromium node scripts/test_image_workbench_browser.cjs
