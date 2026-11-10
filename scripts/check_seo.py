@@ -10,9 +10,9 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://criocreatives.com"
 EXCLUDED = {"404.html", "thanks/index.html", "payment-details/index.html"}
+LEGACY_TOOL_REDIRECTS = {"tools/converter/index.html", "tools/compressor/index.html", "tools/resizer/index.html"}
 STRUCTURED = {"index.html", "tools/index.html", "visual-atlas/index.html",
-              "tools/converter/index.html", "tools/compressor/index.html",
-              "tools/resizer/index.html", "tools/watermarker/index.html",
+              "tools/image/index.html", "tools/watermarker/index.html",
               "tools/qr/index.html"}
 
 class Inspector(HTMLParser):
@@ -134,9 +134,11 @@ def main():
             report_failure(failures, rel, "unsafe referrer policy")
         if page.images_missing_alt:
             report_failure(failures, rel, f"{page.images_missing_alt} image(s) lack alt attributes")
-        if rel in EXCLUDED:
+        if rel in EXCLUDED or rel in LEGACY_TOOL_REDIRECTS:
             if not any("noindex" in x for x in page.meta.get("robots", [])):
                 report_failure(failures, rel, "excluded page missing noindex")
+            if rel in LEGACY_TOOL_REDIRECTS and page.links.get("canonical") != [BASE + "/tools/image/"]:
+                report_failure(failures, rel, "legacy tool URL must canonicalize to Image Workbench")
             continue
         url = page_url(rel)
         expected_urls.add(url)
@@ -184,7 +186,7 @@ def main():
         for item in failures:
             print(" -", item)
         return 1
-    print(f"SEO validation passed: {len(expected_urls)} indexable pages, {len(EXCLUDED)} excluded pages.")
+    print(f"SEO validation passed: {len(expected_urls)} indexable pages, {len(EXCLUDED | LEGACY_TOOL_REDIRECTS)} excluded pages.")
     return 0
 
 if __name__ == "__main__":
