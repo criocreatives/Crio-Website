@@ -2,19 +2,20 @@
   "schema_version": 2,
   "category": "arch-viz",
   "slug": "rhynie-drive",
-  "title": "22B Maffee Drive",
+  "title": "22B Maffee Drive Villa Renovation",
   "indexable": true,
   "seo": {
-    "title": "22B Maffee Drive | Chantier Construction — Crio Creatives",
+    "title": "22B Maffee Drive Villa Renovation | Chantier Construction — Crio Creatives",
     "description": "22B Maffee Drive renovation preview in Montego Bay: kitchen and pantry, two living rooms, powder room, dining area, and bedrooms. Designed for Chantier Construction by Crio Creatives."
   },
   "hero": {
     "src": "/previews/rhynie-drive/images/living-front.webp?v=20261031-1",
-    "alt": "Proposed 22B Maffee Drive living-room interior",
+    "alt": "Proposed living-room interior for 22B Maffee Drive Villa Renovation",
     "eyebrow": "Renovation / Montego Bay, Jamaica",
     "lines": [
       "22B Maffee",
-      "Drive"
+      "Drive Villa",
+      "Renovation"
     ],
     "description": "Kitchen and pantry, downstairs and upstairs living rooms, powder room, dining area and bedroom renovations.",
     "focus": "center center"
