@@ -61,22 +61,31 @@
 .field input[type="range"]{width:100%;accent-color:#ed1c24}
 .field input[type="color"]{height:47px;cursor:pointer;padding:5px}
 .field-inline{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-/* Explicitly hide inactive resize controls over the .field / .field-inline display rules. */
-.tools-body[data-tool="resizer"] :is(#resize-bounds,#resize-longest,#resize-ratio)[hidden]{display:none!important}
+.field[hidden],.field-inline[hidden],.tool-mode-panel[hidden],.optimize-note[hidden],.output-summary[hidden]{display:none}
 .field-check{display:flex;align-items:center;gap:10px;font-size:13px;line-height:1.5;color:#ddd}
 .field-check input{accent-color:#ed1c24;width:18px;height:18px}
-.controls-note{margin:0;padding:14px 16px;background:#1a1a1d;border-radius:9px;color:#aeb0b7;font-size:12px;line-height:1.6}
 .tool-primary{width:100%;margin-top:24px;padding:17px;background:#ed1c24;border:1px solid #ed1c24;border-radius:10px;color:#fff;font:800 13px "Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif;letter-spacing:.065em;text-transform:uppercase;cursor:pointer}
 .tool-primary:hover:not(:disabled){background:#cd101c}
 .tool-primary:disabled{opacity:.5;cursor:not-allowed}
-.status{margin:15px 0 0!important;color:#b7dfc1!important;font-size:13px!important;overflow-wrap:anywhere}
-.status[data-error="true"]{color:#ff828a!important}
+.tool-panel p.status{margin:15px 0 0;color:#b7dfc1;font-size:13px;overflow-wrap:anywhere}
+.tool-panel p.status[data-error="true"]{color:#ff828a}
 .tool-disclaimer{margin:20px 0 0;color:#9999a0;font-size:12px;line-height:1.7}
 .tool-disclaimer strong{color:#e3e3e5}
-.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;clip-path:inset(50%);border:0}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;white-space:nowrap;clip-path:inset(50%);border:0}
 @media(max-width:1000px){.tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tool-layout{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:900px){.tools-container{width:calc(100% - 40px)}.tools-page{padding-top:74px}.tools-intro{padding:38px 0 42px}}
 @media(max-width:620px){.tools-container{width:calc(100% - 32px)}.tools-grid{grid-template-columns:1fr}.tools-card{min-height:207px;padding:23px}.tools-intro h1{font-size:clamp(45px,13vw,68px)}.tools-section{padding-bottom:70px}.tools-footer-inner{align-items:flex-start;flex-direction:column}.tool-panel{padding:20px}.tool-heading{padding:25px 0 27px}}
 @media(prefers-reduced-motion:reduce){.tools-card{transition:none}}
-.tools-body .tools-breadcrumbs,.tools-body .tool-primary{font-family:"Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif}
 .tools-body :is(h1,h2,h3){font-family:Helvetica,Arial,sans-serif}
+.tool-mode-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;padding:6px;border:1px solid rgba(255,255,255,.13);border-radius:12px;background:#111214}
+.tool-mode-tab{flex:1 1 0;min-width:0;min-height:42px;padding:10px 14px;border:1px solid transparent;border-radius:8px;background:transparent;color:#b7b7bd;font:700 11px "Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.tool-mode-tab[aria-selected="true"]{border-color:rgba(237,28,36,.4);background:#291315;color:#fff}
+.tool-mode-tab:focus-visible{outline:2px solid #ed1c24;outline-offset:2px}
+.output-summary{display:grid;gap:8px;margin:16px 0 0;padding:0;list-style:none}
+.output-summary li{display:flex;justify-content:space-between;gap:16px;padding:11px 13px;border:1px solid rgba(255,255,255,.09);border-radius:8px;background:#191a1d;color:#dedee1;font-size:12px}
+.output-summary span{color:#aeb0b7;text-align:right}
+.optimize-note{margin:0;padding:13px 15px;border-left:2px solid #ed1c24;background:#1a1a1d;color:#aeb0b7;font-size:12px;line-height:1.6}
+.qr-preview{display:grid;place-items:center;min-height:370px;padding:24px;border-radius:12px;background:#e7e7e7}
+.qr-preview canvas{width:min(100%,340px);height:auto;image-rendering:pixelated;box-shadow:0 8px 30px #0002}
+.qr-input{width:100%;resize:vertical;border:1px solid #45454b;border-radius:9px;background:#1b1c1f;color:#fff;padding:13px;font:inherit}
+.tool-primary--secondary{margin-top:10px;border-color:#45454b;background:#28292d}

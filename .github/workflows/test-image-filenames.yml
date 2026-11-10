@@ -1,14 +1,49 @@
-name: Image export filename QA
+name: Crio image tools QA
 on:
   push:
     branches: [main]
     paths:
       - tools/toolkit.js
+      - tools/index.html
+      - tools/image/index.html
       - tools/converter/index.html
       - tools/compressor/index.html
       - tools/resizer/index.html
+      - tools/tools.css
+      - tools/qr/index.html
+      - tools/qr/qr-app.js
+      - tools/qr/qr-library.js
       - tools/watermarker/index.html
+      - style.css
+      - scripts/check_seo.py
+      - scripts/build_site_headers.py
+      - scripts/site-header-pages.json
+      - scripts/test_site_headers.py
       - scripts/test_image_filename_naming.cjs
+      - scripts/test_image_workbench_browser.cjs
+      - sitemap.xml
+      - .github/workflows/test-image-filenames.yml
+  pull_request:
+    paths:
+      - tools/toolkit.js
+      - tools/index.html
+      - tools/image/index.html
+      - tools/converter/index.html
+      - tools/compressor/index.html
+      - tools/resizer/index.html
+      - tools/tools.css
+      - tools/qr/index.html
+      - tools/qr/qr-app.js
+      - tools/qr/qr-library.js
+      - tools/watermarker/index.html
+      - style.css
+      - scripts/check_seo.py
+      - scripts/build_site_headers.py
+      - scripts/site-header-pages.json
+      - scripts/test_site_headers.py
+      - scripts/test_image_filename_naming.cjs
+      - scripts/test_image_workbench_browser.cjs
+      - sitemap.xml
       - .github/workflows/test-image-filenames.yml
   workflow_dispatch:
 
@@ -16,7 +51,7 @@ permissions:
   contents: read
 
 jobs:
-  filename-tests:
+  image-tools-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,5 +60,17 @@ jobs:
           node-version: '22'
       - name: Check toolkit JavaScript syntax
         run: node --check tools/toolkit.js
-      - name: Test export filename naming and all four controls
+      - name: Test workbench behavior and export filenames
         run: node scripts/test_image_filename_naming.cjs
+      - name: Validate shared headers and SEO metadata
+        run: |
+          python3 scripts/build_site_headers.py --check
+          python3 scripts/test_site_headers.py
+          python3 scripts/check_seo.py
+      - name: Install browser QA dependencies
+        run: npm install --prefix /tmp/crio-image-qa --no-save playwright-core@1.56.1
+      - name: Start local website and test image workbench in Chromium
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/crio-image-http.log 2>&1 &
+          sleep 2
+          NODE_PATH=/tmp/crio-image-qa/node_modules CHROME_BIN=/usr/bin/chromium node scripts/test_image_workbench_browser.cjs

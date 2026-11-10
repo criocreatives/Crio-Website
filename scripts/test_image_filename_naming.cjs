@@ -8,6 +8,9 @@ const { TextEncoder } = require('node:util');
 const root = path.resolve(__dirname, '..');
 const src = fs.readFileSync(path.join(root, 'tools/toolkit.js'), 'utf8');
 assert.match(src, /\n\}\)\(\);\s*$/, 'Expected shared image-tool closure');
+assert.equal((src.match(/async function processFile\(/g) || []).length, 1);
+assert.match(src, /if\(tool==='image-workbench'\)/);
+assert.doesNotMatch(src, /if\(tool==='converter'\|\|tool==='compressor'\)|if\(tool==='resizer'\)/, 'legacy processors should not remain in the shared toolkit');
 const testedSrc = src.replace(
   /\n\}\)\(\);\s*$/,
   '\n  globalThis.__nameTesting = { sourceFormat, outputFilename, safeUniqueNames, resizeDimensions, downloadResults, zipEnabled };\n})();'
@@ -17,6 +20,8 @@ function naming(checked, zipChecked = true) {
   const clicked = [];
   const context = {
     TextEncoder,
+    URLSearchParams,
+    location: { search:'' },
     Blob,
     URL: { createObjectURL: () => 'blob:test', revokeObjectURL() {} },
     setTimeout: callback => callback(),
@@ -50,72 +55,66 @@ for (const [name, type, fmt, suffix, enabledName, disabledName] of cases) {
   assert.equal(naming(false).outputFilename(file, suffix, fmt), disabledName);
 }
 
-const duplicateBatch = [
-  { name: 'Logo.webp' },
-  { name: 'logo.webp' },
-  { name: 'Logo.webp' }
-];
+const duplicateBatch = [{ name: 'Logo.webp' }, { name: 'logo.webp' }, { name: 'Logo.webp' }];
 naming(true).safeUniqueNames(duplicateBatch);
 assert.deepEqual(duplicateBatch.map(x => x.name), ['Logo.webp', 'logo-2.webp', 'Logo-3.webp']);
 
-for (const tool of ['converter', 'compressor', 'resizer', 'watermarker']) {
-  const html = fs.readFileSync(path.join(root, 'tools', tool, 'index.html'), 'utf8');
-  assert.equal((html.match(/id="keep-original-names"/g) || []).length, 1, tool + ': expected one filename option');
-  assert.ok(html.includes('type="checkbox" id="keep-original-names"'), tool + ': checkbox is not present');
-  assert.ok(html.includes('src="/tools/toolkit.js?v=5"'), tool + ': old script version');
-  assert.ok(html.includes('<input type="checkbox" id="zip-files" checked>ZIP files'), tool + ': ZIP toggle missing or off by default');
+for (const [route, mode] of [['converter','convert'],['compressor','optimize'],['resizer','resize']]) {
+  const html = fs.readFileSync(path.join(root, 'tools', route, 'index.html'), 'utf8');
+  assert.match(html, new RegExp('tools/image/\\?mode=' + mode));
+  assert.match(html, /name="robots" content="noindex,follow"/);
+  assert.match(html, /location\.replace\(/);
+  assert.doesNotMatch(html, /http-equiv=\"refresh\"/, 'redirect should have one active implementation');
+  assert.match(html, /<noscript>/, 'redirect should have a no-JavaScript fallback');
 }
+const workbench = fs.readFileSync(path.join(root, 'tools/image/index.html'), 'utf8');
+for (const mode of ['resize','convert','optimize']) assert.match(workbench, new RegExp('data-mode="' + mode + '"'));
+for (const id of ['resize-mode','resize-bounds','resize-longest','resize-ratio','longest-side','format','quality','background','zip-files']) {
+  assert.ok(workbench.includes('id="' + id + '"'), 'Missing workbench control: ' + id);
+}
+assert.match(workbench, /aria-live="polite"/);
+const qr = fs.readFileSync(path.join(root, 'tools/qr/index.html'), 'utf8');
+assert.doesNotMatch(qr, /<(?:div|canvas|textarea|button)[^>]*\sstyle=/, 'QR presentation belongs in the shared stylesheet');
+const stylesheet = fs.readFileSync(path.join(root, 'tools/tools.css'), 'utf8');
+assert.doesNotMatch(stylesheet, /!important/);
 
 const { resizeDimensions } = naming(false);
 const resized = (width, height, opts) => {
   const result = resizeDimensions(width, height, opts);
   return [result.width, result.height];
 };
-const longest = (size, allowUp = false) =>
-  ({ mode: 'longest', longest: size, maxW: 1920, maxH: 1080, ratio: true, allowUp });
-const bounds = (ratio, allowUp = false) =>
-  ({ mode: 'bounds', maxW: 1920, maxH: 1080, ratio, allowUp });
+const longest = (size, allowUp = false) => ({ mode:'longest',longest:size,maxW:1920,maxH:1080,ratio:true,allowUp });
+const bounds = (ratio, allowUp = false) => ({ mode:'bounds',maxW:1920,maxH:1080,ratio,allowUp });
 assert.deepEqual(resized(4000, 3000, longest(1920)), [1920, 1440], 'landscape long edge');
 assert.deepEqual(resized(3000, 4000, longest(1920)), [1440, 1920], 'portrait long edge');
 assert.deepEqual(resized(3000, 3000, longest(1920)), [1920, 1920], 'square long edge');
 assert.deepEqual(resized(800, 600, longest(1920)), [800, 600], 'no unwanted upscale');
 assert.deepEqual(resized(800, 600, longest(1920, true)), [1920, 1440], 'explicit upscale');
-assert.deepEqual(resized(4000, 3000, bounds(true)), [1440, 1080], 'old fit mode preserved');
-assert.deepEqual(resized(4000, 3000, bounds(false)), [1920, 1080], 'old exact dimensions preserved');
+assert.deepEqual(resized(4000, 3000, bounds(true)), [1440, 1080], 'fit within dimensions');
+assert.deepEqual(resized(4000, 3000, bounds(false)), [1920, 1080], 'exact dimensions');
 assert.throws(() => resizeDimensions(4000, 3000, longest(0)), /Longest side/);
 assert.throws(() => resizeDimensions(4000, 3000, longest(40000)), /Longest side/);
-const resizerHTML=fs.readFileSync(path.join(root, 'tools/resizer/index.html'), 'utf8');
-for(const id of ['resize-mode', 'resize-bounds', 'resize-longest', 'resize-ratio', 'longest-side']) {
-  assert.ok(resizerHTML.includes('id="' + id + '"'), 'Missing resizer control: ' + id);
-}
-assert.ok(resizerHTML.includes('<option value="longest">Longest side</option>'));
 
 async function verifyDeliveryModes() {
   const files = [
-    { name: 'Render.webp', blob: new Blob(['a'], { type: 'image/webp' }) },
-    { name: 'Render-2.webp', blob: new Blob(['b'], { type: 'image/webp' }) },
-    { name: 'Render-3.webp', blob: new Blob(['c'], { type: 'image/webp' }) }
+    { name:'Render.webp',blob:new Blob(['a'],{type:'image/webp'}) },
+    { name:'Render-2.webp',blob:new Blob(['b'],{type:'image/webp'}) },
+    { name:'Render-3.webp',blob:new Blob(['c'],{type:'image/webp'}) }
   ];
-  const zipped = naming(false, true);
-  assert.equal(zipped.zipEnabled(), true);
-  const zipMessage = await zipped.downloadResults(files);
-  assert.deepEqual(zipped.clicked, ['crio-converter-3-images.zip']);
-  assert.match(zipMessage, /ZIP download containing 3 images/);
-
-  const separate = naming(false, false);
-  assert.equal(separate.zipEnabled(), false);
-  const separateMessage = await separate.downloadResults(files);
-  assert.deepEqual(separate.clicked, ['Render.webp', 'Render-2.webp', 'Render-3.webp']);
-  assert.match(separateMessage, /3 individual downloads/);
-  assert.match(separateMessage, /allow multiple downloads/i);
-
-  const single = naming(false, true);
-  const singleMessage = await single.downloadResults(files.slice(0,1));
-  assert.deepEqual(single.clicked, ['Render.webp']);
-  assert.match(singleMessage, /1 image download/);
-
-  // Shared batch ZIP behavior must remain the default if an old page omits
-  // the checkbox; existing single-file behavior must remain unchanged.
-  console.log('PASS: Four batch tools, ZIP default, individual downloads, single file, filenames and resizing.');
+  const zipped=naming(true,true);
+  assert.equal(zipped.zipEnabled(),true);
+  const zipMessage=await zipped.downloadResults(files);
+  assert.deepEqual(zipped.clicked,['crio-converter-3-images.zip']);
+  assert.match(zipMessage,/ZIP download containing 3 images/);
+  const separate=naming(true,false);
+  const separateMessage=await separate.downloadResults(files);
+  assert.deepEqual(separate.clicked,['Render.webp','Render-2.webp','Render-3.webp']);
+  assert.match(separateMessage,/3 individual downloads/);
+  assert.match(separateMessage,/allow multiple downloads/i);
+  const single=naming(true,true);
+  const singleMessage=await single.downloadResults(files.slice(0,1));
+  assert.deepEqual(single.clicked,['Render.webp']);
+  assert.match(singleMessage,/1 image download/);
+  console.log('PASS: shared workbench controls, redirect modes, file naming, resizing and downloads.');
 }
-verifyDeliveryModes().catch(error => { console.error(error); process.exitCode = 1; });
+verifyDeliveryModes().catch(error => { console.error(error); process.exitCode=1; });
