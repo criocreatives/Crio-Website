@@ -138,7 +138,7 @@ def main():
             if not any("noindex" in x for x in page.meta.get("robots", [])):
                 report_failure(failures, rel, "excluded page missing noindex")
             if rel in LEGACY_TOOL_REDIRECTS and page.links.get("canonical") != [BASE + "/tools/image/"]:
-                report_failure(failures, rel, "legacy tool URL must canonicalize to Image Workbench")
+                report_failure(failures, rel, "legacy tool URL must canonicalize to Image Processor")
             continue
         url = page_url(rel)
         expected_urls.add(url)
