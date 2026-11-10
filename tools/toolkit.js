@@ -3,10 +3,6 @@
   'use strict';
   const $ = (selector, root = document) => root.querySelector(selector);
   const tool = document.body.dataset.tool;
-  const requestedMode = new URLSearchParams(location.search).get('mode');
-  let mode = ['resize','convert','optimize'].includes(requestedMode)
-    ? requestedMode
-    : document.body.dataset.mode || 'convert';
   const fmtNames = {jpeg:'image/jpeg',png:'image/png',webp:'image/webp'};
   const extNames = {jpeg:'jpg',png:'png',webp:'webp'};
   const bytes = n => n < 1024 ? n + ' B' : n < 1048576 ? (n/1024).toFixed(1)+' KB' : (n/1048576).toFixed(1)+' MB';
@@ -64,7 +60,8 @@
     if(runBtn)runBtn.disabled=!fileList.length;
     if(clearBtn)clearBtn.disabled=!fileList.length;
     const count=$('#file-count');if(count)count.textContent=fileList.length+' image'+(fileList.length===1?'':'s')+' selected';
-    syncFormatControls();
+    if(tool==='image-processor')syncProcessorControls();
+    else syncFormatControls();
   }
   if(picker)picker.addEventListener('change',e=>{addFiles(e.target.files);e.target.value='';});
   if(drop){
@@ -108,48 +105,38 @@
   function syncFormatControls(){
     if(!$('#format'))return;
     const format=$('#format');
-    if(tool==='image-workbench'){
-      const png=format.querySelector('option[value="png"]');
-      const original=format.querySelector('option[value="original"]');
-      if(png)png.hidden=mode==='optimize';
-      if(original)original.hidden=mode!=='resize';
-      if((mode==='optimize'&&format.value==='png')||(mode!=='resize'&&format.value==='original'))format.value='webp';
-    }
     const fmt=format.value;
-    const originalFormats=fmt==='original'?fileList.map(sourceFormat):[];
-    const supportsQuality=fmt==='jpeg'||fmt==='webp'||(fmt==='original'&&originalFormats.some(source=>source==='jpeg'||source==='webp'));
+    if($('#quality-control'))$('#quality-control').hidden=fmt==='png';
+    if($('#background-control'))$('#background-control').hidden=fmt!=='jpeg';
+  }
+  function syncProcessorControls(){
+    const resizeEnabled=$('#do-resize')?.checked===true;
+    const convertEnabled=$('#do-convert')?.checked===true;
+    const optimizeEnabled=$('#do-optimize')?.checked===true;
+    if($('#resize-settings'))$('#resize-settings').hidden=!resizeEnabled;
+    if($('#convert-settings'))$('#convert-settings').disabled=!convertEnabled;
+    if($('#optimize-settings'))$('#optimize-settings').disabled=!optimizeEnabled;
+    const longest=$('#resize-mode')?.value==='longest';
+    if($('#resize-bounds'))$('#resize-bounds').hidden=!resizeEnabled||longest;
+    if($('#resize-longest'))$('#resize-longest').hidden=!resizeEnabled||!longest;
+    if($('#resize-ratio'))$('#resize-ratio').hidden=!resizeEnabled||longest;
+    const selected=convertEnabled?outputFormat():'original';
+    const originalFormats=selected==='original'?fileList.map(sourceFormat):[];
+    const format=selected==='original'
+      ? (originalFormats.length===1?originalFormats[0]:null)
+      : selected;
+    const supportsQuality=optimizeEnabled&&(format==='jpeg'||format==='webp'||(selected==='original'&&originalFormats.some(source=>source==='jpeg'||source==='webp')));
     if($('#quality-control'))$('#quality-control').hidden=!supportsQuality;
-    const needsJpegBackground=fmt==='jpeg'||(fmt==='original'&&originalFormats.includes('jpeg'));
+    const needsJpegBackground=format==='jpeg'||(selected==='original'&&originalFormats.includes('jpeg'));
     if($('#background-control'))$('#background-control').hidden=!needsJpegBackground;
+    const outputIsPng=format==='png'||(selected==='original'&&originalFormats.length>0&&originalFormats.every(source=>source==='png'));
+    if($('#optimize-note'))$('#optimize-note').hidden=!optimizeEnabled||!outputIsPng;
   }
-  function syncMode(next=mode){
-    if(!['resize','convert','optimize'].includes(next))next='resize';
-    mode=next;
-    document.body.dataset.mode=mode;
-    document.querySelectorAll('[data-mode]').forEach(tab=>{
-      const active=tab.dataset.mode===mode;
-      tab.setAttribute('aria-selected',String(active));
-      tab.tabIndex=active?0:-1;
-    });
-    document.querySelectorAll('[data-mode-panel]').forEach(panel=>{panel.hidden=panel.dataset.modePanel!==mode;});
-    const panel=$('#image-settings');if(panel)panel.setAttribute('aria-labelledby','tab-'+mode);
-    if(runBtn)runBtn.textContent=mode==='resize'?'Resize & download':mode==='optimize'?'Optimize & download':'Convert & download';
-    $('#output-summary')?.setAttribute('hidden','');
-    syncResizeMode();syncFormatControls();
-  }
-  if(tool==='image-workbench'){
-    document.querySelectorAll('[role="tab"][data-mode]').forEach(tab=>{
-      tab.addEventListener('click',()=>syncMode(tab.dataset.mode));
-      tab.addEventListener('keydown',event=>{
-        const tabs=Array.from(document.querySelectorAll('[role="tab"][data-mode]'));
-        const index=tabs.indexOf(tab);
-        const next=event.key==='ArrowRight'?(index+1)%tabs.length:event.key==='ArrowLeft'?(index+tabs.length-1)%tabs.length:-1;
-        if(next>=0){event.preventDefault();tabs[next].focus();syncMode(tabs[next].dataset.mode);}
-      });
-    });
-    syncMode(mode);
+  if(tool==='image-processor'){
+    for(const id of ['do-resize','do-convert','do-optimize','resize-mode'])$('#'+id)?.addEventListener('change',syncProcessorControls);
+    syncProcessorControls();
   }else syncFormatControls();
-  $('#format')?.addEventListener('change',syncFormatControls);
+  $('#format')?.addEventListener('change',()=>tool==='image-processor'?syncProcessorControls():syncFormatControls());
 
   // Lightroom-style longest-side resizing: portrait, landscape, and square
   // images share a single maximum dimension without cropping or distortion.
@@ -177,21 +164,17 @@
     }
     return {width:w,height:h};
   }
-  function syncResizeMode(){
-    if(tool!=='image-workbench'||mode!=='resize')return;
-    const longest=$('#resize-mode')?.value==='longest';
-    if($('#resize-bounds'))$('#resize-bounds').hidden=longest;
-    if($('#resize-longest'))$('#resize-longest').hidden=!longest;
-    if($('#resize-ratio'))$('#resize-ratio').hidden=longest;
-  }
-  if(tool==='image-workbench'){
-    $('#resize-mode')?.addEventListener('change',syncResizeMode);
-    syncResizeMode();
-  }
   async function processFile(f){
-    if(tool==='image-workbench'){
+    if(tool==='image-processor'){
+      const resizeEnabled=$('#do-resize')?.checked===true;
+      const convertEnabled=$('#do-convert')?.checked===true;
+      const optimizeEnabled=$('#do-optimize')?.checked===true;
+      const source=sourceFormat(f)||'jpeg';
+      const selected=convertEnabled?outputFormat():'original';
+      const fmt=selected==='original'?source:selected;
+      if(!resizeEnabled&&!convertEnabled&&!optimizeEnabled)return {name:f.name,blob:f,originalSize:f.size};
       return withImage(f,async img=>{
-        const dimensions=mode==='resize'?resizeDimensions(img.naturalWidth,img.naturalHeight,{
+        const dimensions=resizeEnabled?resizeDimensions(img.naturalWidth,img.naturalHeight,{
           mode:$('#resize-mode')?.value||'bounds',
           maxW:Math.round(Number($('#width')?.value||0)),
           maxH:Math.round(Number($('#height')?.value||0)),
@@ -200,14 +183,19 @@
           allowUp:!!$('#upscale')?.checked
         }):{width:img.naturalWidth,height:img.naturalHeight};
         const {width,height}=dimensions;
-        const selected=outputFormat();
-        const fmt=selected==='original'?(sourceFormat(f)||'jpeg'):selected;
+        const resized=width!==img.naturalWidth||height!==img.naturalHeight;
+        const converted=fmt!==source;
+        const optimized=optimizeEnabled&&(fmt==='jpeg'||fmt==='webp');
+        if(!resized&&!converted&&!optimized)return {name:f.name,blob:f,originalSize:f.size};
         const c=canvas(width,height),ctx=c.getContext('2d');ctx.imageSmoothingQuality='high';
         if(fmt==='jpeg')jpegBackground(ctx,c.width,c.height,bg());
         ctx.drawImage(img,0,0,width,height);
-        const b=await blobFromCanvas(c,fmt,quality());
-        const suffix=mode==='resize'?width+'x'+height:mode==='optimize'?'optimized':'converted';
-        return {name:outputFilename(f,suffix,fmt),blob:b,originalSize:f.size};
+        const b=await blobFromCanvas(c,fmt,optimized?quality():1);
+        const suffixes=[];
+        if(resized)suffixes.push(width+'x'+height);
+        if(converted)suffixes.push('to-'+extNames[fmt]);
+        if(optimized)suffixes.push('optimized');
+        return {name:outputFilename(f,suffixes.join('-'),fmt),blob:b,originalSize:f.size};
       });
     }
     if(tool==='watermarker'){
@@ -282,7 +270,7 @@
         if(size>1500000000)throw new Error('Batch exceeds ZIP capacity. Process fewer files at a time.');
         data.push({name:r.name,data:u});
       }
-      download(zipFiles(data),'crio-'+(tool==='image-workbench'?mode:tool)+'-'+results.length+'-images.zip');
+      download(zipFiles(data),'crio-'+tool+'-'+results.length+'-images.zip');
       return 'Started ZIP download containing '+results.length+' images.';
     }
     for(let i=0;i<results.length;i++){
@@ -308,7 +296,7 @@
       safeUniqueNames(results);
       const message=await downloadResults(results);
       showStatus(message+(errors.length?' '+errors.length+' failed: '+errors.join(' / '):''),!!errors.length);
-      if(tool==='image-workbench'&&mode==='optimize'){
+      if(tool==='image-processor'){
         const summary=$('#output-summary');
         if(summary){
           summary.replaceChildren();
@@ -320,9 +308,9 @@
         }
       }
     }catch(e){showStatus(e.message||'Conversion failed. Try a smaller image.',true);}
-    finally{runBtn.disabled=!fileList.length;runBtn.textContent=tool==='image-workbench'?(mode==='resize'?'Resize & download':mode==='optimize'?'Optimize & download':'Convert & download'):'Process & download';}
+    finally{runBtn.disabled=!fileList.length;runBtn.textContent='Process & download';}
   }
-  if(['image-workbench','watermarker'].includes(tool))runBtn?.addEventListener('click',run);
+  if(['image-processor','watermarker'].includes(tool))runBtn?.addEventListener('click',run);
   $('#quality')?.addEventListener('input',e=>{$('#quality-value').textContent=e.target.value+'%';});
   for(const id of ['mark-scale','mark-opacity']){
     $('#'+id)?.addEventListener('input',e=>{const el=$('#'+id+'-value');if(el)el.textContent=e.target.value+'%';});

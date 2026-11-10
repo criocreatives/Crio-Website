@@ -9,7 +9,11 @@ const root = path.resolve(__dirname, '..');
 const src = fs.readFileSync(path.join(root, 'tools/toolkit.js'), 'utf8');
 assert.match(src, /\n\}\)\(\);\s*$/, 'Expected shared image-tool closure');
 assert.equal((src.match(/async function processFile\(/g) || []).length, 1);
-assert.match(src, /if\(tool==='image-workbench'\)/);
+assert.match(src, /if\(tool==='image-processor'\)/);
+assert.doesNotMatch(src, /requestedMode|syncMode|data-mode/);
+assert.match(src, /const resizeEnabled=/);
+assert.match(src, /const convertEnabled=/);
+assert.match(src, /const optimizeEnabled=/);
 assert.doesNotMatch(src, /if\(tool==='converter'\|\|tool==='compressor'\)|if\(tool==='resizer'\)/, 'legacy processors should not remain in the shared toolkit');
 const testedSrc = src.replace(
   /\n\}\)\(\);\s*$/,
@@ -20,13 +24,11 @@ function naming(checked, zipChecked = true) {
   const clicked = [];
   const context = {
     TextEncoder,
-    URLSearchParams,
-    location: { search:'' },
     Blob,
     URL: { createObjectURL: () => 'blob:test', revokeObjectURL() {} },
     setTimeout: callback => callback(),
     document: {
-      body: { dataset: { tool: 'converter' }, appendChild() {} },
+      body: { dataset: { tool: 'image-processor' }, appendChild() {} },
       querySelector: selector =>
         selector === '#keep-original-names' ? { checked } :
         selector === '#zip-files' ? { checked: zipChecked } : null,
@@ -59,20 +61,23 @@ const duplicateBatch = [{ name: 'Logo.webp' }, { name: 'logo.webp' }, { name: 'L
 naming(true).safeUniqueNames(duplicateBatch);
 assert.deepEqual(duplicateBatch.map(x => x.name), ['Logo.webp', 'logo-2.webp', 'Logo-3.webp']);
 
-for (const [route, mode] of [['converter','convert'],['compressor','optimize'],['resizer','resize']]) {
+for (const route of ['converter','compressor','resizer']) {
   const html = fs.readFileSync(path.join(root, 'tools', route, 'index.html'), 'utf8');
-  assert.match(html, new RegExp('tools/image/\\?mode=' + mode));
+  assert.match(html, /tools\/image\//);
+  assert.doesNotMatch(html, /tools\/image\/\?mode=/);
   assert.match(html, /name="robots" content="noindex,follow"/);
   assert.match(html, /location\.replace\(/);
   assert.doesNotMatch(html, /http-equiv=\"refresh\"/, 'redirect should have one active implementation');
   assert.match(html, /<noscript>/, 'redirect should have a no-JavaScript fallback');
 }
-const workbench = fs.readFileSync(path.join(root, 'tools/image/index.html'), 'utf8');
-for (const mode of ['resize','convert','optimize']) assert.match(workbench, new RegExp('data-mode="' + mode + '"'));
-for (const id of ['resize-mode','resize-bounds','resize-longest','resize-ratio','longest-side','format','quality','background','zip-files']) {
-  assert.ok(workbench.includes('id="' + id + '"'), 'Missing workbench control: ' + id);
+const processor = fs.readFileSync(path.join(root, 'tools/image/index.html'), 'utf8');
+assert.match(processor, /<h1>Image Processor<\/h1>/);
+assert.doesNotMatch(processor, /role="tab|tool-mode-tabs|data-mode=/, 'all operations share one screen without tabs');
+for (const id of ['do-resize','do-convert','do-optimize']) assert.ok(processor.includes('id="' + id + '"'), 'Missing operation toggle: ' + id);
+for (const id of ['resize-mode','resize-settings','resize-bounds','resize-longest','resize-ratio','longest-side','convert-settings','format','optimize-settings','quality','background','zip-files']) {
+  assert.ok(processor.includes('id="' + id + '"'), 'Missing processor control: ' + id);
 }
-assert.match(workbench, /aria-live="polite"/);
+assert.match(processor, /aria-live="polite"/);
 const qr = fs.readFileSync(path.join(root, 'tools/qr/index.html'), 'utf8');
 assert.doesNotMatch(qr, /<(?:div|canvas|textarea|button)[^>]*\sstyle=/, 'QR presentation belongs in the shared stylesheet');
 const stylesheet = fs.readFileSync(path.join(root, 'tools/tools.css'), 'utf8');
@@ -104,7 +109,7 @@ async function verifyDeliveryModes() {
   const zipped=naming(true,true);
   assert.equal(zipped.zipEnabled(),true);
   const zipMessage=await zipped.downloadResults(files);
-  assert.deepEqual(zipped.clicked,['crio-converter-3-images.zip']);
+  assert.deepEqual(zipped.clicked,['crio-image-processor-3-images.zip']);
   assert.match(zipMessage,/ZIP download containing 3 images/);
   const separate=naming(true,false);
   const separateMessage=await separate.downloadResults(files);
@@ -115,6 +120,6 @@ async function verifyDeliveryModes() {
   const singleMessage=await single.downloadResults(files.slice(0,1));
   assert.deepEqual(single.clicked,['Render.webp']);
   assert.match(singleMessage,/1 image download/);
-  console.log('PASS: shared workbench controls, redirect modes, file naming, resizing and downloads.');
+  console.log('PASS: single-screen operations, legacy redirects, file naming, resizing and downloads.');
 }
 verifyDeliveryModes().catch(error => { console.error(error); process.exitCode=1; });
