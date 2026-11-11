@@ -1,0 +1,61 @@
+name: Upload Living Room 2 Alternative Renders Nov 11
+on:
+  push:
+    paths:
+      - .github/workflows/rhynie-living2-variants-20261111-once.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: rhynie-living2-variants-20261111-upload
+  cancel-in-progress: false
+jobs:
+  upload-original-webps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download and checksum-verify original WebP uploads
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p previews/rhynie-drive/images
+          curl --fail --location --retry 4 --retry-delay 2 --silent --show-error 'https://at.adobe.com/qmvG13r9MB7Px7oL' --output 'previews/rhynie-drive/images/living-room-2-variant-coastal-neutral.webp'
+          echo '5e400570e625cea026cb89315caf581b45a2cc5577edbd14d959d8d9692a5aba  previews/rhynie-drive/images/living-room-2-variant-coastal-neutral.webp' | sha256sum -c -
+          curl --fail --location --retry 4 --retry-delay 2 --silent --show-error 'https://at.adobe.com/Fl3kfQQF9aGknsm1' --output 'previews/rhynie-drive/images/living-room-2-variant-tropical-walnut.webp'
+          echo 'c7679f94395673165150d37941f3756ce0f0b74f584bcd0522a8a46c32ccdf1a  previews/rhynie-drive/images/living-room-2-variant-tropical-walnut.webp' | sha256sum -c -
+      - name: Validate WebP bytes and original dimensions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet 'Pillow==11.3.0'
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          files=[{"file":"living-room-2-variant-coastal-neutral.webp","size":123146,"width":1200,"height":900},{"file":"living-room-2-variant-tropical-walnut.webp","size":127212,"width":1200,"height":901}]
+          for item in files:
+              path=Path('previews/rhynie-drive/images')/item['file']
+              blob=path.read_bytes()
+              assert len(blob)==item['size'], (item['file'],len(blob))
+              assert blob[:4]==b'RIFF' and blob[8:12]==b'WEBP'
+              with Image.open(path) as im:
+                  assert im.format=='WEBP' and im.size==(item['width'],item['height']), (item['file'],im.size)
+              print(f"Validated {item['file']} ({len(blob)} bytes)")
+          PY
+      - name: Commit only the two new gallery assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add previews/rhynie-drive/images/living-room-2-variant-coastal-neutral.webp previews/rhynie-drive/images/living-room-2-variant-tropical-walnut.webp
+          if git diff --cached --quiet; then echo 'Images already uploaded'; exit 0; fi
+          git commit -m 'Add two Living Room 2 alternate gallery renders'
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:refs/heads/main; then exit 0; fi
+            sleep 2
+          done
+          exit 1
