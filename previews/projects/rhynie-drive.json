@@ -281,7 +281,7 @@
       "title": "Bedroom 2.",
       "paragraphs": [
         "09 / Interior renovation",
-        "Warm timber finishes and neutral textiles define Bedroom 2, with two double beds, a shared bedside table, a media wall, wardrobe and mirror."
+        "Warm timber finishes and neutral textiles define Bedroom 2, with a double bed, window-side seating, media wall, wardrobe and mirror."
       ],
       "images": [
         {
@@ -291,15 +291,10 @@
         {
           "src": "/previews/rhynie-drive/images/bedroom-2-media-wall.webp",
           "alt": "Bedroom 2 view towards the media wall, timber wardrobe, floor mirror and entrance"
-        },
-        {
-          "src": "/previews/rhynie-drive/images/bedroom-2-twin-beds.webp?v=20261111-2",
-          "alt": "Bedroom 2 with two matching double beds, warm timber frames, neutral woven bedding, a patterned area rug, and windows overlooking tropical greenery"
         }
       ],
       "groups": [
-        2,
-        1
+        2
       ]
     },
     {
