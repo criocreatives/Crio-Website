@@ -173,7 +173,7 @@
       "title": "Living Room #2.",
       "paragraphs": [
         "05 / Interior renovation",
-        "The upstairs lounge features a vaulted exposed-rafter ceiling, warm walnut media wall with integrated lighting, a tropical floral accent wall and cream seating with burgundy accents overlooking the ocean-facing terrace. The adjoining dry bar includes walnut-slat detailing, floating shelves, a coffee station and undercounter beverage cooler."
+        "The upstairs lounge presents three complementary treatments around the vaulted exposed-rafter ceiling and ocean-facing terrace: a walnut-and-burgundy palette, a lighter coastal-neutral scheme with pale timber, and a tropical alternative with patterned accents. The adjoining dry bar features walnut-slat detailing, floating shelves, a coffee station and an undercounter beverage cooler."
       ],
       "images": [
         {
@@ -185,11 +185,20 @@
           "alt": "Upstairs living room with walnut slat media wall, illuminated television surround, cream sofa and lounge chairs, floral area rug, ceiling fan and ocean-facing terrace"
         },
         {
+          "src": "/previews/rhynie-drive/images/living-room-2-variant-coastal-neutral.webp",
+          "alt": "Living Room #2 coastal neutral design alternative with white sectional sofa, natural oak media wall, soft botanical accent wallpaper, pale rug and ocean-facing balcony"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/living-room-2-variant-tropical-walnut.webp",
+          "alt": "Living Room #2 warm tropical design alternative with walnut slatted media wall, cream sectional sofa, burgundy floral rug, vibrant heliconia flowers and ocean-facing balcony"
+        },
+        {
           "src": "/previews/rhynie-drive/images/living-room-2-dry-bar.webp",
           "alt": "Upstairs living room dry bar with walnut slatted wall, floating timber shelves, coffee machine, undercounter beverage cooler and sunlit hallway"
         }
       ],
       "groups": [
+        2,
         2,
         1
       ]
