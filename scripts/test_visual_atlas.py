@@ -3,13 +3,11 @@
 
 import json
 import re
-import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGE = ROOT / "visual-atlas/index.html"
-POSTERS = ROOT / "assets/images/visual-atlas/posters"
 
 
 def read_array(source: str, name: str) -> list[dict]:
@@ -33,28 +31,26 @@ def main() -> None:
         assert all(entry["prompt"].strip() for entry in entries)
 
     poster_sources = re.findall(
-        r'<img src="(/assets/images/visual-atlas/posters/[^\"]+\.svg)"',
+        r'<img src="(/assets/images/visual-atlas/posters/[^\"]+\.webp)"',
         source,
     )
-    assert len(poster_sources) == 20, f"Expected 20 poster SVGs, found {len(poster_sources)}"
+    assert len(set(poster_sources)) == 20, "Poster image source is reused"
+    assert len(poster_sources) == 20, f"Expected 20 raster poster images, found {len(poster_sources)}"
     for asset in poster_sources:
         path = ROOT / asset.lstrip("/")
         assert path.is_file(), f"Missing poster artwork: {asset}"
-        root = ET.parse(path).getroot()
-        assert root.tag.endswith("svg")
-        assert root.find("{http://www.w3.org/2000/svg}title") is not None
-        text = [node.text or "" for node in root.findall(".//{http://www.w3.org/2000/svg}text")]
-        assert len(text) >= 2, f"Poster lacks readable sample copy: {asset}"
+        data = path.read_bytes()
+        assert data[:4] == b"RIFF" and data[8:12] == b"WEBP", f"Not a raster WebP: {asset}"
 
     assert "REQUIRED COPY: [paste exact approved wording; do not invent extra text]" in source
     assert "PRODUCTION LIMITS:" in source
     assert "AUDIENCE:" in source and "FORMAT:" in source and "ASSETS:" in source
     assert "Do not add fake logos, dates, event details, or claims." in source
     assert not re.search(r"visual-atlas/posters/[^\"]+\.jpg", source)
-    assert "generated poster" not in source.lower()
+    assert "vector poster" not in source.lower()
     assert len(re.findall(r'<article class="style-card poster-card"', source)) == 20
     assert len(re.findall(r'<article class="style-card"', source)) == 30
-    print("Visual Atlas content and poster artwork checks passed (30 directions, 20 studies).")
+    print("Visual Atlas content and raster poster checks passed (30 directions, 20 studies).")
 
 
 if __name__ == "__main__":
