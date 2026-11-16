@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="855" height="1100" viewBox="0 0 855 1100" role="img" aria-labelledby="title desc">
+<title id="title">Grunge Zine poster study</title><desc id="desc">Original vector poster study with legible typeset wording in the Grunge Zine direction.</desc>
+<defs>
+ <linearGradient id="metal" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".24" stop-color="#98e7ee"/><stop offset=".48" stop-color="#fff"/><stop offset=".72" stop-color="#d39fff"/><stop offset="1" stop-color="#fff"/></linearGradient>
+ <linearGradient id="night" x2="0" y2="1"><stop stop-color="#111431"/><stop offset=".62" stop-color="#401957"/><stop offset="1" stop-color="#e84e77"/></linearGradient>
+ <radialGradient id="orb"><stop stop-color="#fff"/><stop offset=".2" stop-color="#c5302e"/><stop offset="1" stop-color="#77756e"/></radialGradient>
+ <pattern id="dots" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="2.1" fill="#171717"/></pattern>
+ <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#c5302e" stroke-width="1" opacity=".55"/></pattern>
+ <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter>
+</defs>
+<rect width="855" height="1100" fill="#ece9dc"/>
+
+<path d="M0 82L855 105L838 235L855 250L836 377L855 395L824 520L846 538L855 672L825 686L849 833L827 847L855 1012L0 994L21 871L0 849L25 700L2 680L20 549L0 532L17 393L0 368L27 230L0 212Z" fill="#f4f1e8"/>
+<path d="M0 1050L855 1010" stroke="#171717" stroke-width="18" filter="url(#rough)"/>
+<g fill="#171717"><rect x="80" y="180" width="672" height="10"/><rect x="104" y="205" width="580" height="5"/><rect x="92" y="826" width="630" height="7"/></g>
+<text x="78" y="350" font-family="Arial,Helvetica,sans-serif" font-size="124" font-weight="900" letter-spacing="-6" fill="#171717">NOISE</text>
+<text x="95" y="485" font-family="Arial,Helvetica,sans-serif" font-size="111" font-weight="900" letter-spacing="-5" fill="#c5302e" transform="rotate(-3 95 485)">IS A</text>
+<text x="73" y="632" font-family="Arial,Helvetica,sans-serif" font-size="124" font-weight="900" letter-spacing="-6" fill="#171717">CHOICE.</text>
+<path d="M89 663L770 576M105 681L740 598M120 701L725 622" stroke="#c5302e" stroke-width="8"/>
+<text x="96" y="774" font-family="monospace" font-size="22" fill="#171717">CUT / COPY / PRINT / REPEAT</text>
+<text x="93" y="920" font-family="monospace" font-size="18" letter-spacing="2" fill="#171717">CRIO VISUAL ATLAS  /  07</text>
+</svg>

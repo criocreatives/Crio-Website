@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="855" height="1100" viewBox="0 0 855 1100" role="img" aria-labelledby="title desc">
+<title id="title">Maximalist poster study</title><desc id="desc">Original vector poster study with legible typeset wording in the Maximalist direction.</desc>
+<defs>
+ <linearGradient id="metal" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".24" stop-color="#98e7ee"/><stop offset=".48" stop-color="#fff"/><stop offset=".72" stop-color="#d39fff"/><stop offset="1" stop-color="#fff"/></linearGradient>
+ <linearGradient id="night" x2="0" y2="1"><stop stop-color="#111431"/><stop offset=".62" stop-color="#401957"/><stop offset="1" stop-color="#e84e77"/></linearGradient>
+ <radialGradient id="orb"><stop stop-color="#fff"/><stop offset=".2" stop-color="#ef3c72"/><stop offset="1" stop-color="#244bc2"/></radialGradient>
+ <pattern id="dots" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="2.1" fill="#151515"/></pattern>
+ <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#ef3c72" stroke-width="1" opacity=".55"/></pattern>
+ <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter>
+</defs>
+<rect width="855" height="1100" fill="#ffdc3e"/>
+
+<rect width="855" height="1100" fill="#ef3c72"/><path d="M0 100L855 880M-100 500L740 0M60 0L850 650M0 1010L855 260" stroke="#ffdc3e" stroke-width="60"/>
+<circle cx="645" cy="265" r="183" fill="#244bc2" stroke="#151515" stroke-width="12"/><circle cx="645" cy="265" r="126" fill="#ef3c72" stroke="#ffdc3e" stroke-width="18"/>
+<path d="M89 195L765 195L712 855L142 855Z" fill="#fff8de" stroke="#151515" stroke-width="12" transform="rotate(-7 89 195)"/>
+<text x="130" y="423" font-family="Arial,Helvetica,sans-serif" font-size="168" font-weight="900" letter-spacing="-9" fill="#151515" transform="rotate(-7 130 423)">MORE</text>
+<text x="159" y="565" font-family="Arial,Helvetica,sans-serif" font-size="105" font-weight="900" letter-spacing="-5" fill="#244bc2" transform="rotate(-7 159 565)">ON THE</text>
+<text x="174" y="700" font-family="Arial,Helvetica,sans-serif" font-size="122" font-weight="900" letter-spacing="-6" fill="#ef3c72" transform="rotate(-7 174 700)">PAGE</text>
+<text x="80" y="1018" font-family="Arial,Helvetica,sans-serif" font-size="16" letter-spacing="3" fill="#151515">CRIO VISUAL ATLAS  /  18</text>
+</svg>

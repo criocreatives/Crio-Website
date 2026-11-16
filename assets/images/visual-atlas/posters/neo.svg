@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="855" height="1100" viewBox="0 0 855 1100" role="img" aria-labelledby="title desc">
+<title id="title">Neo-Brutalist poster study</title><desc id="desc">Original vector poster study with legible typeset wording in the Neo-Brutalist direction.</desc>
+<defs>
+ <linearGradient id="metal" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".24" stop-color="#98e7ee"/><stop offset=".48" stop-color="#fff"/><stop offset=".72" stop-color="#d39fff"/><stop offset="1" stop-color="#fff"/></linearGradient>
+ <linearGradient id="night" x2="0" y2="1"><stop stop-color="#111431"/><stop offset=".62" stop-color="#401957"/><stop offset="1" stop-color="#e84e77"/></linearGradient>
+ <radialGradient id="orb"><stop stop-color="#fff"/><stop offset=".2" stop-color="#f8e735"/><stop offset="1" stop-color="#48e2d1"/></radialGradient>
+ <pattern id="dots" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="2.1" fill="#111111"/></pattern>
+ <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#f8e735" stroke-width="1" opacity=".55"/></pattern>
+ <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter>
+</defs>
+<rect width="855" height="1100" fill="#ff78b5"/>
+
+<rect x="78" y="105" width="700" height="842" fill="#111"/>
+<rect x="55" y="82" width="700" height="842" fill="#fff8de" stroke="#111" stroke-width="12"/>
+<rect x="55" y="82" width="700" height="94" fill="#f8e735" stroke="#111" stroke-width="12"/>
+<text x="88" y="146" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="900" letter-spacing="2" fill="#111">DESIGN RULES, RECONSIDERED</text>
+<text x="88" y="410" font-family="Arial,Helvetica,sans-serif" font-size="156" font-weight="900" letter-spacing="-10" fill="#111">BREAK</text>
+<text x="88" y="570" font-family="Arial,Helvetica,sans-serif" font-size="156" font-weight="900" letter-spacing="-10" fill="#df2a22">THE</text>
+<text x="88" y="730" font-family="Arial,Helvetica,sans-serif" font-size="156" font-weight="900" letter-spacing="-10" fill="#111">GRID.</text>
+<rect x="84" y="778" width="340" height="72" fill="#48e2d1" stroke="#111" stroke-width="8" transform="rotate(-3 84 778)"/>
+<text x="105" y="827" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="900" fill="#111">FORM FOLLOWS ENERGY</text>
+<text x="86" y="888" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" letter-spacing="2" fill="#111">CRIO VISUAL ATLAS  /  03</text>
+</svg>

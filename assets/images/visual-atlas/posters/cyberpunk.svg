@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="855" height="1100" viewBox="0 0 855 1100" role="img" aria-labelledby="title desc">
+<title id="title">Cyberpunk poster study</title><desc id="desc">Original vector poster study with legible typeset wording in the Cyberpunk direction.</desc>
+<defs>
+ <linearGradient id="metal" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".24" stop-color="#98e7ee"/><stop offset=".48" stop-color="#fff"/><stop offset=".72" stop-color="#d39fff"/><stop offset="1" stop-color="#fff"/></linearGradient>
+ <linearGradient id="night" x2="0" y2="1"><stop stop-color="#111431"/><stop offset=".62" stop-color="#401957"/><stop offset="1" stop-color="#e84e77"/></linearGradient>
+ <radialGradient id="orb"><stop stop-color="#fff"/><stop offset=".2" stop-color="#fc329b"/><stop offset="1" stop-color="#23e7e4"/></radialGradient>
+ <pattern id="dots" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="2.1" fill="#f7f4ff"/></pattern>
+ <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#fc329b" stroke-width="1" opacity=".55"/></pattern>
+ <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter>
+</defs>
+<rect width="855" height="1100" fill="#09132a"/>
+
+<rect width="855" height="1100" fill="#09132a"/><rect width="855" height="1000" fill="url(#grid)" opacity=".25"/>
+<path d="M0 500H115V332H207V451H283V253H371V510H448V374H543V486H635V286H722V410H855V1000H0Z" fill="#101b39" stroke="#23e7e4" stroke-width="4"/>
+<g fill="#fc329b"><rect x="139" y="375" width="39" height="8"/><rect x="309" y="302" width="38" height="8"/><rect x="662" y="334" width="39" height="8"/></g>
+<path d="M0 756H855M0 823H855M0 890H855M120 620L0 1100M310 600L220 1100M520 620L560 1100M735 610L855 1100" stroke="#23e7e4" stroke-width="2" opacity=".65"/>
+<text x="70" y="158" font-family="monospace" font-size="22" letter-spacing="6" fill="#23e7e4">SIGNAL / NIGHT CITY</text>
+<text x="70" y="713" font-family="Arial,Helvetica,sans-serif" font-size="108" font-weight="900" letter-spacing="-4" fill="#fc329b">CITY</text>
+<text x="70" y="814" font-family="Arial,Helvetica,sans-serif" font-size="108" font-weight="900" letter-spacing="-4" fill="#f7f4ff">SIGNAL</text>
+<text x="72" y="1010" font-family="monospace" font-size="16" letter-spacing="3" fill="#23e7e4">CRIO VISUAL ATLAS  /  16</text>
+</svg>

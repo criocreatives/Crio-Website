@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="855" height="1100" viewBox="0 0 855 1100" role="img" aria-labelledby="title desc">
+<title id="title">Cinematic Photography poster study</title><desc id="desc">Original vector poster study with legible typeset wording in the Cinematic Photography direction.</desc>
+<defs>
+ <linearGradient id="metal" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".24" stop-color="#98e7ee"/><stop offset=".48" stop-color="#fff"/><stop offset=".72" stop-color="#d39fff"/><stop offset="1" stop-color="#fff"/></linearGradient>
+ <linearGradient id="night" x2="0" y2="1"><stop stop-color="#111431"/><stop offset=".62" stop-color="#401957"/><stop offset="1" stop-color="#e84e77"/></linearGradient>
+ <radialGradient id="orb"><stop stop-color="#fff"/><stop offset=".2" stop-color="#f0a34e"/><stop offset="1" stop-color="#b92d59"/></radialGradient>
+ <pattern id="dots" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="2.1" fill="#f6e6bf"/></pattern>
+ <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#f0a34e" stroke-width="1" opacity=".55"/></pattern>
+ <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter>
+</defs>
+<rect width="855" height="1100" fill="#121325"/>
+
+<rect width="855" height="1100" fill="url(#night)"/>
+<circle cx="427" cy="528" r="148" fill="#f0a34e" opacity=".82"/>
+<path d="M0 585L250 510L330 550L420 454L522 542L650 473L855 580V780H0Z" fill="#20223d"/>
+<path d="M0 675L855 675V1100H0Z" fill="#111321"/>
+<path d="M80 1100L360 690H495L775 1100M295 1100L401 690H454L560 1100" fill="#29243b" stroke="#d94a6d" stroke-width="5"/>
+<path d="M424 606V845" stroke="#f6e6bf" stroke-width="18"/><circle cx="433" cy="604" r="38" fill="#f0a34e"/>
+<text x="70" y="178" font-family="Georgia,serif" font-size="35" letter-spacing="8" fill="#f6e6bf">AFTER THE RAIN</text>
+<text x="67" y="930" font-family="Arial,Helvetica,sans-serif" font-size="98" font-weight="700" letter-spacing="-3" fill="#f6e6bf">NIGHT</text>
+<text x="67" y="1025" font-family="Arial,Helvetica,sans-serif" font-size="98" font-weight="700" letter-spacing="-3" fill="#f6e6bf">DRIVE</text>
+<text x="654" y="1023" font-family="Arial,Helvetica,sans-serif" font-size="16" letter-spacing="2" fill="#f6e6bf">CRIO / 08</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="855" height="1100" viewBox="0 0 855 1100" role="img" aria-labelledby="title desc">
+<title id="title">Y2K poster study</title><desc id="desc">Original vector poster study with legible typeset wording in the Y2K direction.</desc>
+<defs>
+ <linearGradient id="metal" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".24" stop-color="#98e7ee"/><stop offset=".48" stop-color="#fff"/><stop offset=".72" stop-color="#d39fff"/><stop offset="1" stop-color="#fff"/></linearGradient>
+ <linearGradient id="night" x2="0" y2="1"><stop stop-color="#111431"/><stop offset=".62" stop-color="#401957"/><stop offset="1" stop-color="#e84e77"/></linearGradient>
+ <radialGradient id="orb"><stop stop-color="#fff"/><stop offset=".2" stop-color="#a0e8ed"/><stop offset="1" stop-color="#f4d9fa"/></radialGradient>
+ <pattern id="dots" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="2.1" fill="#29234d"/></pattern>
+ <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#a0e8ed" stroke-width="1" opacity=".55"/></pattern>
+ <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter>
+</defs>
+<rect width="855" height="1100" fill="#c6b8f0"/>
+
+<rect width="855" height="1100" fill="#d7c8f4"/>
+<circle cx="183" cy="233" r="75" fill="url(#orb)"/><circle cx="680" cy="622" r="50" fill="url(#metal)"/>
+<ellipse cx="427" cy="503" rx="336" ry="127" fill="none" stroke="#fff" stroke-width="20" opacity=".65" transform="rotate(-22 427 503)"/>
+<ellipse cx="427" cy="503" rx="336" ry="127" fill="none" stroke="#a0e8ed" stroke-width="5" transform="rotate(-22 427 503)"/>
+<text x="427" y="458" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="104" font-weight="900" letter-spacing="-7" fill="url(#metal)" stroke="#fff" stroke-width="2">DIGITAL</text>
+<text x="427" y="565" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="88" font-weight="700" letter-spacing="7" fill="#fff">DREAMS</text>
+<path d="M120 760L170 777L185 830L202 777L254 760L202 743L185 691L170 743ZM642 256L672 266L682 296L692 266L722 256L692 246L682 216L672 246Z" fill="#fff"/>
+<text x="67" y="1018" font-family="Arial,Helvetica,sans-serif" font-size="16" letter-spacing="3" fill="#29234d">CRIO VISUAL ATLAS  /  14</text>
+</svg>
