@@ -31,26 +31,26 @@ def main() -> None:
         assert all(entry["prompt"].strip() for entry in entries)
 
     poster_sources = re.findall(
-        r'<img src="(/assets/images/visual-atlas/posters/[^\"]+\.webp)"',
+        r'<img src="(/assets/images/visual-atlas/posters/[^\"]+\.jpg)"',
         source,
     )
     assert len(set(poster_sources)) == 20, "Poster image source is reused"
-    assert len(poster_sources) == 20, f"Expected 20 raster poster images, found {len(poster_sources)}"
+    assert len(poster_sources) == 20, f"Expected 20 original poster images, found {len(poster_sources)}"
     for asset in poster_sources:
         path = ROOT / asset.lstrip("/")
         assert path.is_file(), f"Missing poster artwork: {asset}"
         data = path.read_bytes()
-        assert data[:4] == b"RIFF" and data[8:12] == b"WEBP", f"Not a raster WebP: {asset}"
+        assert data[:3] == b"\xff\xd8\xff", f"Not a JPEG poster image: {asset}"
 
     assert "REQUIRED COPY: [paste exact approved wording; do not invent extra text]" in source
     assert "PRODUCTION LIMITS:" in source
     assert "AUDIENCE:" in source and "FORMAT:" in source and "ASSETS:" in source
     assert "Do not add fake logos, dates, event details, or claims." in source
-    assert not re.search(r"visual-atlas/posters/[^\"]+\.jpg", source)
+    assert not re.search(r"visual-atlas/posters/[^\"]+\.webp", source)
     assert "vector poster" not in source.lower()
     assert len(re.findall(r'<article class="style-card poster-card"', source)) == 20
     assert len(re.findall(r'<article class="style-card"', source)) == 30
-    print("Visual Atlas content and raster poster checks passed (30 directions, 20 studies).")
+    print("Visual Atlas content and original poster checks passed (30 directions, 20 studies).")
 
 
 if __name__ == "__main__":
