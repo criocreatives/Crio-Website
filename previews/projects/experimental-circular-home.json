@@ -9,15 +9,15 @@
     "description": "Architectural visualization of an experimental circular courtyard home, featuring its roof form, landscaped courtyard, living spaces, kitchen, bedrooms, bathroom and evening exterior."
   },
   "hero": {
-    "src": "images/glazed-facade-daylight.jpg",
-    "alt": "Glass facade of the circular residence opening onto a landscaped courtyard with a fire pit",
+    "src": "images/overhead-masterplan.jpg",
+    "alt": "Top-down aerial view of the circular home with its landscaped courtyard, spa deck and fire pit",
     "eyebrow": "Architectural Concept",
     "lines": [
       "Experimental Circular",
       "Home."
     ],
     "description": "A residence organized around a private circular courtyard, with a sweeping roof, fire-pit terrace and secluded spa deck.",
-    "focus": "center 48%"
+    "focus": "center center"
   },
   "nav": [
     {
