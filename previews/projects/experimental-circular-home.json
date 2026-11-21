@@ -2,33 +2,268 @@
   "schema_version": 2,
   "category": "arch-viz",
   "slug": "experimental-circular-home",
-  "title": "Experimental Circular Home .",
+  "title": "Experimental Circular Home",
   "indexable": true,
   "seo": {
-    "title": "Experimental Circular Home | Crio Creatives Preview",
-    "description": "Experimental Circular Home project preview by Crio Creatives."
+    "title": "Experimental Circular Home | Crio Creatives",
+    "description": "Architectural visualization of an experimental circular courtyard home, featuring its roof form, landscaped courtyard, living spaces, kitchen, bedrooms, bathroom and evening exterior."
   },
   "hero": {
-    "src": null,
-    "alt": "",
-    "eyebrow": "Project Preview",
+    "src": "images/glazed-facade-daylight.jpg",
+    "alt": "Glass facade of the circular residence opening onto a landscaped courtyard with a fire pit",
+    "eyebrow": "Architectural Concept",
     "lines": [
       "Experimental Circular",
       "Home."
     ],
-    "description": "Project presentation by Crio Creatives. Images and project details will be added as the preview is developed.",
-    "focus": "center center"
+    "description": "A residence organized around a private circular garden, with a sweeping roof, fire-pit terrace and secluded spa deck.",
+    "focus": "center 48%"
   },
-  "nav": [],
+  "nav": [
+    {
+      "id": "form",
+      "label": "Form"
+    },
+    {
+      "id": "arrival",
+      "label": "Arrival"
+    },
+    {
+      "id": "courtyard",
+      "label": "Courtyard"
+    },
+    {
+      "id": "living",
+      "label": "Living"
+    },
+    {
+      "id": "private",
+      "label": "Private spaces"
+    }
+  ],
   "sections": [
     {
-      "id": "views",
+      "id": "overview",
       "kind": "text",
-      "title": "Project Views",
+      "title": "An inward-facing retreat.",
       "paragraphs": [
-        "The gallery is ready for the project images.",
-        "Project imagery will appear here as the presentation develops."
+        "The circular enclosure provides privacy while connecting the house to its own garden. A sweeping roof shelters the interior rooms and frames the shared outdoor space.",
+        "The design is presented through aerial, exterior, residential interior and evening visualizations."
+      ]
+    },
+    {
+      "id": "form",
+      "kind": "gallery",
+      "title": "The Circular Form",
+      "paragraphs": [
+        "A broad curved roof and perimeter wall frame a sheltered courtyard. Aerial views reveal how the residence, central garden and outdoor areas fit together."
+      ],
+      "images": [
+        {
+          "src": "images/overhead-masterplan.jpg",
+          "caption": "Landscape and roof composition",
+          "alt": "Overhead view of the circular residence, roof and surrounding landscape"
+        },
+        {
+          "src": "images/circular-courtyard-aerial.jpg",
+          "caption": "The enclosed courtyard from above",
+          "alt": "Aerial view of the sweeping roof, enclosed courtyard, fire pit and spa deck"
+        }
+      ],
+      "groups": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "arrival",
+      "kind": "gallery",
+      "title": "Arrival & Entrance",
+      "paragraphs": [
+        "The approach links the parking area to the house through planted paths, natural stone and a stepped entrance."
+      ],
+      "images": [
+        {
+          "src": "images/approach-landscape.jpg",
+          "caption": "Arrival through the landscape",
+          "alt": "Landscaped approach to the residence with trees, car, stone paths and house entry"
+        },
+        {
+          "src": "images/arrival-stairs.jpg",
+          "caption": "Parking and entry sequence",
+          "alt": "Driveway, parked car and exterior stairs connecting to the home"
+        },
+        {
+          "src": "images/front-entry.jpg",
+          "caption": "Front entrance",
+          "alt": "Front elevation with the curved perimeter element and main entrance"
+        }
+      ],
+      "groups": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "courtyard",
+      "kind": "gallery",
+      "title": "Outdoor Living",
+      "paragraphs": [
+        "The landscaped courtyard brings together a fire-pit terrace and a raised timber deck with spa and lounge seating."
+      ],
+      "images": [
+        {
+          "src": "images/aerial-glazed-facade.jpg",
+          "caption": "Courtyard and glazed elevation",
+          "alt": "Aerial view over the glazed facade, courtyard fire pit and exterior planting"
+        },
+        {
+          "src": "images/courtyard-spa-deck.jpg",
+          "caption": "Raised spa and seating deck",
+          "alt": "Curved timber deck with hot tub, lounge seating and surrounding garden wall"
+        }
+      ],
+      "groups": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "living",
+      "kind": "gallery",
+      "title": "Living Spaces",
+      "paragraphs": [
+        "Full-height glazing opens the communal areas toward the garden. Timber ceiling beams, textured stone and warm neutral furnishings define the interiors."
+      ],
+      "images": [
+        {
+          "src": "images/living-to-courtyard.jpg",
+          "caption": "Living room opening to the garden",
+          "alt": "Living room with timber ceiling beams, sofa and glass doors opening onto the courtyard"
+        },
+        {
+          "src": "images/living-courtyard.jpg",
+          "caption": "Indoor–outdoor connection",
+          "alt": "Interior living space connecting to the planted courtyard"
+        },
+        {
+          "src": "images/living-sofa.jpg",
+          "caption": "Lounge seating",
+          "alt": "Living area with neutral sofa and natural material finishes"
+        },
+        {
+          "src": "images/living-entry.jpg",
+          "caption": "Living area toward the entrance",
+          "alt": "Living space looking toward the entrance and adjacent rooms"
+        },
+        {
+          "src": "images/media-wall.jpg",
+          "caption": "Media wall and fireplace views",
+          "alt": "Interior view showing the media wall and living spaces"
+        },
+        {
+          "src": "images/living-bar.jpg",
+          "caption": "Bar and lounge connection",
+          "alt": "Open-plan bar and lounge area within the circular home"
+        },
+        {
+          "src": "images/kitchen-living-arch.jpg",
+          "caption": "View through the interior arch",
+          "alt": "Interior arch linking kitchen and living zones"
+        }
+      ],
+      "groups": [
+        1,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "kitchen",
+      "kind": "gallery",
+      "title": "Kitchen & Dining",
+      "paragraphs": [
+        "An open kitchen and breakfast counter connect visually to the living areas and the courtyard."
+      ],
+      "images": [
+        {
+          "src": "images/kitchen-courtyard.jpg",
+          "caption": "Kitchen with garden outlook",
+          "alt": "Kitchen interior with cabinets and views toward the courtyard"
+        },
+        {
+          "src": "images/kitchen-appliances.jpg",
+          "caption": "Kitchen and utility connection",
+          "alt": "Kitchen with appliances and the adjoining interior"
+        },
+        {
+          "src": "images/breakfast-bar.jpg",
+          "caption": "Breakfast counter",
+          "alt": "Kitchen breakfast bar and nearby living spaces"
+        }
+      ],
+      "groups": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "private",
+      "kind": "gallery",
+      "title": "Bedroom & Bathroom",
+      "paragraphs": [
+        "Bedroom and bathroom perspectives show the quiet material palette and access to daylight and garden views."
+      ],
+      "images": [
+        {
+          "src": "images/bedroom-window.jpg",
+          "caption": "Bedroom and garden outlook",
+          "alt": "Bedroom with neutral bedding and large windows overlooking the garden"
+        },
+        {
+          "src": "images/bathroom-tub.jpg",
+          "caption": "Freestanding bathtub and vanity",
+          "alt": "Bathroom with freestanding bathtub, timber vanity and shower glazing"
+        },
+        {
+          "src": "images/bathroom-corridor.jpg",
+          "caption": "Bedroom-to-bathroom connection",
+          "alt": "View through the doorway to the bathroom and freestanding tub"
+        }
+      ],
+      "groups": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "evening",
+      "kind": "gallery",
+      "title": "After Dark",
+      "paragraphs": [
+        "As daylight fades, interior illumination and the fire pit define the courtyard and its connection to the house."
+      ],
+      "images": [
+        {
+          "src": "images/night-glazed-facade.jpg",
+          "caption": "Glazed facade at night",
+          "alt": "Nighttime courtyard and lit glazed facade with the fire pit"
+        },
+        {
+          "src": "images/night-fire-lounge.jpg",
+          "caption": "Fire pit and outdoor lounge",
+          "alt": "Nighttime outdoor lounge with Adirondack chairs around the fire pit"
+        }
+      ],
+      "groups": [
+        1,
+        1
       ]
     }
-  ]
+  ],
+  "closing": {
+    "title": "Architecture shaped around a garden.",
+    "description": "Experimental Circular Home · Architectural concept visualization"
+  }
 }
