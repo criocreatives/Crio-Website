@@ -16,7 +16,7 @@
       "Experimental Circular",
       "Home."
     ],
-    "description": "A residence organized around a private circular garden, with a sweeping roof, fire-pit terrace and secluded spa deck.",
+    "description": "A residence organized around a private circular courtyard, with a sweeping roof, fire-pit terrace and secluded spa deck.",
     "focus": "center 48%"
   },
   "nav": [
@@ -47,7 +47,7 @@
       "kind": "text",
       "title": "An inward-facing retreat.",
       "paragraphs": [
-        "The circular enclosure provides privacy while connecting the house to its own garden. A sweeping roof shelters the interior rooms and frames the shared outdoor space.",
+        "The circular enclosure provides privacy while connecting the house to its own landscaped courtyard. A sweeping roof shelters the interior rooms and frames the shared outdoor space.",
         "The design is presented through aerial, exterior, residential interior and evening visualizations."
       ]
     },
@@ -56,7 +56,7 @@
       "kind": "gallery",
       "title": "The Circular Form",
       "paragraphs": [
-        "A broad curved roof and perimeter wall frame a sheltered courtyard. Aerial views reveal how the residence, central garden and outdoor areas fit together."
+        "A broad curved roof and perimeter wall frame a sheltered courtyard. Aerial views reveal how the residence, central lawn and outdoor areas fit together."
       ],
       "images": [
         {
@@ -133,7 +133,7 @@
       "kind": "gallery",
       "title": "Living Spaces",
       "paragraphs": [
-        "Full-height glazing opens the communal areas toward the garden. Timber ceiling beams, textured stone and warm neutral furnishings define the interiors."
+        "Full-height glazing opens the communal areas toward the courtyard. Timber ceiling beams, textured stone and warm neutral furnishings define the interiors."
       ],
       "images": [
         {
@@ -213,7 +213,7 @@
       "kind": "gallery",
       "title": "Bedroom & Bathroom",
       "paragraphs": [
-        "Bedroom and bathroom perspectives show the quiet material palette and access to daylight and garden views."
+        "Bedroom and bathroom perspectives show the quiet material palette and access to daylight and exterior views."
       ],
       "images": [
         {
@@ -261,9 +261,5 @@
         1
       ]
     }
-  ],
-  "closing": {
-    "title": "Architecture shaped around a garden.",
-    "description": "Experimental Circular Home · Architectural concept visualization"
-  }
+  ]
 }
