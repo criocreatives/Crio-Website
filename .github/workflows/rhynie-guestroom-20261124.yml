@@ -1,0 +1,65 @@
+name: Replace Rhynie Drive Guestroom images
+on:
+  push:
+    paths:
+      - .github/workflows/rhynie-guestroom-20261124.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: rhynie-guestroom-20261124
+  cancel-in-progress: false
+jobs:
+  update-guestroom:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download the three approved WebP originals
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p previews/rhynie-drive/images
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/sI5zKyQEBAIopi3H' --output previews/rhynie-drive/images/guestroom-overview.webp
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/cYVy8dUlsdzrdCM1' --output previews/rhynie-drive/images/guestroom-angled.webp
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/XLXlVDyCzUr1wYU6' --output previews/rhynie-drive/images/guestroom-seating.webp
+          printf '%s\n' \
+            '958a50a0610266bb0e31b666845e25f0aa2666f9c592b58441f63c37f25dae84  previews/rhynie-drive/images/guestroom-overview.webp' \
+            '4f17109724a1e5db6f36663ae5bc6677228134b6fd3259caacbbcc6d7a340eed  previews/rhynie-drive/images/guestroom-angled.webp' \
+            'eff69e647ddacee5512b5bbdac053c87c1ad35c836651e67f85b5a6847b5cdfd  previews/rhynie-drive/images/guestroom-seating.webp' | sha256sum -c -
+      - name: Update Guestroom copy and cache keys only
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('previews/projects/rhynie-drive.json')
+          data = json.loads(p.read_text())
+          section = next(s for s in data['sections'] if s['id'] == 'guestroom')
+          section['paragraphs'][1] = 'The downstairs guestroom features a bold black-and-white palm mural, two beds dressed in neutral linens with olive-green accents, warm walnut furniture, a dressing table, and a wall-mounted television.'
+          expected = ['guestroom-overview.webp', 'guestroom-angled.webp', 'guestroom-seating.webp']
+          for image, filename in zip(section['images'], expected):
+              assert filename in image['src'], (filename, image['src'])
+              image['src'] = '/previews/rhynie-drive/images/' + filename + '?v=20261124-2'
+          section['images'][0]['alt'] = 'Guestroom two beds with olive accents, walnut vanity and large black-and-white palm mural'
+          section['images'][1]['alt'] = 'Guestroom angled view of twin beds, palm mural, and timber-framed terrace windows'
+          section['images'][2]['alt'] = 'Guestroom view facing windows and TV wall with two beds and palm mural'
+          p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+          PY
+      - name: Commit exactly the Guestroom images and gallery reference
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add previews/rhynie-drive/images/guestroom-overview.webp previews/rhynie-drive/images/guestroom-angled.webp previews/rhynie-drive/images/guestroom-seating.webp previews/projects/rhynie-drive.json
+          if git diff --cached --quiet; then echo 'Already up to date'; exit 0; fi
+          git commit -m 'Replace Rhynie Drive Guestroom gallery with three new WebP images'
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:refs/heads/main; then exit 0; fi
+            sleep 2
+          done
+          exit 1
