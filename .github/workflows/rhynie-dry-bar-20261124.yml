@@ -1,0 +1,53 @@
+name: Update Rhynie Drive dry bar image
+on:
+  push:
+    paths:
+      - .github/workflows/rhynie-dry-bar-20261124.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: rhynie-dry-bar-20261124
+  cancel-in-progress: false
+jobs:
+  replace-dry-bar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download approved WebP image
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --silent --show-error 'https://at.adobe.com/Xc7A7ZBBegarmDFe' --output 'previews/rhynie-drive/images/living-room-2-dry-bar.webp'
+          printf '%s\n' '4b331596c6821ff0b23673155361c3ab85fb2f5fe93d854cbb9d1ed7cfba6692  previews/rhynie-drive/images/living-room-2-dry-bar.webp' | sha256sum -c -
+      - name: Refresh only dry bar image reference
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('previews/projects/rhynie-drive.json')
+          data=json.loads(p.read_text())
+          section=next(x for x in data['sections'] if x['id']=='living-2')
+          image=next(x for x in section['images'] if 'dry-bar' in x['src'])
+          image['src']='/previews/rhynie-drive/images/living-room-2-dry-bar.webp?v=20261124-2'
+          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
+          PY
+      - name: Commit replacement
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add previews/rhynie-drive/images/living-room-2-dry-bar.webp previews/projects/rhynie-drive.json
+          if git diff --cached --quiet; then echo 'Already up to date'; exit 0; fi
+          git commit -m 'Replace Rhynie Drive dry bar image'
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:refs/heads/main; then exit 0; fi
+            sleep 2
+          done
+          exit 1
