@@ -290,30 +290,34 @@
       "title": "Bedroom 3.",
       "paragraphs": [
         "10 / Interior renovation",
-        "Two double beds sit against a layered tropical botanical feature wall, with natural textiles, a dressing table and a media wall."
+        "Two double beds sit against a tropical botanical feature wall, with walnut furniture, olive-green textiles, a dressing table and a wall-mounted television."
       ],
       "images": [
         {
-          "src": "/previews/rhynie-drive/images/bedroom-3-front-view.webp?v=20261105-1",
-          "alt": "Bedroom 3 / Double Beds — Front View"
+          "src": "/previews/rhynie-drive/images/bedroom-3-tv-wall-20261124.webp",
+          "alt": "Bedroom 3 television wall, floating walnut media console, windows, and two double beds in the foreground"
         },
         {
-          "src": "/previews/rhynie-drive/images/bedroom-3-angled-view.webp?v=20261105-1",
-          "alt": "Bedroom 3 / Double Beds — Angled View"
+          "src": "/previews/rhynie-drive/images/bedroom-3-window-side-20261124.webp",
+          "alt": "Bedroom 3 angled view of two double beds against the botanical accent wall, windows and media wall"
         },
         {
-          "src": "/previews/rhynie-drive/images/bedroom-3-media-wall.webp?v=20261105-1",
-          "alt": "Bedroom 3 / Media Wall and Windows"
+          "src": "/previews/rhynie-drive/images/bedroom-3-vanity-20261124.webp",
+          "alt": "Bedroom 3 vanity and mirror opposite the botanical feature wall and double beds"
         },
         {
-          "src": "/previews/rhynie-drive/images/bedroom-3-vanity-view.webp?v=20261105-1",
-          "alt": "Bedroom 3 / Vanity and Storage View"
+          "src": "/previews/rhynie-drive/images/bedroom-3-angled-beds-20261124.webp",
+          "alt": "Bedroom 3 double beds with olive green bed runners, walnut nightstands and tropical botanical wallpaper"
+        },
+        {
+          "src": "/previews/rhynie-drive/images/bedroom-3-front-beds-20261124.webp",
+          "alt": "Bedroom 3 front view of two double beds with walnut nightstands and a full-width tropical botanical feature wall"
         }
       ],
       "groups": [
         1,
         2,
-        1
+        2
       ]
     },
     {
